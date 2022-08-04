@@ -1,3 +1,5 @@
+import Main from "./pages/main/components/main"
+
 export const App = () => {
-  return <></>
+  return <Main/>
 }
