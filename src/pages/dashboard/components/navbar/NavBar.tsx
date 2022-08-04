@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import './NavBar.scss'
 
 interface NavBarProps {
@@ -10,22 +11,30 @@ export const NavBar = ({ display }: NavBarProps) => {
         <ul className="navbar-nav">
           <li className="nav-item">
             <div className="nav-link">
-              <span className="link-text">Stays</span>
+              <NavLink to="/" className="link-text">
+                Stays
+              </NavLink>
             </div>
           </li>
           <li className="nav-item">
             <div className="nav-link">
-              <span className="link-text">Attractions</span>
+              <NavLink to="/" className="link-text">
+                Attractions
+              </NavLink>
             </div>
           </li>
           <li className="nav-item">
             <div className="nav-link">
-              <span className="link-text">Hotels</span>
+              <NavLink to="/" className="link-text">
+                Hotels
+              </NavLink>
             </div>
           </li>
           <li className="nav-item">
             <div className="nav-link">
-              <span className="link-text">Contact</span>
+              <NavLink to="/signin" className="link-text">
+                Log Out
+              </NavLink>
             </div>
           </li>
           <li
