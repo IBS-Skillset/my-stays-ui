@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ES5",
+    "target": "ES6",
     "module": "ESNext",
     "moduleResolution": "node",
     "lib": [
       "DOM",
+      "DOM.Iterable",
       "ESNext"
     ],
     "jsx": "react-jsx",
@@ -14,7 +15,10 @@
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src/**/*"]
 }
