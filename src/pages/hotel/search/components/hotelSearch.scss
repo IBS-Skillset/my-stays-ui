@@ -1,0 +1,83 @@
+.main-panel {
+  background-color: var(--bg-secondary);
+}
+
+.front-header {
+  background-color: var(--bg-primary);
+  height: 20vh;
+}
+
+.main-content {
+  min-height: 100vh;
+}
+
+.main-text {
+  height: 50%;
+  padding-top: 20px;
+  @apply text-4xl font-bold text-white;
+}
+
+.text-container {
+  @apply items-center;
+}
+
+.search-panel {
+  margin-top: -1.25rem;
+  background-color: var(--bg-secondary);
+  @apply outline-amber-500 outline h-10 font-semibold items-center;
+}
+
+.search-container {
+  @apply container mx-auto grid gap-1 justify-between items-center h-full;
+}
+
+/* Large screens */
+@media only screen and (min-width: 600px) {
+  .search-container {
+    @apply grid-cols-5;
+  }
+}
+
+/* Small screens */
+@media only screen and (max-width: 600px) {
+  .main-content {
+    @apply px-4;
+  }
+  .search-container {
+    @apply grid-cols-1;
+  }
+
+  .search-panel {
+    margin-top: -4rem;
+    @apply h-32;
+  }
+
+  .search-action {
+    @apply col-span-2;
+  }
+}
+
+.calendarWrap {
+  display: inline-block;
+  position: relative;
+  @apply h-full;
+}
+
+.calendarWrap input.inputBox {
+  @apply outline-none text-slate-500 h-full pl-2 border-l-amber-500 border-l;
+}
+
+.calendarElement {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-30%);
+  top: 40px;
+  border: 1px solid #ccc;
+  z-index: 999;
+}
+
+.search-button {
+  background-color: var(--btn-bg-primary);
+  color: var(--bg-secondary);
+  @apply h-full w-full border-l-amber-500 border-l;
+}
