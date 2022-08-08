@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Profile as ProfileSVG } from '../../../../assets/svg/profile'
 import { NavBar } from '../navbar/NavBar'
 import './Header.scss'
 
@@ -12,17 +13,26 @@ function Header() {
   return (
     <>
       <div className="header">
-        <div className="header-container justify-start items-center">
-            <div className="app-bar-menu h-8 w-8 ml-2" onClick={showAppBar}>
-              <div className="app-bar"></div>
-              <div className="app-bar"></div>
-              <div className="app-bar"></div>
+        <div className="header-container justify-between items-center">
+          <div
+            role="presentation"
+            className="app-bar-menu h-8 w-8 ml-2"
+            onClick={showAppBar}
+            onKeyDown={showAppBar}
+          >
+            <div className="app-bar"></div>
+            <div className="app-bar"></div>
+            <div className="app-bar"></div>
+          </div>
+          <div className="box-container flex justify-between items-center">
+            <div className="brand-banner">myStays.com</div>
+            <div className="flex justify-between items-center mr-7 ">
+              <ProfileSVG />
+              <p className="text-white pl-3 profile-text">foobar</p>
             </div>
-            <div className="box-container">
-              <div className="brand-banner">Hotels.com</div>
-            </div>
+          </div>
         </div>
-        <div className="box-container">
+        <div className="nav-container">
           <NavBar display={display}></NavBar>
         </div>
       </div>

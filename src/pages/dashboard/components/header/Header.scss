@@ -1,11 +1,11 @@
-.header{
-background-color: var(--bg-primary);
+.header {
+  background-color: var(--bg-primary);
 }
 
 .header-container {
   display: flex;
   background-color: var(--bg-primary);
-  height: 5rem;
+  height: 6rem;
 }
 
 .app-bar {
@@ -15,20 +15,32 @@ background-color: var(--bg-primary);
   margin: 6px 0;
 }
 
-.brand-banner{
-  @apply text-4xl font-bold text-white
+.brand-banner {
+  @apply text-4xl font-bold text-white;
 }
 
 /* Large screens */
 @media only screen and (min-width: 600px) {
-      .app-bar-menu{
-        display: none;
-    }
+  .app-bar-menu {
+    display: none;
+  }
+
+  .profile-text {
+    display: block;
+  }
+
+  .nav-container {
+    @apply container mx-auto px-3;
+  }
 }
 
 /* Small screens */
 @media only screen and (max-width: 600px) {
-    .app-bar-menu{
-        display: block;
-    }
+  .app-bar-menu {
+    display: block;
+  }
+
+  .profile-text {
+    display: none;
+  }
 }

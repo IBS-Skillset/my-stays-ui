@@ -4,21 +4,20 @@
 
 $bg-primary: hsl(254, 45%, 55%);
 
-:root{
+:root {
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
   --text-primary: #ffffff;
   --text-secondary: #b6b6b6;
   --bg-primary: #003580;
-  --bg-seondary: #ffffff;
+  --bg-secondary: #ffffff;
   --fa-primary: #6618cd;
   --fa-secondary: #2970f9;
   --btn-bg-primary: #0071c2;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Roboto','Segoe UI', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -27,8 +26,9 @@ body {
   background-color: white;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-.box-container{
-  @apply container mx-auto px-3
+.box-container {
+  @apply container mx-auto;
 }

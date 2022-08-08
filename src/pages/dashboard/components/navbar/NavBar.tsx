@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import { Stays as StaysSVG } from '../../../../assets/svg/stays'
 import './NavBar.scss'
 
 interface NavBarProps {
@@ -11,12 +12,15 @@ export const NavBar = ({ display }: NavBarProps) => {
         <ul className="navbar-nav">
           <li className="nav-item">
             <div className="nav-link">
-              <NavLink to="/" className="link-text">
-                Stays
+              <NavLink to="/" className="link-text flex items-center">
+                <div>
+                  <StaysSVG />
+                </div>
+                <span>Stays</span>
               </NavLink>
             </div>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <div className="nav-link">
               <NavLink to="/" className="link-text">
                 Attractions
@@ -36,11 +40,7 @@ export const NavBar = ({ display }: NavBarProps) => {
                 Log Out
               </NavLink>
             </div>
-          </li>
-          <li
-            className="nav-item svg-inline--fa fa-moon-stars fa-w-16 fa-7x"
-            id="themeButton"
-          ></li>
+          </li> */}
         </ul>
       </nav>
     </>
