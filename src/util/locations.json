@@ -1,0 +1,26 @@
+[
+  {
+    "location": "PARF",
+    "description": "PARIS, FRANCE",
+    "latitude": "48.83516",
+    "longitude": "2.372633"
+  },
+  {
+    "location": "LONP",
+    "description": "London, Paddington",
+    "latitude": "51.5072",
+    "longitude": "0.1276"
+  },
+  {
+    "location": "NETA",
+    "description": "NetherLand, Amsterdam",
+    "latitude": "52.1326",
+    "longitude": "5.2913"
+  },
+  {
+    "location": "PARM",
+    "description": "PARIS, Montparnasse",
+    "latitude": "48.83516",
+    "longitude": "2.372633"
+  }
+]

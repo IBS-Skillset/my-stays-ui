@@ -7,7 +7,11 @@ import { addDays } from 'date-fns'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 
-const DateRangePicker = () => {
+interface DateRangePickerProps {
+  handleDateChange: (dateRange: Range) => void
+}
+
+const DateRangePicker = ({ handleDateChange }: DateRangePickerProps) => {
   // date state
   const [range, setRange] = useState<Range[]>([
     {
@@ -50,7 +54,12 @@ const DateRangePicker = () => {
     }
   }
 
-  function dateFormat(dateRange: Range) {
+  const updateCallback = (): void => {
+    handleDateChange(range[0])
+  }
+
+  function useDateFormat(dateRange: Range) {
+    useEffect(updateCallback, [dateRange])
     if (typeof dateRange === 'undefined') {
       return ''
     }
@@ -70,7 +79,7 @@ const DateRangePicker = () => {
   return (
     <div className="calendarWrap">
       <input
-        value={`${dateFormat(range[0])}`}
+        value={`${useDateFormat(range[0])}`}
         readOnly
         className="inputBox"
         onClick={() => setOpen((open) => !open)}
