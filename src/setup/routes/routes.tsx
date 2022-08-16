@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import ErrorPage from '../../pages/errorPages/errorPage'
-import HotelSearch from '../../pages/hotel/search/components/hotelSearch'
+import HotelSearch from '../../pages/hotel/search/components/HotelSearch'
 import SignIn from '../../pages/sign-in/SignIn'
 import SignUp from '../../pages/sign-up/SignUp'
 
