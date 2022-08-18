@@ -12,7 +12,7 @@ export const NavBar = ({ display }: NavBarProps) => {
         <ul className="navbar-nav">
           <li className="nav-item">
             <div className="nav-link">
-              <NavLink to="/" className="link-text flex items-center">
+              <NavLink to="/" className="link-text">
                 <div>
                   <StaysSVG />
                 </div>
