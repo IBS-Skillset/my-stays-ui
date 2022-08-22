@@ -1,6 +1,6 @@
 export interface HotelAvailabilityResponse {
-  response_status: ResponseStatus
-  hotel_item: Hotel[]
+  responseStatus: ResponseStatus
+  hotelItem: Hotel[]
 }
 
 interface ResponseStatus {
@@ -8,21 +8,21 @@ interface ResponseStatus {
 }
 
 interface Address {
-  street_address: string
-  city_name: string
-  zip_code: string
-  country_name: string
+  streetAddress: string
+  cityName: string
+  zipCode: string
+  countryName: string
 }
 
 interface Hotel {
-  hotel_code: string
-  hotel_name: string
-  hotel_category: number
+  hotelCode: string
+  hotelName: string
+  hotelCategory: number
   address: Address
-  city_code: string
+  cityCode: string
   latitude: number
   longitude: number
-  min_price: number
-  currency_code: string
+  minPrice: number
+  currencyCode: string
   breakfast?: boolean
 }
