@@ -1,0 +1,20 @@
+.hotel-image {
+  max-height: 200px;
+}
+
+.hotel-container {
+  filter: opacity(1);
+  transition: var(--transition-speed);
+  @apply my-2 p-3 border border-stone-200 rounded-sm;
+}
+
+.hotel-container:hover {
+  background: rgba(116, 165, 238, 0.171);
+  @apply outline outline-1 outline-sky-200 border-sky-200 shadow-md shadow-sky-200;
+}
+
+.btn-availability {
+  background-color: var(--btn-bg-primary);
+  color: var(--bg-secondary);
+  @apply h-10 w-52;
+}

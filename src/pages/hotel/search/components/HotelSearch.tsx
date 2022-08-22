@@ -2,7 +2,6 @@ import { Location as LocationSVG } from '../../../../assets/svg/location'
 import { Calendar as CalendarSVG } from '../../../../assets/svg/calendar'
 import DateRangePicker from '../../../../common/datePicker/DateRangePicker'
 import './HotelSearch.scss'
-import SearchResults from './search-results/searchResults'
 import HotelSearchService from '../../../../services/hotel/HotelSearchService'
 import React, { useEffect, useState } from 'react'
 import locationList from '../../../../util/locations.json'
@@ -11,10 +10,15 @@ import { Range } from 'react-date-range'
 import format from 'date-fns/format'
 import { HotelAvailabilityRequest } from '../../../../models/hotel/search-models/hotelAvailabilityRequest'
 import { GeoLocation } from '../../../../models/locations/geoLocation'
+import { HotelAvailabilityResponse } from '../../../../models/hotel/search-models/hotelAvailabilityResponse'
+import { AxiosResponse } from 'axios'
+import { SearchResults } from './search-results/SearchResults'
 
 function HotelSearch() {
   const [searchTerm, setSearchTerm] = useState('')
   const [geolocations, setGeolocations] = useState<GeoLocation[]>([])
+  const [hotelAvailabilityResponse, setHotelAvailabilityResponse] =
+    useState<HotelAvailabilityResponse>()
 
   const [hotelAvailabilityRequest, setHotelAvailabilityRequest] =
     useState<HotelAvailabilityRequest>({
@@ -40,10 +44,13 @@ function HotelSearch() {
     event.preventDefault()
     console.log(hotelAvailabilityRequest)
     HotelSearchService.getHotelAvailabilitySearch(hotelAvailabilityRequest)
-      .then((response) => {
+      .then((response: AxiosResponse<HotelAvailabilityResponse>) => {
+        //Todo
+        setHotelAvailabilityResponse(response.data)
         console.log(response)
       })
       .catch((error) => {
+        //Todo
         console.log(error)
       })
   }
@@ -147,7 +154,15 @@ function HotelSearch() {
             </div>
           </div>
         </div>
-        <SearchResults></SearchResults>
+        {typeof hotelAvailabilityResponse != 'undefined' &&
+        typeof hotelAvailabilityResponse.hotelItem != 'undefined' &&
+        hotelAvailabilityResponse.hotelItem.length > 0 ? (
+          <SearchResults
+            hotelAvailabilityResponse={hotelAvailabilityResponse}
+          ></SearchResults>
+        ) : (
+          ''
+        )}
       </div>
     </>
   )
