@@ -20,6 +20,7 @@ export function useCommonInterseptor() {
       return response
     },
     function (error) {
+      dispatch(loadingToggleAction(false))
       return Promise.reject(error)
     },
   )
