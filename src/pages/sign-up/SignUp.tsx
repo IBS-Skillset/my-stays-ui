@@ -1,193 +1,155 @@
 import React, { useState } from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { useForm, SubmitHandler } from 'react-hook-form'
 import * as Yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
-interface MyFormValues {
+import './SignUp.scss'
+interface IFormInputs {
   email: string
   fname: string
   lname: string
   phoneNumber: string
   password: string
 }
-const SignUp: React.FC<MyFormValues> = () => {
-  const navigate = useNavigate()
+const schema = Yup.object().shape({
+  email: Yup.string().email('Invalid email').required('*Email is required'),
+  fname: Yup.string()
+    .max(15, 'Too Long!')
+    .matches(/^[aA-zZ\s]+$/, 'Please enter valid name')
+    .required('*Firstname is required'),
+  lname: Yup.string()
+    .max(15, 'Too Long!')
+    .matches(/^[aA-zZ\s]+$/, 'Please enter valid name')
+    .required('*Lastname is required'),
+  password: Yup.string().required('*Password is required'),
+})
+const SignUp: React.FC<IFormInputs> = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormInputs>({
+    resolver: yupResolver(schema),
+    mode: 'onSubmit',
+  })
+  const formSubmitHandler: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
+    if (data.phoneNumber.length < 12) {
+      window.alert('Please enter contact number with country code')
+    }
+    if (
+      !(data.phoneNumber.length < 12) &&
+      !(
+        data.email === '' ||
+        data.fname === '' ||
+        data.lname === '' ||
+        data.password === ''
+      )
+    ) {
+      navigate('/signin')
+    }
+    console.log(data)
+  }
   const [showPassword, hidePasword] = useState(false)
-  console.log(showPassword)
   const triggerEyes = () => {
     hidePasword(!showPassword)
   }
-  const initialValues: MyFormValues = {
-    email: '',
-    fname: '',
-    lname: '',
-    phoneNumber: '',
-    password: '',
-  }
+  const navigate = useNavigate()
+  //const [phoneNumber , setPhoneNumber ] = useState('')
   return (
-    <div className="max-w-lg p-10 m-4 mx-auto">
-      <Formik
-        initialValues={initialValues}
-        onSubmit={(values, actions) => {
-          console.log(values)
-          actions.setSubmitting(false)
-          navigate('/signin')
-        }}
-        validationSchema={Yup.object().shape({
-          email: Yup.string()
-            .email('Invalid email')
-            .strict(false)
-            .trim()
-            .required('*Email is required'),
-          fname: Yup.string()
-            .max(15, 'Too Long!')
-            .strict(false)
-            .trim()
-            .required('*Firstname is required'),
-          lname: Yup.string()
-            .max(15, 'Too Long!')
-            .strict(false)
-            .trim()
-            .required('*Lastname is required'),
-          phoneNumber: Yup.number()
-            .typeError('Enter valid Phone Number')
-            .positive("A phone number can't start with a minus")
-            .integer("A phone number can't include a decimal point")
-            .min(12, 'Enter valid Phone Number'),
-          password: Yup.string().required('*Password is required'),
-        })}
+    <div className="content">
+      <form
+        onSubmit={handleSubmit(formSubmitHandler)}
+        className="bg-white rounded px-2 pt-2 pb-2 max-w-xl"
       >
-        {({ errors, touched }) => (
-          <Form className="bg-white rounded px-2 pt-2 pb-2 mb-4 max-w-xl">
-            <div className="mb-6">
-              <h1 className="bg text-3xl font-semibold content-start">
-                Create an account
-              </h1>
-            </div>
-            <div className="mb-6">
-              <label
-                className="block text-black text-sm font-semibold mb-2"
-                htmlFor="email"
-              >
-                <ErrorMessage
-                  name="email"
-                  component="div"
-                  className="invalid-feedback text-red-700"
-                />
-                <Field
-                  className="border border-solid border-zinc-500 rounded-md w-full py-2 px-3 text-black placeholder-gray-500 placeholder-opacity-100"
-                  name="email"
-                  id="email"
-                  type="text"
-                  placeholder="Email Address"
-                />
-                <div
-                  className={errors.email && touched.email ? 'is-invalid' : ''}
-                />
-              </label>
-            </div>
-            <div className="mb-6">
-              <label
-                className="block text-black text-sm font-semibold mb-2"
-                htmlFor="fname"
-              >
-                <ErrorMessage
-                  name="fname"
-                  component="div"
-                  className="invalid-feedback text-red-700"
-                />
-                <Field
-                  className="border border-solid border-zinc-500 rounded-md w-full py-2 px-3 text-black placeholder-gray-500 placeholder-opacity-100"
-                  name="fname"
-                  id="fname"
-                  type="text"
-                  placeholder="First Name"
-                />
-                <div
-                  className={errors.fname && touched.fname ? 'is-invalid' : ''}
-                />
-              </label>
-            </div>
-            <div className="mb-6">
-              <label
-                className="block text-black text-sm font-semibold mb-2"
-                htmlFor="lname"
-              >
-                <ErrorMessage
-                  name="lname"
-                  component="div"
-                  className="invalid-feedback text-red-700"
-                />
-                <Field
-                  className="border border-solid border-zinc-500 rounded-md w-full py-2 px-3 text-black placeholder-gray-500 placeholder-opacity-100"
-                  name="lname"
-                  id="lname"
-                  type="text"
-                  placeholder="Last Name"
-                />
-                <div
-                  className={errors.lname && touched.lname ? 'is-invalid' : ''}
-                />
-              </label>
-            </div>
-            <div className="mb-6">
-              <label
-                className="block text-black text-sm font-semibold mb-2"
-                htmlFor="phoneNumber"
-              >
-                <ErrorMessage
-                  name="phoneNumber"
-                  component="div"
-                  className="invalid-feedback text-red-700"
-                />
-                <Field
-                  className="border border-solid border-zinc-500 rounded-md w-full py-2 px-3 text-black placeholder-gray-500 placeholder-opacity-100"
-                  name="phoneNumber"
-                  id="phoneNumber"
-                  type="text"
-                  placeholder="PhoneNumber"
-                />
-              </label>
-            </div>
-            <div className="mb-6">
-              <label
-                className="block text-black text-sm font-semibold mb-2"
-                htmlFor="password"
-              >
-                <ErrorMessage
-                  name="password"
-                  component="div"
-                  className="invalid-feedback text-red-700"
-                />
-                <Field
-                  className="border border-solid border-zinc-500 rounded-md w-full py-2 px-3 text-black mb-3 placeholder-gray-500 placeholder-opacity-100"
-                  name="password"
-                  id="password"
-                  type={showPassword ? 'text' : 'Password'}
-                  placeholder="Password"
-                />
-                <span
-                  role="button"
-                  className="flex items-right flex justify-end -mt-9 mr-2 h-4"
-                  onClick={() => triggerEyes()}
-                  onKeyDown={() => triggerEyes()}
-                  tabIndex={0}
-                >
-                  {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
-                </span>
-              </label>
-            </div>
-            <div className="flex items-center justify-between mb-2">
-              <button
-                className="w-full duration-150 bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-3 rounded-md focus:outline-none focus:shadow-outline mt-2"
-                type="submit"
-              >
-                Continue
-              </button>
-            </div>
-          </Form>
-        )}
-      </Formik>
+        <div className="form">
+          <h1 className="bg text-3xl font-semibold content-start">
+            Create an account
+          </h1>
+        </div>
+        <div className="form">
+          <label className="label" htmlFor="email">
+            {errors.email && errors.email?.message && (
+              <span className="errorMsg">{errors.email.message}</span>
+            )}
+            <input
+              className="inputField"
+              id="email"
+              type="text"
+              placeholder="Email Address"
+              {...register('email')}
+            />
+          </label>
+        </div>
+        <div className="form">
+          <label className="label" htmlFor="fname">
+            {errors.fname && errors.fname?.message && (
+              <span className="errorMsg">{errors.fname.message}</span>
+            )}
+            <input
+              className="inputField"
+              id="fname"
+              type="text"
+              placeholder="First Name"
+              {...register('fname')}
+            />
+          </label>
+        </div>
+        <div className="form">
+          <label className="label" htmlFor="lname">
+            {errors.lname && errors.lname?.message && (
+              <span className="errorMsg">{errors.lname.message}</span>
+            )}
+            <input
+              className="inputField"
+              id="lname"
+              type="text"
+              placeholder="Last Name"
+              {...register('lname')}
+            />
+          </label>
+        </div>
+        <div className="form">
+          <label className="label" htmlFor="phoneNumber">
+            {errors.phoneNumber && errors.phoneNumber?.message && (
+              <span className="errorMsg">{errors.phoneNumber.message}</span>
+            )}
+            <input
+              className="inputField"
+              id="phoneNumber"
+              type="number"
+              placeholder="PhoneNumber"
+              {...register('phoneNumber')}
+            />
+          </label>
+        </div>
+        <div className="form">
+          <label className="label" htmlFor="password">
+            {errors.password && errors.password?.message && (
+              <span className="errorMsg">{errors.password.message}</span>
+            )}
+            <input
+              className="inputField"
+              id="password"
+              type={showPassword ? 'text' : 'Password'}
+              placeholder="Password"
+              {...register('password')}
+            />
+            <span
+              role="button"
+              className="flex items-right flex justify-end -mt-6 mr-2 h-4"
+              onClick={() => triggerEyes()}
+              onKeyDown={() => triggerEyes()}
+              tabIndex={0}
+            >
+              {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+            </span>
+          </label>
+        </div>
+        <div className="flex items-center justify-between mb-2">
+          <button className="btn-continue">Continue</button>
+        </div>
+      </form>
     </div>
   )
 }
