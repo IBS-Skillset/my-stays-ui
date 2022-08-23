@@ -24,7 +24,7 @@ const schema = Yup.object().shape({
     .required('*Lastname is required'),
   password: Yup.string().required('*Password is required'),
 })
-const SignUp: React.FC<IFormInputs> = () => {
+const SignUp = () => {
   const {
     register,
     handleSubmit,
