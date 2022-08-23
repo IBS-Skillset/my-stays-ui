@@ -137,7 +137,7 @@ const SignUp = () => {
             />
             <span
               role="button"
-              className="flex items-right flex justify-end -mt-6 mr-2 h-4"
+              className="flex items-right justify-end -mt-6 mr-2 h-4"
               onClick={() => triggerEyes()}
               onKeyDown={() => triggerEyes()}
               tabIndex={0}

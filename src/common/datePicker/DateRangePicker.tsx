@@ -93,6 +93,8 @@ const DateRangePicker = ({ handleDateChange }: DateRangePickerProps) => {
             moveRangeOnFirstSelection={false}
             ranges={range}
             months={1}
+            minDate={new Date()}
+            maxDate={addDays(new Date(), 360)}
             direction="horizontal"
             className="calendarElement"
           />

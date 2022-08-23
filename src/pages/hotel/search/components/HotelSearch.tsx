@@ -13,6 +13,13 @@ import { GeoLocation } from '../../../../models/locations/geoLocation'
 import { HotelAvailabilityResponse } from '../../../../models/hotel/search-models/hotelAvailabilityResponse'
 import { AxiosResponse } from 'axios'
 import { SearchResults } from './search-results/SearchResults'
+import * as Yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { SubmitHandler, useForm } from 'react-hook-form'
+
+interface IFormInputs {
+  location: string
+}
 
 function HotelSearch() {
   const [searchTerm, setSearchTerm] = useState('')
@@ -28,6 +35,20 @@ function HotelSearch() {
       checkOutDate: '',
     })
 
+  const formSchema = Yup.object().shape({
+    location: Yup.string().required('*Location is required'),
+  })
+
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors },
+  } = useForm<IFormInputs>({
+    resolver: yupResolver(formSchema),
+    mode: 'onSubmit',
+  })
+
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       if (searchTerm.length > 2 && !searchTerm.includes('Location:')) {
@@ -38,11 +59,18 @@ function HotelSearch() {
     return () => clearTimeout(delayDebounceFn)
   }, [searchTerm])
 
-  const getHotelAvailability = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => {
-    event.preventDefault()
-    console.log(hotelAvailabilityRequest)
+  const getHotelAvailability: SubmitHandler<IFormInputs> = () => {
+    if (
+      hotelAvailabilityRequest.latitude === '' ||
+      hotelAvailabilityRequest.longitude === ''
+    ) {
+      setSearchTerm('')
+      setError('location', {
+        type: 'manual',
+        message: 'Search a Location',
+      })
+      return
+    }
     HotelSearchService.getHotelAvailabilitySearch(hotelAvailabilityRequest)
       .then((response: AxiosResponse<HotelAvailabilityResponse>) => {
         //Todo
@@ -103,18 +131,26 @@ function HotelSearch() {
       </div>
       <div className="main-content">
         <div className="box-container search-panel">
-          <div className="search-container w-full">
+          <form
+            className="search-container w-full"
+            onSubmit={handleSubmit(getHotelAvailability)}
+          >
             <div className="col-span-2 outline outline-none h-full">
               <div className="flex justify-around h-full">
                 <div className="h-full">
                   <LocationSVG />
                 </div>
                 <input
-                  onChange={handleSearch}
                   value={searchTerm}
                   className="h-full w-full outline-none pl-3"
                   placeholder="Search"
                   type="text"
+                  autoComplete="off"
+                  {...register('location', {
+                    onChange: (e) => {
+                      handleSearch(e)
+                    },
+                  })}
                 />
                 <div
                   className="absolute z-50 p-6 max-w-sm grid bg-white rounded-sm border border-gray-200 shadow-md dark:bg-slate-50 dark:border-gray-400"
@@ -148,11 +184,14 @@ function HotelSearch() {
               </div>
             </div>
             <div className="h-full search-action">
-              <button onClick={getHotelAvailability} className="search-button">
-                Search
-              </button>
+              <button className="search-button">Search</button>
             </div>
-          </div>
+          </form>
+        </div>
+        <div className="box-container mt-2">
+          {errors.location && errors.location?.message && (
+            <span className="errorMsg">{errors.location.message}</span>
+          )}
         </div>
         {typeof hotelAvailabilityResponse != 'undefined' &&
         typeof hotelAvailabilityResponse.hotelItem != 'undefined' &&

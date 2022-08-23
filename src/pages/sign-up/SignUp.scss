@@ -7,9 +7,6 @@
 .inputField {
   @apply border border-solid border-zinc-500 rounded-md w-full py-2 px-3 text-black placeholder-gray-500 placeholder-opacity-100;
 }
-.errorMsg {
-  @apply text-red-700;
-}
 .form {
   margin-bottom: 13px;
 }

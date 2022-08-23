@@ -33,3 +33,7 @@ body {
 .box-container {
   @apply container mx-auto;
 }
+
+.errorMsg {
+  @apply text-red-700;
+}
