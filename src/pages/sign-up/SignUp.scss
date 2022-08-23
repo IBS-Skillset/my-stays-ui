@@ -1,0 +1,20 @@
+.content {
+  @apply max-w-lg p-10 m-4 mx-auto;
+}
+.label {
+  @apply block text-black text-sm font-semibold mb-2;
+}
+.inputField {
+  @apply border border-solid border-zinc-500 rounded-md w-full py-2 px-3 text-black placeholder-gray-500 placeholder-opacity-100;
+}
+.errorMsg {
+  @apply text-red-700;
+}
+.form {
+  margin-bottom: 13px;
+}
+.btn-continue {
+  background-color: var(--btn-bg-primary);
+  @apply w-full text-white font-semibold py-2 px-3 rounded-md mt-2;
+  @layer focus:outline-none focus:shadow-outline;
+}
