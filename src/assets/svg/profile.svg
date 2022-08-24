@@ -1,5 +1,3 @@
-export function Profile({}) {
-  return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -69,5 +67,3 @@ export function Profile({}) {
       <ellipse cx="194.86" cy="372.3" rx="14.09" ry="26.42" fill="#fdb797" />
       <ellipse cx="497.8" cy="372.3" rx="14.09" ry="26.42" fill="#fdb797" />
     </svg>
-  )
-}
