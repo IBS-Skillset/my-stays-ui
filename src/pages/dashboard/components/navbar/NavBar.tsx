@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { Stays as StaysSVG } from '../../../../assets/svg/stays'
+import staysSVG from '../../../../assets/svg/stays.svg'
 import './NavBar.scss'
 
 interface NavBarProps {
@@ -14,7 +14,7 @@ export const NavBar = ({ display }: NavBarProps) => {
             <div className="nav-link">
               <NavLink to="/" className="link-text">
                 <div>
-                  <StaysSVG />
+                  <img src={staysSVG} alt="" className="w-10" />
                 </div>
                 <span>Stays</span>
               </NavLink>

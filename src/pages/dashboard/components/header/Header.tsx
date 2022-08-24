@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Profile as ProfileSVG } from '../../../../assets/svg/profile'
+import profileSVG from '../../../../assets/svg/profile.svg'
 import { NavBar } from '../navbar/NavBar'
 import './Header.scss'
 
@@ -27,7 +27,7 @@ function Header() {
           <div className="box-container flex justify-between items-center">
             <div className="brand-banner">myStays.com</div>
             <div className="flex justify-between items-center mr-7 ">
-              <ProfileSVG />
+              <img src={profileSVG} alt="" />
               <p className="text-white pl-3 profile-text">foobar</p>
             </div>
           </div>

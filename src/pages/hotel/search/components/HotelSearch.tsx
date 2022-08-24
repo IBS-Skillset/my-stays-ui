@@ -1,5 +1,5 @@
-import { Location as LocationSVG } from '../../../../assets/svg/location'
-import { Calendar as CalendarSVG } from '../../../../assets/svg/calendar'
+import locationSVG from '../../../../assets/svg/location.svg'
+import calendarSVG from '../../../../assets/svg/calendar.svg'
 import DateRangePicker from '../../../../common/datePicker/DateRangePicker'
 import './HotelSearch.scss'
 import HotelSearchService from '../../../../services/hotel/HotelSearchService'
@@ -137,8 +137,8 @@ function HotelSearch() {
           >
             <div className="col-span-2 outline outline-none h-full">
               <div className="flex justify-around h-full">
-                <div className="h-full">
-                  <LocationSVG />
+                <div className="h-full content-center justify-center py-2">
+                  <img src={locationSVG} alt="" className="svg-image" />
                 </div>
                 <input
                   value={searchTerm}
@@ -179,8 +179,8 @@ function HotelSearch() {
               <DateRangePicker
                 handleDateChange={readDateChange}
               ></DateRangePicker>
-              <div className="calenderIcon">
-                <CalendarSVG />
+              <div className="calenderIcon py-2">
+                <img src={calendarSVG} alt="" className="svg-image" />
               </div>
             </div>
             <div className="h-full search-action">
