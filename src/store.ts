@@ -1,9 +1,6 @@
-import { createStore } from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
 import { allReducer } from './reducers/rootReducer'
 
-//ToDo
-// export const store = configureStore({
-//  reducer: {allReducer}
-// })
-
-export const store = createStore(allReducer)
+export const store = configureStore({
+  reducer: allReducer,
+})
