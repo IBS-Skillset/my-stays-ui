@@ -1,0 +1,26 @@
+{
+  "NAV_BAR": {
+    "MENU": {
+      "STAYS": "Rester"
+    }
+  },
+  "HOTEL_SEARCH": {
+    "TITLE": {},
+    "LABELS": {},
+    "BUTTON": {
+      "SEARCH": "Cherche",
+      "AVAILABILITY": "Voir la disponibilité"
+    },
+    "ERROR_MSG": {},
+    "TABLE_HEADER": {}
+  },
+  "HOTEL_BOOKING": {
+    "TITLE": {},
+    "LABELS": {},
+    "BUTTON": {
+      "BOOK": "Sélect"
+    },
+    "ERROR_MSG": {},
+    "TABLE_HEADER": {}
+  }
+}

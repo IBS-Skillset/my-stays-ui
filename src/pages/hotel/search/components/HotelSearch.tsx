@@ -16,6 +16,7 @@ import { SearchResults } from './search-results/SearchResults'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 
 interface IFormInputs {
   location: string
@@ -34,6 +35,8 @@ function HotelSearch() {
       checkInDate: '',
       checkOutDate: '',
     })
+
+  const { t } = useTranslation()
 
   const formSchema = Yup.object().shape({
     location: Yup.string().required('*Location is required'),
@@ -143,7 +146,7 @@ function HotelSearch() {
                 <input
                   value={searchTerm}
                   className="h-full w-full outline-none pl-3"
-                  placeholder="Search"
+                  placeholder={t('HOTEL_SEARCH.BUTTON.SEARCH')}
                   type="text"
                   autoComplete="off"
                   {...register('location', {
@@ -184,7 +187,9 @@ function HotelSearch() {
               </div>
             </div>
             <div className="h-full search-action">
-              <button className="search-button">Search</button>
+              <button className="search-button">
+                {t('HOTEL_SEARCH.BUTTON.SEARCH')}
+              </button>
             </div>
           </form>
         </div>

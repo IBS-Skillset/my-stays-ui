@@ -1,0 +1,26 @@
+{
+  "NAV_BAR": {
+    "MENU": {
+      "STAYS": "Stays"
+    }
+  },
+  "HOTEL_SEARCH": {
+    "TITLE": {},
+    "LABELS": {},
+    "BUTTON": {
+      "SEARCH": "Search",
+      "AVAILABILITY": "See availability"
+    },
+    "ERROR_MSG": {},
+    "TABLE_HEADER": {}
+  },
+  "HOTEL_BOOKING": {
+    "TITLE": {},
+    "LABELS": {},
+    "BUTTON": {
+      "BOOK": "Book"
+    },
+    "ERROR_MSG": {},
+    "TABLE_HEADER": {}
+  }
+}

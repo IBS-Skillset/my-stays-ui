@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router-dom'
 import staysSVG from '../../../../assets/svg/stays.svg'
 import './NavBar.scss'
@@ -6,6 +7,7 @@ interface NavBarProps {
   display: string
 }
 export const NavBar = ({ display }: NavBarProps) => {
+  const { t } = useTranslation()
   return (
     <>
       <nav className="navbar" style={{ display: display }}>
@@ -16,7 +18,7 @@ export const NavBar = ({ display }: NavBarProps) => {
                 <div>
                   <img src={staysSVG} alt="" className="w-10" />
                 </div>
-                <span>Stays</span>
+                <span className="pl-2">{t('NAV_BAR.MENU.STAYS')}</span>
               </NavLink>
             </div>
           </li>

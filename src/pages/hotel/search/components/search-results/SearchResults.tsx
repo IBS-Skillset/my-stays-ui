@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import mainImage from '../../../../../assets/images/27119008.webp'
 import breakFastSVG from '../../../../../assets/svg/breakfast.svg'
 import starSVG from '../../../../../assets/svg/star.svg'
@@ -11,6 +12,7 @@ interface SearchResult {
 }
 
 export const SearchResults = ({ hotelAvailabilityResponse }: SearchResult) => {
+  const { t } = useTranslation()
   return (
     <div className="box-container mt-8">
       <div className="my-5">
@@ -64,7 +66,7 @@ export const SearchResults = ({ hotelAvailabilityResponse }: SearchResult) => {
                 </span>
                 <div className="text-left md:text-right">
                   <button className="btn-availability font-medium">
-                    See availability &#62;
+                    {t('HOTEL_SEARCH.BUTTON.AVAILABILITY')} &#62;
                   </button>
                 </div>
               </div>
