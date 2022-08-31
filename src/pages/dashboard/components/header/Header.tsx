@@ -2,6 +2,7 @@ import { useState } from 'react'
 import profileSVG from '../../../../assets/svg/profile.svg'
 import { NavBar } from '../navbar/NavBar'
 import './Header.scss'
+import { Link } from 'react-router-dom'
 
 function Header() {
   const [display, setDisplay] = useState('')
@@ -29,6 +30,12 @@ function Header() {
             <div className="flex justify-between items-center mr-7 ">
               <img src={profileSVG} alt="" />
               <p className="text-white pl-3 profile-text">foobar</p>
+              <Link className="text-white pl-3 profile-text" to={'/signin'}>
+                Signin
+              </Link>
+              <Link className="text-white pl-3 profile-text" to={'/logout'}>
+                Logout
+              </Link>
             </div>
           </div>
         </div>
