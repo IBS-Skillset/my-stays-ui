@@ -1,25 +1,26 @@
 [
   {
-    "location": "PARF",
-    "description": "PARIS, FRANCE",
+    "placeId": "ChIJD7fiBh9u5kcRYJSMaMOCCwQ",
     "latitude": "48.83516",
     "longitude": "2.372633"
   },
   {
-    "location": "LONP",
-    "description": "London, Paddington",
-    "latitude": "51.5072",
-    "longitude": "0.1276"
+    "placeId": "ChIJq0HUUq6ipBIRWM6qGqALmok",
+    "latitude": "48.83516",
+    "longitude": "2.372633"
   },
   {
-    "location": "NETA",
-    "description": "NetherLand, Amsterdam",
-    "latitude": "52.1326",
-    "longitude": "5.2913"
+    "placeId": "ChIJL8PUVOFqgEcRmjaQXHM3oQM",
+    "latitude": "48.83516",
+    "longitude": "2.372633"
   },
   {
-    "location": "PARM",
-    "description": "PARIS, Montparnasse",
+    "placeId": "EjtQYXJpIENob3drLCBOUkkgQ2l0eSwgT21lZ2EgSUksIE5vaWRhLCBVdHRhciBQcmFkZXNoLCBJbmRpYSIuKiwKFAoSCSvbxs7VwQw5EaQKqM6g9V1WEhQKEgnPC8bw08EMORFiiyvvNAwEXg",
+    "latitude": "48.83516",
+    "longitude": "2.372633"
+  },
+  {
+    "placeId": "ChIJh80WKBr_0YUROy_5zNKjA50",
     "latitude": "48.83516",
     "longitude": "2.372633"
   }

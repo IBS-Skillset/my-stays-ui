@@ -2,7 +2,7 @@ import axios from 'axios'
 import { HotelAvailabilityRequest } from '../../models/hotel/search-models/hotelAvailabilityRequest'
 
 const HOTEL_SEARCH_BASE_URL =
-  'http://localhost:9901/hotel-search-service/api/availability'
+  'http://localhost:8085/hotel-search-service/api/availability'
 
 class HotelSearchService {
   getHotelAvailabilitySearch(e: HotelAvailabilityRequest) {
