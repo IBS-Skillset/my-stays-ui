@@ -3,6 +3,7 @@ import calendarSVG from '../../../../assets/svg/calendar.svg'
 import DateRangePicker from '../../../../common/datePicker/DateRangePicker'
 import './HotelSearch.scss'
 import HotelSearchService from '../../../../services/hotel/HotelSearchService'
+import GeoLocationService from '../../../../services/geolocation/GeoLocationService'
 import React, { useEffect, useState } from 'react'
 import locationList from '../../../../util/locations.json'
 
@@ -17,6 +18,7 @@ import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+import { GeoPlace, GeoPlaces } from '../../../../models/locations/geoPlace'
 
 interface IFormInputs {
   location: string
@@ -24,7 +26,7 @@ interface IFormInputs {
 
 function HotelSearch() {
   const [searchTerm, setSearchTerm] = useState('')
-  const [geolocations, setGeolocations] = useState<GeoLocation[]>([])
+  const [geoPlaces, setGeoPlaces] = useState<GeoPlaces>()
   const [hotelAvailabilityResponse, setHotelAvailabilityResponse] =
     useState<HotelAvailabilityResponse>()
 
@@ -55,7 +57,7 @@ function HotelSearch() {
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       if (searchTerm.length > 2 && !searchTerm.includes('Location:')) {
-        setGeolocations(searchGeoLocations(searchTerm))
+        searchGeoPlaces(searchTerm)
       }
     }, 3000)
 
@@ -87,18 +89,31 @@ function HotelSearch() {
   }
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setGeolocations([])
     setSearchTerm(event.target.value)
   }
 
-  const handleLocationCahange = (geoLoaction: GeoLocation) => {
-    setHotelAvailabilityRequest({
-      ...hotelAvailabilityRequest,
-      latitude: geoLoaction.latitude,
-      longitude: geoLoaction.longitude,
+  const handlePlaceIdCahange = (geoPlace: GeoPlace) => {
+    setSearchTerm('Location: ' + geoPlace.description)
+    const result = getAndSetLocationLatLong(geoPlace.placeId)
+    if (typeof result != 'undefined') {
+      setHotelAvailabilityRequest({
+        ...hotelAvailabilityRequest,
+        latitude: result.latitude,
+        longitude: result.longitude,
+      })
+    }
+    setGeoPlaces({ ...geoPlaces, place: [] })
+  }
+
+  const getAndSetLocationLatLong = (placeId: string) => {
+    const geolocations: GeoLocation[] = locationList
+
+    const result = geolocations.find((element) => {
+      return element.placeId.includes(placeId)
     })
-    setSearchTerm('Location: ' + geoLoaction.description)
-    setGeolocations([])
+
+    console.log('match found' + result)
+    return result
   }
 
   const readDateChange = (dateRange: Range) => {
@@ -118,6 +133,16 @@ function HotelSearch() {
     })
 
     console.log(hotelAvailabilityRequest)
+  }
+
+  function searchGeoPlaces(searchTerm: string) {
+    GeoLocationService.getGeolocationPlaceIds(searchTerm)
+      .then((response: AxiosResponse<GeoPlaces>) => {
+        setGeoPlaces(response.data)
+      })
+      .catch((error) => {
+        console.log('An error occured while calling GeoLocation Places' + error)
+      })
   }
 
   return (
@@ -158,23 +183,26 @@ function HotelSearch() {
                 <div
                   className="absolute z-50 p-6 max-w-sm grid bg-white rounded-sm border border-gray-200 shadow-md dark:bg-slate-50 dark:border-gray-400"
                   style={{
-                    display: geolocations.length > 0 ? 'block' : 'none',
+                    display:
+                      typeof geoPlaces != 'undefined' &&
+                      geoPlaces.place.length > 0
+                        ? 'block'
+                        : 'none',
                   }}
                 >
-                  {geolocations.map((geoLoaction) => {
-                    return (
-                      <div
-                        className="location-items"
-                        onClickCapture={() =>
-                          handleLocationCahange(geoLoaction)
-                        }
-                        id={geoLoaction.location}
-                        key={geoLoaction.location}
-                      >
-                        {geoLoaction.description}
-                      </div>
-                    )
-                  })}
+                  {typeof geoPlaces != 'undefined' &&
+                    geoPlaces.place.map((geoPlace) => {
+                      return (
+                        <div
+                          className="location-items"
+                          onClickCapture={() => handlePlaceIdCahange(geoPlace)}
+                          id={geoPlace.placeId}
+                          key={geoPlace.placeId}
+                        >
+                          {geoPlace.description}
+                        </div>
+                      )
+                    })}
                 </div>
               </div>
             </div>
@@ -213,13 +241,3 @@ function HotelSearch() {
 }
 
 export default HotelSearch
-function searchGeoLocations(searchTerm: string): GeoLocation[] {
-  let geolocations: GeoLocation[] = locationList
-  geolocations = geolocations.filter((element) => {
-    if (element.description.toLowerCase().includes(searchTerm.toLowerCase())) {
-      return element
-    }
-  })
-
-  return geolocations
-}
