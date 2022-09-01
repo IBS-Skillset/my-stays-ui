@@ -6,5 +6,5 @@ export function getTranslatedLang(): string {
 }
 
 export function getDefaultTranslatedLang(): string {
-  return TRANSLATE_LANG.fr_fr
+  return TRANSLATE_LANG.en_us
 }

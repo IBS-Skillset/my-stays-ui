@@ -77,7 +77,7 @@ const DateRangePicker = ({ handleDateChange }: DateRangePickerProps) => {
   }
 
   return (
-    <div className="calendarWrap">
+    <div className="calendarWrap py-2">
       <input
         value={`${useDateFormat(range[0])}`}
         readOnly

@@ -22,34 +22,18 @@
 }
 
 .search-panel {
-  margin-top: -1.25rem;
   background-color: var(--bg-secondary);
-  @apply outline-amber-500 outline h-10 font-semibold items-center;
+  @apply mt-[-4rem] md:mt-[-1.25rem] h-32 md:h-full border-amber-500 border-2 font-semibold items-center;
 }
 
 .search-container {
-  @apply container mx-auto grid gap-1 justify-between items-center h-full;
+  @apply container mx-auto grid grid-cols-2 md:grid-cols-4 gap-1 justify-between items-center h-full;
 }
 
-/* Large screens */
-@media only screen and (min-width: 600px) {
-  .search-container {
-    @apply grid-cols-4;
-  }
-}
-
-/* Small screens */
+/* Small screens use md: instead*/
 @media only screen and (max-width: 600px) {
   .main-content {
     @apply px-4;
-  }
-  .search-container {
-    @apply grid-cols-2;
-  }
-
-  .search-panel {
-    margin-top: -4rem;
-    @apply h-32;
   }
 
   .calenderIcon {
@@ -64,7 +48,7 @@
 }
 
 .calendarWrap input.inputBox {
-  @apply w-full outline-none text-slate-500 h-full pl-2 border-l-amber-500 border-l;
+  @apply w-full outline-none text-slate-500 h-full pl-2 md:border-l-amber-500 md:border-l;
 }
 
 .calendarElement {
