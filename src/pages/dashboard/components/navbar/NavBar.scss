@@ -36,7 +36,7 @@
   @apply flex justify-between items-center;
 }
 
-/* Small screens */
+/* Small screens use md: instead*/
 @media only screen and (max-width: 600px) {
   .navbar {
     display: none;

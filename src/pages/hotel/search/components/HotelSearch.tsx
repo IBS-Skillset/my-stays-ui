@@ -5,10 +5,8 @@ import './HotelSearch.scss'
 import HotelSearchService from '../../../../services/hotel/HotelSearchService'
 import GeoLocationService from '../../../../services/geolocation/GeoLocationService'
 import React, { useEffect, useState } from 'react'
-import locationList from '../../../../util/locations.json'
 
 import { Range } from 'react-date-range'
-import format from 'date-fns/format'
 import { HotelAvailabilityRequest } from '../../../../models/hotel/search-models/hotelAvailabilityRequest'
 import { GeoLocation } from '../../../../models/locations/geoLocation'
 import { HotelAvailabilityResponse } from '../../../../models/hotel/search-models/hotelAvailabilityResponse'
@@ -19,6 +17,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { GeoPlace, GeoPlaces } from '../../../../models/locations/geoPlace'
+import { intervalToDuration } from 'date-fns'
 
 interface IFormInputs {
   location: string
@@ -34,9 +33,11 @@ function HotelSearch() {
     useState<HotelAvailabilityRequest>({
       latitude: '',
       longitude: '',
-      checkInDate: '',
-      checkOutDate: '',
+      checkInDate: new Date(),
+      checkOutDate: new Date(),
     })
+
+  const [nightCount, setNightcount] = useState(0)
 
   const { t } = useTranslation()
 
@@ -76,44 +77,62 @@ function HotelSearch() {
       })
       return
     }
+    if (
+      hotelAvailabilityRequest.checkInDate ===
+      hotelAvailabilityRequest.checkOutDate
+    ) {
+      setError('location', {
+        type: 'manual',
+        message: 'Incorrect Date Range',
+      })
+      return
+    }
     HotelSearchService.getHotelAvailabilitySearch(hotelAvailabilityRequest)
       .then((response: AxiosResponse<HotelAvailabilityResponse>) => {
         //Todo
         setHotelAvailabilityResponse(response.data)
+        const days = intervalToDuration({
+          start: hotelAvailabilityRequest.checkInDate,
+          end: hotelAvailabilityRequest.checkOutDate,
+        }).days
+        typeof days != 'undefined' && setNightcount(days)
         console.log(response)
       })
       .catch((error) => {
         //Todo
         console.log(error)
+        setHotelAvailabilityResponse({
+          responseStatus: { status: -1 },
+          hotelItem: [],
+        })
       })
   }
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setGeoPlaces({ ...geoPlaces, place: [] })
     setSearchTerm(event.target.value)
   }
 
   const handlePlaceIdCahange = (geoPlace: GeoPlace) => {
     setSearchTerm('Location: ' + geoPlace.description)
-    const result = getAndSetLocationLatLong(geoPlace.placeId)
-    if (typeof result != 'undefined') {
-      setHotelAvailabilityRequest({
-        ...hotelAvailabilityRequest,
-        latitude: result.latitude,
-        longitude: result.longitude,
-      })
-    }
+    getAndSetLocationLatLong(geoPlace.placeId)
     setGeoPlaces({ ...geoPlaces, place: [] })
   }
 
   const getAndSetLocationLatLong = (placeId: string) => {
-    const geolocations: GeoLocation[] = locationList
-
-    const result = geolocations.find((element) => {
-      return element.placeId.includes(placeId)
-    })
-
-    console.log('match found' + result)
-    return result
+    GeoLocationService.getGeolocationLatitudeAndLongitude(placeId)
+      .then((response: AxiosResponse<GeoLocation>) => {
+        setHotelAvailabilityRequest({
+          ...hotelAvailabilityRequest,
+          latitude: response.data.lattitude,
+          longitude: response.data.longitude,
+        })
+      })
+      .catch((error) => {
+        console.log(
+          'An error occured while calling GeoLocation Details' + error,
+        )
+      })
   }
 
   const readDateChange = (dateRange: Range) => {
@@ -128,8 +147,8 @@ function HotelSearch() {
     }
     setHotelAvailabilityRequest({
       ...hotelAvailabilityRequest,
-      checkInDate: format(dateRange.startDate, 'yyyyMMdd'),
-      checkOutDate: format(dateRange.endDate, 'yyyyMMdd'),
+      checkInDate: dateRange.startDate,
+      checkOutDate: dateRange.endDate,
     })
 
     console.log(hotelAvailabilityRequest)
@@ -231,6 +250,7 @@ function HotelSearch() {
         hotelAvailabilityResponse.hotelItem.length > 0 ? (
           <SearchResults
             hotelAvailabilityResponse={hotelAvailabilityResponse}
+            days={nightCount}
           ></SearchResults>
         ) : (
           ''
