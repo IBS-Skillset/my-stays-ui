@@ -2,8 +2,7 @@ import axios from 'axios'
 import { format } from 'date-fns'
 import { HotelAvailabilityRequest } from '../../models/hotel/search-models/hotelAvailabilityRequest'
 
-const HOTEL_SEARCH_BASE_URL =
-  'http://localhost:8085/hotel-search-service/api/availability'
+const HOTEL_SEARCH_BASE_URL = `http://${process.env.DOMAIN}:${process.env.HOTEL_SERVICE_PORT}/hotel-search-service/api/availability`
 
 class HotelSearchService {
   getHotelAvailabilitySearch(
