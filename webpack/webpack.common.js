@@ -19,7 +19,7 @@ module.exports = {
       },
       {
         test: /\.(css|scss)$/,
-        use: ['style-loader','css-loader','postcss-loader','sass-loader'],
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
       },
       {
         test: /\.(?:ico|gif|webp|png|jpg|jpeg)$/i,
@@ -29,12 +29,12 @@ module.exports = {
         test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
         type: 'asset/inline',
       },
-    ]
+    ],
   },
   output: {
     path: path.resolve(__dirname, '..', './build'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/',
   },
   plugins: [
     new HtmlWebpackPlugin({

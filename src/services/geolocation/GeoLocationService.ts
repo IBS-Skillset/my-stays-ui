@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const GEO_LOCATION_BASE_URL = 'http://localhost:8081/googleApi/'
+const GEO_LOCATION_BASE_URL = `http://${process.env.DOMAIN}:${process.env.GEO_SERVICE_PORT}/googleApi/`
 
 class GeoLocation {
   getGeolocationPlaceIds(place: string) {
