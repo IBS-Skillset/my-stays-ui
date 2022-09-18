@@ -32,7 +32,7 @@ function Header() {
         <div className="header-container gap-2 justify-between items-center">
           <div
             role="presentation"
-            className="app-bar-menu h-8 w-8 ml-2"
+            className="block md:hidden h-8 w-8 ml-2"
             onClick={showAppBar}
             onKeyDown={showAppBar}
           >
