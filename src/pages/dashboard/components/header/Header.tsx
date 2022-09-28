@@ -32,7 +32,7 @@ function Header() {
         <div className="header-container gap-2 justify-between items-center">
           <div
             role="presentation"
-            className="app-bar-menu h-8 w-8 ml-2"
+            className="block md:hidden h-8 w-8 ml-2"
             onClick={showAppBar}
             onKeyDown={showAppBar}
           >
@@ -46,11 +46,16 @@ function Header() {
               <select
                 name="inpt-language"
                 className="inpt-language"
+                data-testid="select"
                 onChange={handleLanguageChange}
                 value={currentSlectedLanguage}
               >
-                <option value="en_us">English</option>
-                <option value="fr_fr">Français</option>
+                <option data-testid="select-option" value="en_us">
+                  English
+                </option>
+                <option data-testid="select-option" value="fr_fr">
+                  Français
+                </option>
               </select>
               <img className="flex shrink" src={profileSVG} alt="" />
               <p className="text-white profile-text">foobar</p>
