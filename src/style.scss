@@ -31,7 +31,7 @@ body {
 }
 
 .box-container {
-  @apply container mx-auto;
+  @apply container max-w-[95%] md:max-w-[80%] mx-auto;
 }
 
 .errorMsg {

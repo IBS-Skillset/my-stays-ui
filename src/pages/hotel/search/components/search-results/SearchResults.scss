@@ -16,5 +16,5 @@
 .btn-availability {
   background-color: var(--btn-bg-primary);
   color: var(--bg-secondary);
-  @apply h-10 w-52;
+  @apply h-10 w-[100%] md:w-full;
 }

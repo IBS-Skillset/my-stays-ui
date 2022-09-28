@@ -7,7 +7,7 @@ export function useCommonInterseptor() {
 
   axios.interceptors.request.use(
     (config) => {
-      dispatch(loadingToggleAction(true))
+      config.method != 'get' && dispatch(loadingToggleAction(true))
       return config
     },
     (error) => {

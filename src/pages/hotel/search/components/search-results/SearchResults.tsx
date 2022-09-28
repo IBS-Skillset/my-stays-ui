@@ -1,7 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import mainImage from '../../../../../assets/images/27119008.webp'
-import breakFastSVG from '../../../../../assets/svg/breakfast.svg'
 import starSVG from '../../../../../assets/svg/star.svg'
 import { HotelAvailabilityResponse } from '../../../../../models/hotel/search-models/hotelAvailabilityResponse'
 
@@ -9,25 +8,39 @@ import './SearchResults.scss'
 
 interface SearchResult {
   hotelAvailabilityResponse: HotelAvailabilityResponse
+  days: number | undefined
 }
 
-export const SearchResults = ({ hotelAvailabilityResponse }: SearchResult) => {
+export const SearchResults = ({
+  hotelAvailabilityResponse,
+  days,
+}: SearchResult) => {
   const { t } = useTranslation()
   return (
     <div className="box-container mt-8">
+      {hotelAvailabilityResponse.responseStatus.status != 1 && (
+        <div className="text-2xl md:text-3xl font-medium">
+          No properties found
+        </div>
+      )}
+      {hotelAvailabilityResponse.hotelItem.length > 0 && (
+        <div className="text-2xl md:text-3xl font-medium">
+          {hotelAvailabilityResponse.hotelItem[0].address.cityName}:{' '}
+          {hotelAvailabilityResponse.hotelItem.length} properties found
+        </div>
+      )}
       <div className="my-5">
         {hotelAvailabilityResponse.hotelItem.map((hotel, i) => {
           return (
-            <div
-              className="hotel-container grid grid-cols-2 md:grid-cols-4"
-              key={i}
-            >
-              <div>
+            <div className="hotel-container grid grid-cols-2 md:flex" key={i}>
+              {/* col-1 image */}
+              <div className="md:flex-none">
                 <picture>
                   <img className="hotel-image" src={mainImage} alt="" />
                 </picture>
               </div>
-              <div className="col-span-1 md:col-span-2">
+              {/* col-2 hotel */}
+              <div className="md:grow">
                 <div className="flex items-center m-2 text-3xs md:text-2xl">
                   <div className="grid grid-cols-1">
                     <div id="hotel-name" className="font-medium flex">
@@ -40,31 +53,27 @@ export const SearchResults = ({ hotelAvailabilityResponse }: SearchResult) => {
                         </span>
                       ))}
                     </div>
-                    <div className="grid grid-cols-2 font-medium text-sm text-blue-900 underline">
-                      <div id="hotel-name">{hotel.address.countryName}</div>
-                      <div id="hotel-city_name">{hotel.address.cityName}</div>
-                      <div id="hotel-street_address">
-                        {hotel.address.streetAddress}
+                    <div className="grid grid-cols-1 font-medium text-sm text-blue-900 underline">
+                      <div id="hotel-city">
+                        {hotel.address.cityName} , {hotel.address.countryName}
                       </div>
-                      <div id="hotel-zip_code">{hotel.address.zipCode}</div>
+                      <div id="hotel-address">
+                        {hotel.address.streetAddress}
+                        {hotel.address.zipCode}
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div>
-                  {hotel.breakfast ? (
-                    <div className="w-6 mb-auto">
-                      <img src={breakFastSVG} alt="" />
-                    </div>
-                  ) : (
-                    ''
-                  )}
-                </div>
               </div>
-              <div className="grid grid-cols-1 text-left md:text-right">
-                <span className="text-xl font-bold text-gray-900">
+              {/* col-3 price and button */}
+              <div className="col-span-2 md:flex-none md:w-52 text-left md:text-right">
+                <div className="text-sm font-normal text-right md:text-center">
+                  {days} night
+                </div>
+                <div className="col-span-1 text-xl font-bold text-gray-900">
                   €{hotel.minPrice}
-                </span>
-                <div className="text-left md:text-right">
+                </div>
+                <div className="col-span-1 pt-2 text-left md:text-right">
                   <button className="btn-availability font-medium">
                     {t('HOTEL_SEARCH.BUTTON.AVAILABILITY')} &#62;
                   </button>
