@@ -1,7 +1,9 @@
 .outer-box {
   @apply h-full flex justify-center items-center py-12   text-gray-800;
 }
-
+.message {
+  @apply flex justify-center pt-2  text-green-600;
+}
 .signin-heading {
   @apply text-3xl  lg:text-4xl text-start select-none p-5;
 }

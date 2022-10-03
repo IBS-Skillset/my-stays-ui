@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom'
 import './SignUp.scss'
 import CreateAccountService from '../../services/signup/CreateAccountService'
 import bcrypt, { hashSync } from 'bcryptjs'
+import { useDispatch } from 'react-redux'
+import { autoPopulateEmailAction } from '../../actions/signUpAction'
 
 export interface IFormInputs {
   email: string
@@ -28,6 +30,7 @@ const schema = Yup.object().shape({
   password: Yup.string().required('*Password is required'),
 })
 const SignUp = () => {
+  const dispatch = useDispatch()
   const {
     register,
     handleSubmit,
@@ -52,6 +55,9 @@ const SignUp = () => {
       console.log(data)
       CreateAccountService.getCreateAccount(data)
         .then((response) => {
+          if (response.data) {
+            dispatch(autoPopulateEmailAction(data.email))
+          }
           //TODO
           console.log(response)
         })

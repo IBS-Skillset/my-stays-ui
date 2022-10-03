@@ -1,13 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import './Signin.scss'
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { IRootState } from '../../reducers/rootReducer'
 
 function SignIn() {
   const [open, setOpen] = useState<boolean>(false)
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const autoFillEmail = useSelector(
+    (state: IRootState) => state.signup.autoFillEmail,
+  )
+  useEffect(() => {
+    setEmail(autoFillEmail)
+  }, [autoFillEmail])
 
   const toggle = () => {
     setOpen(!open)
@@ -18,8 +26,14 @@ function SignIn() {
     console.log(email)
     console.log(password)
   }
+  const msg = (
+    <div className="message">
+      <h5>User successfully created. Enter the password to proceed</h5>
+    </div>
+  )
   return (
     <>
+      {autoFillEmail ? msg : <></>}
       <div className="outer-box">
         <div className="inner-box">
           <h2 className="signin-heading">Sign in</h2>
@@ -62,7 +76,7 @@ function SignIn() {
               </button>
             </form>
             <p className=" p-4 text-center select-none">
-              Don&sbquo;t have an account?
+              Don&apos;t have an account?
               <Link to="/signup" className="text-blue-800">
                 Create one
               </Link>
