@@ -124,7 +124,7 @@ function HotelSearch() {
       .then((response: AxiosResponse<GeoLocation>) => {
         setHotelAvailabilityRequest({
           ...hotelAvailabilityRequest,
-          latitude: response.data.lattitude,
+          latitude: response.data.latitude,
           longitude: response.data.longitude,
         })
       })
