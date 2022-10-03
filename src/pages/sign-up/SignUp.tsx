@@ -6,6 +6,7 @@ import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
 import './SignUp.scss'
 import CreateAccountService from '../../services/signup/CreateAccountService'
+import bcrypt, { hashSync } from 'bcryptjs'
 
 export interface IFormInputs {
   email: string
@@ -143,7 +144,10 @@ const SignUp = () => {
               id="password"
               type={showPassword ? 'text' : 'Password'}
               placeholder="Password"
-              {...register('password')}
+              {...register('password', {
+                setValueAs: (password) =>
+                  hashSync(password, bcrypt.genSaltSync(10)),
+              })}
             />
             <span
               role="button"
