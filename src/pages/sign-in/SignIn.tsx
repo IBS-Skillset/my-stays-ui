@@ -5,6 +5,7 @@ import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { IRootState } from '../../reducers/rootReducer'
+import AuthConstants from '../../setup/oauth2/constants/AuthConstants'
 
 function SignIn() {
   const [open, setOpen] = useState<boolean>(false)
@@ -21,11 +22,6 @@ function SignIn() {
     setOpen(!open)
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    console.log(email)
-    console.log(password)
-  }
   const msg = (
     <div className="message">
       <h5>User successfully created. Enter the password to proceed</h5>
@@ -38,12 +34,17 @@ function SignIn() {
         <div className="inner-box">
           <h2 className="signin-heading">Sign in</h2>
           <div>
-            <form onSubmit={handleSubmit} className=" relative">
+            <form
+              action={`${AuthConstants.LOGIN_URL}`}
+              method="post"
+              className=" relative"
+            >
               <div className="mb-6">
                 <input
                   type="email"
                   required
                   id="username"
+                  name="username"
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setEmail(e.target.value)
                   }
