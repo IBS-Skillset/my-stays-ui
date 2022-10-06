@@ -18,6 +18,10 @@ import HotelSearchService from '../../../../services/hotel/HotelSearchService'
 import './HotelSearch.scss'
 import HotelAvailability from './search-results/HotelAvailability'
 
+import { useSelector } from 'react-redux'
+import { IRootState } from '../../../../reducers/rootReducer'
+import AuthorizeUser from '../../../../setup/oauth2/components/AuthorizeUser'
+import DispatchPkceData from '../../../../setup/oauth2/pkce/DispatchPkceData'
 interface IFormInputs {
   location: string
 }
@@ -62,6 +66,17 @@ function HotelSearch() {
 
     return () => clearTimeout(delayDebounceFn)
   }, [searchTerm])
+
+  const accessToken = useSelector(
+    (state: IRootState) => state.token.accessToken,
+  )
+  const signIn = useSelector((state: IRootState) => state.signIn.signIn)
+  if (accessToken == '') {
+    if (!signIn) {
+      DispatchPkceData()
+    }
+    return <AuthorizeUser />
+  }
 
   const getHotelAvailability: SubmitHandler<IFormInputs> = () => {
     if (
