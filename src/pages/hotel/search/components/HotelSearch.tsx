@@ -17,7 +17,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { GeoPlace, GeoPlaces } from '../../../../models/locations/geoPlace'
-import { intervalToDuration } from 'date-fns'
+import { addDays, intervalToDuration } from 'date-fns'
 
 interface IFormInputs {
   location: string
@@ -34,7 +34,7 @@ function HotelSearch() {
       latitude: '',
       longitude: '',
       checkInDate: new Date(),
-      checkOutDate: new Date(),
+      checkOutDate: addDays(new Date(), 1),
     })
 
   const [nightCount, setNightcount] = useState(0)
@@ -124,7 +124,7 @@ function HotelSearch() {
       .then((response: AxiosResponse<GeoLocation>) => {
         setHotelAvailabilityRequest({
           ...hotelAvailabilityRequest,
-          latitude: response.data.lattitude,
+          latitude: response.data.latitude,
           longitude: response.data.longitude,
         })
       })
@@ -136,32 +136,30 @@ function HotelSearch() {
   }
 
   const readDateChange = (dateRange: Range) => {
-    if (typeof dateRange === 'undefined') {
-      return
-    }
-    if (
-      typeof dateRange.startDate === 'undefined' ||
-      typeof dateRange.endDate === 'undefined'
-    ) {
-      return
-    }
+    // if (typeof dateRange === 'undefined') {
+    //   return
+    // }
+    // if (
+    //   typeof dateRange.startDate === 'undefined' ||
+    //   typeof dateRange.endDate === 'undefined'
+    // ) {
+    //   return
+    // }
     setHotelAvailabilityRequest({
       ...hotelAvailabilityRequest,
-      checkInDate: dateRange.startDate,
-      checkOutDate: dateRange.endDate,
+      checkInDate: dateRange.startDate!,
+      checkOutDate: dateRange.endDate!,
     })
 
     console.log(hotelAvailabilityRequest)
   }
 
   function searchGeoPlaces(searchTerm: string) {
-    GeoLocationService.getGeolocationPlaceIds(searchTerm)
-      .then((response: AxiosResponse<GeoPlaces>) => {
+    GeoLocationService.getGeolocationPlaceIds(searchTerm).then(
+      (response: AxiosResponse<GeoPlaces>) => {
         setGeoPlaces(response.data)
-      })
-      .catch((error) => {
-        console.log('An error occured while calling GeoLocation Places' + error)
-      })
+      },
+    )
   }
 
   return (
@@ -180,6 +178,7 @@ function HotelSearch() {
         <div className="box-container search-panel">
           <form
             className="search-container w-full"
+            data-testid="form"
             onSubmit={handleSubmit(getHotelAvailability)}
           >
             <div className="col-span-2 outline outline-none h-full">
@@ -189,6 +188,7 @@ function HotelSearch() {
                 </div>
                 <input
                   value={searchTerm}
+                  role="searchTerm"
                   className="h-full w-full outline-none pl-3"
                   placeholder={t('HOTEL_SEARCH.BUTTON.SEARCH')}
                   type="text"
@@ -214,6 +214,7 @@ function HotelSearch() {
                       return (
                         <div
                           className="location-items"
+                          data-testid={geoPlace.placeId}
                           onClickCapture={() => handlePlaceIdCahange(geoPlace)}
                           id={geoPlace.placeId}
                           key={geoPlace.placeId}

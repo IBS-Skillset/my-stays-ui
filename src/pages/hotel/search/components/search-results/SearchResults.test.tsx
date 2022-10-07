@@ -51,6 +51,7 @@ describe('testing hotel search results', () => {
     render(
       <SearchResults
         hotelAvailabilityResponse={mockHotelAvailabilityResponse}
+        days={2}
       />,
     )
     const hotelName = document.getElementById('hotel-name')
@@ -63,12 +64,14 @@ describe('testing hotel search results', () => {
     render(
       <SearchResults
         hotelAvailabilityResponse={mockHotelAvailabilityResponse}
+        days={2}
       />,
     )
     expect(mockHotelAvailabilityResponse.hotelItem[0].breakfast).toBeTruthy()
     render(
       <SearchResults
         hotelAvailabilityResponse={newMockHotelAvailabilityResponse}
+        days={2}
       />,
     )
     expect(mockHotelAvailabilityResponse.hotelItem[0].breakfast).toBeTruthy()
