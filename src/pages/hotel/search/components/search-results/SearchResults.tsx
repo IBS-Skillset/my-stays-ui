@@ -1,28 +1,78 @@
+import React, { MouseEventHandler, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import mainImage from '../../../../../assets/images/download.webp'
 import starSVG from '../../../../../assets/svg/star.svg'
 import { Hotel } from '../../../../../models/hotel/search-models/hotelAvailabilityResponse'
 import './SearchResults.scss'
+import RoomAvailabilityService from '../../../../../services/hotel/RoomAvailabilityService'
+import { HotelAvailabilityRequest } from '../../../../../models/hotel/search-models/hotelAvailabilityRequest'
+import { AxiosResponse } from 'axios'
+import { RoomAvailabilityResponse } from '../../../../../models/hotel/roomavailability-models/roomAvailabilityResponse'
+import ModalPopup from './ModalPopup';
+
 
 interface SearchResult {
   hotelBackupItems: Hotel[]
   hotelDescriptionResponse: any
+  hotelAvailabilityRequest: HotelAvailabilityRequest
   days: number | undefined
 }
 
 export const SearchResults = ({
   hotelBackupItems,
-  hotelDescriptionResponse,
+  hotelDescriptionResponse, hotelAvailabilityRequest,
   days,
 }: SearchResult) => {
   const { t } = useTranslation()
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const headers: { key: any; label: string }[] = [
+    { key: "RoomTypeCode", label: "RoomType" },
+    { key: "TotalAmount", label: "Today's Price" },
+    { key: "Amenities", label: "Your Choices" },
+  ];
+
+  const [roomAvailabilityResponse, setRoomAvailabilityResponse] =
+    useState<RoomAvailabilityResponse>({
+      responseStatus: { status: -1 },
+      hotelCode: '',
+      rateList: [],
+    })
+
+
+  const getRoomAvailResponse = async (code: string) => {
+    await RoomAvailabilityService.getRoomAvailabilitySearch(
+      code,
+      hotelAvailabilityRequest,
+      days
+    )
+      .then((response: AxiosResponse<RoomAvailabilityResponse>) => {
+        setRoomAvailabilityResponse(response.data);
+        handleShow()
+        console.log(roomAvailabilityResponse)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    return roomAvailabilityResponse
+  }
 
   const replaceImage = (error: any) => {
     error.target.src = mainImage
   }
 
+
   function handleClick(hotelCode: string) {
+    //const roomItems = getRoomAvailResponse(hotelCode)
+    getRoomAvailResponse(hotelCode)
     console.log('response : ', hotelDescriptionResponse.get(hotelCode))
+    //const descItems = hotelDescriptionResponse.get(hotelCode)
+    //const roomPlusDescItems = {...roomAvailabilityResponse, ...descItems}
+    //console.log('CombinedItems: ',roomPlusDescItems)
   }
 
   return (
@@ -88,7 +138,12 @@ export const SearchResults = ({
           </div>
         )
       })}
+      {
+
+        roomAvailabilityResponse.responseStatus && show ? <ModalPopup setShow={setShow} roomAvailabilityResponse={roomAvailabilityResponse}></ModalPopup> : ""
+      }
     </div>
+
   )
 }
 

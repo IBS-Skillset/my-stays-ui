@@ -1,0 +1,56 @@
+*,*::after,*::before{
+    box-sizing: border-box;
+    margin: 0;
+}
+.modal-popup{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 900px;
+  max-width: 80%;
+  max-height: calc(100vh - 210px);
+  overflow-y:hidden;
+  overflow-x: hidden;
+  border-radius: 5px;
+   @apply shadow-black shadow-md  hover:shadow-lg hover:shadow-black   
+}
+:hover.modal-popup{
+    overflow-y: auto;
+    overflow-x: auto;
+}
+  .modal-overlay{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(49,49,49,0.8);
+  }
+.modal-table{
+    width:70vw;
+
+}
+.modal-thead{
+    background-color:  #186399;
+
+}
+.modal-thead1{
+    background-color:  #125483;
+    
+}
+.modal-close-btn{
+    display: flex;
+    flex-direction:row-reverse;
+    justify-content: right;
+}
+
+
+.modal-roomtype{
+    max-width:150px;
+}
+
+@media(max-width:600px) {
+    
+}

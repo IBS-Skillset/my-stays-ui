@@ -6,16 +6,19 @@ import {
   HotelAvailabilityResponse,
 } from '../../../../../models/hotel/search-models/hotelAvailabilityResponse'
 import HotelDescriptionService from '../../../../../services/hotel/HotelDescriptionService'
+import {HotelAvailabilityRequest} from '../../../../../models/hotel/search-models/hotelAvailabilityRequest'
 import './HotelAvailability.scss'
 import SearchResults from './SearchResults'
 
 interface HotelAvailabilityDetails {
   hotelAvailabilityResponse: HotelAvailabilityResponse
+  hotelAvailabilityRequest: HotelAvailabilityRequest
   days: number | undefined
 }
 
 export const HotelAvailability = ({
   hotelAvailabilityResponse,
+                                    hotelAvailabilityRequest,
   days,
 }: HotelAvailabilityDetails) => {
   const [hotelItems, setHotelItems] = useState<Hotel[]>([])
@@ -117,6 +120,7 @@ export const HotelAvailability = ({
       <SearchResults
         hotelBackupItems={hotelBackupItems}
         hotelDescriptionResponse={hotelDescriptionResponse}
+        hotelAvailabilityRequest={hotelAvailabilityRequest}
         days={days}
       ></SearchResults>
 
