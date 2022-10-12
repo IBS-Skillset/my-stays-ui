@@ -1,21 +1,25 @@
 import axios from 'axios'
 import { format } from 'date-fns'
-import { HotelDescriptionRequest } from '../../models/hotel/search-models/hotelDescriptionRequest'
+//import { HotelDescriptionRequest } from '../../models/hotel/description-models/hotelDescriptionRequest'
+import { HotelAvailabilityRequest } from '../../models/hotel/search-models/hotelAvailabilityRequest'
 
-const HOTEL_DESCRIPTION_URL =
-  'http://${process.env.DOMAIN}:${process.env.HOTEL_SERVICE_PORT}/hotel-search-service/api/description'
+const HOTEL_DESCRIPTION_URL = `http://${process.env.DOMAIN}:${process.env.HOTEL_SERVICE_PORT}/hotel-search-service/api/description`
 
 class HotelDescriptionService {
-  getHotelDescription(hotelDescriptionRequest: HotelDescriptionRequest) {
+  getHotelDescription(
+    hotelCode: string,
+    currencyCode: string,
+    hotelAvailabilityRequest: HotelAvailabilityRequest,
+  ) {
     return axios.post(
       HOTEL_DESCRIPTION_URL,
       JSON.stringify({
-        languageCode: hotelDescriptionRequest.languageCode,
-        hotelCode: hotelDescriptionRequest.hotelCode,
-        checkInDate: format(hotelDescriptionRequest.checkInDate, 'yyyyMMdd'),
-        checkOutDate: format(hotelDescriptionRequest.checkOutDate, 'yyyyMMdd'),
-        countryCode: hotelDescriptionRequest.countryCode,
-        currencyCode: hotelDescriptionRequest.currencyCode,
+        languageCode: 'ENG',
+        hotelCode: hotelCode,
+        checkInDate: format(hotelAvailabilityRequest.checkInDate, 'yyyyMMdd'),
+        checkOutDate: format(hotelAvailabilityRequest.checkOutDate, 'yyyyMMdd'),
+        countryCode: 'IN',
+        currencyCode: currencyCode,
       }),
       {
         headers: {

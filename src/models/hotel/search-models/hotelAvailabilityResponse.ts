@@ -13,7 +13,6 @@ interface Address {
   zipCode: string
   countryName: string
 }
-
 interface Hotel {
   hotelCode: string
   hotelName: string

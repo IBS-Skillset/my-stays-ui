@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next'
 import mainImage from '../../../../../assets/images/27119008.webp'
 import starSVG from '../../../../../assets/svg/star.svg'
 import { HotelAvailabilityResponse } from '../../../../../models/hotel/search-models/hotelAvailabilityResponse'
-
 import './SearchResults.scss'
 
 interface SearchResult {
