@@ -4,12 +4,13 @@ import DateRangePicker from '../../../../common/datePicker/DateRangePicker'
 import './HotelSearch.scss'
 import HotelSearchService from '../../../../services/hotel/HotelSearchService'
 import GeoLocationService from '../../../../services/geolocation/GeoLocationService'
+import HotelDescriptionService from '../../../../services/hotel/HotelDescriptionService'
 import React, { useEffect, useState } from 'react'
-
 import { Range } from 'react-date-range'
 import { HotelAvailabilityRequest } from '../../../../models/hotel/search-models/hotelAvailabilityRequest'
 import { GeoLocation } from '../../../../models/locations/geoLocation'
 import { HotelAvailabilityResponse } from '../../../../models/hotel/search-models/hotelAvailabilityResponse'
+import { HotelDescriptionResponse } from '../../../../models/hotel/description-models/hotelDescriptionResponse'
 import { AxiosResponse } from 'axios'
 import { SearchResults } from './search-results/SearchResults'
 import * as Yup from 'yup'
@@ -36,7 +37,7 @@ function HotelSearch() {
       checkInDate: new Date(),
       checkOutDate: new Date(),
     })
-
+  const [, setHotelDescriptionResponse] = useState<HotelDescriptionResponse>()
   const [nightCount, setNightcount] = useState(0)
 
   const { t } = useTranslation()
@@ -65,6 +66,24 @@ function HotelSearch() {
     return () => clearTimeout(delayDebounceFn)
   }, [searchTerm])
 
+  const getDescriptionResponse = (data: HotelAvailabilityResponse) => {
+    data.hotelItem.forEach((hotel) => {
+      HotelDescriptionService.getHotelDescription(
+        hotel.hotelCode,
+        hotel.currencyCode,
+        hotelAvailabilityRequest,
+      )
+        .then((response: AxiosResponse<HotelDescriptionResponse>) => {
+          setHotelDescriptionResponse(response.data)
+          console.log(response)
+        })
+        .catch((error) => {
+          //Todo
+          console.log(error)
+        })
+    })
+  }
+
   const getHotelAvailability: SubmitHandler<IFormInputs> = () => {
     if (
       hotelAvailabilityRequest.latitude === '' ||
@@ -89,8 +108,8 @@ function HotelSearch() {
     }
     HotelSearchService.getHotelAvailabilitySearch(hotelAvailabilityRequest)
       .then((response: AxiosResponse<HotelAvailabilityResponse>) => {
-        //Todo
         setHotelAvailabilityResponse(response.data)
+        getDescriptionResponse(response.data)
         const days = intervalToDuration({
           start: hotelAvailabilityRequest.checkInDate,
           end: hotelAvailabilityRequest.checkOutDate,
@@ -107,7 +126,6 @@ function HotelSearch() {
         })
       })
   }
-
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setGeoPlaces({ ...geoPlaces, place: [] })
     setSearchTerm(event.target.value)
