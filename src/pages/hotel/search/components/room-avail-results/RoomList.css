@@ -1,0 +1,45 @@
+table.rooms {
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid #FFFFFF;
+    width: 800px;
+    height: 300px;
+    text-align: center;
+    border-collapse: collapse;
+}
+table.rooms td, table.rooms th {
+    border: 1px solid #FFFFFF;
+    padding: 3px 2px;
+    height: 90px;
+}
+table.rooms tbody td {
+    font-size: 13px;
+    color: #33312C;
+}
+table.rooms tr:nth-child(even) {
+    background: #D0E4F5;
+}
+table.rooms thead {
+    background: #537CD9;
+    border-bottom: 5px solid #FFFFFF;
+}
+table.rooms thead th {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    border-left: 2px solid #FFFFFF;
+}
+table.rooms thead th:first-child {
+    border-left: none;
+}
+
+.modal{
+    display: block !important;
+}
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+    height: 900px;
+    overflow-y: auto;
+}
