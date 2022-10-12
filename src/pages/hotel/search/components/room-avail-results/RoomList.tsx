@@ -1,7 +1,7 @@
 import { MouseEventHandler, useCallback, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 
-import './RoomList.css';
+import './RoomList.scss';
 import data from "../data.json";
 import * as React from "react";
 
