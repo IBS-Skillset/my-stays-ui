@@ -11,7 +11,11 @@ export const loaderReducer = (
 ) => {
   switch (action.type) {
     case 'ACTION_LOADING':
-      return { ...state, showLoading: action.payload }
+      return {
+        ...state,
+        showLoading: action.payload.showLoading,
+        status: action.payload.status,
+      }
     default:
       return { ...state }
   }

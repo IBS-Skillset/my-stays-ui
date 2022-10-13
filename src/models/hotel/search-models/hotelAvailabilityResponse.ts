@@ -13,7 +13,7 @@ interface Address {
   zipCode: string
   countryName: string
 }
-interface Hotel {
+export interface Hotel {
   hotelCode: string
   hotelName: string
   hotelCategory: number

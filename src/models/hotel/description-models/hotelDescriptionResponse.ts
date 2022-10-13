@@ -1,19 +1,19 @@
 export interface HotelDescriptionResponse {
   responseStatus: ResponseStatus
-  media: Media[]
+  media: Media
   hotelItem: AvailableHotelItem
-  descriptions: Descriptions[]
-  services: Services[]
-  safetyInfos: SafetyInfos[]
+  descriptions: Descriptions
+  services: Services
+  safetyInfo: SafetyInfo
 }
 interface ResponseStatus {
   status: number
 }
 
 interface Media {
-  mediaUrl: string
+  mediaUrl: string[]
 }
-interface Address {
+export interface Address {
   streetAddress: string
   cityName: string
   zipCode: string
@@ -33,13 +33,13 @@ interface AvailableHotelItem {
   breakfast?: boolean
 }
 interface Descriptions {
-  description: string
+  description: string[]
 }
 
 interface Services {
-  services: string
+  services: string[]
 }
 
-interface SafetyInfos {
-  safetyInfos: string
+interface SafetyInfo {
+  safetyInfo: string[]
 }

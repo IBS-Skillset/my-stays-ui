@@ -1,4 +1,4 @@
 export interface ActionLoader {
   type: string
-  payload: boolean
+  payload: { status: boolean; showLoading: boolean }
 }
