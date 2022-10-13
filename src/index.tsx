@@ -10,13 +10,11 @@ import i18nConf from './config/i18nConfig'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
-  <React.StrictMode>
-    <I18nextProvider i18n={i18nConf.i18next}>
-      <Provider store={store}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </Provider>
-    </I18nextProvider>
-  </React.StrictMode>,
+  <I18nextProvider i18n={i18nConf.i18next}>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </I18nextProvider>,
 )

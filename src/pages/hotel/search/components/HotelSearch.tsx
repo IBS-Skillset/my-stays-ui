@@ -1,24 +1,22 @@
-import locationSVG from '../../../../assets/svg/location.svg'
-import calendarSVG from '../../../../assets/svg/calendar.svg'
-import DateRangePicker from '../../../../common/datePicker/DateRangePicker'
-import './HotelSearch.scss'
-import HotelSearchService from '../../../../services/hotel/HotelSearchService'
-import GeoLocationService from '../../../../services/geolocation/GeoLocationService'
-import HotelDescriptionService from '../../../../services/hotel/HotelDescriptionService'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { AxiosResponse } from 'axios'
+import { intervalToDuration } from 'date-fns'
 import React, { useEffect, useState } from 'react'
 import { Range } from 'react-date-range'
-import { HotelAvailabilityRequest } from '../../../../models/hotel/search-models/hotelAvailabilityRequest'
-import { GeoLocation } from '../../../../models/locations/geoLocation'
-import { HotelAvailabilityResponse } from '../../../../models/hotel/search-models/hotelAvailabilityResponse'
-import { HotelDescriptionResponse } from '../../../../models/hotel/description-models/hotelDescriptionResponse'
-import { AxiosResponse } from 'axios'
-import { SearchResults } from './search-results/SearchResults'
-import * as Yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+import * as Yup from 'yup'
+import calendarSVG from '../../../../assets/svg/calendar.svg'
+import locationSVG from '../../../../assets/svg/location.svg'
+import DateRangePicker from '../../../../common/datePicker/DateRangePicker'
+import { HotelAvailabilityRequest } from '../../../../models/hotel/search-models/hotelAvailabilityRequest'
+import { HotelAvailabilityResponse } from '../../../../models/hotel/search-models/hotelAvailabilityResponse'
+import { GeoLocation } from '../../../../models/locations/geoLocation'
 import { GeoPlace, GeoPlaces } from '../../../../models/locations/geoPlace'
-import { intervalToDuration } from 'date-fns'
+import GeoLocationService from '../../../../services/geolocation/GeoLocationService'
+import HotelSearchService from '../../../../services/hotel/HotelSearchService'
+import './HotelSearch.scss'
+import { SearchResults } from './search-results/SearchResults'
 
 interface IFormInputs {
   location: string
@@ -37,7 +35,7 @@ function HotelSearch() {
       checkInDate: new Date(),
       checkOutDate: new Date(),
     })
-  const [, setHotelDescriptionResponse] = useState<HotelDescriptionResponse>()
+  // const [, setHotelDescriptionResponse] = useState<HotelDescriptionResponse>()
   const [nightCount, setNightcount] = useState(0)
 
   const { t } = useTranslation()
@@ -66,23 +64,23 @@ function HotelSearch() {
     return () => clearTimeout(delayDebounceFn)
   }, [searchTerm])
 
-  const getDescriptionResponse = (data: HotelAvailabilityResponse) => {
-    data.hotelItem.forEach((hotel) => {
-      HotelDescriptionService.getHotelDescription(
-        hotel.hotelCode,
-        hotel.currencyCode,
-        hotelAvailabilityRequest,
-      )
-        .then((response: AxiosResponse<HotelDescriptionResponse>) => {
-          setHotelDescriptionResponse(response.data)
-          console.log(response)
-        })
-        .catch((error) => {
-          //Todo
-          console.log(error)
-        })
-    })
-  }
+  // const getDescriptionResponse = (data: HotelAvailabilityResponse) => {
+  //   data.hotelItem.forEach((hotel) => {
+  //     HotelDescriptionService.getHotelDescription(
+  //       hotel.hotelCode,
+  //       hotel.currencyCode,
+  //       hotelAvailabilityRequest,
+  //     )
+  //       .then((response: AxiosResponse<HotelDescriptionResponse>) => {
+  //         setHotelDescriptionResponse(response.data)
+  //         console.log(response)
+  //       })
+  //       .catch((error) => {
+  //         //Todo
+  //         console.log(error)
+  //       })
+  //   })
+  // }
 
   const getHotelAvailability: SubmitHandler<IFormInputs> = () => {
     if (
@@ -109,7 +107,7 @@ function HotelSearch() {
     HotelSearchService.getHotelAvailabilitySearch(hotelAvailabilityRequest)
       .then((response: AxiosResponse<HotelAvailabilityResponse>) => {
         setHotelAvailabilityResponse(response.data)
-        getDescriptionResponse(response.data)
+        // getDescriptionResponse(response.data)
         const days = intervalToDuration({
           start: hotelAvailabilityRequest.checkInDate,
           end: hotelAvailabilityRequest.checkOutDate,
