@@ -3,7 +3,7 @@ export interface HotelAvailabilityResponse {
   hotelItem: Hotel[]
 }
 
-interface ResponseStatus {
+export interface ResponseStatus {
   status: number
 }
 

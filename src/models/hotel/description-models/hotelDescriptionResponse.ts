@@ -6,7 +6,7 @@ export interface HotelDescriptionResponse {
   services: Services
   safetyInfo: SafetyInfo
 }
-interface ResponseStatus {
+export interface ResponseStatus {
   status: number
 }
 

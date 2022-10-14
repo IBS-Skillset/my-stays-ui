@@ -126,7 +126,7 @@ export const SearchResults = ({
     else if (
       hotelAvailabilityResponse.hotelItem.length > 9 &&
       hotelItems.length == 10 &&
-      hotelItems[0].mediaUrl.length > 0
+      hotelItems[hotelItems.length - 1].mediaUrl.length > 0
     ) {
       setHotelBackupItems(hotelBackupItems.concat(hotelItems))
       fetchHotels()
@@ -226,12 +226,14 @@ export const SearchResults = ({
           )
         })}
       </div>
-      {hotelAvailabilityResponse.hotelItem.length !=
-        hotelBackupItems.length && (
-        <div>
-          <button onClick={displayMore}>Load more</button>
-        </div>
-      )}
+      {hotelAvailabilityResponse.hotelItem.length != hotelBackupItems.length &&
+        hotelBackupItems.length != 0 && (
+          <div className="load-more">
+            <button className="btn-loadmore" onClick={displayMore}>
+              Show more items
+            </button>
+          </div>
+        )}
     </div>
   )
 }
