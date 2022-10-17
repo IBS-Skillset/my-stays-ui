@@ -1,20 +1,72 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import mainImage from '../../../../../assets/images/27119008.webp'
 import starSVG from '../../../../../assets/svg/star.svg'
 import { HotelAvailabilityResponse } from '../../../../../models/hotel/search-models/hotelAvailabilityResponse'
 import './SearchResults.scss'
+import './RoomList.scss'
+
+import { Button, Modal } from 'react-bootstrap'
+import data from './data.json'
+
+type Data = typeof data
+
+type SortKeys = keyof Data[0]
+
+// type SortOrder = 'ascn' | 'desc'
 
 interface SearchResult {
   hotelAvailabilityResponse: HotelAvailabilityResponse
   days: number | undefined
 }
 
+// function sortData({
+//   tableData,
+//   sortKey,
+//   reverse,
+// }: {
+//   tableData: Data
+//   sortKey: SortKeys
+//   reverse: boolean
+// }) {
+//   if (!sortKey) return tableData
+//
+//   const sortedData = data.sort((a, b) => {
+//     return a[sortKey] > b[sortKey] ? 1 : -1
+//   })
+//
+//   if (reverse) {
+//     return sortedData.reverse()
+//   }
+//
+//   return sortedData
+// }
+
 export const SearchResults = ({
   hotelAvailabilityResponse,
   days,
 }: SearchResult) => {
   const { t } = useTranslation()
+
+  const [show, setShow] = useState(false)
+
+  // const [sortKey, setSortKey] = useState<SortKeys>('TotalAmount')
+  // const [sortOrder, setSortOrder] = useState<SortOrder>('ascn')
+
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+
+  const headers: { key: SortKeys; label: string }[] = [
+    { key: 'RoomTypeCode', label: 'RoomType' },
+    { key: 'TotalAmount', label: "Today's Price" },
+    { key: 'Amenities', label: 'Your Choices' },
+  ]
+
+  // const sortedData = useCallback(
+  //   () => sortData({ tableData: data, sortKey, reverse: sortOrder === 'desc' }),
+  //   [data, sortKey, sortOrder],
+  // )
+
   return (
     <div className="box-container mt-8">
       {hotelAvailabilityResponse.responseStatus.status != 1 && (
@@ -73,9 +125,63 @@ export const SearchResults = ({
                   €{hotel.minPrice}
                 </div>
                 <div className="col-span-1 pt-2 text-left md:text-right">
-                  <button className="btn-availability font-medium">
+                  <button
+                    className="btn-availability font-medium"
+                    onClick={handleShow}
+                  >
                     {t('HOTEL_SEARCH.BUTTON.AVAILABILITY')} &#62;
                   </button>
+                  <Modal className="modal" show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                      <Modal.Title id="contained-modal-title-vcenter">
+                        Rooms Available!
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="modal-body">
+                      <div className="container">
+                        <div className="row">
+                          <table className="rooms">
+                            <thead>
+                              <tr>
+                                {headers.map((row) => {
+                                  return (
+                                    <th key={row.key}>
+                                      {row.label}{' '}
+                                      {/*<SortButton
+                                                    columnKey={row.key}
+                                                    onClick={() => changeSort(row.key)}
+                                                    {...{
+                                                        sortOrder,
+                                                        sortKey,
+                                                    }}
+                                                />*/}
+                                    </th>
+                                  )
+                                })}
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                              {data.map((room) => {
+                                return (
+                                  <tr key={room.RoomTypeCode}>
+                                    <td>{room.RoomTypeCode}</td>
+                                    <td>{room.TotalAmount}</td>
+                                    <td>{room.Amenities}</td>
+                                  </tr>
+                                )
+                              })}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose}>
+                        Close
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
                 </div>
               </div>
             </div>
