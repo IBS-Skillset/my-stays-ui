@@ -3,12 +3,11 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import mainImage from '../../../../../assets/images/download.webp'
 import starSVG from '../../../../../assets/svg/star.svg'
-import { HotelDetails } from '../../../../../models/hotel/description-models/hotelDescriptionModel'
+import { HotelDescriptionResponse } from '../../../../../models/hotel/description-models/hotelDescriptionResponse'
 import {
-  Address,
-  HotelDescriptionResponse,
-} from '../../../../../models/hotel/description-models/hotelDescriptionResponse'
-import { HotelAvailabilityResponse } from '../../../../../models/hotel/search-models/hotelAvailabilityResponse'
+  Hotel,
+  HotelAvailabilityResponse,
+} from '../../../../../models/hotel/search-models/hotelAvailabilityResponse'
 import HotelDescriptionService from '../../../../../services/hotel/HotelDescriptionService'
 import './SearchResults.scss'
 
@@ -21,20 +20,11 @@ export const SearchResults = ({
   hotelAvailabilityResponse,
   days,
 }: SearchResult) => {
-  const [hotelItems, setHotelItems] = useState<HotelDetails[]>([])
-  const [hotelBackupItems, setHotelBackupItems] = useState<HotelDetails[]>([])
+  const [hotelItems, setHotelItems] = useState<Hotel[]>([])
+  const [hotelBackupItems, setHotelBackupItems] = useState<Hotel[]>([])
+  const [hotelDescriptionResponse, setHotelDescriptionResponse] =
+    useState<HotelDescriptionResponse>()
   const { t } = useTranslation()
-
-  const updateHotelItem = (item: HotelDetails) => {
-    setHotelItems((existingItems) => {
-      return existingItems.map((hotel, j) => {
-        const index = existingItems.findIndex(
-          (i) => i.hotelCode === item.hotelCode,
-        )
-        return j === index ? item : hotel
-      })
-    })
-  }
 
   const updateBackupHotelItem = () => {
     if (hotelItems.length - hotelBackupItems.length >= 5) {
@@ -52,72 +42,33 @@ export const SearchResults = ({
     }
   }
 
-  const getHotelDescription = (hotelDescriptionDetails: HotelDetails) => {
-    HotelDescriptionService.getHotelDescription(
+  const getHotelDescription = async (hotelDescriptionDetails: Hotel) => {
+    await HotelDescriptionService.getHotelDescription(
       hotelDescriptionDetails.hotelCode,
-    ).then((response: AxiosResponse<HotelDescriptionResponse>) => {
-      if (typeof response.data.media != 'undefined') {
-        const hotelAddress: Address = {
-          streetAddress: response.data.hotelItem.address.streetAddress,
-          cityName: response.data.hotelItem.address.cityName,
-          zipCode: response.data.hotelItem.address.zipCode,
-          countryName: response.data.hotelItem.address.countryName,
+    )
+      .then((response: AxiosResponse<HotelDescriptionResponse>) => {
+        if (typeof response.data.media != 'undefined') {
+          setHotelDescriptionResponse(response.data)
         }
-        const hotelDetails: HotelDetails = {
-          hotelCode: hotelDescriptionDetails.hotelCode,
-          hotelCategory: hotelDescriptionDetails.hotelCategory,
-          address: hotelAddress,
-          latitude: hotelDescriptionDetails.latitude,
-          longitude: hotelDescriptionDetails.longitude,
-          minPrice: hotelDescriptionDetails.minPrice,
-          currencyCode: hotelDescriptionDetails.currencyCode,
-          breakfast: hotelDescriptionDetails.breakfast,
-          mediaUrl: response.data.media.mediaUrl,
-          descriptions: response.data.descriptions.description,
-          services: response.data.services.services,
-          safetyInfo: response.data.safetyInfo.safetyInfo,
-          hotelName: hotelDescriptionDetails.hotelName,
-          cityCode: hotelDescriptionDetails.cityCode,
-        }
-        updateHotelItem(hotelDetails)
-      }
-    })
+      })
+      .catch((error) => {
+        //Todo
+        console.log(error)
+      })
   }
 
-  const fetchHotels = async () => {
-    const hotelDetailsList: HotelDetails[] = []
+  const fetchHotels = () => {
+    const hotelDetailsList: Hotel[] = []
     const maxLimit =
       hotelItems.length == 0 ? hotelItems.length + 10 : hotelItems.length + 5
     hotelAvailabilityResponse.hotelItem
       .filter((h, i) => i >= hotelItems.length && i < maxLimit)
       .forEach((hotel) => {
-        const hotelAddress: Address = {
-          streetAddress: hotel.address.streetAddress,
-          cityName: hotel.address.cityName,
-          zipCode: hotel.address.zipCode,
-          countryName: hotel.address.countryName,
-        }
-        const hotelDetails: HotelDetails = {
-          hotelCode: hotel.hotelCode,
-          hotelCategory: hotel.hotelCategory,
-          address: hotelAddress,
-          latitude: hotel.latitude,
-          longitude: hotel.longitude,
-          minPrice: hotel.minPrice,
-          currencyCode: hotel.currencyCode,
-          breakfast: hotel.breakfast,
-          mediaUrl: [],
-          descriptions: [],
-          services: [],
-          safetyInfo: [],
-          hotelName: hotel.hotelName,
-          cityCode: hotel.cityCode,
-        }
-        hotelDetailsList.push(hotelDetails)
+        hotelDetailsList.push(hotel)
       })
     setHotelItems(hotelItems.concat(hotelDetailsList))
-    await hotelDetailsList.forEach(async (item) => {
-      await getHotelDescription(item)
+    hotelDetailsList.forEach((item) => {
+      getHotelDescription(item)
     })
   }
 
@@ -125,28 +76,18 @@ export const SearchResults = ({
     if (hotelItems.length == 0) fetchHotels()
     else if (
       hotelAvailabilityResponse.hotelItem.length > 9 &&
-      hotelItems.length == 10 &&
-      hotelItems[hotelItems.length - 1].mediaUrl.length > 0
+      hotelItems.length == 10
     ) {
       setHotelBackupItems(hotelBackupItems.concat(hotelItems))
       fetchHotels()
-    } else if (
-      hotelAvailabilityResponse.hotelItem.length < 10 &&
-      hotelItems[hotelAvailabilityResponse.hotelItem.length - 1].mediaUrl
-        .length > 0
-    ) {
+    } else if (hotelAvailabilityResponse.hotelItem.length < 10) {
       setHotelBackupItems(hotelBackupItems.concat(hotelItems))
     }
   }, [hotelItems])
 
   const displayMore = () => {
     updateBackupHotelItem()
-    fetchMore()
-  }
-
-  const fetchMore = () => {
-    if (hotelAvailabilityResponse.hotelItem.length - hotelItems.length > 0)
-      fetchHotels()
+    fetchHotels()
   }
 
   const replaceImage = (error: any) => {
@@ -175,7 +116,7 @@ export const SearchResults = ({
                 <picture>
                   <img
                     className="hotel-image"
-                    src={hotel.mediaUrl.toString()}
+                    // src={hotel.mediaUrl.toString()}
                     onError={replaceImage}
                     alt=""
                   />

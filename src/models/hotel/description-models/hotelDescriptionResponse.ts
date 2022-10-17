@@ -21,23 +21,16 @@ export interface Address {
 }
 
 interface AvailableHotelItem {
-  hotelCode: string
-  hotelName: string
-  hotelCategory: number
   address: Address
-  cityCode: string
   latitude: number
   longitude: number
-  minPrice: number
-  currencyCode: string
-  breakfast?: boolean
 }
 interface Descriptions {
-  description: string[]
+  decription: string[]
 }
 
 interface Services {
-  services: string[]
+  service: string[]
 }
 
 interface SafetyInfo {
