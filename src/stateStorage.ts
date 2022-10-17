@@ -1,6 +1,6 @@
 export const loadState = () => {
   try {
-    const serializedState = localStorage.getItem('state')
+    const serializedState = sessionStorage.getItem('state')
     if (serializedState === null) {
       return undefined
     }
@@ -13,11 +13,17 @@ export const loadState = () => {
 export const saveState = (state: {
   pkce: { authState: string; codeVerifier: string; codeChallenge: string }
   token: { accessToken: string; refreshToken: string }
+  authorize: { isAuthorized: boolean }
+  logout: { isLoggedOut: boolean }
 }) => {
   try {
     const serializedState = JSON.stringify(state)
-    localStorage.setItem('state', serializedState)
+    sessionStorage.setItem('state', serializedState)
   } catch (err) {
     // Ignore write errors.
   }
+}
+
+export const clearState = () => {
+  sessionStorage.removeItem('state')
 }

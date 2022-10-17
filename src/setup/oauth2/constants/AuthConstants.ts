@@ -6,4 +6,8 @@ export default {
   AUTHORIZE_URL: `${HOST}/oauth2/authorize?`,
   TOKEN_URL: `${HOST}/oauth2/token?`,
   LOGIN_URL: `${HOST}/perform_login?`,
+  REVOKE_URL: `${HOST}/oauth2/revoke?`,
+  LOGOUT_URL: `${HOST}/perform_logout?`,
+  ERROR_SIGN_IN: 'Invalid Credentials. Please Sign in again!',
+  LOGOUT_MESSAGE: 'User logout. Please Sign in again!',
 }

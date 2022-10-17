@@ -5,6 +5,7 @@ import { LOCAL_STORAGE_KEYS } from '../../../../constants/appConstants'
 import { NavBar } from '../navbar/NavBar'
 import './Header.scss'
 import { getSelectedLang } from '../../../../util/web/webStorageUtil'
+import { Link } from 'react-router-dom'
 
 function Header() {
   const [display, setDisplay] = useState('')
@@ -54,6 +55,9 @@ function Header() {
               </select>
               <img className="flex shrink" src={profileSVG} alt="" />
               <p className="text-white profile-text">foobar</p>
+              <Link className="text-white profile-text" to={'/logout'}>
+                Logout
+              </Link>
             </div>
           </div>
         </div>

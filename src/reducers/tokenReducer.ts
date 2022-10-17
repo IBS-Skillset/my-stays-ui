@@ -11,6 +11,8 @@ export const tokenReducer = (state = initialState, action: AuthAction) => {
       return { ...state, accessToken: action.payload }
     case 'REFRESH_TOKEN':
       return { ...state, refreshToken: action.payload }
+    case 'RESET_TOKEN':
+      return initialState
     default:
       return { ...state }
   }
