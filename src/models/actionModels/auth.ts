@@ -3,7 +3,7 @@ export interface AuthAction {
   payload: string
 }
 
-export interface ActionSignIn {
+export interface UserAction {
   type: string
   payload: boolean
 }

@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react'
 
 import './Signin.scss'
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
+import AuthConstants from '../../setup/oauth2/constants/AuthConstants'
 import { useSelector } from 'react-redux'
 import { IRootState } from '../../reducers/rootReducer'
-import AuthConstants from '../../setup/oauth2/constants/AuthConstants'
 
 function SignIn() {
   const [open, setOpen] = useState<boolean>(false)
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const [searchParams] = useSearchParams()
   const autoFillEmail = useSelector(
     (state: IRootState) => state.signup.autoFillEmail,
   )
@@ -21,6 +22,9 @@ function SignIn() {
   const toggle = () => {
     setOpen(!open)
   }
+  const isLoggedOut = useSelector(
+    (state: IRootState) => state.logout.isLoggedOut,
+  )
 
   const msg = (
     <div className="message">
@@ -32,6 +36,12 @@ function SignIn() {
       {autoFillEmail ? msg : <></>}
       <div className="outer-box">
         <div className="inner-box">
+          {searchParams?.get('error') && (
+            <span className="errorMsg">{AuthConstants.ERROR_SIGN_IN}</span>
+          )}
+          {isLoggedOut && !searchParams?.get('error') && (
+            <span className="errorMsg">{AuthConstants.LOGOUT_MESSAGE}</span>
+          )}
           <h2 className="signin-heading">Sign in</h2>
           <div>
             <form

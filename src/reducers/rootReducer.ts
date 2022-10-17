@@ -1,16 +1,28 @@
 import { loaderReducer } from './loaderReducer'
-import { combineReducers } from 'redux'
+import { AnyAction, combineReducers } from 'redux'
 import { signupReducer } from './signupReducer'
 import { pkceReducer } from './pkceReducer'
 import { tokenReducer } from './tokenReducer'
-import { signInReducer } from './signInReducer'
+import { authorizeReducer } from './authorizeReducer'
+import { logoutReducer } from './logoutReducer'
 
-export const allReducer = combineReducers({
+const allReducer = combineReducers({
   loader: loaderReducer,
   signup: signupReducer,
   pkce: pkceReducer,
   token: tokenReducer,
-  signIn: signInReducer,
+  authorize: authorizeReducer,
+  logout: logoutReducer,
 })
+
+export const rootReducer = (
+  state: IRootState | undefined,
+  action: AnyAction,
+) => {
+  if (action.type === 'USER_LOGOUT') {
+    return allReducer(undefined, action)
+  }
+  return allReducer(state, action)
+}
 
 export type IRootState = ReturnType<typeof allReducer>

@@ -9,7 +9,7 @@ import {
   codeVerifierAction,
   stateAction,
 } from '../../../actions/pkceAction'
-import { signInAction } from '../../../actions/signInAction'
+import { authorizeAction } from '../../../actions/authorizeAction'
 
 const DispatchPkceData = () => {
   localStorage.clear()
@@ -22,7 +22,7 @@ const DispatchPkceData = () => {
   dispatch(stateAction(authState))
   dispatch(codeVerifierAction(verifier))
   dispatch(codeChallengeAction(codeChallenge))
-  dispatch(signInAction(true))
+  dispatch(authorizeAction(true))
 }
 
 export default DispatchPkceData

@@ -70,9 +70,11 @@ function HotelSearch() {
   const accessToken = useSelector(
     (state: IRootState) => state.token.accessToken,
   )
-  const signIn = useSelector((state: IRootState) => state.signIn.signIn)
+  const isAuthorized = useSelector(
+    (state: IRootState) => state.authorize.isAuthorized,
+  )
   if (accessToken == '') {
-    if (!signIn) {
+    if (!isAuthorized) {
       DispatchPkceData()
     }
     return <AuthorizeUser />

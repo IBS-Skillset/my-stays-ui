@@ -16,13 +16,20 @@ const AuthorizeUser = () => {
 
   const authState = useSelector((state: IRootState) => state.pkce.authState)
   const verifier = useSelector((state: IRootState) => state.pkce.codeVerifier)
+  const isAuthorized = useSelector(
+    (state: IRootState) => state.authorize.isAuthorized,
+  )
 
   const codeChallenge = useSelector(
     (state: IRootState) => state.pkce.codeChallenge,
   )
 
   useEffect(() => {
-    if (searchParams?.get('code') && searchParams?.get('state') == authState) {
+    if (
+      searchParams?.get('code') &&
+      searchParams?.get('state') == authState &&
+      isAuthorized
+    ) {
       const code = searchParams?.get('code') || ''
       console.log('.....................token execution')
       Token(code, verifier)
