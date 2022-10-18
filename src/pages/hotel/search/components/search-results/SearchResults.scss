@@ -1,3 +1,9 @@
+.btn-availability {
+  background-color: var(--btn-bg-primary);
+  color: var(--bg-secondary);
+  @apply h-10 w-[100%] md:w-full;
+}
+
 .hotel-image {
   max-height: 200px;
   width: 300px;
@@ -13,20 +19,4 @@
 .hotel-container:hover {
   background: rgba(116, 165, 238, 0.171);
   @apply outline outline-1 outline-sky-200 border-sky-200 shadow-md shadow-sky-200;
-}
-
-.btn-availability {
-  background-color: var(--btn-bg-primary);
-  color: var(--bg-secondary);
-  @apply h-10 w-[100%] md:w-full;
-}
-
-.btn-loadmore {
-  background-color: var(--btn-bg-primary);
-  color: var(--bg-secondary);
-  @apply h-10 w-[100%] md:w-40 m-2 rounded-sm;
-}
-
-.load-more {
-  @apply flex justify-center;
 }
