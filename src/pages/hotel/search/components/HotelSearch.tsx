@@ -16,7 +16,7 @@ import { GeoPlace, GeoPlaces } from '../../../../models/locations/geoPlace'
 import GeoLocationService from '../../../../services/geolocation/GeoLocationService'
 import HotelSearchService from '../../../../services/hotel/HotelSearchService'
 import './HotelSearch.scss'
-import { SearchResults } from './search-results/SearchResults'
+import HotelDescription from './search-results/HotelDescription'
 
 interface IFormInputs {
   location: string
@@ -64,24 +64,6 @@ function HotelSearch() {
     return () => clearTimeout(delayDebounceFn)
   }, [searchTerm])
 
-  // const getDescriptionResponse = (data: HotelAvailabilityResponse) => {
-  //   data.hotelItem.forEach((hotel) => {
-  //     HotelDescriptionService.getHotelDescription(
-  //       hotel.hotelCode,
-  //       hotel.currencyCode,
-  //       hotelAvailabilityRequest,
-  //     )
-  //       .then((response: AxiosResponse<HotelDescriptionResponse>) => {
-  //         setHotelDescriptionResponse(response.data)
-  //         console.log(response)
-  //       })
-  //       .catch((error) => {
-  //         //Todo
-  //         console.log(error)
-  //       })
-  //   })
-  // }
-
   const getHotelAvailability: SubmitHandler<IFormInputs> = () => {
     if (
       hotelAvailabilityRequest.latitude === '' ||
@@ -107,7 +89,6 @@ function HotelSearch() {
     HotelSearchService.getHotelAvailabilitySearch(hotelAvailabilityRequest)
       .then((response: AxiosResponse<HotelAvailabilityResponse>) => {
         setHotelAvailabilityResponse(response.data)
-        // getDescriptionResponse(response.data)
         const days = intervalToDuration({
           start: hotelAvailabilityRequest.checkInDate,
           end: hotelAvailabilityRequest.checkOutDate,
@@ -264,10 +245,10 @@ function HotelSearch() {
         {typeof hotelAvailabilityResponse != 'undefined' &&
         typeof hotelAvailabilityResponse.hotelItem != 'undefined' &&
         hotelAvailabilityResponse.hotelItem.length > 0 ? (
-          <SearchResults
+          <HotelDescription
             hotelAvailabilityResponse={hotelAvailabilityResponse}
             days={nightCount}
-          ></SearchResults>
+          ></HotelDescription>
         ) : (
           ''
         )}
