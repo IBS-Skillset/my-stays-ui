@@ -1,0 +1,53 @@
+table.rooms {
+  font-family: Arial, Helvetica, sans-serif;
+  border: 1px solid #ffffff;
+  width: 800px;
+  height: 300px;
+  text-align: center;
+  border-collapse: collapse;
+  td {
+    border: 1px solid #ffffff;
+    padding: 3px 2px;
+    height: 90px;
+  }
+  th {
+    border: 1px solid #ffffff;
+    padding: 3px 2px;
+    height: 90px;
+  }
+  tbody {
+    td {
+      font-size: 13px;
+      color: #33312c;
+    }
+  }
+  tr {
+    &:nth-child(even) {
+      background: #d0e4f5;
+    }
+  }
+  thead {
+    background: #537cd9;
+    border-bottom: 5px solid #ffffff;
+    th {
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      border-left: 2px solid #ffffff;
+      &:first-child {
+        border-left: none;
+      }
+    }
+  }
+}
+.modal {
+  display: block !important;
+}
+.modal-dialog {
+  overflow-y: initial !important;
+}
+.modal-body {
+  height: 600px;
+  overflow-y: auto;
+}

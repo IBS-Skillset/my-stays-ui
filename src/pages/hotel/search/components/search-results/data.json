@@ -1,0 +1,67 @@
+[
+  {
+    "RoomTypeCode": "SG",
+    "TotalAmount": "196.23 EUR",
+    "Amenities": ["Breakfast included", "Free Cancellation", "PayInAdvance"]
+  },
+  {
+    "RoomTypeCode": "TP",
+    "TotalAmount": "178.36 EUR",
+    "Amenities": ["Breakfast included", "NonRefundable", "PayInAdvance"]
+  },
+  {
+    "RoomTypeCode": "YW",
+    "TotalAmount": "186.12 EUR",
+    "Amenities": ["Breakfast Optional", "Free Cancellation", "No prepayment"]
+  },
+  {
+    "RoomTypeCode": "HS",
+    "TotalAmount": "136.66 EUR",
+    "Amenities": ["Breakfast ExtraCost", "Free Cancellation", "PayInAdvance"]
+  },
+  {
+    "RoomTypeCode": "SG",
+    "TotalAmount": "199.89 EUR",
+    "Amenities": [
+      "Breakfast included",
+      "Free Cancellation",
+      "PayInAdvance",
+      "Free WIFI"
+    ]
+  },
+  {
+    "RoomTypeCode": "TP",
+    "TotalAmount": "179.23 EUR",
+    "Amenities": ["Breakfast included", "NonRefundable", "PayInAdvance"]
+  },
+  {
+    "RoomTypeCode": "HS",
+    "TotalAmount": "146.23 EUR",
+    "Amenities": ["Breakfast included", "NonRefundable", "PayInAdvance"]
+  },
+  {
+    "RoomTypeCode": "YW",
+    "TotalAmount": "191.23 EUR",
+    "Amenities": [
+      "Breakfast included",
+      "Free Cancellation",
+      "PayInAdvance",
+      "FreeSwimmingPoolAccess"
+    ]
+  },
+  {
+    "RoomTypeCode": "AA",
+    "TotalAmount": "121.23 EUR",
+    "Amenities": ["Breakfast excluded", "NonREF", "PayInAdvance"]
+  },
+  {
+    "RoomTypeCode": "CV",
+    "TotalAmount": "212.23 EUR",
+    "Amenities": [
+      "Breakfast included",
+      "Free Cancellation",
+      "PayInAdvance",
+      "FreeSwimmingPoolAccess"
+    ]
+  }
+]
