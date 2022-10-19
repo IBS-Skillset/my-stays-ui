@@ -16,7 +16,7 @@ import { GeoPlace, GeoPlaces } from '../../../../models/locations/geoPlace'
 import GeoLocationService from '../../../../services/geolocation/GeoLocationService'
 import HotelSearchService from '../../../../services/hotel/HotelSearchService'
 import './HotelSearch.scss'
-import HotelDescription from './search-results/HotelDescription'
+import HotelAvailability from './search-results/HotelAvailability'
 
 interface IFormInputs {
   location: string
@@ -35,7 +35,6 @@ function HotelSearch() {
       checkInDate: new Date(),
       checkOutDate: new Date(),
     })
-  // const [, setHotelDescriptionResponse] = useState<HotelDescriptionResponse>()
   const [nightCount, setNightcount] = useState(0)
 
   const { t } = useTranslation()
@@ -245,10 +244,10 @@ function HotelSearch() {
         {typeof hotelAvailabilityResponse != 'undefined' &&
         typeof hotelAvailabilityResponse.hotelItem != 'undefined' &&
         hotelAvailabilityResponse.hotelItem.length > 0 ? (
-          <HotelDescription
+          <HotelAvailability
             hotelAvailabilityResponse={hotelAvailabilityResponse}
             days={nightCount}
-          ></HotelDescription>
+          ></HotelAvailability>
         ) : (
           ''
         )}
