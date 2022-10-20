@@ -1,17 +1,30 @@
 .content {
-  @apply max-w-lg p-10 m-4 mx-auto;
+  @apply h-full flex justify-center items-center py-12 text-gray-800;
+  background-image: url(../../assets/images/Searchs.png);
 }
 .label {
   @apply block text-black text-sm font-semibold mb-2;
 }
 .inputField {
   @apply border border-solid border-zinc-500 rounded-md w-full py-2 px-3 text-black placeholder-gray-500 placeholder-opacity-100;
+  outline: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
 }
 .form {
   margin-bottom: 13px;
 }
 .btn-continue {
-  background-color: var(--btn-bg-primary);
+  background-color: orange;
   @apply w-full text-white font-semibold py-2 px-3 rounded-md mt-2;
   @layer focus:outline-none focus:shadow-outline;
+}
+.box {
+  @apply rounded max-w-xl;
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.sigup-heading {
+  @apply text-3xl lg:text-4xl text-start select-none p-5 text-white;
+  font-family: 'Lato', sans-serif;
 }

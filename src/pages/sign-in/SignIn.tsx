@@ -81,7 +81,7 @@ function SignIn() {
               method="post"
               className=" relative"
             >
-              <div className="mb-6">
+              <div className="bg-white rounded-sm h-12 mb-6 relative">
                 <input
                   type="email"
                   required
@@ -92,10 +92,10 @@ function SignIn() {
                   }
                   value={email}
                   className="input-box"
-                  placeholder="Email address"
+                  placeholder="Email"
                 />
               </div>
-              <div className="mb-6 ">
+              <div className="bg-white rounded-sm h-12 mb-6 relative">
                 <input
                   type={open === false ? 'password' : 'text'}
                   required
@@ -114,13 +114,13 @@ function SignIn() {
                   <AiFillEye onClick={toggle} />
                 )}
               </div>
-              <button type="submit" className="btn-submit bg-blue-700">
-                Sign in
-              </button>
+              <div className="flex items-center justify-between mb-2">
+                <button className="btn-continue">Sign in</button>
+              </div>
             </form>
-            <p className=" p-4 text-center select-none">
+            <p className=" p-4 text-center select-none text-white">
               Don&apos;t have an account?
-              <Link to="/signup" className="text-blue-800">
+              <Link to="/signup" className="text-white">
                 Create one
               </Link>
             </p>
