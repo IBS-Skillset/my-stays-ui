@@ -1,15 +1,14 @@
-import { AuthAction } from '../models/actionModels/auth'
+import { ActionToken } from '../models/actionModels/auth'
 
-export function accessTokenAction(accessToken: string): AuthAction {
+export function tokenAction(
+  accessToken: string,
+  refreshToken: string,
+  expires: number,
+): ActionToken {
   return {
-    type: 'ACCESS_TOKEN',
-    payload: accessToken,
-  }
-}
-
-export function refreshTokenAction(refreshToken: string): AuthAction {
-  return {
-    type: 'REFRESH_TOKEN',
-    payload: refreshToken,
+    type: 'TOKEN',
+    accessToken: accessToken,
+    refreshToken: refreshToken,
+    expires: expires,
   }
 }

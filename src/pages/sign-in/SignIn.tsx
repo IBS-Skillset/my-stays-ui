@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import './Signin.scss'
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import AuthConstants from '../../setup/oauth2/constants/AuthConstants'
 import { useSelector } from 'react-redux'
 import { IRootState } from '../../reducers/rootReducer'
@@ -15,10 +15,19 @@ function SignIn() {
   const autoFillEmail = useSelector(
     (state: IRootState) => state.signup.autoFillEmail,
   )
+  const accessToken = useSelector(
+    (state: IRootState) => state.token.accessToken,
+  )
+  const navigate = useNavigate()
   useEffect(() => {
     setEmail(autoFillEmail)
   }, [autoFillEmail])
 
+  useEffect(() => {
+    if (accessToken) {
+      navigate('/')
+    }
+  })
   const toggle = () => {
     setOpen(!open)
   }
@@ -39,7 +48,7 @@ function SignIn() {
           {searchParams?.get('error') && (
             <span className="errorMsg">{AuthConstants.ERROR_SIGN_IN}</span>
           )}
-          {isLoggedOut && !searchParams?.get('error') && (
+          {isLoggedOut && !searchParams?.get('error') && !autoFillEmail && (
             <span className="errorMsg">{AuthConstants.LOGOUT_MESSAGE}</span>
           )}
           <h2 className="signin-heading">Sign in</h2>

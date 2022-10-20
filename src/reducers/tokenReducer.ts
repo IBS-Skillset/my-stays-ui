@@ -1,18 +1,20 @@
-import { AuthAction } from '../models/actionModels/auth'
+import { ActionToken } from '../models/actionModels/auth'
 
 const initialState = {
   accessToken: '',
   refreshToken: '',
+  expires: 0,
 }
 
-export const tokenReducer = (state = initialState, action: AuthAction) => {
+export const tokenReducer = (state = initialState, action: ActionToken) => {
   switch (action.type) {
-    case 'ACCESS_TOKEN':
-      return { ...state, accessToken: action.payload }
-    case 'REFRESH_TOKEN':
-      return { ...state, refreshToken: action.payload }
-    case 'RESET_TOKEN':
-      return initialState
+    case 'TOKEN':
+      return {
+        ...state,
+        accessToken: action.accessToken,
+        refreshToken: action.refreshToken,
+        expires: action.expires,
+      }
     default:
       return { ...state }
   }

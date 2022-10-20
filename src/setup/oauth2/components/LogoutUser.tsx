@@ -5,9 +5,12 @@ import { Revoke } from '../api/Revoke'
 import { clearState } from '../../../stateStorage'
 import { logOutAction, userLogOutAction } from '../../../actions/logoutAction'
 import AuthConstants from '../constants/AuthConstants'
+import { useNavigate } from 'react-router-dom'
+import { useIdleTimer } from 'react-idle-timer'
 
 const LogoutUser = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const accessToken = useSelector(
     (state: IRootState) => state.token.accessToken,
   )
@@ -22,20 +25,32 @@ const LogoutUser = () => {
       resolve()
     })
   }
+  const onMessage = (data: { action: any }) => {
+    switch (data.action) {
+      case 'LOGOUT_USER':
+        dispatch(userLogOutAction(true))
+        break
+      default:
+      // no op
+    }
+  }
+
+  const { message } = useIdleTimer({
+    onMessage,
+  })
 
   useEffect(() => {
     if (refreshToken) {
-      Revoke(accessToken, refreshToken).then(async (response) => {
-        const token = await response.json()
-        console.log(token)
+      Revoke(accessToken, refreshToken).then(async () => {
         clearState()
         dispatchSignout().then(() => {
-          dispatch(userLogOutAction(true))
+          message({ action: 'LOGOUT_USER' }, true)
           logoutFormRef?.current?.submit()
         })
       })
     } else {
       console.log('No token available')
+      navigate('/')
     }
   }, [])
   return (
