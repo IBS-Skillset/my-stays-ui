@@ -6,11 +6,13 @@ import SignUp from '../../pages/sign-up/SignUp'
 import AuthorizeUser from '../oauth2/components/AuthorizeUser'
 import LogoutUser from '../oauth2/components/LogoutUser'
 import HomeTemplate from '../../pages/dashboard/components/HomeTemplate'
+import Search from '../../pages/hotel/newui/Search'
 
 function routes() {
   return (
     <Routes>
       <Route path="" element={<HomeTemplate />}>
+          <Route path="/search" element={<Search />} />
         <Route path="/" element={<HotelSearch />} />
         <Route path="/home" element={<HotelSearch />} />
         <Route path="/signin" element={<SignIn />} />

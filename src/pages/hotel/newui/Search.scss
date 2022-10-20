@@ -1,0 +1,106 @@
+.main {
+  background-image: url(../../../assets/images/Searchs.png);
+  @apply bg-center bg-cover flex items-center justify-center min-h-screen p-4;
+}
+
+.inner-form {
+  @apply p-24;
+  position: center;
+  width: 1000px;
+  height: 700px;
+}
+
+.main-form {
+  @apply bg-black rounded-sm inline-block p-8 relative;
+  box-shadow: 0 8px 20px 0 rgb(0 0 0 / 15%);
+  width: 700px;
+  bottom: 80px;
+}
+.icon-wrap {
+  @apply flex justify-center absolute inset-y-0 left-0 w-12;
+}
+.svg-image {
+  @apply h-5 mt-5 p-1 w-5;
+  color: rgba(51, 51, 51, 1);
+}
+.input-field {
+  @apply h-16 mx-10 p-2;
+}
+.label {
+  @apply block font-medium h-12 text-black;
+  font-size: 11px;
+}
+.input {
+  @apply bg-transparent text-base w-full;
+  font-family: 'Lato', sans-serif;
+  outline: none;
+}
+.btn-search {
+  @apply rounded-sm border-0 cursor-pointer font-black h-10 text-base relative text-white;
+  min-width: 100px;
+  background-color: orange;
+  transition: all 0.2s ease-out, color 0.2s ease-out;
+  right: 35px;
+}
+.input-wrap {
+  @apply bg-white rounded-sm h-16 relative w-56;
+  right: 15px;
+}
+.input-wrap3 {
+  @apply bg-white rounded-sm h-16 relative w-56;
+  left: 15px;
+}
+.travel-type-wrap {
+  display: inline-flex;
+  width: 700px;
+  height: 80px;
+  bottom: 10px;
+  margin-top: 30px;
+  margin-bottom: 100px;
+}
+.item {
+  color: #555;
+  border-radius: 3px;
+  background: #fff;
+  margin-right: 5px;
+  padding: 18px 20px;
+  transition: all 0.3s;
+  cursor: pointer;
+  text-align: center;
+}
+.item.active {
+  color: #fff;
+  background: #2c6ed5;
+}
+.item.cursor {
+  cursor: not-allowed;
+}
+.travel-type-wrap .item .group-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+.hover {
+  background-color: blue;
+  border: none;
+}
+.text {
+  @apply text-xs font-semibold content-start;
+  font-family: 'Lato', sans-serif;
+}
+
+.icon {
+  height: 1.3em;
+  width: 1.3em;
+  margin: 0.2em;
+}
+.item:hover {
+  color: white;
+}
+.heading {
+  height: 50px;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: xxx-large;
+}
