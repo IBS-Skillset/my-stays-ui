@@ -1,25 +1,32 @@
 .outer-box {
-  @apply h-full flex justify-center items-center py-12   text-gray-800;
+  @apply h-full flex justify-center items-center py-12 text-gray-800;
+  background-image: url(../../assets/images/Searchs.png);
+  min-height: 100vh;
 }
 .message {
   @apply flex justify-center pt-2  text-green-600;
 }
 .signin-heading {
-  @apply text-3xl  lg:text-4xl text-start select-none p-5;
+  @apply text-3xl lg:text-4xl text-start select-none p-5 text-white;
+  color: white;
+  font-family: 'Lato', sans-serif;
 }
 .inner-box {
-  @apply sm:w-5/12 md:w-6/12 lg:w-4/12  bg-blue-100  py-12 px-8 rounded-lg   shadow-xl;
+  @apply sm:w-5/12 md:w-6/12 lg:w-4/12 py-12 px-8 rounded-lg shadow-xl;
+  background-color: rgba(0, 0, 0, 0.76);
 }
 .input-box {
-  @apply block w-full px-4 py-2 text-xl  text-gray-700  border border-solid
+  @apply block w-full px-4 py-2 text-xl text-gray-500 border-solid
      rounded-lg  focus:text-gray-600
-     focus:bg-white focus:border-blue-600 focus:outline-none;
+     focus:bg-white focus:outline-none;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
 }
 .eye-icon {
   @apply text-2xl text-gray-400 absolute top-20 right-3;
 }
 .btn-submit {
-  @apply px-7  py-3  text-white  text-xl
-    rounded-lg shadow-sm shadow-black  hover:bg-blue-700 hover:shadow-md hover:shadow-black    
-     w-full font-light;
+  background-color: orange;
+  @apply block w-full text-white font-semibold py-2 px-4 mt-2;
+  @layer focus:outline-none focus:shadow-outline;
 }

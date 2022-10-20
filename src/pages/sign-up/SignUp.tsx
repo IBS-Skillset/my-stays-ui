@@ -75,14 +75,9 @@ const SignUp = () => {
   const navigate = useNavigate()
   return (
     <div className="content">
-      <form
-        onSubmit={handleSubmit(formSubmitHandler)}
-        className="bg-white rounded px-2 pt-2 pb-2 max-w-xl"
-      >
+      <form onSubmit={handleSubmit(formSubmitHandler)} className="box">
         <div className="form">
-          <h1 className="bg text-3xl font-semibold content-start">
-            Create an account
-          </h1>
+          <h1 className="signin-heading">Create an account</h1>
         </div>
         <div className="form">
           <label className="label" htmlFor="email">

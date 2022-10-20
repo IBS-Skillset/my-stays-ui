@@ -185,9 +185,9 @@ function HotelSearch() {
         <div className="front-header">
           <div className="box-container text-container h-full">
             {/* <div className="main-text">Find your next stay</div>
-            <div className="text-2xl font-light text-white">
-              Search low prices on hotels, homes and much more...
-            </div> */}
+          <div className="text-2xl font-light text-white">
+            Search low prices on hotels, homes and much more...
+          </div> */}
           </div>
         </div>
       </div>
