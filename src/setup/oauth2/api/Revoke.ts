@@ -2,7 +2,7 @@ import AuthConstants from '../constants/AuthConstants'
 import { Buffer } from 'buffer'
 
 export function Revoke(accessToken: string, refreshToken: string) {
-  const revokeUrl = new URL(AuthConstants.TOKEN_URL)
+  const revokeUrl = new URL(AuthConstants.REVOKE_URL)
   const client = AuthConstants.CLIENT_ID
   const secret = AuthConstants.SECRET_KEY
   revokeUrl.searchParams.append('token', refreshToken)

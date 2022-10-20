@@ -4,10 +4,7 @@ import { Authorize } from '../api/Authorize'
 import { Token } from '../api/Token'
 import { useDispatch, useSelector } from 'react-redux'
 import { IRootState } from '../../../reducers/rootReducer'
-import {
-  accessTokenAction,
-  refreshTokenAction,
-} from '../../../actions/tokenAction'
+import { tokenAction } from '../../../actions/tokenAction'
 
 const AuthorizeUser = () => {
   const [searchParams] = useSearchParams()
@@ -36,8 +33,13 @@ const AuthorizeUser = () => {
         .then(async (response) => {
           const token = await response.json()
           if (token?.id_token) {
-            dispatch(accessTokenAction(token.access_token))
-            dispatch(refreshTokenAction(token.refresh_token))
+            dispatch(
+              tokenAction(
+                token.access_token,
+                token.refresh_token,
+                token.expires_in,
+              ),
+            )
             navigate('/')
           }
         })

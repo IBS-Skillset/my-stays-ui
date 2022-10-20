@@ -12,7 +12,7 @@ export const loadState = () => {
 
 export const saveState = (state: {
   pkce: { authState: string; codeVerifier: string; codeChallenge: string }
-  token: { accessToken: string; refreshToken: string }
+  token: { accessToken: string; refreshToken: string; expires: number }
   authorize: { isAuthorized: boolean }
   logout: { isLoggedOut: boolean }
 }) => {
