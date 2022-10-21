@@ -16,7 +16,11 @@ function App() {
     (state: IRootState) => state.token.accessToken,
   )
 
-  useAuthInterceptor(accessToken)
+  const refreshToken = useSelector(
+    (state: IRootState) => state.token.refreshToken,
+  )
+
+  useAuthInterceptor(accessToken, refreshToken)
 
   const navigate = useNavigate()
   const onPrompt = () => {
