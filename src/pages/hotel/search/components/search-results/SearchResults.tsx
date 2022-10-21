@@ -9,6 +9,8 @@ import { HotelAvailabilityRequest } from '../../../../../models/hotel/search-mod
 import { Hotel } from '../../../../../models/hotel/search-models/hotelAvailabilityResponse'
 import RoomAvailabilityService from '../../../../../services/hotel/RoomAvailabilityService'
 import ModalPopup from './ModalPopup'
+import Swiper from '../Swiper'
+import { SwiperItemType } from '../types'
 import './SearchResults.scss'
 
 interface SearchResult {
@@ -79,9 +81,9 @@ export const SearchResults = ({
     return roomAvailabilityResponse
   }
 
-  const replaceImage = (error: any) => {
-    error.target.src = mainImage
-  }
+    // const replaceImage = (error: any) => {
+    //   error.target.src = mainImage
+    // }
 
   function handleClick(hotelCode: string) {
     //const roomItems = getRoomAvailResponse(hotelCode)
@@ -93,6 +95,21 @@ export const SearchResults = ({
     setdescItems(hotelDescriptionResponse.get(hotelCode))
   }
 
+  const images = (hotelCode: string) => {
+    const responsedesc = hotelDescriptionResponse.get(hotelCode)
+    console.log('response : ', responsedesc)
+    const itemsMedia = responsedesc.media.mediaUrl
+    console.log('response : ', itemsMedia)
+    const items: Array<SwiperItemType> = []
+    itemsMedia.map((item: string) => {
+      const image: SwiperItemType = {
+        imageSrc: item,
+      }
+      items.push(image)
+    })
+    return items
+  }
+
   return (
     <div className="my-5">
       {hotelBackupItems.map((hotel, i) => {
@@ -101,12 +118,9 @@ export const SearchResults = ({
             {/* col-1 image */}
             <div className="md:flex-none">
               <picture>
-                <img
-                  className="hotel-image"
-                  src={mainImage}
-                  onError={replaceImage}
-                  alt=""
-                />
+                <div className="hotel-image">
+                  {<Swiper items={images(hotel.hotelCode)} />}
+                </div>
               </picture>
             </div>
             {/* col-2 hotel */}

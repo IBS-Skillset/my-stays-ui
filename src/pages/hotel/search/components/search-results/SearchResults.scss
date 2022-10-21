@@ -8,6 +8,9 @@
   max-height: 200px;
   width: 300px;
   object-fit: cover;
+  overflow: auto;
+  overflow: hidden;
+  touch-action: pan-y;
 }
 
 .hotel-container {
