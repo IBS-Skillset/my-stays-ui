@@ -21,11 +21,11 @@ const schema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('*Email is required'),
   firstName: Yup.string()
     .max(15, 'Too Long!')
-    .matches(/^[aA-zZ\s]+$/, 'Please enter valid name')
+    .matches(/^[aA-zZ\s]+$/, '*Please enter valid name')
     .required('*Firstname is required'),
   lastName: Yup.string()
     .max(15, 'Too Long!')
-    .matches(/^[aA-zZ\s]+$/, 'Please enter valid name')
+    .matches(/^[aA-zZ\s]+$/, '*Please enter valid name')
     .required('*Lastname is required'),
   password: Yup.string().required('*Password is required'),
 })
@@ -75,12 +75,9 @@ const SignUp = () => {
   const navigate = useNavigate()
   return (
     <div className="content">
-      <form
-        onSubmit={handleSubmit(formSubmitHandler)}
-        className="bg-white rounded px-2 pt-2 pb-2 max-w-xl"
-      >
+      <form onSubmit={handleSubmit(formSubmitHandler)} className="box">
         <div className="form">
-          <h1 className="bg text-3xl font-semibold content-start">
+          <h1 className="bg text-3xl font-bold content-start text-white">
             Create an account
           </h1>
         </div>
