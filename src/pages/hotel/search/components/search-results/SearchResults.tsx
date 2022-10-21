@@ -1,7 +1,6 @@
 import { AxiosResponse } from 'axios'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import mainImage from '../../../../../assets/images/27119008.webp'
 import starSVG from '../../../../../assets/svg/star.svg'
 import { HotelDescriptionResponse } from '../../../../../models/hotel/description-models/hotelDescriptionResponse'
 import { RoomAvailabilityResponse } from '../../../../../models/hotel/roomavailability-models/roomAvailabilityResponse'
@@ -9,8 +8,9 @@ import { HotelAvailabilityRequest } from '../../../../../models/hotel/search-mod
 import { Hotel } from '../../../../../models/hotel/search-models/hotelAvailabilityResponse'
 import RoomAvailabilityService from '../../../../../services/hotel/RoomAvailabilityService'
 import ModalPopup from './ModalPopup'
-import Swiper from '../Swiper'
-import { SwiperItemType } from '../types'
+import Swiper from './image-swiper/Swiper'
+import { SwiperItemType } from './image-swiper/types'
+
 import './SearchResults.scss'
 
 interface SearchResult {
@@ -29,16 +29,7 @@ export const SearchResults = ({
   const { t } = useTranslation()
 
   const [show, setShow] = useState(false)
-
-  const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
-
-  const headers: { key: any; label: string }[] = [
-    { key: 'RoomTypeCode', label: 'RoomType' },
-    { key: 'TotalAmount', label: "Today's Price" },
-    { key: 'Amenities', label: 'Your Choices' },
-  ]
-
   const [roomAvailabilityResponse, setRoomAvailabilityResponse] =
     useState<RoomAvailabilityResponse>({
       responseStatus: { status: -1 },
@@ -81,32 +72,26 @@ export const SearchResults = ({
     return roomAvailabilityResponse
   }
 
-    // const replaceImage = (error: any) => {
-    //   error.target.src = mainImage
-    // }
-
   function handleClick(hotelCode: string) {
-    //const roomItems = getRoomAvailResponse(hotelCode)
     getRoomAvailResponse(hotelCode)
     console.log('response : ', hotelDescriptionResponse.get(hotelCode))
-    //const descItems = hotelDescriptionResponse.get(hotelCode)
-    //const roomPlusDescItems = {...roomAvailabilityResponse, ...descItems}
-    //console.log('CombinedItems: ',roomPlusDescItems)
     setdescItems(hotelDescriptionResponse.get(hotelCode))
   }
 
-  const images = (hotelCode: string) => {
-    const responsedesc = hotelDescriptionResponse.get(hotelCode)
-    console.log('response : ', responsedesc)
-    const itemsMedia = responsedesc.media.mediaUrl
-    console.log('response : ', itemsMedia)
+  const images = (hotelDescription: any, hotelCode: string) => {
+    const responsedesc = hotelDescription.get(hotelCode)
     const items: Array<SwiperItemType> = []
-    itemsMedia.map((item: string) => {
-      const image: SwiperItemType = {
-        imageSrc: item,
-      }
-      items.push(image)
-    })
+    if (responsedesc) {
+      console.log('response : ', responsedesc)
+      const itemsMedia = responsedesc.media.mediaUrl
+      console.log('response : ', itemsMedia)
+      itemsMedia.slice(0, 6).map((item: string) => {
+        const image: SwiperItemType = {
+          imageSrc: item,
+        }
+        items.push(image)
+      })
+    }
     return items
   }
 
@@ -119,7 +104,14 @@ export const SearchResults = ({
             <div className="md:flex-none">
               <picture>
                 <div className="hotel-image">
-                  {<Swiper items={images(hotel.hotelCode)} />}
+                  {
+                    <Swiper
+                      images={images}
+                      hotelCode={hotel.hotelCode}
+                      hotelDescriptionResponse={hotelDescriptionResponse}
+                      key={i}
+                    />
+                  }
                 </div>
               </picture>
             </div>
