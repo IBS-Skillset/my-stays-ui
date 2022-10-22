@@ -246,6 +246,7 @@ function HotelSearch() {
         hotelAvailabilityResponse.hotelItem.length > 0 ? (
           <HotelAvailability
             hotelAvailabilityResponse={hotelAvailabilityResponse}
+            hotelAvailabilityRequest = {hotelAvailabilityRequest}
             days={nightCount}
           ></HotelAvailability>
         ) : (
