@@ -9,6 +9,7 @@ import { HotelAvailabilityRequest } from '../../../../../models/hotel/search-mod
 import { AxiosResponse } from 'axios'
 import { RoomAvailabilityResponse } from '../../../../../models/hotel/roomavailability-models/roomAvailabilityResponse'
 import ModalPopup from './ModalPopup';
+import { HotelDescriptionResponse } from '../../../../../models/hotel/description-models/hotelDescriptionResponse'
 
 
 interface SearchResult {
@@ -42,6 +43,22 @@ export const SearchResults = ({
       hotelCode: '',
       rateList: [],
     })
+    const [descItems, setdescItems] = useState<HotelDescriptionResponse>({
+      responseStatus: {status:-2},
+      media: {mediaUrl: []},
+      hotelItem: {
+        address: {streetAddress: "",
+          cityName: "",
+          zipCode: "",
+          countryName: ""},
+    
+        latitude: 0,
+        longitude: 0
+      },
+        descriptions: {decription:[]},
+        services: {service: []},
+        safetyInfo: {safetyInfo: []}
+     })
 
 
   const getRoomAvailResponse = async (code: string) => {
@@ -73,6 +90,8 @@ export const SearchResults = ({
     //const descItems = hotelDescriptionResponse.get(hotelCode)
     //const roomPlusDescItems = {...roomAvailabilityResponse, ...descItems}
     //console.log('CombinedItems: ',roomPlusDescItems)
+    setdescItems(hotelDescriptionResponse.get(hotelCode))
+    
   }
 
   return (
@@ -140,7 +159,7 @@ export const SearchResults = ({
       })}
       {
 
-        roomAvailabilityResponse.responseStatus && show ? <ModalPopup setShow={setShow} roomAvailabilityResponse={roomAvailabilityResponse}></ModalPopup> : ""
+        roomAvailabilityResponse.responseStatus && show ? <ModalPopup descItems={descItems} setShow={setShow} roomAvailabilityResponse={roomAvailabilityResponse}></ModalPopup> : ""
       }
     </div>
 

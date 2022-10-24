@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
 }
+
 .modal-popup{
   position: fixed;
   top: 50%;
@@ -16,9 +17,10 @@
   border-radius: 5px;
    @apply shadow-black shadow-md  hover:shadow-lg hover:shadow-black   
 }
+
 :hover.modal-popup{
     overflow-y: auto;
-    overflow-x: auto;
+    overflow-x: hidden;
 }
   .modal-overlay{
       position: fixed;
@@ -28,9 +30,31 @@
       bottom: 0;
       background-color: rgba(49,49,49,0.8);
   }
+  .modal-close{
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    top: .2rem;
+    right: .2rem;
+    background-color: rgb(236, 8, 8);
+    height: 28px;
+    width: 28px;
+    border-radius: 2px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: larger;
+    border: none;
+
+    
+}
 .modal-table{
     width:70vw;
 
+}
+
+.modal-header{
+    position: sticky;
+    top: 0;
 }
 .modal-thead{
     background-color:  #186399;
@@ -48,9 +72,8 @@
 
 
 .modal-roomtype{
-    max-width:150px;
+    
+    text-decoration: none;
+    font-size: 10px;
 }
 
-@media(max-width:600px) {
-    
-}
