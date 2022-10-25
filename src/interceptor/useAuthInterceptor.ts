@@ -1,49 +1,54 @@
 import axios from 'axios'
 import RefreshToken from '../setup/oauth2/api/RefreshToken'
-import { useDispatch } from 'react-redux'
 import { tokenAction } from '../actions/tokenAction'
+import { getAccessToken, getRefreshToken } from '../stateStorage'
+import { useDispatch } from 'react-redux'
 
-const useAuthInterceptor = (accessToken: string, refreshToken: string) => {
+const useAuthInterceptor = () => {
   const dispatch = useDispatch()
-  if (accessToken) {
-    axios.interceptors.request.use(
-      (config) => {
+  axios.interceptors.request.use(
+    (config) => {
+      const accessToken = getAccessToken()
+      if (accessToken) {
         config.headers!.Authorization = `Bearer ${accessToken}`
-        return config
-      },
-      (error) => {
-        Promise.reject(error)
-      },
-    )
-    axios.interceptors.response.use(
-      (response) => {
-        return response
-      },
-      function (error) {
-        const originalRequest = error.config
+      }
+      return config
+    },
+    (error) => {
+      Promise.reject(error)
+    },
+  )
+  axios.interceptors.response.use(
+    (response) => {
+      return response
+    },
+    async (error) => {
+      const originalRequest = error.config
 
-        if (error.response.status === 401 && !originalRequest._retry) {
-          originalRequest._retry = true
-          return RefreshToken.getAccessToken(refreshToken).then(
-            async (response) => {
-              const token = await response.json()
-              dispatch(
-                tokenAction(
-                  token.access_token,
-                  token.refresh_token,
-                  token.expires_in,
-                ),
-              )
-              axios.defaults.headers.common['Authorization'] =
-                'Bearer ' + token.access_token
-              return axios(originalRequest)
-            },
-          )
-        }
-        return Promise.reject(error)
-      },
-    )
-  }
+      if (error.response.status === 401 && !originalRequest.retry) {
+        originalRequest.retry = true
+        const refreshToken = getRefreshToken()
+        return RefreshToken.getAccessToken(refreshToken)
+          .then(async (response) => {
+            const token = await response.json()
+            dispatch(
+              tokenAction(
+                token.access_token,
+                token.refresh_token,
+                token.expires_in,
+              ),
+            )
+            axios.defaults.headers.common['Authorization'] =
+              'Bearer ' + token.access_token
+            return axios(originalRequest)
+          })
+          .catch((error) => {
+            return Promise.reject(error)
+          })
+      }
+      return Promise.reject(error)
+    },
+  )
 }
 
 export default useAuthInterceptor

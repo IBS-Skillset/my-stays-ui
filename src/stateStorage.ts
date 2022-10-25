@@ -27,3 +27,19 @@ export const saveState = (state: {
 export const clearState = () => {
   sessionStorage.removeItem('state')
 }
+
+export const getRefreshToken = () => {
+  const serializedState = sessionStorage.getItem('state')
+  if (serializedState === null) {
+    return undefined
+  }
+  return JSON.parse(serializedState).token.refreshToken
+}
+
+export const getAccessToken = () => {
+  const serializedState = sessionStorage.getItem('state')
+  if (serializedState === null) {
+    return undefined
+  }
+  return JSON.parse(serializedState).token.accessToken
+}

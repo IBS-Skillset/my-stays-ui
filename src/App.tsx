@@ -11,16 +11,7 @@ import useAuthInterceptor from './interceptor/useAuthInterceptor'
 function App() {
   const isloading = useSelector((state: IRootState) => state.loader.showLoading)
   useCommonInterseptor()
-
-  const accessToken = useSelector(
-    (state: IRootState) => state.token.accessToken,
-  )
-
-  const refreshToken = useSelector(
-    (state: IRootState) => state.token.refreshToken,
-  )
-
-  useAuthInterceptor(accessToken, refreshToken)
+  useAuthInterceptor()
 
   const navigate = useNavigate()
   const onPrompt = () => {
