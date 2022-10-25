@@ -1,41 +1,41 @@
-import React, { MouseEventHandler, useState } from 'react'
+import { AxiosResponse } from 'axios'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import mainImage from '../../../../../assets/images/download.webp'
 import starSVG from '../../../../../assets/svg/star.svg'
-import { Hotel } from '../../../../../models/hotel/search-models/hotelAvailabilityResponse'
-import './SearchResults.scss'
-import RoomAvailabilityService from '../../../../../services/hotel/RoomAvailabilityService'
-import { HotelAvailabilityRequest } from '../../../../../models/hotel/search-models/hotelAvailabilityRequest'
-import { AxiosResponse } from 'axios'
-import { RoomAvailabilityResponse } from '../../../../../models/hotel/roomavailability-models/roomAvailabilityResponse'
-import ModalPopup from './ModalPopup';
 import { HotelDescriptionResponse } from '../../../../../models/hotel/description-models/hotelDescriptionResponse'
-
+import { RoomAvailabilityResponse } from '../../../../../models/hotel/roomavailability-models/roomAvailabilityResponse'
+import { HotelAvailabilityRequest } from '../../../../../models/hotel/search-models/hotelAvailabilityRequest'
+import { Hotel } from '../../../../../models/hotel/search-models/hotelAvailabilityResponse'
+import RoomAvailabilityService from '../../../../../services/hotel/RoomAvailabilityService'
+import ModalPopup from './ModalPopup'
+import './SearchResults.scss'
 
 interface SearchResult {
   hotelBackupItems: Hotel[]
   hotelDescriptionResponse: any
   hotelAvailabilityRequest: HotelAvailabilityRequest
-  days: number | undefined
+  days: number
 }
 
 export const SearchResults = ({
   hotelBackupItems,
-  hotelDescriptionResponse, hotelAvailabilityRequest,
+  hotelDescriptionResponse,
+  hotelAvailabilityRequest,
   days,
 }: SearchResult) => {
   const { t } = useTranslation()
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   const headers: { key: any; label: string }[] = [
-    { key: "RoomTypeCode", label: "RoomType" },
-    { key: "TotalAmount", label: "Today's Price" },
-    { key: "Amenities", label: "Your Choices" },
-  ];
+    { key: 'RoomTypeCode', label: 'RoomType' },
+    { key: 'TotalAmount', label: "Today's Price" },
+    { key: 'Amenities', label: 'Your Choices' },
+  ]
 
   const [roomAvailabilityResponse, setRoomAvailabilityResponse] =
     useState<RoomAvailabilityResponse>({
@@ -43,32 +43,33 @@ export const SearchResults = ({
       hotelCode: '',
       rateList: [],
     })
-    const [descItems, setdescItems] = useState<HotelDescriptionResponse>({
-      responseStatus: {status:-2},
-      media: {mediaUrl: []},
-      hotelItem: {
-        address: {streetAddress: "",
-          cityName: "",
-          zipCode: "",
-          countryName: ""},
-    
-        latitude: 0,
-        longitude: 0
+  const [descItems, setdescItems] = useState<HotelDescriptionResponse>({
+    responseStatus: { status: -2 },
+    media: { mediaUrl: [] },
+    hotelItem: {
+      address: {
+        streetAddress: '',
+        cityName: '',
+        zipCode: '',
+        countryName: '',
       },
-        descriptions: {decription:[]},
-        services: {service: []},
-        safetyInfo: {safetyInfo: []}
-     })
 
+      latitude: 0,
+      longitude: 0,
+    },
+    descriptions: { decription: [] },
+    services: { service: [] },
+    safetyInfo: { safetyInfo: [] },
+  })
 
   const getRoomAvailResponse = async (code: string) => {
     await RoomAvailabilityService.getRoomAvailabilitySearch(
       code,
       hotelAvailabilityRequest,
-      days
+      days,
     )
       .then((response: AxiosResponse<RoomAvailabilityResponse>) => {
-        setRoomAvailabilityResponse(response.data);
+        setRoomAvailabilityResponse(response.data)
         handleShow()
         console.log(roomAvailabilityResponse)
       })
@@ -82,7 +83,6 @@ export const SearchResults = ({
     error.target.src = mainImage
   }
 
-
   function handleClick(hotelCode: string) {
     //const roomItems = getRoomAvailResponse(hotelCode)
     getRoomAvailResponse(hotelCode)
@@ -91,7 +91,6 @@ export const SearchResults = ({
     //const roomPlusDescItems = {...roomAvailabilityResponse, ...descItems}
     //console.log('CombinedItems: ',roomPlusDescItems)
     setdescItems(hotelDescriptionResponse.get(hotelCode))
-    
   }
 
   return (
@@ -157,12 +156,16 @@ export const SearchResults = ({
           </div>
         )
       })}
-      {
-
-        roomAvailabilityResponse.responseStatus && show ? <ModalPopup descItems={descItems} setShow={setShow} roomAvailabilityResponse={roomAvailabilityResponse}></ModalPopup> : ""
-      }
+      {roomAvailabilityResponse.responseStatus && show ? (
+        <ModalPopup
+          descItems={descItems}
+          setShow={setShow}
+          roomAvailabilityResponse={roomAvailabilityResponse}
+        ></ModalPopup>
+      ) : (
+        ''
+      )}
     </div>
-
   )
 }
 

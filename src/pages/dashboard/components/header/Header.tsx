@@ -1,11 +1,13 @@
 import { changeLanguage as i18nChangeLang } from 'i18next'
 import { FormEvent, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import profileSVG from '../../../../assets/svg/profile.svg'
 import { LOCAL_STORAGE_KEYS } from '../../../../constants/appConstants'
+import { IRootState } from '../../../../reducers/rootReducer'
+import { getSelectedLang } from '../../../../util/web/webStorageUtil'
 import { NavBar } from '../navbar/NavBar'
 import './Header.scss'
-import { getSelectedLang } from '../../../../util/web/webStorageUtil'
-import { Link } from 'react-router-dom'
 
 function Header() {
   const [display, setDisplay] = useState('')
@@ -17,6 +19,21 @@ function Header() {
   const [currentSlectedLanguage, setCurrentSlectedLanguage] = useState(
     getSelectedLang(),
   )
+
+  const accessToken = useSelector(
+    (state: IRootState) => state.token.accessToken,
+  )
+
+  const parsedAccessToken = parseJwt(accessToken)
+
+  function parseJwt(token: string) {
+    if (!token) {
+      return
+    }
+    const base64Url = token.split('.')[1]
+    const base64 = base64Url.replace('-', '+').replace('_', '/')
+    return JSON.parse(window.atob(base64))
+  }
 
   function handleLanguageChange(event: FormEvent<HTMLSelectElement>) {
     sessionStorage.setItem(
@@ -54,10 +71,19 @@ function Header() {
                 <option value="fr_fr">Français</option>
               </select>
               <img className="flex shrink" src={profileSVG} alt="" />
-              <p className="text-white profile-text">foobar</p>
-              <Link className="text-white profile-text" to={'/logout'}>
-                Logout
-              </Link>
+              {parsedAccessToken != undefined &&
+              parsedAccessToken.sub != undefined ? (
+                <>
+                  <p className="text-white profile-text">
+                    {parsedAccessToken.sub}
+                  </p>
+                  <Link className="text-white profile-text" to="/logout">
+                    Logout
+                  </Link>
+                </>
+              ) : (
+                ''
+              )}
             </div>
           </div>
         </div>
