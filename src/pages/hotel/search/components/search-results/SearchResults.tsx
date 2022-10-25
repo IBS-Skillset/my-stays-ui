@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import mainImage from '../../../../../assets/images/download.webp'
+import mainImage from '../../../../../assets/images/27119008.webp'
 import starSVG from '../../../../../assets/svg/star.svg'
 import { HotelDescriptionResponse } from '../../../../../models/hotel/description-models/hotelDescriptionResponse'
 import { RoomAvailabilityResponse } from '../../../../../models/hotel/roomavailability-models/roomAvailabilityResponse'

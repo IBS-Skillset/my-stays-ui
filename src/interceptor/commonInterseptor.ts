@@ -7,7 +7,12 @@ export function useCommonInterseptor() {
 
   const falseLoadingUrls = (config: AxiosRequestConfig<any>): boolean => {
     const HOTEL_DESCRIPTION_URL = `http://${process.env.DOMAIN}:${process.env.HOTEL_SERVICE_PORT}/hotel-search-service/api/description`
-    return config.url === HOTEL_DESCRIPTION_URL && config.method == 'post'
+    const ROOM_SEARCH_BASE_URL = `http://${process.env.DOMAIN}:${process.env.HOTEL_SERVICE_PORT}/hotel-search-service/api/roomAvailability`
+    return (
+      (config.url === HOTEL_DESCRIPTION_URL ||
+        config.url === ROOM_SEARCH_BASE_URL) &&
+      config.method == 'post'
+    )
   }
 
   axios.interceptors.request.use(
