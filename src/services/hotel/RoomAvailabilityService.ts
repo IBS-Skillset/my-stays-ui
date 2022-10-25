@@ -15,7 +15,10 @@ class RoomAvailabilityService {
       JSON.stringify({
         hotelCode: code,
         checkInDate: format(hotelAvailabilityRequest.checkInDate, 'yyyy-MM-dd'),
-        checkOutDate: format(hotelAvailabilityRequest.checkOutDate, 'yyyy-MM-dd'),
+        checkOutDate: format(
+          hotelAvailabilityRequest.checkOutDate,
+          'yyyy-MM-dd',
+        ),
         languageCode: 'ENG',
         nightsNeeded: days,
         roomCount: 1,

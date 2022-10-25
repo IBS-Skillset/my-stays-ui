@@ -4,14 +4,16 @@ import './Signin.scss'
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import AuthConstants from '../../setup/oauth2/constants/AuthConstants'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { IRootState } from '../../reducers/rootReducer'
+import { userLogOutAction } from '../../actions/logoutAction'
 
 function SignIn() {
   const [open, setOpen] = useState<boolean>(false)
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [searchParams] = useSearchParams()
+  const dispatch = useDispatch()
   const autoFillEmail = useSelector(
     (state: IRootState) => state.signup.autoFillEmail,
   )
@@ -35,6 +37,11 @@ function SignIn() {
     (state: IRootState) => state.logout.isLoggedOut,
   )
 
+  if (isLoggedOut) {
+    setTimeout(() => {
+      dispatch(userLogOutAction(false))
+    }, 3000)
+  }
   const msg = (
     <div className="message">
       <h5>User successfully created. Enter the password to proceed</h5>
