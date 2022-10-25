@@ -78,7 +78,7 @@ function ModalPopup({
                       </td>
                       <td className="p-3 text-sm text-gray-700 font-semibold">
                         <div className="flex justify-center items-center">
-                          {room.totalAmount}&nbsp;{room.currency}
+                          {'\u20AC'}&nbsp;{room.totalAmount}
                         </div>
                       </td>
                       <td className="p-3 text-sm flex-col  text-gray-700">
