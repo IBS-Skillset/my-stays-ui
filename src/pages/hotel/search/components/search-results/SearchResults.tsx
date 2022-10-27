@@ -162,7 +162,7 @@ export const SearchResults = ({
           </div>
         )
       })}
-      {roomAvailabilityResponse.responseStatus && show ? (
+      {show ? (
         <ModalPopup
           descItems={descItems}
           setShow={setShow}
