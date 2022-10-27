@@ -28,6 +28,7 @@ interface IFormInputs {
 
 function HotelSearch() {
   const [searchTerm, setSearchTerm] = useState('')
+  const [searchTermChange, setSearchTermChange] = useState('')
   const [geoPlaces, setGeoPlaces] = useState<GeoPlaces>()
   const [hotelAvailabilityResponse, setHotelAvailabilityResponse] =
     useState<HotelAvailabilityResponse>()
@@ -59,13 +60,13 @@ function HotelSearch() {
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
-      if (searchTerm.length > 2 && !searchTerm.includes('Location:')) {
+      if (searchTerm.length > 2) {
         searchGeoPlaces(searchTerm)
       }
     }, 3000)
 
     return () => clearTimeout(delayDebounceFn)
-  }, [searchTerm])
+  }, [searchTermChange])
 
   const accessToken = useSelector(
     (state: IRootState) => state.token.accessToken,
@@ -124,10 +125,11 @@ function HotelSearch() {
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setGeoPlaces({ ...geoPlaces, place: [] })
     setSearchTerm(event.target.value)
+    setSearchTermChange(event.target.value)
   }
 
   const handlePlaceIdCahange = (geoPlace: GeoPlace) => {
-    setSearchTerm('Location: ' + geoPlace.description)
+    setSearchTerm(geoPlace.description)
     getAndSetLocationLatLong(geoPlace.placeId)
     setGeoPlaces({ ...geoPlaces, place: [] })
   }
