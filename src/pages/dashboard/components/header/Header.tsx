@@ -3,10 +3,11 @@ import { FormEvent, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import profileSVG from '../../../../assets/svg/profile.svg'
+import languageSVG from '../../../../assets/svg/language.svg'
 import { LOCAL_STORAGE_KEYS } from '../../../../constants/appConstants'
 import { IRootState } from '../../../../reducers/rootReducer'
 import { getSelectedLang } from '../../../../util/web/webStorageUtil'
-import { NavBar } from '../navbar/NavBar'
+/*import { NavBar } from '../navbar/NavBar'*/
 import './Header.scss'
 
 function Header() {
@@ -61,19 +62,23 @@ function Header() {
           <div className="box-container flex justify-between items-center">
             <div className="brand-banner">myStays.com</div>
             <div className="flex flex-row gap-3 justify-between items-center mr-7 ">
-              <select
-                name="inpt-language"
-                className="inpt-language"
-                onChange={handleLanguageChange}
-                value={currentSlectedLanguage}
-              >
-                <option value="en_us">English</option>
-                <option value="fr_fr">Français</option>
-              </select>
-              <img className="flex shrink" src={profileSVG} alt="" />
+              <div className="language-container">
+                <img className="flex shrink" src={languageSVG} alt="" />
+                <select
+                    name="inpt-language"
+                    className="input-language"
+                    onChange={handleLanguageChange}
+                    value={currentSlectedLanguage}
+
+                >
+                  <option className="language-options" value="en_us">English</option>
+                  <option className="language-options" value="fr_fr">Français</option>
+                </select>
+              </div>
               {parsedAccessToken != undefined &&
               parsedAccessToken.sub != undefined ? (
                 <>
+                  <img className="flex shrink" src={profileSVG} alt="" />
                   <p className="text-white profile-text">
                     {parsedAccessToken.sub}
                   </p>
@@ -87,9 +92,9 @@ function Header() {
             </div>
           </div>
         </div>
-        <div className="nav-container">
+        {/*<div className="nav-container">
           <NavBar display={display}></NavBar>
-        </div>
+        </div>*/}
       </div>
     </>
   )
