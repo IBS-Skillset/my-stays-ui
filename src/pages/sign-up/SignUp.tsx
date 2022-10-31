@@ -77,7 +77,7 @@ const SignUp = () => {
     <div className="content">
       <form onSubmit={handleSubmit(formSubmitHandler)} className="box">
         <div className="form">
-          <h1 className="signin-heading">Create an account</h1>
+          <h1 className="heading">Create an account</h1>
         </div>
         <div className="form">
           <label className="label" htmlFor="email">

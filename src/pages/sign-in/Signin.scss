@@ -1,15 +1,13 @@
 .outer-box {
-  @apply h-full flex justify-center items-center py-12 text-gray-800;
-  background-image: url(../../assets/images/Searchs.png);
-  min-height: 100vh;
+  @apply h-full flex justify-center items-center pt-20 pb-6 text-gray-800;
 }
 .message {
   @apply flex justify-center pt-2  text-green-600;
 }
-.signin-heading {
-  @apply text-3xl lg:text-4xl text-start select-none p-5 text-white;
-  color: white;
-  font-family: 'Lato', sans-serif;
+.sigin-heading {
+  @apply text-4xl p-5 text-white;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
 }
 .inner-box {
   @apply sm:w-5/12 md:w-6/12 lg:w-4/12 py-12 px-8 rounded-lg shadow-xl;
@@ -20,7 +18,6 @@
      rounded-lg  focus:text-gray-600
      focus:bg-white focus:outline-none;
   font-family: 'Lato', sans-serif;
-  font-size: 15px;
 }
 .eye-icon {
   @apply text-2xl text-gray-400 absolute top-20 right-3;
