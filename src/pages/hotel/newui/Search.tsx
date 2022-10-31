@@ -8,7 +8,6 @@ import { IoAirplane } from 'react-icons/io5'
 
 function Search() {
   return (
-    <body>
       <div className="main">
         <form className="inner-form">
           <div className="heading">Search Hotels</div>
@@ -112,7 +111,6 @@ function Search() {
           </div>
         </form>
       </div>
-    </body>
   )
 }
 export default Search
