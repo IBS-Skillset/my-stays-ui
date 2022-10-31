@@ -1,6 +1,8 @@
 .content {
-  @apply h-full flex justify-center items-center py-12 text-gray-800;
-  background-image: url(../../assets/images/Searchs.png);
+  @apply h-full flex justify-center items-center text-gray-800;
+  padding-top: 3.7rem;
+  padding-bottom: 1rem;
+  //background-image: url(../../assets/images/Searchs.png);
 }
 .label {
   @apply block text-black text-sm font-semibold mb-2;

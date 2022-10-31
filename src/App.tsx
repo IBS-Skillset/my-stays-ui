@@ -7,6 +7,7 @@ import { useCommonInterseptor } from './interceptor/commonInterseptor'
 import { useIdleTimer } from 'react-idle-timer'
 import { useNavigate } from 'react-router-dom'
 import useAuthInterceptor from './interceptor/useAuthInterceptor'
+import './App.scss'
 
 function App() {
   const isloading = useSelector((state: IRootState) => state.loader.showLoading)
@@ -46,7 +47,10 @@ function App() {
   return (
     <>
       {isloading && <Loader />}
-      <div style={isloading ? { display: 'none' } : { display: 'block' }}>
+      <div
+        className="outline"
+        style={isloading ? { display: 'none' } : { display: 'block' }}
+      >
         <Routes />
       </div>
     </>
