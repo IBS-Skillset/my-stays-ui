@@ -1,7 +1,7 @@
 .outer-box {
-  @apply h-full flex justify-center items-center py-12 text-gray-800;
-  background-image: url(../../assets/images/Searchs.png);
-  min-height: 100vh;
+  @apply h-full flex justify-center items-center pt-20 pb-6 text-gray-800;
+  //background-image: url(../../assets/images/Searchs.png);
+  //min-height: 100vh;
 }
 .message {
   @apply flex justify-center pt-2  text-green-600;
