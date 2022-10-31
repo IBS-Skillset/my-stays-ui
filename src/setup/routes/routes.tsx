@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
 import ErrorPage from '../../pages/errorPages/errorPage'
-import HotelSearch from '../../pages/hotel/search/components/HotelSearch'
 import SignIn from '../../pages/sign-in/SignIn'
 import SignUp from '../../pages/sign-up/SignUp'
 import AuthorizeUser from '../oauth2/components/AuthorizeUser'
@@ -12,9 +11,9 @@ function routes() {
   return (
     <Routes>
       <Route path="" element={<HomeTemplate />}>
-          <Route path="/search" element={<Search />} />
-        <Route path="/" element={<HotelSearch />} />
-        <Route path="/home" element={<HotelSearch />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/" element={<Search />} />
+        <Route path="/home" element={<Search />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="*" element={<ErrorPage />} />

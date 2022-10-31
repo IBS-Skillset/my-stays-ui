@@ -65,14 +65,17 @@ function Header() {
               <div className="language-container">
                 <img className="flex shrink" src={languageSVG} alt="" />
                 <select
-                    name="inpt-language"
-                    className="input-language"
-                    onChange={handleLanguageChange}
-                    value={currentSlectedLanguage}
-
+                  name="inpt-language"
+                  className="input-language"
+                  onChange={handleLanguageChange}
+                  value={currentSlectedLanguage}
                 >
-                  <option className="language-options" value="en_us">English</option>
-                  <option className="language-options" value="fr_fr">Français</option>
+                  <option className="language-options" value="en_us">
+                    English
+                  </option>
+                  <option className="language-options" value="fr_fr">
+                    Français
+                  </option>
                 </select>
               </div>
               {parsedAccessToken != undefined &&
