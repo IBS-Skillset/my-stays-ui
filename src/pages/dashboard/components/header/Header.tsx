@@ -1,14 +1,14 @@
 import { changeLanguage as i18nChangeLang } from 'i18next'
 import { FormEvent, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import profileSVG from '../../../../assets/svg/profile.svg'
 import languageSVG from '../../../../assets/svg/language.svg'
 import { LOCAL_STORAGE_KEYS } from '../../../../constants/appConstants'
 import { IRootState } from '../../../../reducers/rootReducer'
 import { getSelectedLang } from '../../../../util/web/webStorageUtil'
 /*import { NavBar } from '../navbar/NavBar'*/
 import './Header.scss'
+import { ProfileDropDown } from './profile-dropdown/ProfileDropDown'
+//import 'bootstrap/dist/css/bootstrap.css';
 
 function Header() {
   const [display, setDisplay] = useState('')
@@ -26,6 +26,7 @@ function Header() {
   )
 
   const parsedAccessToken = parseJwt(accessToken)
+  console.log(parsedAccessToken)
 
   function parseJwt(token: string) {
     if (!token) {
@@ -81,13 +82,7 @@ function Header() {
               {parsedAccessToken != undefined &&
               parsedAccessToken.sub != undefined ? (
                 <>
-                  <img className="flex shrink" src={profileSVG} alt="" />
-                  <p className="text-white profile-text">
-                    {parsedAccessToken.sub}
-                  </p>
-                  <Link className="text-white profile-text" to="/logout">
-                    Logout
-                  </Link>
+                  <ProfileDropDown token={parsedAccessToken} />
                 </>
               ) : (
                 ''
@@ -95,9 +90,6 @@ function Header() {
             </div>
           </div>
         </div>
-        {/*<div className="nav-container">
-          <NavBar display={display}></NavBar>
-        </div>*/}
       </div>
     </>
   )
