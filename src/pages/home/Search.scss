@@ -1,5 +1,5 @@
 .main {
-  @apply bg-center bg-cover flex items-center justify-center p-4;
+  @apply bg-center bg-cover flex items-center justify-center px-4 pb-12 pt-24;
   height: 550px;
 }
 
@@ -53,26 +53,6 @@
   @apply bg-white rounded-sm h-16 relative w-56;
   left: 25px;
 }
-.travel-type-wrap {
-  @apply inline-flex h-20 mt-5 mb-24;
-  width: 700px;
-  bottom: 10px;
-}
-.item {
-  @apply bg-white rounded-sm cursor-pointer mr-1 py-4 px-5 text-center;
-  color: rgba(85, 85, 85, 1);
-  transition: all 0.3s;
-}
-.item.active {
-  color: #fff;
-  background: #2c6ed5;
-}
-.item.cursor {
-  cursor: not-allowed;
-}
-.travel-type-wrap .item .group-icon {
-  @apply box-border flex justify-center mb-2;
-}
 .hover {
   background-color: blue;
   border: none;
@@ -80,13 +60,6 @@
 .text {
   @apply text-xs font-semibold content-start;
   font-family: 'Lato', sans-serif;
-}
-
-.icon {
-  @apply h-5 m-1 w-5;
-}
-.item:hover {
-  color: white;
 }
 .heading {
   @apply text-4xl text-white p-3;

@@ -6,6 +6,7 @@ import { tokenReducer } from './tokenReducer'
 import { authorizeReducer } from './authorizeReducer'
 import { logoutReducer } from './logoutReducer'
 import { sessionOutReducer } from './sessionOutReducer'
+import { hotelRootReducer } from './hotel/hotelRootReducer'
 
 const allReducer = combineReducers({
   loader: loaderReducer,
@@ -15,6 +16,7 @@ const allReducer = combineReducers({
   authorize: authorizeReducer,
   logout: logoutReducer,
   sessionOut: sessionOutReducer,
+  hotel: hotelRootReducer,
 })
 
 export const rootReducer = (

@@ -40,7 +40,7 @@ function HotelSearch() {
       checkInDate: new Date(),
       checkOutDate: new Date(),
     })
-  const [nightCount, setNightcount] = useState(0)
+  const [, setNightcount] = useState(0)
 
   const { t } = useTranslation()
 
@@ -58,6 +58,25 @@ function HotelSearch() {
     mode: 'onSubmit',
   })
 
+  const hotelAvailabilityRequestState: HotelAvailabilityRequest = useSelector(
+    (state: IRootState) =>
+      state.hotel.availabilityRequest.hotelAvailabilityRequest,
+  )
+  const hotelAvailabilityResponseState: HotelAvailabilityResponse = useSelector(
+    (state: IRootState) =>
+      state.hotel.availabilityResponse.hotelAvailabilityResponse,
+  )
+  const nightCountState: number = useSelector(
+    (state: IRootState) => state.hotel.nightCount.days,
+  )
+
+  const accessToken = useSelector(
+    (state: IRootState) => state.token.accessToken,
+  )
+  const isAuthorized = useSelector(
+    (state: IRootState) => state.authorize.isAuthorized,
+  )
+
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       if (searchTerm.length > 2) {
@@ -68,12 +87,18 @@ function HotelSearch() {
     return () => clearTimeout(delayDebounceFn)
   }, [searchTermChange])
 
-  const accessToken = useSelector(
-    (state: IRootState) => state.token.accessToken,
-  )
-  const isAuthorized = useSelector(
-    (state: IRootState) => state.authorize.isAuthorized,
-  )
+  useEffect(() => {
+    if (
+      hotelAvailabilityResponseState &&
+      typeof hotelAvailabilityResponseState.hotelItem != 'undefined' &&
+      hotelAvailabilityResponseState.hotelItem.length > 0
+    ) {
+      setHotelAvailabilityRequest(hotelAvailabilityRequestState)
+      setHotelAvailabilityResponse(hotelAvailabilityResponseState)
+      setNightcount(nightCountState)
+    }
+  }, [hotelAvailabilityResponseState])
+
   if (accessToken == '') {
     if (!isAuthorized) {
       DispatchPkceData()
@@ -263,11 +288,7 @@ function HotelSearch() {
         {typeof hotelAvailabilityResponse != 'undefined' &&
         typeof hotelAvailabilityResponse.hotelItem != 'undefined' &&
         hotelAvailabilityResponse.hotelItem.length > 0 ? (
-          <HotelAvailability
-            hotelAvailabilityResponse={hotelAvailabilityResponse}
-            hotelAvailabilityRequest={hotelAvailabilityRequest}
-            days={nightCount}
-          ></HotelAvailability>
+          <HotelAvailability />
         ) : (
           ''
         )}
