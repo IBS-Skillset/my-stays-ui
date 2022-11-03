@@ -9,22 +9,26 @@ import HotelDescriptionService from '../../../../../services/hotel/HotelDescript
 import { HotelAvailabilityRequest } from '../../../../../models/hotel/search-models/hotelAvailabilityRequest'
 import './HotelAvailability.scss'
 import SearchResults from './SearchResults'
+import { useSelector } from 'react-redux'
+import { IRootState } from '../../../../../reducers/rootReducer'
 
-interface HotelAvailabilityDetails {
-  hotelAvailabilityResponse: HotelAvailabilityResponse
-  hotelAvailabilityRequest: HotelAvailabilityRequest
-  days: number | undefined
-}
-
-export const HotelAvailability = ({
-  hotelAvailabilityResponse,
-  hotelAvailabilityRequest,
-  days,
-}: HotelAvailabilityDetails) => {
+export const HotelAvailability = () => {
   const [hotelItems, setHotelItems] = useState<Hotel[]>([])
   const [hotelBackupItems, setHotelBackupItems] = useState<Hotel[]>([])
   const [hotelDescriptionResponse, setHotelDescriptionResponse] = useState(
     new Map<string, HotelDescriptionResponse>(),
+  )
+
+  const hotelAvailabilityRequest: HotelAvailabilityRequest = useSelector(
+    (state: IRootState) =>
+      state.hotel.availabilityRequest.hotelAvailabilityRequest,
+  )
+  const hotelAvailabilityResponse: HotelAvailabilityResponse = useSelector(
+    (state: IRootState) =>
+      state.hotel.availabilityResponse.hotelAvailabilityResponse,
+  )
+  const days: number = useSelector(
+    (state: IRootState) => state.hotel.nightCount.days,
   )
 
   const updateBackupHotelItem = () => {

@@ -4,19 +4,23 @@ import SignIn from '../../pages/sign-in/SignIn'
 import SignUp from '../../pages/sign-up/SignUp'
 import AuthorizeUser from '../oauth2/components/AuthorizeUser'
 import LogoutUser from '../oauth2/components/LogoutUser'
-import HomeTemplate from '../../pages/dashboard/components/HomeTemplate'
-import Search from '../../pages/hotel/newui/Search'
+import HomeLayout from '../../pages/dashboard/components/layout/HomeLayout'
+import Search from '../../pages/home/Search'
+import HotelSearch from '../../pages/hotel/search/components/HotelSearch'
+import SearchLayout from '../../pages/dashboard/components/layout/SearchLayout'
 
 function routes() {
   return (
     <Routes>
-      <Route path="" element={<HomeTemplate />}>
-        <Route path="/search" element={<Search />} />
+      <Route path="" element={<HomeLayout />}>
         <Route path="/" element={<Search />} />
         <Route path="/home" element={<Search />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="*" element={<ErrorPage />} />
+      </Route>
+      <Route path="" element={<SearchLayout />}>
+        <Route path="/search" element={<HotelSearch />} />
       </Route>
       <Route path="/authorized" element={<AuthorizeUser />} />
       <Route path="/logout" element={<LogoutUser />} />

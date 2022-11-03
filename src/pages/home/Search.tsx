@@ -1,27 +1,32 @@
 import './Search.scss'
-import calendarSVG from '../../../assets/svg/calendar.svg'
-import locationSVG from '../../../assets/svg/location.svg'
-import personSVG from '../../../assets/svg/person.svg'
+import calendarSVG from '../../assets/svg/calendar.svg'
+import locationSVG from '../../assets/svg/location.svg'
+import personSVG from '../../assets/svg/person.svg'
 import React, { useEffect, useState } from 'react'
-import { FaBuilding, FaCar } from 'react-icons/fa'
-import { IoAirplane } from 'react-icons/io5'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
-import GeoLocationService from '../../../services/geolocation/GeoLocationService'
+import GeoLocationService from '../../services/geolocation/GeoLocationService'
 import { AxiosResponse } from 'axios'
-import { GeoPlace, GeoPlaces } from '../../../models/locations/geoPlace'
-import { GeoLocation } from '../../../models/locations/geoLocation'
-import { HotelAvailabilityRequest } from '../../../models/hotel/search-models/hotelAvailabilityRequest'
+import { GeoPlace, GeoPlaces } from '../../models/locations/geoPlace'
+import { GeoLocation } from '../../models/locations/geoLocation'
+import { HotelAvailabilityRequest } from '../../models/hotel/search-models/hotelAvailabilityRequest'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import HotelSearchService from '../../../services/hotel/HotelSearchService'
-import { HotelAvailabilityResponse } from '../../../models/hotel/search-models/hotelAvailabilityResponse'
+import HotelSearchService from '../../services/hotel/HotelSearchService'
+import { HotelAvailabilityResponse } from '../../models/hotel/search-models/hotelAvailabilityResponse'
 import { intervalToDuration } from 'date-fns'
-import { IRootState } from '../../../reducers/rootReducer'
-import { useSelector } from 'react-redux'
-import DispatchPkceData from '../../../setup/oauth2/pkce/DispatchPkceData'
-import AuthorizeUser from '../../../setup/oauth2/components/AuthorizeUser'
+import { IRootState } from '../../reducers/rootReducer'
+import { useDispatch, useSelector } from 'react-redux'
+import DispatchPkceData from '../../setup/oauth2/pkce/DispatchPkceData'
+import AuthorizeUser from '../../setup/oauth2/components/AuthorizeUser'
+import {
+  hotelSearchAvailabilityRequestAction,
+  hotelSearchAvailabilityResponseAction,
+  nightCountAction,
+} from '../../actions/hotelSearchAction'
+import { useNavigate } from 'react-router-dom'
+import { SearchHeader } from './search-header/SearchHeader'
 
 interface IFormInputs {
   location: string
@@ -39,8 +44,6 @@ function Search() {
       checkInDate: new Date(),
       checkOutDate: new Date(),
     })
-  const [, setHotelAvailabilityResponse] = useState<HotelAvailabilityResponse>()
-  const [, setNightcount] = useState(0)
 
   const formSchema = Yup.object().shape({
     location: Yup.string().required('*Location is required'),
@@ -50,6 +53,16 @@ function Search() {
     resolver: yupResolver(formSchema),
     mode: 'onSubmit',
   })
+
+  const accessToken = useSelector(
+    (state: IRootState) => state.token.accessToken,
+  )
+  const isAuthorized = useSelector(
+    (state: IRootState) => state.authorize.isAuthorized,
+  )
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -61,12 +74,6 @@ function Search() {
     return () => clearTimeout(delayDebounceFn)
   }, [searchTerm])
 
-  const accessToken = useSelector(
-    (state: IRootState) => state.token.accessToken,
-  )
-  const isAuthorized = useSelector(
-    (state: IRootState) => state.authorize.isAuthorized,
-  )
   if (accessToken == '') {
     if (!isAuthorized) {
       DispatchPkceData()
@@ -79,7 +86,7 @@ function Search() {
     setSearchTerm(event.target.value)
   }
 
-  function searchGeoPlaces(search: string) {
+  const searchGeoPlaces = (search: string) => {
     GeoLocationService.getGeolocationPlaceIds(search)
       .then((response: AxiosResponse<GeoPlaces>) => {
         setGeoPlaces(response.data)
@@ -155,20 +162,24 @@ function Search() {
     }
     HotelSearchService.getHotelAvailabilitySearch(hotelAvailabilityRequest)
       .then((response: AxiosResponse<HotelAvailabilityResponse>) => {
-        setHotelAvailabilityResponse(response.data)
+        dispatch(hotelSearchAvailabilityRequestAction(hotelAvailabilityRequest))
+        dispatch(hotelSearchAvailabilityResponseAction(response.data))
         const days = intervalToDuration({
           start: hotelAvailabilityRequest.checkInDate,
           end: hotelAvailabilityRequest.checkOutDate,
         }).days
-        typeof days != 'undefined' && setNightcount(days)
+        typeof days != 'undefined' && dispatch(nightCountAction(days))
         console.log(response)
+        navigate('/search')
       })
       .catch((error) => {
         console.log(error)
-        setHotelAvailabilityResponse({
-          responseStatus: { status: -1 },
-          hotelItem: [],
-        })
+        dispatch(
+          hotelSearchAvailabilityResponseAction({
+            responseStatus: { status: -1 },
+            hotelItem: [],
+          }),
+        )
       })
   }
 
@@ -179,36 +190,7 @@ function Search() {
         onSubmit={handleSubmit(getHotelAvailability)}
       >
         <div className="heading">Search Hotels</div>
-        <div className="travel-type-wrap">
-          <div className="item active">
-            <div className="group-icon">
-              <FaBuilding className="icon" />
-            </div>
-            <div className="text">HOTEL ONLY</div>
-          </div>
-          <div className="item cursor">
-            <div className="group-icon">
-              <FaBuilding className="icon" />
-              <IoAirplane className="icon" />
-            </div>
-            <div className="text">HOTEL + FLIGHT</div>
-          </div>
-          <div className="item cursor">
-            <div className="group-icon">
-              <FaBuilding className="icon" />
-              <IoAirplane className="icon" />
-              <FaCar className="icon" />
-            </div>
-            <div className="text">HOTEL + FLIGHT + CAR</div>
-          </div>
-          <div className="item cursor">
-            <div className="group-icon">
-              <FaBuilding className="icon" />
-              <FaCar className="icon" />
-            </div>
-            <div className="text">HOTEL + CAR</div>
-          </div>
-        </div>
+        <SearchHeader />
         <div className="main-form">
           <div className="bg-white rounded-sm h-16 mb-2 relative">
             <div className="icon-wrap">
