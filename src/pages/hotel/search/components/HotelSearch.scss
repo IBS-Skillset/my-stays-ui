@@ -52,8 +52,9 @@
   border-radius: 10px;
 }
 .search-param {
-  @apply border-black border-solid border flex h-12 mt-1 ml-1 w-40;
+  @apply border-black border-solid border flex h-12 mt-1 ml-1;
   border-radius: 10px;
+  width: 165px;
 }
 .button-param {
   @apply h-12 mt-1 ml-1 w-32;
@@ -85,7 +86,6 @@
   font-size: 11px;
 }
 .date-picker-value {
-  @apply h-5 ml-px w-32;
   font-family: 'Lato', sans-serif;
 }
 .date-picker {

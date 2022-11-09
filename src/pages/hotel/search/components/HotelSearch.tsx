@@ -17,26 +17,30 @@ import GeoLocationService from '../../../../services/geolocation/GeoLocationServ
 import HotelSearchService from '../../../../services/hotel/HotelSearchService'
 import './HotelSearch.scss'
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { IRootState } from '../../../../reducers/rootReducer'
 import AuthorizeUser from '../../../../setup/oauth2/components/AuthorizeUser'
 import DispatchPkceData from '../../../../setup/oauth2/pkce/DispatchPkceData'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import HotelAvailability from './search-results/HotelAvailability'
+import {
+  hotelSearchAvailabilityRequestAction,
+  hotelSearchAvailabilityResponseAction,
+  locationAction,
+  nightCountAction,
+} from '../../../../actions/hotelSearchAction'
 
 interface IFormInputs {
   location: string
 }
 
 function HotelSearch() {
-  const [searchTerm, setSearchTerm] = useState('')
   const [searchTermChange, setSearchTermChange] = useState('')
+  const [searchTerm, setSearchTerm] = useState('')
   const [geoPlaces, setGeoPlaces] = useState<GeoPlaces>()
   const [hotelAvailabilityResponse, setHotelAvailabilityResponse] =
     useState<HotelAvailabilityResponse>()
-  const [startDate, setStartDate] = useState<Date | null | undefined>(null)
-  const [endDate, setEndDate] = useState<Date | null | undefined>(null)
   const [hotelAvailabilityRequest, setHotelAvailabilityRequest] =
     useState<HotelAvailabilityRequest>({
       latitude: '',
@@ -44,7 +48,10 @@ function HotelSearch() {
       checkInDate: new Date(),
       checkOutDate: new Date(),
     })
-  const [, setNightcount] = useState(0)
+  const [nights, setNightcount] = useState(0)
+  const [startDate, setStartDate] = useState<Date | null | undefined>(null)
+  const [endDate, setEndDate] = useState<Date | null | undefined>(null)
+  const dispatch = useDispatch()
 
   const formSchema = Yup.object().shape({
     location: Yup.string().required('*Location is required'),
@@ -66,6 +73,9 @@ function HotelSearch() {
   const nightCountState: number = useSelector(
     (state: IRootState) => state.hotel.nightCount.days,
   )
+  const locationState: string = useSelector(
+    (state: IRootState) => state.hotel.location.location,
+  )
 
   const accessToken = useSelector(
     (state: IRootState) => state.token.accessToken,
@@ -73,6 +83,21 @@ function HotelSearch() {
   const isAuthorized = useSelector(
     (state: IRootState) => state.authorize.isAuthorized,
   )
+
+  useEffect(() => {
+    if (
+      hotelAvailabilityResponseState &&
+      typeof hotelAvailabilityResponseState.hotelItem != 'undefined' &&
+      hotelAvailabilityResponseState.hotelItem.length > 0
+    ) {
+      setHotelAvailabilityRequest(hotelAvailabilityRequestState)
+      setHotelAvailabilityResponse(hotelAvailabilityResponseState)
+      setNightcount(nightCountState)
+      setSearchTerm(locationState)
+      setStartDate(hotelAvailabilityRequestState.checkInDate)
+      setEndDate(hotelAvailabilityRequestState.checkOutDate)
+    }
+  }, [hotelAvailabilityResponseState])
 
   const handlestartdate = (date: Date) => {
     setStartDate(date)
@@ -98,18 +123,6 @@ function HotelSearch() {
 
     return () => clearTimeout(delayDebounceFn)
   }, [searchTermChange])
-
-  useEffect(() => {
-    if (
-      hotelAvailabilityResponseState &&
-      typeof hotelAvailabilityResponseState.hotelItem != 'undefined' &&
-      hotelAvailabilityResponseState.hotelItem.length > 0
-    ) {
-      setHotelAvailabilityRequest(hotelAvailabilityRequestState)
-      setHotelAvailabilityResponse(hotelAvailabilityResponseState)
-      setNightcount(nightCountState)
-    }
-  }, [hotelAvailabilityResponseState])
 
   if (accessToken == '') {
     if (!isAuthorized) {
@@ -142,22 +155,27 @@ function HotelSearch() {
     }
     HotelSearchService.getHotelAvailabilitySearch(hotelAvailabilityRequest)
       .then((response: AxiosResponse<HotelAvailabilityResponse>) => {
-        setHotelAvailabilityResponse(response.data)
+        dispatch(hotelSearchAvailabilityRequestAction(hotelAvailabilityRequest))
+        dispatch(hotelSearchAvailabilityResponseAction(response.data))
         const days = intervalToDuration({
           start: hotelAvailabilityRequest.checkInDate,
           end: hotelAvailabilityRequest.checkOutDate,
         }).days
-        typeof days != 'undefined' && setNightcount(days)
-        console.log(response)
+        typeof days != 'undefined' && dispatch(nightCountAction(days))
+        console.log(response.data)
       })
       .catch((error) => {
-        //Todo
         console.log(error)
-        setHotelAvailabilityResponse({
-          responseStatus: { status: -1 },
-          hotelItem: [],
-        })
+        dispatch(
+          hotelSearchAvailabilityResponseAction({
+            responseStatus: { status: -1 },
+            hotelItem: [],
+          }),
+        )
       })
+    console.log(hotelAvailabilityRequest)
+    console.log(hotelAvailabilityResponse)
+    console.log(nights)
   }
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setGeoPlaces({ ...geoPlaces, place: [] })
@@ -169,6 +187,7 @@ function HotelSearch() {
     setSearchTerm(geoPlace.description)
     getAndSetLocationLatLong(geoPlace.placeId)
     setGeoPlaces({ ...geoPlaces, place: [] })
+    dispatch(locationAction(geoPlace.description))
   }
 
   const getAndSetLocationLatLong = (placeId: string) => {
@@ -238,7 +257,7 @@ function HotelSearch() {
                       geoPlaces.place.map((geoPlace) => {
                         return (
                           <div
-                            className="location-items"
+                            className="text-sm"
                             onClickCapture={() =>
                               handlePlaceIdCahange(geoPlace)
                             }
@@ -257,7 +276,7 @@ function HotelSearch() {
               <div className="h-10 ml-1 w-6">
                 <img src={calendarSVG} alt="" className="mt-4 w-5" />
               </div>
-              <div className="h-10 ml-1 w-32">
+              <div className="h-10 ml-1 w-35">
                 <div className="label-field">CHECK IN</div>
                 <div className="date-picker-value">
                   <DatePicker
