@@ -23,6 +23,7 @@ import AuthorizeUser from '../../setup/oauth2/components/AuthorizeUser'
 import {
   hotelSearchAvailabilityRequestAction,
   hotelSearchAvailabilityResponseAction,
+  locationAction,
   nightCountAction,
 } from '../../actions/hotelSearchAction'
 import { useNavigate } from 'react-router-dom'
@@ -120,6 +121,7 @@ function Search() {
     setSearchTerm(geoPlace.description)
     getAndSetLocationLatLong(geoPlace.placeId)
     setGeoPlaces({ ...geoPlaces, place: [] })
+    dispatch(locationAction(geoPlace.description))
   }
 
   const handlestartdate = (date: Date) => {

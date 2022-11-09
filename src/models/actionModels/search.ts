@@ -14,3 +14,8 @@ export interface ActionNightCount {
   type: string
   payload: number
 }
+
+export interface ActionLocation {
+  type: string
+  payload: string
+}

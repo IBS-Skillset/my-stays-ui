@@ -1,5 +1,6 @@
 import { HotelAvailabilityResponse } from '../models/hotel/search-models/hotelAvailabilityResponse'
 import {
+  ActionLocation,
   ActionNightCount,
   HotelAvailabilityRequestAction,
   HotelAvailabilityResponseAction,
@@ -27,5 +28,12 @@ export function nightCountAction(days: number): ActionNightCount {
   return {
     type: 'DAYS',
     payload: days,
+  }
+}
+
+export function locationAction(location: string): ActionLocation {
+  return {
+    type: 'LOCATION',
+    payload: location,
   }
 }
