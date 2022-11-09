@@ -2,13 +2,13 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { AxiosResponse } from 'axios'
 import { intervalToDuration } from 'date-fns'
 import React, { useEffect, useState } from 'react'
-import { Range } from 'react-date-range'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { useTranslation } from 'react-i18next'
 import * as Yup from 'yup'
 import calendarSVG from '../../../../assets/svg/calendar.svg'
 import locationSVG from '../../../../assets/svg/location.svg'
-import DateRangePicker from '../../../../common/datePicker/DateRangePicker'
+import personSVG from '../../../../assets/svg/person.svg'
+import map from '../../../../assets/images/map.jpg'
+import searchIcon from '../../../../assets/images/search-icon.png'
 import { HotelAvailabilityRequest } from '../../../../models/hotel/search-models/hotelAvailabilityRequest'
 import { HotelAvailabilityResponse } from '../../../../models/hotel/search-models/hotelAvailabilityResponse'
 import { GeoLocation } from '../../../../models/locations/geoLocation'
@@ -16,12 +16,15 @@ import { GeoPlace, GeoPlaces } from '../../../../models/locations/geoPlace'
 import GeoLocationService from '../../../../services/geolocation/GeoLocationService'
 import HotelSearchService from '../../../../services/hotel/HotelSearchService'
 import './HotelSearch.scss'
-import HotelAvailability from './search-results/HotelAvailability'
 
 import { useSelector } from 'react-redux'
 import { IRootState } from '../../../../reducers/rootReducer'
 import AuthorizeUser from '../../../../setup/oauth2/components/AuthorizeUser'
 import DispatchPkceData from '../../../../setup/oauth2/pkce/DispatchPkceData'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import HotelAvailability from './search-results/HotelAvailability'
+
 interface IFormInputs {
   location: string
 }
@@ -32,7 +35,8 @@ function HotelSearch() {
   const [geoPlaces, setGeoPlaces] = useState<GeoPlaces>()
   const [hotelAvailabilityResponse, setHotelAvailabilityResponse] =
     useState<HotelAvailabilityResponse>()
-
+  const [startDate, setStartDate] = useState<Date | null | undefined>(null)
+  const [endDate, setEndDate] = useState<Date | null | undefined>(null)
   const [hotelAvailabilityRequest, setHotelAvailabilityRequest] =
     useState<HotelAvailabilityRequest>({
       latitude: '',
@@ -42,18 +46,11 @@ function HotelSearch() {
     })
   const [, setNightcount] = useState(0)
 
-  const { t } = useTranslation()
-
   const formSchema = Yup.object().shape({
     location: Yup.string().required('*Location is required'),
   })
 
-  const {
-    register,
-    handleSubmit,
-    setError,
-    formState: { errors },
-  } = useForm<IFormInputs>({
+  const { register, handleSubmit, setError } = useForm<IFormInputs>({
     resolver: yupResolver(formSchema),
     mode: 'onSubmit',
   })
@@ -76,6 +73,21 @@ function HotelSearch() {
   const isAuthorized = useSelector(
     (state: IRootState) => state.authorize.isAuthorized,
   )
+
+  const handlestartdate = (date: Date) => {
+    setStartDate(date)
+    setHotelAvailabilityRequest({
+      ...hotelAvailabilityRequest,
+      checkInDate: date,
+    })
+  }
+  const handleenddate = (date: Date) => {
+    setEndDate(date)
+    setHotelAvailabilityRequest({
+      ...hotelAvailabilityRequest,
+      checkOutDate: date,
+    })
+  }
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -175,25 +187,6 @@ function HotelSearch() {
       })
   }
 
-  const readDateChange = (dateRange: Range) => {
-    if (typeof dateRange === 'undefined') {
-      return
-    }
-    if (
-      typeof dateRange.startDate === 'undefined' ||
-      typeof dateRange.endDate === 'undefined'
-    ) {
-      return
-    }
-    setHotelAvailabilityRequest({
-      ...hotelAvailabilityRequest,
-      checkInDate: dateRange.startDate,
-      checkOutDate: dateRange.endDate,
-    })
-
-    console.log(hotelAvailabilityRequest)
-  }
-
   function searchGeoPlaces(searchTerm: string) {
     GeoLocationService.getGeolocationPlaceIds(searchTerm)
       .then((response: AxiosResponse<GeoPlaces>) => {
@@ -206,92 +199,167 @@ function HotelSearch() {
 
   return (
     <>
-      <div className="main-panel">
-        <div className="front-header">
-          <div className="box-container text-container h-full">
-            {/* <div className="main-text">Find your next stay</div>
-          <div className="text-2xl font-light text-white">
-            Search low prices on hotels, homes and much more...
-          </div> */}
-          </div>
-        </div>
-      </div>
       <div className="main-content">
-        <div className="box-container search-panel">
+        <div className="mt-2">
           <form
-            className="search-container w-full"
+            className="search-container"
             onSubmit={handleSubmit(getHotelAvailability)}
           >
-            <div className="col-span-2 outline outline-none h-full">
-              <div className="flex justify-around h-full">
-                <div className="h-full content-center justify-center py-2">
-                  <img src={locationSVG} alt="" className="svg-image" />
-                </div>
-                <input
-                  value={searchTerm}
-                  className="h-full w-full outline-none pl-3"
-                  placeholder={t('HOTEL_SEARCH.BUTTON.SEARCH')}
-                  type="text"
-                  autoComplete="off"
-                  {...register('location', {
-                    onChange: (e) => {
-                      handleSearch(e)
-                    },
-                  })}
-                />
-                <div
-                  className="absolute z-50 p-6 max-w-sm grid bg-white rounded-sm border border-gray-200 shadow-md dark:bg-slate-50 dark:border-gray-400"
-                  style={{
-                    display:
-                      typeof geoPlaces != 'undefined' &&
-                      geoPlaces.place.length > 0
-                        ? 'block'
-                        : 'none',
-                  }}
-                >
-                  {typeof geoPlaces != 'undefined' &&
-                    geoPlaces.place.map((geoPlace) => {
-                      return (
-                        <div
-                          className="location-items"
-                          onClickCapture={() => handlePlaceIdCahange(geoPlace)}
-                          id={geoPlace.placeId}
-                          key={geoPlace.placeId}
-                        >
-                          {geoPlace.description}
-                        </div>
-                      )
+            <div className="destination-field">
+              <div className="h-10 ml-1 w-6">
+                <img src={locationSVG} alt="" className="mt-4 w-5" />
+              </div>
+              <div className="field-destination">
+                <label className="label-field-dest">
+                  GOING TO
+                  <input
+                    value={searchTerm}
+                    className="input-value-dest"
+                    type="text"
+                    placeholder="Destination, hotel name"
+                    autoComplete="off"
+                    {...register('location', {
+                      onChange: (e) => {
+                        handleSearch(e)
+                      },
                     })}
+                  />
+                  <div
+                    className="absolute z-50 p-6 max-w-sm grid bg-white rounded-sm border border-gray-200 shadow-md dark:bg-slate-50 dark:border-gray-400"
+                    style={{
+                      display:
+                        typeof geoPlaces != 'undefined' &&
+                        geoPlaces.place.length > 0
+                          ? 'block'
+                          : 'none',
+                    }}
+                  >
+                    {typeof geoPlaces != 'undefined' &&
+                      geoPlaces.place.map((geoPlace) => {
+                        return (
+                          <div
+                            className="location-items"
+                            onClickCapture={() =>
+                              handlePlaceIdCahange(geoPlace)
+                            }
+                            id={geoPlace.placeId}
+                            key={geoPlace.placeId}
+                          >
+                            {geoPlace.description}
+                          </div>
+                        )
+                      })}
+                  </div>
+                </label>
+              </div>
+            </div>
+            <div className="search-param">
+              <div className="h-10 ml-1 w-6">
+                <img src={calendarSVG} alt="" className="mt-4 w-5" />
+              </div>
+              <div className="h-10 ml-1 w-32">
+                <div className="label-field">CHECK IN</div>
+                <div className="date-picker-value">
+                  <DatePicker
+                    className="date-picker"
+                    placeholderText="mm/dd/yyyy"
+                    selected={startDate}
+                    onChange={handlestartdate}
+                  />
                 </div>
               </div>
             </div>
-            <div className="h-full w-full flex flex-row">
-              <DateRangePicker
-                handleDateChange={readDateChange}
-              ></DateRangePicker>
-              <div className="calenderIcon py-2">
-                <img src={calendarSVG} alt="" className="svg-image" />
+            <div className="search-param">
+              <div className="h-10 ml-1 w-6">
+                <img src={calendarSVG} alt="" className="mt-4 w-5" />
+              </div>
+              <div className="h-10 ml-1 w-32">
+                <div className="label-field">CHECK OUT</div>
+                <div className="date-picker-value">
+                  <DatePicker
+                    className="date-picker"
+                    placeholderText="mm/dd/yyyy"
+                    selected={endDate}
+                    onChange={handleenddate}
+                  />
+                </div>
               </div>
             </div>
-            <div className="h-full search-action">
-              <button className="search-button">
-                {t('HOTEL_SEARCH.BUTTON.SEARCH')}
-              </button>
+            <div className="search-param">
+              <div className="h-10 ml-1 w-6">
+                <img src={personSVG} alt="" className="mt-4 w-5" />
+              </div>
+              <div className="h-10 ml-1 w-32">
+                <div className="field-destination">
+                  <label className="label">
+                    TRAVELERS
+                    <input
+                      className="input-value-dest"
+                      type="text"
+                      placeholder="1 adult"
+                    />
+                  </label>
+                </div>
+              </div>
             </div>
+            <button className="button">Search</button>
           </form>
         </div>
-        <div className="box-container mt-2">
-          {errors.location && errors.location?.message && (
-            <span className="errorMsg">{errors.location.message}</span>
-          )}
+        <div className="mt-2">
+          <div className="sorting-container">
+            <div className="sort">Sort</div>
+            <div className="best-match">Best match</div>
+            <div className="match">Top Viewed</div>
+            <div className="lowest-price">Lowest price first</div>
+            <div className="match">Distance</div>
+          </div>
+          <div className="flex mt-5 ml-24">
+            <div className="ml-8 w-64">
+              <div className="h-40 w-64">
+                <img src={map} alt="" className="h-40 w-64" />
+              </div>
+              <div className="border-black border-solid border-t mt-6 w-64">
+                <h1 className="search-heading">Search by property name</h1>
+                <div className="border-black rounded border-solid border flex h-10 mt-5 text-left w-64">
+                  <img src={searchIcon} alt="" className="h-6 mt-2 ml-2 w-6" />
+                  <h1 className="mt-2 ml-2">eg: Marriot</h1>
+                </div>
+                <div className="border-black border-solid border-t mt-5">
+                  <h1 className="hotel-chains-heading">Hotel Chains</h1>
+                  <div className="mt-2 w-64">
+                    <input className="mr-2" type="checkbox" />
+                    Accor
+                  </div>
+                  <div className="mt-2 w-64">
+                    <input className="mr-2" type="checkbox" />
+                    Bloom Hotels
+                  </div>
+                  <div className="mt-2 w-64">
+                    <input className="mr-2" type="checkbox" />
+                    Clark Inn
+                  </div>
+                  <div className="mt-2 w-64">
+                    <input className="mr-2" type="checkbox" />
+                    Hyatt
+                  </div>
+                  <div className="mt-2 w-64">
+                    <input className="mr-2" type="checkbox" />
+                    Crown Plaza
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="search-result">
+              {typeof hotelAvailabilityResponse != 'undefined' &&
+              typeof hotelAvailabilityResponse.hotelItem != 'undefined' &&
+              hotelAvailabilityResponse.hotelItem.length > 0 ? (
+                <HotelAvailability />
+              ) : (
+                ''
+              )}
+            </div>
+          </div>
         </div>
-        {typeof hotelAvailabilityResponse != 'undefined' &&
-        typeof hotelAvailabilityResponse.hotelItem != 'undefined' &&
-        hotelAvailabilityResponse.hotelItem.length > 0 ? (
-          <HotelAvailability />
-        ) : (
-          ''
-        )}
       </div>
     </>
   )

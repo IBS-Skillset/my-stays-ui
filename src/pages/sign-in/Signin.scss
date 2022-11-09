@@ -2,7 +2,9 @@
   @apply h-full flex justify-center items-center pt-20 pb-6 text-gray-800;
 }
 .message {
-  @apply flex justify-center pt-2  text-green-600;
+  @apply flex justify-center pt-2;
+  color: white;
+  margin-top: 10px;
 }
 .sigin-heading {
   @apply text-4xl p-5 text-white;

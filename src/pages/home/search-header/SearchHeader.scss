@@ -1,7 +1,8 @@
 .travel-type-wrap {
-  @apply inline-flex h-20 mt-5 mb-24;
+  display: inline-flex;
+  margin-top: 20px;
+  height: 80px;
   width: 700px;
-  bottom: 10px;
 }
 .travel-type-wrap .item .group-icon {
   @apply box-border flex justify-center mb-2;
@@ -13,7 +14,7 @@
 }
 .item.active {
   color: #fff;
-  background: #2c6ed5;
+  background: var(--btn-bg-primary);
 }
 .item.cursor {
   cursor: not-allowed;
