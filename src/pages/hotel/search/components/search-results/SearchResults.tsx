@@ -96,7 +96,7 @@ export const SearchResults = ({
   }
 
   return (
-    <div className="my-5">
+    <div>
       {hotelBackupItems.map((hotel, i) => {
         return (
           <div className="hotel-container grid grid-cols-2 md:flex" key={i}>
@@ -116,44 +116,32 @@ export const SearchResults = ({
               </picture>
             </div>
             {/* col-2 hotel */}
-            <div className="md:grow">
-              <div className="flex items-center m-2 text-3xs md:text-2xl">
-                <div className="grid grid-cols-1">
-                  <div id="hotel-name" className="font-medium flex">
-                    {hotel.hotelName}
-                  </div>
-                  <div className="grid pl-1 w-28 grid-cols-5">
-                    {[...Array(hotel.hotelCategory)].map((e, i) => (
-                      <span className="stars" key={i}>
-                        <img className="w-6" src={starSVG} alt="♦" />
-                      </span>
-                    ))}
-                  </div>
-                  <div className="grid grid-cols-1 font-medium text-sm text-blue-900 underline">
-                    <div id="hotel-city">
-                      {hotel.address.cityName} , {hotel.address.countryName}
-                    </div>
-                    <div id="hotel-address">
-                      {hotel.address.streetAddress}
-                      <br />
-                      {hotel.address.zipCode}
-                    </div>
-                  </div>
-                </div>
+            <div className="hotel-details">
+              <h1 className="hotel-name">{hotel.hotelName}</h1>
+              <h1 className="w-48">{hotel.address.cityName}</h1>
+              <div className="grid pl-1 w-28 grid-cols-5">
+                {[...Array(hotel.hotelCategory)].map((e, i) => (
+                  <span className="mt-2" key={i}>
+                    <img className="w-4" src={starSVG} alt="♦" />
+                  </span>
+                ))}
+              </div>
+              <div className="address">
+                <h1 className="w-48">{hotel.address.countryName}</h1>
+                <h1 className="w-48">{hotel.address.streetAddress}</h1>
+                <h1 className="w-48">{hotel.address.zipCode}</h1>
               </div>
             </div>
             {/* col-3 price and button */}
-            <div className="col-span-2 md:flex-none md:w-52 text-left md:text-right">
-              <div className="text-sm font-normal text-right md:text-center">
-                {days} night
-              </div>
-              <div className="col-span-1 text-xl font-bold text-gray-900">
+            <div className="">
+              <div className="text-sm font-normal text-right">{days} night</div>
+              <div className="col-span-1 text-xl font-bold text-gray-900 text-right">
                 €{hotel.minPrice}
               </div>
               <div className="col-span-1 pt-2 text-left md:text-right">
                 <button
                   onClick={() => handleClick(hotel.hotelCode)}
-                  className="btn-availability font-medium"
+                  className="btn-availability"
                 >
                   {t('HOTEL_SEARCH.BUTTON.AVAILABILITY')} &#62;
                 </button>

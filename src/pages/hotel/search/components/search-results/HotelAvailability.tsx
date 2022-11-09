@@ -109,18 +109,13 @@ export const HotelAvailability = () => {
     fetchHotels()
   }
   return (
-    <div className="box-container mt-8">
+    <div>
       {hotelAvailabilityResponse.responseStatus.status != 1 && (
         <div className="text-2xl md:text-3xl font-medium">
           No properties found
         </div>
       )}
-      {hotelAvailabilityResponse.hotelItem.length > 0 && (
-        <div className="text-2xl md:text-3xl font-medium">
-          {hotelAvailabilityResponse.hotelItem[0].address.cityName}:{' '}
-          {hotelAvailabilityResponse.hotelItem.length} properties found
-        </div>
-      )}
+      {hotelAvailabilityResponse.hotelItem.length > 0}
       <SearchResults
         hotelBackupItems={hotelBackupItems}
         hotelDescriptionResponse={hotelDescriptionResponse}

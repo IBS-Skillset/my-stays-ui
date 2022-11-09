@@ -34,6 +34,7 @@ interface IFormInputs {
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState('')
+  const [searchTermChange, setSearchTermChange] = useState('')
   const [geoPlaces, setGeoPlaces] = useState<GeoPlaces>()
   const [startDate, setStartDate] = useState<Date | null | undefined>(null)
   const [endDate, setEndDate] = useState<Date | null | undefined>(null)
@@ -66,13 +67,13 @@ function Search() {
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
-      if (searchTerm.length > 2 && !searchTerm.includes('Location:')) {
+      if (searchTerm.length > 2) {
         searchGeoPlaces(searchTerm)
       }
     }, 3000)
 
     return () => clearTimeout(delayDebounceFn)
-  }, [searchTerm])
+  }, [searchTermChange])
 
   if (accessToken == '') {
     if (!isAuthorized) {
@@ -84,6 +85,7 @@ function Search() {
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setGeoPlaces({ ...geoPlaces, place: [] })
     setSearchTerm(event.target.value)
+    setSearchTermChange(event.target.value)
   }
 
   const searchGeoPlaces = (search: string) => {
@@ -115,7 +117,7 @@ function Search() {
   }
 
   const handlePlaceIdChange = (geoPlace: GeoPlace) => {
-    setSearchTerm('Location: ' + geoPlace.description)
+    setSearchTerm(geoPlace.description)
     getAndSetLocationLatLong(geoPlace.placeId)
     setGeoPlaces({ ...geoPlaces, place: [] })
   }
@@ -225,7 +227,7 @@ function Search() {
                     geoPlaces.place.map((geoPlace) => {
                       return (
                         <div
-                          className="location-items"
+                          className="text-sm"
                           onClickCapture={() => handlePlaceIdChange(geoPlace)}
                           id={geoPlace.placeId}
                           key={geoPlace.placeId}
