@@ -6,18 +6,16 @@ import './Swiper.css'
 import { SwiperItemType } from './types'
 import { getRefValue, useStateRef } from './hooks'
 import { getTouchEventData } from './dom'
+import { useSelector } from 'react-redux'
+import { IRootState } from '../../../../../../reducers/rootReducer'
 export type Props = {
-  images: (
-    hotelDescriptionResponse: any,
-    hotelCode: string,
-  ) => Array<SwiperItemType>
+  images: (hotelDescriptionResponse: any) => Array<SwiperItemType>
   hotelCode: string
-  hotelDescriptionResponse: any
 }
 
 const MIN_SWIPE_REQUIRED = 6
 
-function Swiper({ images, hotelCode, hotelDescriptionResponse }: Props) {
+function Swiper({ images, hotelCode /* hotelDescriptionResponse*/ }: Props) {
   const containerRef = useRef<HTMLUListElement>(null)
   const containerWidthRef = useRef(0)
   const minOffsetXRef = useRef(0)
@@ -28,13 +26,29 @@ function Swiper({ images, hotelCode, hotelDescriptionResponse }: Props) {
   const [currentIdx, setCurrentIdx] = useState(0)
   const [items, setItems] = useState<Array<SwiperItemType>>([])
   const [reload, setReload] = useState(true)
-
+  const hotel = useSelector(
+    (state: IRootState) =>
+      state.hotel.descriptionResponse.hotelDescriptionResponsesPerCode[
+        hotelCode
+      ],
+  )
   useEffect(() => {
-    const image = images(hotelDescriptionResponse, hotelCode)
+    //const items: Array<SwiperItemType> = []
+    const image = images(hotel)
+    /*if (hotel) {
+      const itemsMedia = hotel.media.mediaUrl
+      itemsMedia.slice(0,6).map((item: string) => {
+        const image: SwiperItemType = {
+          imageSrc: item,
+        }
+        items.push(image)
+      })
+    }*/
+
     setItems(image)
-    console.log('images: ', image)
-    console.log(hotelDescriptionResponse.size)
-  }, [hotelDescriptionResponse.size])
+    //console.log('images: ', image)
+    //console.log(hotelDescriptionResponse.size)
+  }, [hotel])
 
   if (reload && items.length == 0) {
     setTimeout(() => {

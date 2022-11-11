@@ -6,23 +6,16 @@ import {
   HotelAvailabilityResponse,
 } from '../../../../../models/hotel/search-models/hotelAvailabilityResponse'
 import HotelDescriptionService from '../../../../../services/hotel/HotelDescriptionService'
-import { HotelAvailabilityRequest } from '../../../../../models/hotel/search-models/hotelAvailabilityRequest'
 import './HotelAvailability.scss'
 import SearchResults from './SearchResults'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { IRootState } from '../../../../../reducers/rootReducer'
+import { hotelSearchDescriptionResponseAction } from '../../../../../actions/hotelSearchAction'
 
 export const HotelAvailability = () => {
   const [hotelItems, setHotelItems] = useState<Hotel[]>([])
   const [hotelBackupItems, setHotelBackupItems] = useState<Hotel[]>([])
-  const [hotelDescriptionResponse, setHotelDescriptionResponse] = useState(
-    new Map<string, HotelDescriptionResponse>(),
-  )
 
-  const hotelAvailabilityRequest: HotelAvailabilityRequest = useSelector(
-    (state: IRootState) =>
-      state.hotel.availabilityRequest.hotelAvailabilityRequest,
-  )
   const hotelAvailabilityResponse: HotelAvailabilityResponse = useSelector(
     (state: IRootState) =>
       state.hotel.availabilityResponse.hotelAvailabilityResponse,
@@ -30,6 +23,8 @@ export const HotelAvailability = () => {
   const days: number = useSelector(
     (state: IRootState) => state.hotel.nightCount.days,
   )
+
+  const dispatch = useDispatch()
 
   const updateBackupHotelItem = () => {
     if (hotelItems.length - hotelBackupItems.length >= 5) {
@@ -48,9 +43,7 @@ export const HotelAvailability = () => {
   }
 
   const updateMap = (hotelcode: string, response: HotelDescriptionResponse) => {
-    setHotelDescriptionResponse(
-      hotelDescriptionResponse.set(hotelcode, response),
-    )
+    dispatch(hotelSearchDescriptionResponseAction(hotelcode, response))
   }
   const getHotelDescription = (hotelDescriptionDetails: Hotel) => {
     HotelDescriptionService.getHotelDescription(
@@ -118,8 +111,6 @@ export const HotelAvailability = () => {
       {hotelAvailabilityResponse.hotelItem.length > 0}
       <SearchResults
         hotelBackupItems={hotelBackupItems}
-        hotelDescriptionResponse={hotelDescriptionResponse}
-        hotelAvailabilityRequest={hotelAvailabilityRequest}
         days={days}
       ></SearchResults>
 
