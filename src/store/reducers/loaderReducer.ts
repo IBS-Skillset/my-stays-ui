@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux'
-import { ActionLoader } from '../models/actionModels/loader'
+import { ActionLoader } from '../actionModels/loader'
 
 const initialState = {
   showLoading: false,

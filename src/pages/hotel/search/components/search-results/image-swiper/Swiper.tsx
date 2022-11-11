@@ -7,7 +7,7 @@ import { SwiperItemType } from './types'
 import { getRefValue, useStateRef } from './hooks'
 import { getTouchEventData } from './dom'
 import { useSelector } from 'react-redux'
-import { IRootState } from '../../../../../../reducers/rootReducer'
+import { IRootState } from '../../../../../../store/reducers/rootReducer'
 export type Props = {
   images: (hotelDescriptionResponse: any) => Array<SwiperItemType>
   hotelCode: string

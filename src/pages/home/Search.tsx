@@ -16,7 +16,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import HotelSearchService from '../../services/hotel/HotelSearchService'
 import { HotelAvailabilityResponse } from '../../models/hotel/search-models/hotelAvailabilityResponse'
 import { intervalToDuration } from 'date-fns'
-import { IRootState } from '../../reducers/rootReducer'
+import { IRootState } from '../../store/reducers/rootReducer'
 import { useDispatch, useSelector } from 'react-redux'
 import DispatchPkceData from '../../setup/oauth2/pkce/DispatchPkceData'
 import AuthorizeUser from '../../setup/oauth2/components/AuthorizeUser'
@@ -25,7 +25,7 @@ import {
   hotelSearchAvailabilityResponseAction,
   locationAction,
   nightCountAction,
-} from '../../actions/hotelSearchAction'
+} from '../../store/actions/hotelSearchAction'
 import { useNavigate } from 'react-router-dom'
 import { SearchHeader } from './search-header/SearchHeader'
 

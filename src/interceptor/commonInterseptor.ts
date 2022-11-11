@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import { useDispatch } from 'react-redux'
-import { loadingToggleAction } from '../actions/loaderAction'
+import { loadingToggleAction } from '../store/actions/loaderAction'
 
 export function useCommonInterseptor() {
   const dispatch = useDispatch()

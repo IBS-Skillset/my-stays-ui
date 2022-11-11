@@ -1,13 +1,13 @@
-import { HotelAvailabilityResponse } from '../models/hotel/search-models/hotelAvailabilityResponse'
+import { HotelAvailabilityResponse } from '../../models/hotel/search-models/hotelAvailabilityResponse'
 import {
   ActionLocation,
   ActionNightCount,
   HotelAvailabilityRequestAction,
   HotelAvailabilityResponseAction,
   HotelDescriptionResponseAction,
-} from '../models/actionModels/search'
-import { HotelAvailabilityRequest } from '../models/hotel/search-models/hotelAvailabilityRequest'
-import { HotelDescriptionResponse } from '../models/hotel/description-models/hotelDescriptionResponse'
+} from '../actionModels/search'
+import { HotelAvailabilityRequest } from '../../models/hotel/search-models/hotelAvailabilityRequest'
+import { HotelDescriptionResponse } from '../../models/hotel/description-models/hotelDescriptionResponse'
 
 export function hotelSearchAvailabilityRequestAction(
   hotelAvailabilityRequest: HotelAvailabilityRequest,

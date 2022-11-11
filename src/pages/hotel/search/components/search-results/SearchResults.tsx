@@ -13,7 +13,7 @@ import { SwiperItemType } from './image-swiper/types'
 
 import './SearchResults.scss'
 import { useSelector } from 'react-redux'
-import { IRootState } from '../../../../../reducers/rootReducer'
+import { IRootState } from '../../../../../store/reducers/rootReducer'
 //import {ImageSwiper} from "./image-swiper/ImageSwiper";
 
 interface SearchResult {

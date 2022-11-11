@@ -3,7 +3,7 @@ import { FormEvent, useState } from 'react'
 import { useSelector } from 'react-redux'
 import languageSVG from '../../../../assets/svg/language.svg'
 import { LOCAL_STORAGE_KEYS } from '../../../../constants/appConstants'
-import { IRootState } from '../../../../reducers/rootReducer'
+import { IRootState } from '../../../../store/reducers/rootReducer'
 import { getSelectedLang } from '../../../../util/web/webStorageUtil'
 /*import { NavBar } from '../navbar/NavBar'*/
 import './Header.scss'

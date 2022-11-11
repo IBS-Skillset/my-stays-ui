@@ -1,4 +1,4 @@
-import { ActionToken } from '../models/actionModels/auth'
+import { ActionToken } from '../actionModels/auth'
 
 export function tokenAction(
   accessToken: string,

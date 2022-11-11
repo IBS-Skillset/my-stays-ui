@@ -8,7 +8,7 @@ import './SignUp.scss'
 import CreateAccountService from '../../services/signup/CreateAccountService'
 import bcrypt, { hashSync } from 'bcryptjs'
 import { useDispatch } from 'react-redux'
-import { autoPopulateEmailAction } from '../../actions/signUpAction'
+import { autoPopulateEmailAction } from '../../store/actions/signUpAction'
 
 export interface IFormInputs {
   email: string

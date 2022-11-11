@@ -18,7 +18,7 @@ import HotelSearchService from '../../../../services/hotel/HotelSearchService'
 import './HotelSearch.scss'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { IRootState } from '../../../../reducers/rootReducer'
+import { IRootState } from '../../../../store/reducers/rootReducer'
 import AuthorizeUser from '../../../../setup/oauth2/components/AuthorizeUser'
 import DispatchPkceData from '../../../../setup/oauth2/pkce/DispatchPkceData'
 import DatePicker from 'react-datepicker'
@@ -29,7 +29,7 @@ import {
   hotelSearchAvailabilityResponseAction,
   locationAction,
   nightCountAction,
-} from '../../../../actions/hotelSearchAction'
+} from '../../../../store/actions/hotelSearchAction'
 
 interface IFormInputs {
   location: string

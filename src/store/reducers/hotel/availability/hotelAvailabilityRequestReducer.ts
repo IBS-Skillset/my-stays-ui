@@ -1,4 +1,4 @@
-import { HotelAvailabilityRequestAction } from '../../../models/actionModels/search'
+import { HotelAvailabilityRequestAction } from '../../../actionModels/search'
 const date = new Date()
 const initialState = {
   hotelAvailabilityRequest: {

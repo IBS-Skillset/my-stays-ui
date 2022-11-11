@@ -5,9 +5,9 @@ import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import AuthConstants from '../../setup/oauth2/constants/AuthConstants'
 import { useDispatch, useSelector } from 'react-redux'
-import { IRootState } from '../../reducers/rootReducer'
-import { userLogOutAction } from '../../actions/logoutAction'
 import { userSessionOutAction } from '../../actions/sessionOutAction'
+import { IRootState } from '../../store/reducers/rootReducer'
+import { userLogOutAction } from '../../store/actions/logoutAction'
 
 function SignIn() {
   const [open, setOpen] = useState<boolean>(false)

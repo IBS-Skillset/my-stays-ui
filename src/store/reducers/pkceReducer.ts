@@ -1,4 +1,4 @@
-import { AuthAction } from '../models/actionModels/auth'
+import { AuthAction } from '../actionModels/auth'
 
 const initialState = {
   codeVerifier: '',

@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
-import { tokenAction } from '../actions/tokenAction'
 import RefreshToken from '../setup/oauth2/api/RefreshToken'
-import { getAccessToken, getRefreshToken } from '../stateStorage'
+import { tokenAction } from '../store/actions/tokenAction'
+import { getAccessToken, getRefreshToken } from '../store/stateStorage'
 
 const useAuthInterceptor = () => {
   const dispatch = useDispatch()

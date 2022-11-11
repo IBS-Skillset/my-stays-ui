@@ -8,8 +8,8 @@ import {
   codeChallengeAction,
   codeVerifierAction,
   stateAction,
-} from '../../../actions/pkceAction'
-import { authorizeAction } from '../../../actions/authorizeAction'
+} from '../../../store/actions/pkceAction'
+import { authorizeAction } from '../../../store/actions/authorizeAction'
 
 const DispatchPkceData = () => {
   localStorage.clear()

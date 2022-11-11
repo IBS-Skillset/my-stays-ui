@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import i18nConf from './config/i18nConfig'
-import { store } from './store'
+import { store } from './store/store'
 import './style.scss'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)

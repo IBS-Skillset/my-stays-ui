@@ -1,5 +1,5 @@
-import { HotelAvailabilityResponseAction } from '../../../models/actionModels/search'
-import { HotelAvailabilityResponse } from '../../../models/hotel/search-models/hotelAvailabilityResponse'
+import { HotelAvailabilityResponseAction } from '../../../actionModels/search'
+import { HotelAvailabilityResponse } from '../../../../models/hotel/search-models/hotelAvailabilityResponse'
 
 const hotelAvailability: HotelAvailabilityResponse = {
   responseStatus: { status: 0 },
