@@ -12,20 +12,16 @@ import Swiper from './image-swiper/Swiper'
 import { SwiperItemType } from './image-swiper/types'
 
 import './SearchResults.scss'
+import { useSelector } from 'react-redux'
+import { IRootState } from '../../../../../reducers/rootReducer'
+//import {ImageSwiper} from "./image-swiper/ImageSwiper";
 
 interface SearchResult {
   hotelBackupItems: Hotel[]
-  hotelDescriptionResponse: any
-  hotelAvailabilityRequest: HotelAvailabilityRequest
   days: number
 }
 
-export const SearchResults = ({
-  hotelBackupItems,
-  hotelDescriptionResponse,
-  hotelAvailabilityRequest,
-  days,
-}: SearchResult) => {
+export const SearchResults = ({ hotelBackupItems, days }: SearchResult) => {
   const { t } = useTranslation()
 
   const [show, setShow] = useState(false)
@@ -36,7 +32,7 @@ export const SearchResults = ({
       hotelCode: '',
       rateList: [],
     })
-  const [descItems, setdescItems] = useState<HotelDescriptionResponse>({
+  const [descItems /*, setdescItems*/] = useState<HotelDescriptionResponse>({
     responseStatus: { status: -2 },
     media: { mediaUrl: [] },
     hotelItem: {
@@ -54,6 +50,11 @@ export const SearchResults = ({
     services: { service: [] },
     safetyInfo: { safetyInfo: [] },
   })
+
+  const hotelAvailabilityRequest: HotelAvailabilityRequest = useSelector(
+    (state: IRootState) =>
+      state.hotel.availabilityRequest.hotelAvailabilityRequest,
+  )
 
   const getRoomAvailResponse = async (code: string) => {
     await RoomAvailabilityService.getRoomAvailabilitySearch(
@@ -74,12 +75,15 @@ export const SearchResults = ({
 
   function handleClick(hotelCode: string) {
     getRoomAvailResponse(hotelCode)
-    console.log('response : ', hotelDescriptionResponse.get(hotelCode))
-    setdescItems(hotelDescriptionResponse.get(hotelCode))
+    /*const hotelDesc = useSelector((state:IRootState) => state.hotel.descriptionResponse.hotelDescriptionResponsesPerCode[hotelCode])
+    console.log('response : ', descItems)
+    if (hotelDesc) {
+      setdescItems(hotelDesc)
+    }*/
   }
 
-  const images = (hotelDescription: any, hotelCode: string) => {
-    const responsedesc = hotelDescription.get(hotelCode)
+  const images = (hotelDescription: any) => {
+    const responsedesc = hotelDescription
     const items: Array<SwiperItemType> = []
     if (responsedesc) {
       console.log('response : ', responsedesc)
@@ -108,9 +112,9 @@ export const SearchResults = ({
                     <Swiper
                       images={images}
                       hotelCode={hotel.hotelCode}
-                      hotelDescriptionResponse={hotelDescriptionResponse}
                       key={i}
                     />
+                    /*<ImageSwiper hotelCode={hotel.hotelCode} key={i}/>*/
                   }
                 </div>
               </picture>

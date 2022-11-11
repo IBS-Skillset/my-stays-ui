@@ -4,8 +4,10 @@ import {
   ActionNightCount,
   HotelAvailabilityRequestAction,
   HotelAvailabilityResponseAction,
+  HotelDescriptionResponseAction,
 } from '../models/actionModels/search'
 import { HotelAvailabilityRequest } from '../models/hotel/search-models/hotelAvailabilityRequest'
+import { HotelDescriptionResponse } from '../models/hotel/description-models/hotelDescriptionResponse'
 
 export function hotelSearchAvailabilityRequestAction(
   hotelAvailabilityRequest: HotelAvailabilityRequest,
@@ -35,5 +37,16 @@ export function locationAction(location: string): ActionLocation {
   return {
     type: 'LOCATION',
     payload: location,
+  }
+}
+
+export function hotelSearchDescriptionResponseAction(
+  hotelCode: string,
+  hotelDescriptionResponse: HotelDescriptionResponse,
+): HotelDescriptionResponseAction {
+  return {
+    type: 'ADD_HOTEL_DESCRIPTION_RESPONSE',
+    hotelCode: hotelCode,
+    payload: hotelDescriptionResponse,
   }
 }
