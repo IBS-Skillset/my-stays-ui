@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux'
-import { ActionSignup } from '../models/actionModels/signup'
+import { ActionSignup } from '../actionModels/signup'
 
 const initialState = {
   autoFillEmail: '',

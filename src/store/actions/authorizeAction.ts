@@ -1,4 +1,4 @@
-import { UserAction } from '../models/actionModels/auth'
+import { UserAction } from '../actionModels/auth'
 
 export function authorizeAction(isAuthorized: boolean): UserAction {
   return {

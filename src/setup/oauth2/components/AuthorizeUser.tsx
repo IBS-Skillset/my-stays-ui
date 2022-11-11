@@ -3,8 +3,8 @@ import { useEffect } from 'react'
 import { Authorize } from '../api/Authorize'
 import { Token } from '../api/Token'
 import { useDispatch, useSelector } from 'react-redux'
-import { IRootState } from '../../../reducers/rootReducer'
-import { tokenAction } from '../../../actions/tokenAction'
+import { IRootState } from '../../../store/reducers/rootReducer'
+import { tokenAction } from '../../../store/actions/tokenAction'
 
 const AuthorizeUser = () => {
   const [searchParams] = useSearchParams()

@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";*/
 import { /*LegacyRef,*/ useEffect, /*useRef,*/ useState } from 'react'
 import { useSelector } from 'react-redux'
-import { IRootState } from '../../../../../../reducers/rootReducer'
+import { IRootState } from '../../../../../../store/reducers/rootReducer'
 //import {SwiperItemType} from "./types";
 //import { Swiper as SwiperCore } from 'swiper/types';
 import './ImageSwiper.scss'

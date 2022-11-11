@@ -2,7 +2,7 @@ import Routes from './setup/routes/routes'
 import Loader from './pages/loader/Loader'
 
 import { useSelector } from 'react-redux'
-import { IRootState } from './reducers/rootReducer'
+import { IRootState } from './store/reducers/rootReducer'
 import { useCommonInterseptor } from './interceptor/commonInterseptor'
 import { useIdleTimer } from 'react-idle-timer'
 import { useNavigate } from 'react-router-dom'

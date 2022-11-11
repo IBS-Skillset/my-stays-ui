@@ -1,4 +1,4 @@
-import { ActionLocation } from '../../../models/actionModels/search'
+import { ActionLocation } from '../../../actionModels/search'
 
 const initialState = {
   location: '',

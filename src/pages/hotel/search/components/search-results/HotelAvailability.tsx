@@ -9,8 +9,8 @@ import HotelDescriptionService from '../../../../../services/hotel/HotelDescript
 import './HotelAvailability.scss'
 import SearchResults from './SearchResults'
 import { useDispatch, useSelector } from 'react-redux'
-import { IRootState } from '../../../../../reducers/rootReducer'
-import { hotelSearchDescriptionResponseAction } from '../../../../../actions/hotelSearchAction'
+import { IRootState } from '../../../../../store/reducers/rootReducer'
+import { hotelSearchDescriptionResponseAction } from '../../../../../store/actions/hotelSearchAction'
 
 export const HotelAvailability = () => {
   const [hotelItems, setHotelItems] = useState<Hotel[]>([])

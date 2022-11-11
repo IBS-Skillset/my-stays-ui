@@ -1,5 +1,5 @@
-import { HotelDescriptionResponseAction } from '../../../models/actionModels/search'
-import { HotelDescriptionResponse } from '../../../models/hotel/description-models/hotelDescriptionResponse'
+import { HotelDescriptionResponseAction } from '../../../actionModels/search'
+import { HotelDescriptionResponse } from '../../../../models/hotel/description-models/hotelDescriptionResponse'
 
 const initialState = {
   hotelDescriptionResponsesPerCode: {} as Record<

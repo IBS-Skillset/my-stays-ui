@@ -1,9 +1,12 @@
 import { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { IRootState } from '../../../reducers/rootReducer'
+import { IRootState } from '../../../store/reducers/rootReducer'
 import { Revoke } from '../api/Revoke'
-import { clearState } from '../../../stateStorage'
-import { logOutAction, userLogOutAction } from '../../../actions/logoutAction'
+import { clearState } from '../../../store/stateStorage'
+import {
+  logOutAction,
+  userLogOutAction,
+} from '../../../store/actions/logoutAction'
 import AuthConstants from '../constants/AuthConstants'
 import { useIdleTimer } from 'react-idle-timer'
 import { userSessionOutAction } from '../../../actions/sessionOutAction'

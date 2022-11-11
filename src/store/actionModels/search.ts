@@ -1,6 +1,6 @@
-import { HotelAvailabilityResponse } from '../hotel/search-models/hotelAvailabilityResponse'
-import { HotelAvailabilityRequest } from '../hotel/search-models/hotelAvailabilityRequest'
-import { HotelDescriptionResponse } from '../hotel/description-models/hotelDescriptionResponse'
+import { HotelAvailabilityResponse } from '../../models/hotel/search-models/hotelAvailabilityResponse'
+import { HotelAvailabilityRequest } from '../../models/hotel/search-models/hotelAvailabilityRequest'
+import { HotelDescriptionResponse } from '../../models/hotel/description-models/hotelDescriptionResponse'
 
 export interface HotelAvailabilityRequestAction {
   type: string

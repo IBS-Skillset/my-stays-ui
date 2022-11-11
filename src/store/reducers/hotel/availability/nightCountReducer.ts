@@ -1,4 +1,4 @@
-import { ActionNightCount } from '../../../models/actionModels/search'
+import { ActionNightCount } from '../../../actionModels/search'
 
 const initialState = {
   days: 0,
