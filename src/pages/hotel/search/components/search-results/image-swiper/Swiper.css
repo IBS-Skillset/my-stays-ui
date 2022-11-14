@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 100%;
   overflow: hidden;
-  touch-action: pan-y;
+  position: relative;
 }
 
 .swiper-list {
@@ -12,10 +12,6 @@
   padding: 0;
   margin: 0;
   transition: transform 0.3s ease-out;
-}
-
-.swiper-list.is-swiping {
-  transition: none;
 }
 
 .swiper-indicator {
@@ -35,4 +31,33 @@
 
 .swiper-indicator-item.active {
   background-color: #777777;
+}
+.swiper-container div {
+  text-decoration: none;
+  display: inline-block;
+  padding: 4px 12px;
+  position: absolute;
+  top: 150px;
+}
+
+.swiper-container div:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.arrow {
+  border-radius: 50%;
+  background-color: rgba(49, 49, 49, 0.8);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.previous {
+  left: 0;
+  z-index: 1;
+}
+
+.next {
+  right: 0;
 }

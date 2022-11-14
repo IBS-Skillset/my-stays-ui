@@ -38,7 +38,6 @@
     "redux-state-sync": "^3.1.4",
     "sass": "^1.54.2",
     "stream": "npm:stream-browserify",
-    "swiper": "^8.4.4",
     "yup": "^0.32.11"
   },
   "devDependencies": {
