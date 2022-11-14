@@ -9,12 +9,10 @@ import { Hotel } from '../../../../../models/hotel/search-models/hotelAvailabili
 import RoomAvailabilityService from '../../../../../services/hotel/RoomAvailabilityService'
 import ModalPopup from './ModalPopup'
 import Swiper from './image-swiper/Swiper'
-import { SwiperItemType } from './image-swiper/types'
 
 import './SearchResults.scss'
 import { useSelector } from 'react-redux'
 import { IRootState } from '../../../../../store/reducers/rootReducer'
-//import {ImageSwiper} from "./image-swiper/ImageSwiper";
 
 interface SearchResult {
   hotelBackupItems: Hotel[]
@@ -82,23 +80,6 @@ export const SearchResults = ({ hotelBackupItems, days }: SearchResult) => {
     }*/
   }
 
-  const images = (hotelDescription: any) => {
-    const responsedesc = hotelDescription
-    const items: Array<SwiperItemType> = []
-    if (responsedesc) {
-      console.log('response : ', responsedesc)
-      const itemsMedia = responsedesc.media.mediaUrl
-      console.log('response : ', itemsMedia)
-      itemsMedia.slice(0, 6).map((item: string) => {
-        const image: SwiperItemType = {
-          imageSrc: item,
-        }
-        items.push(image)
-      })
-    }
-    return items
-  }
-
   return (
     <div>
       {hotelBackupItems.map((hotel, i) => {
@@ -108,14 +89,7 @@ export const SearchResults = ({ hotelBackupItems, days }: SearchResult) => {
             <div className="md:flex-none">
               <picture>
                 <div className="hotel-image">
-                  {
-                    <Swiper
-                      images={images}
-                      hotelCode={hotel.hotelCode}
-                      key={i}
-                    />
-                    /*<ImageSwiper hotelCode={hotel.hotelCode} key={i}/>*/
-                  }
+                  {<Swiper hotelCode={hotel.hotelCode} key={i} />}
                 </div>
               </picture>
             </div>
