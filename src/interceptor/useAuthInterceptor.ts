@@ -1,9 +1,8 @@
 import axios from 'axios'
-import RefreshToken from '../setup/oauth2/api/RefreshToken'
-import { tokenAction } from '../actions/tokenAction'
-import { clearState, getAccessToken, getRefreshToken } from '../stateStorage'
 import { useDispatch } from 'react-redux'
-import history from '../models/actionModels/history'
+import { tokenAction } from '../actions/tokenAction'
+import RefreshToken from '../setup/oauth2/api/RefreshToken'
+import { getAccessToken, getRefreshToken } from '../stateStorage'
 
 const useAuthInterceptor = () => {
   const dispatch = useDispatch()
@@ -44,8 +43,8 @@ const useAuthInterceptor = () => {
             return axios(originalRequest)
           })
           .catch(() => {
-            clearState()
-            history.push('/logout')
+            // clearState()
+            window.location.replace('/logout')
           })
       }
       return Promise.reject(error)
