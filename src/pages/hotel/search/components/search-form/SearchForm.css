@@ -1,0 +1,53 @@
+.search-container {
+  @apply border-black border-solid border flex h-16 ml-32 gap-1;
+  width: 1060px;
+}
+.destination-field {
+  @apply border-black border-solid border flex h-12 mt-1 ml-1;
+  width: 400px;
+  border-radius: 10px;
+}
+.field-destination {
+  @apply h-10 ml-1;
+  width: 270px;
+}
+.label-field-dest {
+  @apply block font-medium h-12 text-black mt-1;
+  font-size: 11px;
+}
+.input-value-dest {
+  @apply bg-transparent text-base w-full;
+  font-family: 'Lato', sans-serif;
+  outline: none;
+}
+.search-param {
+  @apply border-black border-solid border flex h-12 mt-1 ml-1;
+  border-radius: 10px;
+  width: 165px;
+}
+.label-field {
+  @apply block font-medium text-black h-4 mt-1 ml-px;
+  font-size: 11px;
+}
+.date-picker-value {
+  font-family: 'Lato', sans-serif;
+}
+.date-picker {
+  @apply h-5 w-32;
+  outline: none;
+}
+.date-picker::placeholder {
+  @apply h-5 w-32;
+}
+.button {
+  @apply h-12 mx-1 mt-1 text-white w-32;
+  border-radius: 10px;
+  font-weight: bold;
+  width: 120px;
+  height: 50px;
+  margin-top: 3px;
+  margin-left: 3px;
+  margin-right: 3px;
+  border-radius: 10px;
+  background-color: var(--btn-bg-primary);
+}

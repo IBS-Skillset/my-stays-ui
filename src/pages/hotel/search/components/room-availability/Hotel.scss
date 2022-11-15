@@ -1,0 +1,158 @@
+.gallery {
+  height: 410px;
+  width: 1060px;
+  margin-left: 128px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.slider {
+  height: 250px;
+  width: 1060px;
+  background-color: rgba(0, 0, 0, 0.613);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+}
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  color: lightgray;
+  cursor: pointer;
+}
+.arrow {
+  margin: 20px;
+  font-size: 50px;
+  color: lightgray;
+  cursor: pointer;
+}
+.sliderWrapper {
+  height: 250px;
+  width: 1060px;
+  margin-left: 128px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sliderImg {
+  height: 250px;
+  width: 1060px;
+}
+.hotelImg {
+  width: 350px;
+  height: 200px;
+  object-fit: cover;
+  cursor: pointer;
+}
+.more-photos {
+  color: black;
+  width: 500px;
+  height: 50px;
+  margin-top: -100px;
+  margin-left: 900px;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.content-avail {
+  border-top: 1px solid rgba(220, 220, 220, 1);
+  height: 100%;
+  width: 1060px;
+  margin-left: 128px;
+}
+.button-group {
+  display: flex;
+  border-top: 1px solid rgba(220, 220, 220, 1);
+  border-bottom: 1px solid rgba(220, 220, 220, 1);
+  margin-top: 10px;
+}
+.tab {
+  font-size: 15px;
+  cursor: pointer;
+  width: 100px;
+  height: 50px;
+  border: 1px solid rgba(220, 220, 220, 1);
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.active-tab {
+  font-size: 15px;
+  cursor: pointer;
+  width: 100px;
+  height: 50px;
+  border: 1px solid rgba(220, 220, 220, 1);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: var(--btn-bg-primary);
+}
+.overview {
+  display: flex;
+}
+.address-avail {
+  border-bottom: 1px solid rgba(220, 220, 220, 1);
+  border-top: 1px solid rgba(220, 220, 220, 1);
+  border-right: 1px solid rgba(220, 220, 220, 1);
+  margin-top: 10px;
+  width: 800px;
+}
+.hotelName {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 10px;
+}
+.map {
+  width: 20rem;
+  height: 10rem;
+  margin-left: 50px;
+}
+.adress {
+  font-size: 12px;
+}
+.address-field {
+  display: flex;
+}
+.image-viewer {
+  background-color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  height: 600px;
+  width: 1000px;
+  @apply shadow-black shadow-md  hover:shadow-lg hover:shadow-black;
+}
+
+:hover.image-viewer {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+.image {
+  width: 300px;
+  height: 200px;
+}
+.close-button {
+  justify-content: center;
+  justify-items: center;
+  height: 28px;
+  width: 28px;
+  border-radius: 2px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: larger;
+  border: none;
+  margin-top: 10px;
+  margin-left: 920px;
+}

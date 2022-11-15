@@ -1,0 +1,52 @@
+.main-content {
+  min-height: 100vh;
+}
+.sorting-container {
+  @apply border-black border-solid border flex h-10 ml-32;
+  width: 510px;
+}
+.sort {
+  @apply border-solid border h-8 mt-1 ml-1 text-center w-16;
+  font-size: small;
+  border-color: rgba(220, 220, 220, 1);
+}
+.best-match {
+  @apply border-solid border h-8 mt-1 text-center w-24;
+  font-size: small;
+  background-color: var(--btn-bg-primary);
+}
+.match {
+  @apply border-solid border h-8 mt-1 text-center w-24;
+  font-size: small;
+  border-color: rgba(220, 220, 220, 1);
+}
+.lowest-price {
+  @apply border-solid border h-8 mt-1 text-center w-40;
+  font-size: small;
+  border-color: rgba(220, 220, 220, 1);
+}
+.viewed {
+  @apply border-solid border h-8 mt-1 text-center w-24;
+  font-size: small;
+  border-color: rgba(220, 220, 220, 1);
+}
+.location-items {
+  @apply text-sm;
+}
+
+.location-items:hover {
+  cursor: pointer;
+  @apply bg-slate-300;
+}
+.search-heading {
+  @apply mt-4;
+  font-weight: bold;
+}
+.hotel-chains-heading {
+  @apply mt-5;
+  font-weight: bold;
+}
+.search-result {
+  @apply ml-10;
+  width: 770px;
+}

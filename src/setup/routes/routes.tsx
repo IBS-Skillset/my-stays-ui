@@ -6,8 +6,9 @@ import AuthorizeUser from '../oauth2/components/AuthorizeUser'
 import LogoutUser from '../oauth2/components/LogoutUser'
 import HomeLayout from '../../pages/dashboard/components/layout/HomeLayout'
 import Search from '../../pages/home/Search'
-import HotelSearch from '../../pages/hotel/search/components/HotelSearch'
+import HotelSearch from '../../pages/hotel/search/components/search-results/HotelSearch'
 import SearchLayout from '../../pages/dashboard/components/layout/SearchLayout'
+import Hotel from '../../pages/hotel/search/components/room-availability/Hotel'
 
 function routes() {
   return (
@@ -21,6 +22,7 @@ function routes() {
       </Route>
       <Route path="" element={<SearchLayout />}>
         <Route path="/search" element={<HotelSearch />} />
+        <Route path="/hotel" element={<Hotel />} />
       </Route>
       <Route path="/authorized" element={<AuthorizeUser />} />
       <Route path="/logout" element={<LogoutUser />} />
