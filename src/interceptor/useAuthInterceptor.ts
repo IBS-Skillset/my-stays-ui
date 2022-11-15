@@ -43,7 +43,6 @@ const useAuthInterceptor = () => {
             return axios(originalRequest)
           })
           .catch(() => {
-            // clearState()
             window.location.replace('/logout')
           })
       }
