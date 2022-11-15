@@ -6,30 +6,12 @@
 }
 
 .modal-popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  max-width: 80%;
-  max-height: calc(100vh - 210px);
-  overflow-y: hidden;
-  overflow-x: hidden;
-  border-radius: 5px;
-  @apply shadow-black shadow-md  hover:shadow-lg hover:shadow-black;
+  margin-top: 10px;
 }
 
 :hover.modal-popup {
   overflow-y: auto;
   overflow-x: hidden;
-}
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(49, 49, 49, 0.8);
 }
 .modal-close {
   position: absolute;

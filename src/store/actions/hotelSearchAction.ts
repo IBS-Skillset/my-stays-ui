@@ -1,13 +1,16 @@
 import { HotelAvailabilityResponse } from '../../models/hotel/search-models/hotelAvailabilityResponse'
 import {
+  ActionHotelCode,
   ActionLocation,
   ActionNightCount,
   HotelAvailabilityRequestAction,
   HotelAvailabilityResponseAction,
   HotelDescriptionResponseAction,
+  RoomAvailabilityResponseAction,
 } from '../actionModels/search'
 import { HotelAvailabilityRequest } from '../../models/hotel/search-models/hotelAvailabilityRequest'
 import { HotelDescriptionResponse } from '../../models/hotel/description-models/hotelDescriptionResponse'
+import { RoomAvailabilityResponse } from '../../models/hotel/roomavailability-models/roomAvailabilityResponse'
 
 export function hotelSearchAvailabilityRequestAction(
   hotelAvailabilityRequest: HotelAvailabilityRequest,
@@ -48,5 +51,21 @@ export function hotelSearchDescriptionResponseAction(
     type: 'ADD_HOTEL_DESCRIPTION_RESPONSE',
     hotelCode: hotelCode,
     payload: hotelDescriptionResponse,
+  }
+}
+
+export function roomAvailabilityResponseAction(
+  roomAvailabilityResponse: RoomAvailabilityResponse,
+): RoomAvailabilityResponseAction {
+  return {
+    type: 'ROOM_AVAILABILITY_RESPONSE',
+    payload: roomAvailabilityResponse,
+  }
+}
+
+export function hotelCodeAction(hotelCode: string): ActionHotelCode {
+  return {
+    type: 'HOTEL_CODE',
+    payload: hotelCode,
   }
 }

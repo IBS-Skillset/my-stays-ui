@@ -1,23 +1,26 @@
 import { IoIosCheckmark } from 'react-icons/io'
 import { IoBed, IoCafe } from 'react-icons/io5'
-import { HotelDescriptionResponse } from '../../../../../models/hotel/description-models/hotelDescriptionResponse'
 import { RoomAvailabilityResponse } from '../../../../../models/hotel/roomavailability-models/roomAvailabilityResponse'
-import './ModalPopup.scss'
+import './RoomList.scss'
+import { useSelector } from 'react-redux'
+import { IRootState } from '../../../../../store/reducers/rootReducer'
+import React from 'react'
 
-interface roomList {
-  roomAvailabilityResponse: RoomAvailabilityResponse
-  setShow: Function
-  descItems: HotelDescriptionResponse
-}
-
-function ModalPopup({
-  roomAvailabilityResponse,
-  setShow,
-  descItems,
-}: roomList) {
-  const limit = descItems.services.service
-    ? descItems.services.service.slice(0, 5)
-    : []
+function RoomList() {
+  const roomAvailabilityResponseState: RoomAvailabilityResponse = useSelector(
+    (state: IRootState) =>
+      state.hotel.roomAvailResponse.roomAvailabilityResponse,
+  )
+  const hotelCode: string = useSelector(
+    (state: IRootState) => state.hotel.hotelCode.hotelCode,
+  )
+  const hotel = useSelector(
+    (state: IRootState) =>
+      state.hotel.descriptionResponse.hotelDescriptionResponsesPerCode[
+        hotelCode
+      ],
+  )
+  const limit = hotel.services.service ? hotel.services.service.slice(0, 5) : []
   const service = (
     <>
       {limit
@@ -52,20 +55,12 @@ function ModalPopup({
                 <th className="w-32 rounded-tr-lg p-3 text-white modal-thead text-sm font-semibold tracking-wide ">
                   <div className="flex justify-between">
                     <span>Your choice</span>
-                    <button
-                      onClick={() => {
-                        setShow(false)
-                      }}
-                      className="sm:px-2 sm:py-1 px-1  rounded-sm text-xl cursor-pointer  border-red-700 shadow-sm hover:shadow-md"
-                    >
-                      &times;
-                    </button>
                   </div>
                 </th>
               </tr>
             </thead>
             <tbody className="">
-              {roomAvailabilityResponse.rateList.map((room, index) => {
+              {roomAvailabilityResponseState.rateList.map((room, index) => {
                 return (
                   <tr
                     key={index}
@@ -127,9 +122,8 @@ function ModalPopup({
           </table>
         </div>
       </div>
-      <div className="modal-overlay"></div>
     </>
   )
 }
 
-export default ModalPopup
+export default RoomList

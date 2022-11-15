@@ -187,6 +187,11 @@ function Search() {
       })
   }
 
+  const travelWrapStyle = {
+    marginLeft: '0px',
+    marginBottom: '100px',
+  }
+
   return (
     <div className="main">
       <form
@@ -194,7 +199,7 @@ function Search() {
         onSubmit={handleSubmit(getHotelAvailability)}
       >
         <div className="heading">Search Hotels</div>
-        <SearchHeader />
+        <SearchHeader travelWrapStyle={travelWrapStyle} />
         <div className="main-form">
           <div className="bg-white rounded-sm h-16 mb-2 relative">
             <div className="icon-wrap">
