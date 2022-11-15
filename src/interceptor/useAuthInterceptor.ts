@@ -3,11 +3,10 @@ import RefreshToken from '../setup/oauth2/api/RefreshToken'
 import { tokenAction } from '../actions/tokenAction'
 import { clearState, getAccessToken, getRefreshToken } from '../stateStorage'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import history from '../models/actionModels/history'
 
 const useAuthInterceptor = () => {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
   axios.interceptors.request.use(
     (config) => {
       const accessToken = getAccessToken()
@@ -46,7 +45,7 @@ const useAuthInterceptor = () => {
           })
           .catch(() => {
             clearState()
-            navigate('/signin')
+            history.push('/logout')
           })
       }
       return Promise.reject(error)

@@ -15,6 +15,7 @@ export const saveState = (state: {
   token: { accessToken: string; refreshToken: string; expires: number }
   authorize: { isAuthorized: boolean }
   logout: { isLoggedOut: boolean }
+  sessionOut: { isSessionOut: boolean }
 }) => {
   try {
     const serializedState = JSON.stringify(state)
