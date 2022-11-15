@@ -5,6 +5,7 @@ import { pkceReducer } from './pkceReducer'
 import { tokenReducer } from './tokenReducer'
 import { authorizeReducer } from './authorizeReducer'
 import { logoutReducer } from './logoutReducer'
+import { sessionOutReducer } from './sessionOutReducer'
 
 const allReducer = combineReducers({
   loader: loaderReducer,
@@ -13,6 +14,7 @@ const allReducer = combineReducers({
   token: tokenReducer,
   authorize: authorizeReducer,
   logout: logoutReducer,
+  sessionOut: sessionOutReducer,
 })
 
 export const rootReducer = (

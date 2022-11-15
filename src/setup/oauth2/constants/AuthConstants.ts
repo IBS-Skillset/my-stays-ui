@@ -10,4 +10,5 @@ export default {
   LOGOUT_URL: `${HOST}/perform_logout?`,
   ERROR_SIGN_IN: 'Invalid Credentials. Please Sign in again!',
   LOGOUT_MESSAGE: 'User logout. Please Sign in again!',
+  SESSION_OUT_MESSAGE: 'Session has expired. Please Sign in again!',
 }

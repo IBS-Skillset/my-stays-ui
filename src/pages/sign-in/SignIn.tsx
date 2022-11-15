@@ -7,6 +7,7 @@ import AuthConstants from '../../setup/oauth2/constants/AuthConstants'
 import { useDispatch, useSelector } from 'react-redux'
 import { IRootState } from '../../reducers/rootReducer'
 import { userLogOutAction } from '../../actions/logoutAction'
+import { userSessionOutAction } from '../../actions/sessionOutAction'
 
 function SignIn() {
   const [open, setOpen] = useState<boolean>(false)
@@ -37,11 +38,21 @@ function SignIn() {
     (state: IRootState) => state.logout.isLoggedOut,
   )
 
+  const isSessionOut = useSelector(
+    (state: IRootState) => state.sessionOut.isSessionOut,
+  )
+
   if (isLoggedOut) {
     setTimeout(() => {
       dispatch(userLogOutAction(false))
     }, 3000)
   }
+  if (isSessionOut) {
+    setTimeout(() => {
+      dispatch(userSessionOutAction(false))
+    }, 3000)
+  }
+
   const msg = (
     <div className="message">
       <h5>User successfully created. Enter the password to proceed</h5>
@@ -57,6 +68,11 @@ function SignIn() {
           )}
           {isLoggedOut && !searchParams?.get('error') && !autoFillEmail && (
             <span className="errorMsg">{AuthConstants.LOGOUT_MESSAGE}</span>
+          )}
+          {isSessionOut && (
+            <span className="errorMsg">
+              {AuthConstants.SESSION_OUT_MESSAGE}
+            </span>
           )}
           <h2 className="signin-heading">Sign in</h2>
           <div>
