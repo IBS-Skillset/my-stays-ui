@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import './Hotel.scss'
 import SearchForm from '../search-form/SearchForm'
 import { HotelDescriptionResponse } from '../../../../../models/hotel/description-models/hotelDescriptionResponse'
@@ -12,11 +12,29 @@ export type Props = {
 function Hotel({ hotel, roomAvailabilityResponse }: Props) {
   const [show, setShow] = useState(false)
   const types = ['Overview', 'Rooms']
-  const [active, setActive] = useState('')
+  const [active, setActive] = useState('Overview')
+  const overviewSection = useRef<HTMLDivElement>(null)
+  const roomsSection = useRef<HTMLDivElement>(null)
 
   const displayImages = hotel.media.mediaUrl
     ? hotel.media.mediaUrl.slice(1, 7)
     : []
+
+  const scrollTo = (type: string) => {
+    setActive(type)
+    let topSection
+    if (type == 'Rooms') {
+      topSection = roomsSection.current!.offsetTop
+    } else {
+      topSection = overviewSection.current!.offsetTop
+    }
+    if (topSection) {
+      window.scrollTo({
+        top: topSection,
+        behavior: 'smooth',
+      })
+    }
+  }
 
   return (
     <div className="main-content">
@@ -70,29 +88,22 @@ function Hotel({ hotel, roomAvailabilityResponse }: Props) {
             <button
               className={active === type ? 'active-tab' : 'tab'}
               key={type}
-              onClick={() => setActive(type)}
+              onClick={() => scrollTo(type)}
             >
               {type}
             </button>
           ))}
         </div>
-        {active === '' && (
-          <>
-            <Overview hotel={hotel} />
-            <hr className="seperator"></hr>
-            <RoomList
-              hotel={hotel}
-              roomAvailabilityResponse={roomAvailabilityResponse}
-            />
-          </>
-        )}
-        {active === 'Overview' && <Overview hotel={hotel} />}
-        {active === 'Rooms' && (
+        <div ref={overviewSection}>
+          <Overview hotel={hotel} />
+        </div>
+        <hr className="seperator"></hr>
+        <div ref={roomsSection}>
           <RoomList
             hotel={hotel}
             roomAvailabilityResponse={roomAvailabilityResponse}
           />
-        )}
+        </div>
       </div>
     </div>
   )
