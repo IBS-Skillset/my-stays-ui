@@ -1,4 +1,4 @@
-import { UserAction } from '../models/actionModels/auth'
+import { UserAction } from '../actionModels/auth'
 
 export function userSessionOutAction(isSessionOut: boolean): UserAction {
   return {

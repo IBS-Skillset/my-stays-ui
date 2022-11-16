@@ -5,7 +5,7 @@ import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import AuthConstants from '../../setup/oauth2/constants/AuthConstants'
 import { useDispatch, useSelector } from 'react-redux'
-import { userSessionOutAction } from '../../actions/sessionOutAction'
+import { userSessionOutAction } from '../../store/actions/sessionOutAction'
 import { IRootState } from '../../store/reducers/rootReducer'
 import { userLogOutAction } from '../../store/actions/logoutAction'
 
