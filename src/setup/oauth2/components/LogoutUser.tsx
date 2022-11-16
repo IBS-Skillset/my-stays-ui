@@ -9,7 +9,7 @@ import {
 } from '../../../store/actions/logoutAction'
 import AuthConstants from '../constants/AuthConstants'
 import { useIdleTimer } from 'react-idle-timer'
-import { userSessionOutAction } from '../../../actions/sessionOutAction'
+import { userSessionOutAction } from '../../../store/actions/sessionOutAction'
 
 const LogoutUser = () => {
   const dispatch = useDispatch()
