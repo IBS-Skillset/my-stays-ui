@@ -71,7 +71,7 @@ function Swiper({ hotelCode }: Props) {
   return (
     <div className="swiper-container" role="presentation">
       <div
-        className="previous arrow"
+        className="previous indicator"
         onClick={() => indicatorOnClick(currentIdx - 1)}
         onKeyDown={() => indicatorOnClick(currentIdx - 1)}
         role="presentation"
@@ -80,7 +80,7 @@ function Swiper({ hotelCode }: Props) {
       </div>
       {swiperIndicator}
       <div
-        className="next arrow"
+        className="next indicator"
         onClick={() => indicatorOnClick(currentIdx + 1)}
         onKeyUp={() => indicatorOnClick(currentIdx + 1)}
         role="presentation"
