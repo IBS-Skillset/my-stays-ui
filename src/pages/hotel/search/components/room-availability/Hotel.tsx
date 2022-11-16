@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import './Hotel.scss'
-import ModalPopup from './RoomList'
-import map from '../../../../../assets/images/map.jpg'
 import SearchForm from '../search-form/SearchForm'
 import { HotelDescriptionResponse } from '../../../../../models/hotel/description-models/hotelDescriptionResponse'
+import RoomList from './RoomList'
+import Overview from './Overview'
 
 export type Props = {
   hotel: HotelDescriptionResponse
@@ -12,12 +12,11 @@ export type Props = {
 function Hotel({ hotel, roomAvailabilityResponse }: Props) {
   const [show, setShow] = useState(false)
   const types = ['Overview', 'Rooms']
-  const [active, setActive] = useState('Overview')
+  const [active, setActive] = useState('')
 
   const displayImages = hotel.media.mediaUrl
-    ? hotel.media.mediaUrl.slice(0, 6)
+    ? hotel.media.mediaUrl.slice(1, 7)
     : []
-  const numberOfImages = hotel.media.mediaUrl.length - 6
 
   return (
     <div className="main-content">
@@ -37,18 +36,33 @@ function Hotel({ hotel, roomAvailabilityResponse }: Props) {
             </div>
           </div>
         )}
-        {displayImages.map((photo, i) => (
-          <div key={i}>
-            <img
-              src={photo}
-              className="hotelImg"
-              onClick={() => setShow(true)}
-              alt=""
-              role="presentation"
-            />
-          </div>
-        ))}
-        <div className="more-photos">+{numberOfImages} photos</div>
+        <img
+          className="first-image"
+          src={hotel.media.mediaUrl[0]}
+          onClick={() => setShow(true)}
+          role="presentation"
+          alt=""
+        />
+        <div className="image-display">
+          {displayImages.map((photo, i) => (
+            <div key={i}>
+              <img
+                src={photo}
+                className="hotelImg"
+                onClick={() => setShow(true)}
+                alt=""
+                role="presentation"
+              />
+            </div>
+          ))}
+        </div>
+        <div
+          className="more-photos"
+          onClick={() => setShow(true)}
+          role="presentation"
+        >
+          See more
+        </div>
       </div>
       <div className="content-avail">
         <div className="button-group">
@@ -62,26 +76,19 @@ function Hotel({ hotel, roomAvailabilityResponse }: Props) {
             </button>
           ))}
         </div>
-        {active == 'Overview' && (
-          <div className="overview">
-            <div className="address-avail">
-              <h1 className="hotelName">Crown Plaza</h1>
-              <div className="address-field">
-                <h1 className="adress">
-                  {hotel.hotelItem.address.countryName}
-                </h1>
-                ,
-                <h1 className="adress">
-                  {hotel.hotelItem.address.streetAddress}
-                </h1>
-                ,<h1 className="adress">{hotel.hotelItem.address.zipCode}</h1>
-              </div>
-            </div>
-            <img src={map} alt="" className="map" />
-          </div>
+        {active === '' && (
+          <>
+            <Overview hotel={hotel} />
+            <hr className="seperator"></hr>
+            <RoomList
+              hotel={hotel}
+              roomAvailabilityResponse={roomAvailabilityResponse}
+            />
+          </>
         )}
-        {active == 'Rooms' && (
-          <ModalPopup
+        {active === 'Overview' && <Overview hotel={hotel} />}
+        {active === 'Rooms' && (
+          <RoomList
             hotel={hotel}
             roomAvailabilityResponse={roomAvailabilityResponse}
           />

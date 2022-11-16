@@ -43,7 +43,8 @@ function RoomList({ hotel, roomAvailabilityResponse }: Props) {
   return (
     <>
       <div className="modal-popup ">
-        <div className="">
+        <h1 className="heading-select-room">Select your room</h1>
+        <div className="room-list">
           <table className="modal-table bg-white rounded-lg ">
             <thead className=" ">
               <tr className="modal-header">

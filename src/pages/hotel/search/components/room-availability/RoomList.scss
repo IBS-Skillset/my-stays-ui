@@ -1,14 +1,6 @@
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-  margin: 0;
-}
-
 .modal-popup {
   margin-top: 10px;
 }
-
 :hover.modal-popup {
   overflow-y: auto;
   overflow-x: hidden;
@@ -51,4 +43,12 @@
 .modal-roomtype {
   text-decoration: none;
   font-size: 10px;
+}
+.room-list {
+  margin-top: 10px;
+}
+.heading-select-room {
+  margin-top: 15px;
+  font-size: 25px;
+  font-weight: bold;
 }

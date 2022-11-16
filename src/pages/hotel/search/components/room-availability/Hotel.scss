@@ -1,10 +1,13 @@
 .gallery {
-  height: 410px;
+  height: 350px;
   width: 1060px;
   margin-left: 128px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+}
+.first-image {
+  height: 350px;
+  width: 300px;
 }
 .slider {
   height: 250px;
@@ -41,13 +44,13 @@
   width: 1060px;
 }
 .hotelImg {
-  width: 350px;
-  height: 200px;
+  width: 245px;
+  height: 170px;
   object-fit: cover;
   cursor: pointer;
 }
 .more-photos {
-  color: black;
+  color: white;
   width: 500px;
   height: 50px;
   margin-top: -100px;
@@ -56,24 +59,30 @@
   font-weight: bold;
   cursor: pointer;
 }
+.image-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 355px;
+  width: 750px;
+  margin-left: 6px;
+}
 .content-avail {
-  border-top: 1px solid rgba(220, 220, 220, 1);
   height: 100%;
   width: 1060px;
   margin-left: 128px;
 }
 .button-group {
   display: flex;
-  border-top: 1px solid rgba(220, 220, 220, 1);
-  border-bottom: 1px solid rgba(220, 220, 220, 1);
+  border-top: 1px solid rgba(0, 0, 0, 0.89);
   margin-top: 10px;
 }
 .tab {
   font-size: 15px;
   cursor: pointer;
   width: 100px;
-  height: 50px;
-  border: 1px solid rgba(220, 220, 220, 1);
+  height: 45px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.89);
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -81,37 +90,11 @@
   font-size: 15px;
   cursor: pointer;
   width: 100px;
-  height: 50px;
-  border: 1px solid rgba(220, 220, 220, 1);
+  height: 45px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.89);
   margin-top: 5px;
   margin-bottom: 5px;
   background-color: var(--btn-bg-primary);
-}
-.overview {
-  display: flex;
-}
-.address-avail {
-  border-bottom: 1px solid rgba(220, 220, 220, 1);
-  border-top: 1px solid rgba(220, 220, 220, 1);
-  border-right: 1px solid rgba(220, 220, 220, 1);
-  margin-top: 10px;
-  width: 800px;
-}
-.hotelName {
-  font-weight: bold;
-  font-size: 20px;
-  margin-top: 10px;
-}
-.map {
-  width: 20rem;
-  height: 10rem;
-  margin-left: 50px;
-}
-.adress {
-  font-size: 12px;
-}
-.address-field {
-  display: flex;
 }
 .image-viewer {
   background-color: white;
@@ -155,4 +138,8 @@
   border: none;
   margin-top: 10px;
   margin-left: 920px;
+}
+.seperator {
+  margin-top: 15px;
+  border-color: grey;
 }
