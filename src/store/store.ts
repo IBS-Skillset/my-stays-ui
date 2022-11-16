@@ -1,20 +1,23 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { rootReducer } from './reducers/rootReducer'
+import reducer from './reducers/rootReducer'
 import { loadState, saveState } from './stateStorage'
 import {
   createStateSyncMiddleware,
   initMessageListener,
+  initStateWithPrevTab,
 } from 'redux-state-sync'
 
 const preloadedState = loadState()
 const middlewares = [createStateSyncMiddleware()]
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(middlewares),
   preloadedState,
 })
+
+initStateWithPrevTab(store)
 
 store.subscribe(() => {
   saveState({

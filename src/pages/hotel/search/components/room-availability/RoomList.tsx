@@ -2,24 +2,25 @@ import { IoIosCheckmark } from 'react-icons/io'
 import { IoBed, IoCafe } from 'react-icons/io5'
 import { RoomAvailabilityResponse } from '../../../../../models/hotel/roomavailability-models/roomAvailabilityResponse'
 import './RoomList.scss'
-import { useSelector } from 'react-redux'
-import { IRootState } from '../../../../../store/reducers/rootReducer'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { HotelDescriptionResponse } from '../../../../../models/hotel/description-models/hotelDescriptionResponse'
 
-function RoomList() {
-  const roomAvailabilityResponseState: RoomAvailabilityResponse = useSelector(
-    (state: IRootState) =>
-      state.hotel.roomAvailResponse.roomAvailabilityResponse,
-  )
-  const hotelCode: string = useSelector(
-    (state: IRootState) => state.hotel.hotelCode.hotelCode,
-  )
-  const hotel = useSelector(
-    (state: IRootState) =>
-      state.hotel.descriptionResponse.hotelDescriptionResponsesPerCode[
-        hotelCode
-      ],
-  )
+export type Props = {
+  hotel: HotelDescriptionResponse
+  roomAvailabilityResponse: React.SetStateAction<RoomAvailabilityResponse>
+}
+function RoomList({ hotel, roomAvailabilityResponse }: Props) {
+  const [roomAvailability, setRoomAvailability] =
+    useState<RoomAvailabilityResponse>({
+      responseStatus: { status: -1 },
+      hotelCode: '',
+      rateList: [],
+    })
+
+  useEffect(() => {
+    setRoomAvailability(roomAvailabilityResponse)
+  }, [roomAvailabilityResponse])
+
   const limit = hotel.services.service ? hotel.services.service.slice(0, 5) : []
   const service = (
     <>
@@ -60,7 +61,7 @@ function RoomList() {
               </tr>
             </thead>
             <tbody className="">
-              {roomAvailabilityResponseState.rateList.map((room, index) => {
+              {roomAvailability.rateList.map((room, index) => {
                 return (
                   <tr
                     key={index}

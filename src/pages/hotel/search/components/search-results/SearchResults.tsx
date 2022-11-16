@@ -1,24 +1,17 @@
 import { AxiosResponse } from 'axios'
 import { useTranslation } from 'react-i18next'
 import starSVG from '../../../../../assets/svg/star.svg'
-import { RoomAvailabilityResponse } from '../../../../../models/hotel/roomavailability-models/roomAvailabilityResponse'
-import { HotelAvailabilityRequest } from '../../../../../models/hotel/search-models/hotelAvailabilityRequest'
 import {
   Hotel,
   HotelAvailabilityResponse,
 } from '../../../../../models/hotel/search-models/hotelAvailabilityResponse'
-import RoomAvailabilityService from '../../../../../services/hotel/RoomAvailabilityService'
 import Swiper from './image-swiper/Swiper'
 
 import './SearchResults.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { IRootState } from '../../../../../store/reducers/rootReducer'
-import { useNavigate } from 'react-router-dom'
-import {
-  hotelCodeAction,
-  hotelSearchDescriptionResponseAction,
-  roomAvailabilityResponseAction,
-} from '../../../../../store/actions/hotelSearchAction'
+import { Link } from 'react-router-dom'
+import { hotelSearchDescriptionResponseAction } from '../../../../../store/actions/hotelSearchAction'
 import { useEffect, useState } from 'react'
 import HotelDescriptionService from '../../../../../services/hotel/HotelDescriptionService'
 import { HotelDescriptionResponse } from '../../../../../models/hotel/description-models/hotelDescriptionResponse'
@@ -26,17 +19,11 @@ import { HotelDescriptionResponse } from '../../../../../models/hotel/descriptio
 function SearchResults() {
   const { t } = useTranslation()
   const dispatch = useDispatch()
-  const navigate = useNavigate()
   const [hotelItems, setHotelItems] = useState<Hotel[]>([])
   const [hotelBackupItems, setHotelBackupItems] = useState<Hotel[]>([])
 
   const days: number = useSelector(
     (state: IRootState) => state.hotel.nightCount.days,
-  )
-
-  const hotelAvailabilityRequest: HotelAvailabilityRequest = useSelector(
-    (state: IRootState) =>
-      state.hotel.availabilityRequest.hotelAvailabilityRequest,
   )
 
   const hotelAvailabilityResponse: HotelAvailabilityResponse = useSelector(
@@ -119,22 +106,6 @@ function SearchResults() {
     fetchHotels()
   }
 
-  const getRoomAvailResponse = async (code: string) => {
-    await RoomAvailabilityService.getRoomAvailabilitySearch(
-      code,
-      hotelAvailabilityRequest,
-      days,
-    )
-      .then((response: AxiosResponse<RoomAvailabilityResponse>) => {
-        dispatch(roomAvailabilityResponseAction(response.data))
-        dispatch(hotelCodeAction(code))
-        navigate('/hotel')
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }
-
   return (
     <div>
       {hotelAvailabilityResponse.responseStatus.status != 1 && (
@@ -175,12 +146,11 @@ function SearchResults() {
                 €{hotel.minPrice}
               </div>
               <div className="col-span-1 pt-2 text-left md:text-right">
-                <button
-                  onClick={() => getRoomAvailResponse(hotel.hotelCode)}
-                  className="btn-availability"
-                >
-                  {t('HOTEL_SEARCH.BUTTON.AVAILABILITY')} &#62;
-                </button>
+                <Link to={`/hotel/${hotel.hotelCode}`} target="_blank">
+                  <button className="btn-availability">
+                    {t('HOTEL_SEARCH.BUTTON.AVAILABILITY')} &#62;
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

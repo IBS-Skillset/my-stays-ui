@@ -8,7 +8,7 @@ import HomeLayout from '../../pages/dashboard/components/layout/HomeLayout'
 import Search from '../../pages/home/Search'
 import HotelSearch from '../../pages/hotel/search/components/search-results/HotelSearch'
 import SearchLayout from '../../pages/dashboard/components/layout/SearchLayout'
-import Hotel from '../../pages/hotel/search/components/room-availability/Hotel'
+import HotelDescription from '../../pages/hotel/search/components/room-availability/HotelDescription'
 
 function routes() {
   return (
@@ -22,7 +22,7 @@ function routes() {
       </Route>
       <Route path="" element={<SearchLayout />}>
         <Route path="/search" element={<HotelSearch />} />
-        <Route path="/hotel" element={<Hotel />} />
+        <Route path="/hotel/:hotelCode" element={<HotelDescription />} />
       </Route>
       <Route path="/authorized" element={<AuthorizeUser />} />
       <Route path="/logout" element={<LogoutUser />} />

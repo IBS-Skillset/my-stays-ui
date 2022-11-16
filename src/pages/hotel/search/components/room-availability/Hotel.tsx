@@ -1,42 +1,23 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { IRootState } from '../../../../../store/reducers/rootReducer'
-import DispatchPkceData from '../../../../../setup/oauth2/pkce/DispatchPkceData'
-import AuthorizeUser from '../../../../../setup/oauth2/components/AuthorizeUser'
 import './Hotel.scss'
 import ModalPopup from './RoomList'
 import map from '../../../../../assets/images/map.jpg'
 import SearchForm from '../search-form/SearchForm'
+import { HotelDescriptionResponse } from '../../../../../models/hotel/description-models/hotelDescriptionResponse'
 
-function Hotel() {
-  const code = useSelector(
-    (state: IRootState) => state.hotel.hotelCode.hotelCode,
-  )
-  const hotel = useSelector(
-    (state: IRootState) =>
-      state.hotel.descriptionResponse.hotelDescriptionResponsesPerCode[code],
-  )
+export type Props = {
+  hotel: HotelDescriptionResponse
+  roomAvailabilityResponse: any
+}
+function Hotel({ hotel, roomAvailabilityResponse }: Props) {
   const [show, setShow] = useState(false)
   const types = ['Overview', 'Rooms']
   const [active, setActive] = useState('Overview')
+
   const displayImages = hotel.media.mediaUrl
     ? hotel.media.mediaUrl.slice(0, 6)
     : []
   const numberOfImages = hotel.media.mediaUrl.length - 6
-
-  const accessToken = useSelector(
-    (state: IRootState) => state.token.accessToken,
-  )
-  const isAuthorized = useSelector(
-    (state: IRootState) => state.authorize.isAuthorized,
-  )
-
-  if (accessToken == '') {
-    if (!isAuthorized) {
-      DispatchPkceData()
-    }
-    return <AuthorizeUser />
-  }
 
   return (
     <div className="main-content">
@@ -99,7 +80,12 @@ function Hotel() {
             <img src={map} alt="" className="map" />
           </div>
         )}
-        {active == 'Rooms' && <ModalPopup />}
+        {active == 'Rooms' && (
+          <ModalPopup
+            hotel={hotel}
+            roomAvailabilityResponse={roomAvailabilityResponse}
+          />
+        )}
       </div>
     </div>
   )
