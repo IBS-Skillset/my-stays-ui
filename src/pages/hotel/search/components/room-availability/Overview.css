@@ -1,0 +1,28 @@
+.overview {
+  display: flex;
+  gap: 10px;
+}
+.address-avail {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.89);
+  border-top: 1px solid rgba(0, 0, 0, 0.89);
+  border-right: 1px solid rgba(0, 0, 0, 0.89);
+  margin-top: 10px;
+  width: 800px;
+}
+.hotelName {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 10px;
+}
+.address-field {
+  display: flex;
+  margin-top: 5px;
+}
+.adress {
+  font-size: 12px;
+}
+.map {
+  width: 20rem;
+  height: 10rem;
+  margin-top: 8px;
+}
