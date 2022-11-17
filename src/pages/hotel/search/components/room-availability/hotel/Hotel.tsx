@@ -101,10 +101,7 @@ function Hotel({ hotel, roomAvailabilityResponse }: Props) {
         </div>
         <hr className="seperator"></hr>
         <div ref={roomsSection}>
-          <RoomList
-            hotel={hotel}
-            roomAvailabilityResponse={roomAvailabilityResponse}
-          />
+          <RoomList roomAvailabilityResponse={roomAvailabilityResponse} />
         </div>
       </div>
     </div>

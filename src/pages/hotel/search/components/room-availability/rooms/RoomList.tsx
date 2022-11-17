@@ -1,15 +1,12 @@
-import { IoIosCheckmark } from 'react-icons/io'
 import { IoBed, IoCafe } from 'react-icons/io5'
 import { RoomAvailabilityResponse } from '../../../../../../models/hotel/roomavailability-models/roomAvailabilityResponse'
 import './RoomList.scss'
 import React, { useEffect, useState } from 'react'
-import { HotelDescriptionResponse } from '../../../../../../models/hotel/description-models/hotelDescriptionResponse'
 
 export type Props = {
-  hotel: HotelDescriptionResponse
   roomAvailabilityResponse: React.SetStateAction<RoomAvailabilityResponse>
 }
-function RoomList({ hotel, roomAvailabilityResponse }: Props) {
+function RoomList({ roomAvailabilityResponse }: Props) {
   const [roomAvailability, setRoomAvailability] =
     useState<RoomAvailabilityResponse>({
       responseStatus: { status: -1 },
@@ -20,25 +17,6 @@ function RoomList({ hotel, roomAvailabilityResponse }: Props) {
   useEffect(() => {
     setRoomAvailability(roomAvailabilityResponse)
   }, [roomAvailabilityResponse])
-
-  const limit = hotel.services.service ? hotel.services.service.slice(0, 5) : []
-  const service = (
-    <>
-      {limit
-        ? limit.map((service, index) => {
-            return (
-              <div key={index} className="flex">
-                <div className="flex items-center">
-                  {' '}
-                  <IoIosCheckmark className="text-green-600 text-sm"></IoIosCheckmark>
-                  <span className="modal-roomtype">{service}&nbsp;</span>
-                </div>
-              </div>
-            )
-          })
-        : ''}
-    </>
-  )
 
   return (
     <>
@@ -80,7 +58,6 @@ function RoomList({ hotel, roomAvailabilityResponse }: Props) {
                             ''
                           )}
                         </div>
-                        <div className="">{service}</div>
                       </div>
                     </td>
                     <td className="p-3 text-sm text-gray-700 font-semibold">
