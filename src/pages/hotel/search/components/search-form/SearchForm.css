@@ -43,11 +43,5 @@
   @apply h-12 mx-1 mt-1 text-white w-32;
   border-radius: 10px;
   font-weight: bold;
-  width: 120px;
-  height: 50px;
-  margin-top: 3px;
-  margin-left: 3px;
-  margin-right: 3px;
-  border-radius: 10px;
   background-color: var(--btn-bg-primary);
 }

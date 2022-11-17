@@ -7,7 +7,7 @@ import { IRootState } from '../../../../../store/reducers/rootReducer'
 import { HotelAvailabilityRequest } from '../../../../../models/hotel/search-models/hotelAvailabilityRequest'
 import RoomAvailabilityService from '../../../../../services/hotel/RoomAvailabilityService'
 import { AxiosResponse } from 'axios'
-import Hotel from './Hotel'
+import Hotel from './hotel/Hotel'
 
 const HotelDescription = () => {
   const [, setRoomAvailabilityResponseAvailable] = useState(false)

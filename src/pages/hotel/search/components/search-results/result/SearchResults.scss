@@ -3,12 +3,9 @@
   @apply rounded-sm h-8 text-sm mt-24 text-center text-white w-32;
 }
 .hotel-image {
+  @apply object-cover overflow-hidden;
   max-height: 200px;
   width: 300px;
-  object-fit: cover;
-  overflow: auto;
-  overflow: hidden;
-  touch-action: pan-y;
 }
 
 .hotel-container {
@@ -27,7 +24,7 @@
   width: 300px;
 }
 .hotel-name {
-  font-size: 18px;
+  @apply text-lg;
   font-weight: bold;
 }
 .address {

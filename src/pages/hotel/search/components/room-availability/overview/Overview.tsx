@@ -1,6 +1,6 @@
 import React from 'react'
-import map from '../../../../../assets/images/map.jpg'
-import { HotelDescriptionResponse } from '../../../../../models/hotel/description-models/hotelDescriptionResponse'
+import map from '../../../../../../assets/images/map.jpg'
+import { HotelDescriptionResponse } from '../../../../../../models/hotel/description-models/hotelDescriptionResponse'
 import './Overview.css'
 
 export type Props = {

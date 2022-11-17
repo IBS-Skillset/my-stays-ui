@@ -74,7 +74,7 @@
 }
 .button-group {
   display: flex;
-  border-top: 1px solid rgba(0, 0, 0, 0.89);
+  border-top: 1px solid rgba(0, 0, 0, 0.45);
   margin-top: 10px;
 }
 .tab {
@@ -82,7 +82,7 @@
   cursor: pointer;
   width: 100px;
   height: 45px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.89);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.45);
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -91,7 +91,7 @@
   cursor: pointer;
   width: 100px;
   height: 45px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.89);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.45);
   margin-top: 5px;
   margin-bottom: 5px;
   background-color: var(--btn-bg-primary);
@@ -103,24 +103,32 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  overflow-y: hidden;
-  overflow-x: hidden;
   height: 600px;
   width: 1000px;
   @apply shadow-black shadow-md  hover:shadow-lg hover:shadow-black;
 }
 
-:hover.image-viewer {
-  overflow-y: auto;
+.image-grid-border {
+  margin: 20px 0px 20px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.45);
+  width: 970px;
+  overflow-y: hidden;
   overflow-x: hidden;
+  height: 530px;
 }
 
 .image-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-left: 30px;
-  margin-top: 30px;
+  margin: 10px 0px 10px 10px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  height: 500px;
+}
+:hover.image-grid {
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .image {
@@ -137,9 +145,9 @@
   font-size: larger;
   border: none;
   margin-top: 10px;
-  margin-left: 920px;
+  margin-left: 950px;
 }
 .seperator {
   margin-top: 15px;
-  border-color: grey;
+  border-color: rgba(0, 0, 0, 0.45);
 }

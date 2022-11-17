@@ -8,7 +8,7 @@ import DispatchPkceData from '../../../../../setup/oauth2/pkce/DispatchPkceData'
 import 'react-datepicker/dist/react-datepicker.css'
 import SearchForm from './../search-form/SearchForm'
 import { useSelector } from 'react-redux'
-import SearchResults from './SearchResults'
+import SearchResults from './result/SearchResults'
 
 function HotelSearch() {
   const accessToken = useSelector(
