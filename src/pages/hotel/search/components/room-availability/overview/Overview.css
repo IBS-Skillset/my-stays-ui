@@ -3,9 +3,9 @@
   gap: 10px;
 }
 .address-avail {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.89);
-  border-top: 1px solid rgba(0, 0, 0, 0.89);
-  border-right: 1px solid rgba(0, 0, 0, 0.89);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.45);
+  border-top: 1px solid rgba(0, 0, 0, 0.45);
+  border-right: 1px solid rgba(0, 0, 0, 0.45);
   margin-top: 10px;
   width: 800px;
 }

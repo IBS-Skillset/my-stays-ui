@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './SwiperItem.css'
 import { SwiperItemType } from './types'
-import ImageNA from '../../../../../../assets/images/Error.jpg'
+import ImageNA from '../../../../../../../assets/images/Error.jpg'
 
 export type Props = SwiperItemType
 

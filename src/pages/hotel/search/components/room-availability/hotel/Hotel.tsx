@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react'
 import './Hotel.scss'
-import SearchForm from '../search-form/SearchForm'
-import { HotelDescriptionResponse } from '../../../../../models/hotel/description-models/hotelDescriptionResponse'
-import RoomList from './RoomList'
-import Overview from './Overview'
+import SearchForm from '../../search-form/SearchForm'
+import { HotelDescriptionResponse } from '../../../../../../models/hotel/description-models/hotelDescriptionResponse'
+import RoomList from '../rooms/RoomList'
+import Overview from '../overview/Overview'
 
 export type Props = {
   hotel: HotelDescriptionResponse
@@ -45,12 +45,14 @@ function Hotel({ hotel, roomAvailabilityResponse }: Props) {
             <button className="close-button" onClick={() => setShow(false)}>
               &times;
             </button>
-            <div className="image-grid">
-              {hotel.media.mediaUrl.map((photo, i) => (
-                <div key={i}>
-                  <img src={photo} alt="" className="image" />
-                </div>
-              ))}
+            <div className="image-grid-border">
+              <div className="image-grid">
+                {hotel.media.mediaUrl.map((photo, i) => (
+                  <div key={i}>
+                    <img src={photo} alt="" className="image" />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}

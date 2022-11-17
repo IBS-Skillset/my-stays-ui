@@ -29,3 +29,7 @@
   @apply block w-full text-white font-semibold py-2 px-4 mt-2;
   @layer focus:outline-none focus:shadow-outline;
 }
+.signin-heading {
+  @apply text-3xl lg:text-4xl text-start select-none p-5 text-white;
+  font-family: 'Lato', sans-serif;
+}

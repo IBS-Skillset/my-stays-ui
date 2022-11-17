@@ -1,9 +1,9 @@
 import { IoIosCheckmark } from 'react-icons/io'
 import { IoBed, IoCafe } from 'react-icons/io5'
-import { RoomAvailabilityResponse } from '../../../../../models/hotel/roomavailability-models/roomAvailabilityResponse'
+import { RoomAvailabilityResponse } from '../../../../../../models/hotel/roomavailability-models/roomAvailabilityResponse'
 import './RoomList.scss'
 import React, { useEffect, useState } from 'react'
-import { HotelDescriptionResponse } from '../../../../../models/hotel/description-models/hotelDescriptionResponse'
+import { HotelDescriptionResponse } from '../../../../../../models/hotel/description-models/hotelDescriptionResponse'
 
 export type Props = {
   hotel: HotelDescriptionResponse

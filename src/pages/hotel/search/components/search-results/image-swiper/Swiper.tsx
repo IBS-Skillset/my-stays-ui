@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-import SwiperItem from './SwiperItem'
+import SwiperItem from './swiperitem/SwiperItem'
 
 import './Swiper.css'
-import { SwiperItemType } from './types'
+import { SwiperItemType } from './swiperitem/types'
 import { getRefValue, useStateRef } from './hooks'
 import { useSelector } from 'react-redux'
 import { IRootState } from '../../../../../../store/reducers/rootReducer'
