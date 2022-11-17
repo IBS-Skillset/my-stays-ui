@@ -74,7 +74,7 @@
 }
 .button-group {
   display: flex;
-  border-top: 1px solid rgba(0, 0, 0, 0.45);
+  border-top: 1px solid rgba(0, 0, 0, 0.34);
   margin-top: 10px;
 }
 .tab {
@@ -82,7 +82,7 @@
   cursor: pointer;
   width: 100px;
   height: 45px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.45);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.34);
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -91,7 +91,7 @@
   cursor: pointer;
   width: 100px;
   height: 45px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.45);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.34);
   margin-top: 5px;
   margin-bottom: 5px;
   background-color: var(--btn-bg-primary);
@@ -110,7 +110,7 @@
 
 .image-grid-border {
   margin: 20px 0px 20px 20px;
-  border: 1px solid rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(0, 0, 0, 0.34);
   width: 970px;
   overflow-y: hidden;
   overflow-x: hidden;

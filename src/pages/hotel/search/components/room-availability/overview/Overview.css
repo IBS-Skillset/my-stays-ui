@@ -3,11 +3,12 @@
   gap: 10px;
 }
 .address-avail {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.45);
-  border-top: 1px solid rgba(0, 0, 0, 0.45);
-  border-right: 1px solid rgba(0, 0, 0, 0.45);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.34);
+  border-top: 1px solid rgba(0, 0, 0, 0.34);
+  border-right: 1px solid rgba(0, 0, 0, 0.34);
   margin-top: 10px;
-  width: 800px;
+  width: 850px;
+  height: 250px;
 }
 .hotelName {
   font-weight: bold;
@@ -22,7 +23,31 @@
   font-size: 12px;
 }
 .map {
-  width: 20rem;
-  height: 10rem;
+  width: 250px;
+  height: 250px;
   margin-top: 8px;
+}
+.room-type {
+  text-decoration: none;
+  font-size: 13px;
+}
+.grid-view {
+  display: grid;
+  column-gap: 50px;
+  grid-template-columns: auto auto auto;
+  margin-top: 10px;
+  height: 120px;
+}
+.grid-item {
+  height: 25px;
+  display: flex;
+  gap: 10px;
+}
+.iso-mark {
+  color: green;
+  font-size: large;
+}
+.facilities {
+  font-size: 20px;
+  margin-top: 10px;
 }
