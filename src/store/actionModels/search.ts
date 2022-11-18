@@ -1,7 +1,7 @@
 import { HotelAvailabilityResponse } from '../../models/hotel/search-models/hotelAvailabilityResponse'
 import { HotelAvailabilityRequest } from '../../models/hotel/search-models/hotelAvailabilityRequest'
 import { HotelDescriptionResponse } from '../../models/hotel/description-models/hotelDescriptionResponse'
-import { RoomAvailabilityResponse } from '../../models/hotel/roomavailability-models/roomAvailabilityResponse'
+import { Rate } from '../../models/hotel/roomavailability-models/roomAvailabilityResponse'
 
 export interface HotelAvailabilityRequestAction {
   type: string
@@ -28,12 +28,7 @@ export interface HotelDescriptionResponseAction {
   payload: HotelDescriptionResponse
 }
 
-export interface RoomAvailabilityResponseAction {
+export interface ActionRate {
   type: string
-  payload: RoomAvailabilityResponse
-}
-
-export interface ActionHotelCode {
-  type: string
-  payload: string
+  payload: Rate
 }

@@ -1,6 +1,6 @@
 .btn-availability {
   background-color: var(--btn-bg-primary);
-  @apply rounded-sm h-8 text-sm mt-24 text-center text-white w-32;
+  @apply rounded-sm h-12 text-sm mt-24 text-center text-white w-32;
 }
 .hotel-image {
   @apply object-cover overflow-hidden;

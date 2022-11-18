@@ -24,6 +24,7 @@ interface AvailableHotelItem {
   address: Address
   latitude: number
   longitude: number
+  hotelName: string
 }
 interface Descriptions {
   decription: string[]
