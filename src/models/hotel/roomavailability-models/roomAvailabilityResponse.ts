@@ -4,7 +4,7 @@ export interface RoomAvailabilityResponse {
   rateList: Rate[]
 }
 
-interface Rate {
+export interface Rate {
   bookingCode: string
   available: string
   rateCategory: string

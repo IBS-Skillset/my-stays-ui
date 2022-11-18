@@ -31,8 +31,7 @@ function Overview({ hotel }: Props) {
   return (
     <div className="overview">
       <div className="address-avail">
-        {/*{this should map from backend}*/}
-        <h1 className="hotelName">Crown Plaza</h1>
+        <h1 className="hotelName">{hotel.hotelItem.hotelName}</h1>
         <div className="address-field">
           <h1 className="adress">{hotel.hotelItem.address.countryName}</h1>,
           <h1 className="adress">{hotel.hotelItem.address.streetAddress}</h1>,

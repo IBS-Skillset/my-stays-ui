@@ -9,36 +9,6 @@
   height: 350px;
   width: 300px;
 }
-.slider {
-  height: 250px;
-  width: 1060px;
-  background-color: rgba(0, 0, 0, 0.613);
-  z-index: 999;
-  display: flex;
-  align-items: center;
-}
-.close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 30px;
-  color: lightgray;
-  cursor: pointer;
-}
-.arrow {
-  margin: 20px;
-  font-size: 50px;
-  color: lightgray;
-  cursor: pointer;
-}
-.sliderWrapper {
-  height: 250px;
-  width: 1060px;
-  margin-left: 128px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .sliderImg {
   height: 250px;
   width: 1060px;

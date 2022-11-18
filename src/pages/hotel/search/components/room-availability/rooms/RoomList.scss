@@ -1,33 +1,16 @@
-.modal-popup {
-  margin-top: 10px;
-}
-:hover.modal-popup {
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-.modal-close {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  justify-items: center;
-  top: 0.2rem;
-  right: 0.2rem;
-  background-color: rgb(236, 8, 8);
-  height: 28px;
-  width: 28px;
-  border-radius: 2px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  font-size: larger;
-  border: none;
-}
 .modal-table {
-  width: 70vw;
+  width: 1100px;
+}
+.price {
+  padding: 0.75rem;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  width: 7rem;
 }
 
-.modal-header {
-  position: sticky;
-  top: 0;
-}
 .modal-thead {
   background-color: #186399;
 }
@@ -41,9 +24,53 @@
 }
 .room-list {
   margin-top: 10px;
+  display: flex;
 }
 .heading-select-room {
   margin-top: 15px;
   font-size: 25px;
   font-weight: bold;
+}
+.table-header {
+  background-color: #186399;
+  position: sticky;
+  top: 0px;
+}
+.border {
+  border-right: 1px solid white;
+}
+.tick-mark {
+  color: green;
+  font-size: x-large;
+  margin-top: 10px;
+}
+.refund {
+  margin-top: 10px;
+}
+.reserve-button {
+  height: 45px;
+  width: 200px;
+  background-color: var(--btn-bg-primary);
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 25px;
+}
+.selected {
+  cursor: pointer;
+}
+:hover.selected {
+  border: 1px solid #bfdbfe;
+}
+.button-head {
+  height: 45px;
+  width: 200px;
+  background-color: #186399;
+}
+.reserve {
+  width: 250px;
+  height: 300px;
+  position: sticky;
+  top: 0px;
 }
