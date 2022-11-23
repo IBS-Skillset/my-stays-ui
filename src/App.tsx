@@ -1,5 +1,5 @@
 import Routes from './setup/routes/routes'
-import Loader from './pages/loader/Loader'
+import Loader from './pages/common/loader/Loader'
 
 import { useSelector } from 'react-redux'
 import { IRootState } from './store/reducers/rootReducer'
