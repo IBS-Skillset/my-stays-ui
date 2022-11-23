@@ -30,3 +30,16 @@ store.subscribe(() => {
 })
 
 initMessageListener(store)
+
+/***
+ * Attaching the store to Cypress window.
+ * This is to access the store in automation test cases using Cypress.
+ * (Added ts-ignore comments also to make the TS types check pass for this)
+ */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-ignore
+if (window.Cypress) {
+  // @ts-ignore
+  window.store = store
+}
+/* eslint-enable @typescript-eslint/ban-ts-comment */
