@@ -2,41 +2,61 @@
   @apply border-black border-solid border flex h-16 ml-32 gap-1;
   width: 1060px;
 }
-.destination-field {
+.search-container .location-container {
   @apply border-black border-solid border flex h-12 mt-1 ml-1;
   width: 400px;
   border-radius: 10px;
 }
-.field-destination {
+.search-container .location-container .location-input-container {
   @apply h-10 ml-1;
   width: 270px;
 }
-.label-field-dest {
+.search-container .location-container .location-input-container .location-label,
+.search-container .travelers-container .travelers-input-container .travelers-label {
   @apply block font-medium h-12 text-black mt-1;
   font-size: 11px;
 }
-.input-value-dest {
+.search-container .location-container .location-input-container .location-label .location-input,
+.search-container .travelers-container .travelers-input-container .travelers-label .travelers-input {
   @apply bg-transparent text-base w-full;
   font-family: 'Lato', sans-serif;
   outline: none;
 }
-.search-param {
+.search-container .location-container .location-input-container .location-label .location-display-container {
+  @apply absolute z-50 p-6 max-w-sm grid bg-white rounded-sm border border-gray-200 shadow-md dark:bg-slate-50 dark:border-gray-400
+}
+.search-container .date-container,
+.search-container .travelers-container {
   @apply border-black border-solid border flex h-12 mt-1 ml-1;
   border-radius: 10px;
   width: 165px;
 }
-.label-field {
+.search-container .location-container .location-image-container,
+.search-container .date-container .date-image-container,
+.search-container .travelers-container .travelers-image-container {
+  @apply h-10 ml-1 w-6;
+}
+.search-container .location-container .location-image-container .location-image,
+.search-container .date-container .date-image-container .date-image,
+.search-container .travelers-container .travelers-image-container .travelers-image {
+  @apply mt-4 w-5;
+}
+.search-container .date-container .date-input-container,
+.search-container .travelers-container .travelers-input-container {
+  @apply h-10 ml-1 w-32;
+}
+.search-container .date-container .date-input-container .date-label {
   @apply block font-medium text-black h-4 mt-1 ml-px;
   font-size: 11px;
 }
-.date-picker-value {
+.search-container .date-container .date-input-container .date-input {
   font-family: 'Lato', sans-serif;
 }
-.date-picker {
+.search-container .date-container .date-input-container .date-input .date-picker {
   @apply h-5 w-32;
   outline: none;
 }
-.date-picker::placeholder {
+.search-container .date-container .date-input-container .date-input .date-picker::placeholder {
   @apply h-5 w-32;
 }
 .button {

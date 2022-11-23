@@ -15,25 +15,6 @@
   width: 800px;
   bottom: 80px;
 }
-.icon-wrap {
-  @apply flex justify-center absolute inset-y-0 left-0 w-12;
-}
-.svg-image {
-  @apply h-5 mt-5 p-1 w-5;
-  color: rgba(51, 51, 51, 1);
-}
-.input-field {
-  @apply h-16 mx-10 p-2;
-}
-.label {
-  @apply block font-medium h-12 text-black;
-  font-size: 11px;
-}
-.input {
-  @apply bg-transparent text-base w-full;
-  font-family: 'Lato', sans-serif;
-  outline: none;
-}
 .btn-search {
   @apply rounded-sm border-0 cursor-pointer font-black h-10 text-base relative text-white;
   min-width: 100px;
@@ -43,15 +24,6 @@
 }
 .input-wrap {
   @apply bg-white rounded-sm h-16 relative w-56;
-  right: 18px;
-}
-.input-wrap1 {
-  @apply bg-white rounded-sm h-16 relative w-56;
-  left: 6px;
-}
-.input-wrap3 {
-  @apply bg-white rounded-sm h-16 relative w-56;
-  left: 25px;
 }
 .hover {
   background-color: blue;
@@ -66,12 +38,59 @@
   font-weight: bold;
   font-family: 'Poppins', sans-serif;
 }
-.picker {
+.main-form .location-container {
+  @apply bg-white rounded-sm h-16 mb-2 relative;
+}
+.main-form .location-container .location-image-container,
+.main-form .date-container .date-image-container,
+.main-form .travelers-container .travelers-image-container {
+  @apply flex justify-center absolute inset-y-0 left-0 w-12;
+}
+.main-form .location-container .location-image-container .location-image,
+.main-form .date-container .date-image-container .date-image,
+.main-form .travelers-container .travelers-image {
+  @apply h-5 mt-5 p-1 w-5;
+  color: rgba(51, 51, 51, 1);
+}
+.main-form .location-container .location-input-container,
+.main-form .date-container .date-input-container,
+.main-form .travelers-container .travelers-input-container {
+  @apply h-16 mx-10 p-2;
+}
+.main-form .location-container .location-input-container .location-label,
+.main-form .date-container .date-input-container .date-label,
+.main-form .travelers-container .travelers-label {
+  @apply block font-medium text-black;
+  font-size: 11px;
+}
+.main-form .location-container .location-input-container .location-label .location-input,
+.main-form .date-container .date-input-container .date-input,
+.main-form .travelers-container .travelers-input {
+  @apply bg-transparent text-base w-full;
+  font-family: 'Lato', sans-serif;
+  outline: none;
+}
+.main-form .location-container .location-input-container .location-label .location-display-container {
+  @apply absolute z-50 p-6 max-w-sm grid bg-white rounded-sm border border-gray-200 shadow-md dark:bg-slate-50 dark:border-gray-400
+}
+.main-form .check-in {
+  @extend .input-wrap;
+  right: 18px;
+}
+.main-form .check-out {
+  @extend .input-wrap;
+  left: 6px;
+}
+.main-form .date-container .date-input-container .date-input .date-picker {
   outline: none;
   width: 128px;
   height: 24px;
 }
-.picker::placeholder {
+.main-form .date-container .date-input-container .date-input .date-picker::placeholder {
   width: 120px;
   height: 50px;
+}
+.main-form .travelers-container {
+  @apply bg-white rounded-sm h-16 relative w-56;
+  left: 25px;
 }
