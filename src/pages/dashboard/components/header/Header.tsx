@@ -61,7 +61,7 @@ function Header() {
             <div className="app-bar"></div>
           </div>
           <div className="box-container flex justify-between items-center">
-            <div className="brand-banner">myStays.com</div>
+            <div className="brand-banner">HappyStays</div>
             <div className="flex flex-row gap-3 justify-between items-center mr-7 ">
               <div className="language-container">
                 <img className="flex shrink" src={languageSVG} alt="" />
