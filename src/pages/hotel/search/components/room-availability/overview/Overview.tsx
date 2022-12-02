@@ -27,6 +27,7 @@ function Overview({ hotel }: Props) {
         : ''}
     </>
   )
+  console.log('service', service)
 
   return (
     <div className="overview">

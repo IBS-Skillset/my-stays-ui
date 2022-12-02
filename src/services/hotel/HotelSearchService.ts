@@ -15,11 +15,10 @@ class HotelSearchService {
         longitude: hotelAvailabilityRequest.longitude,
         checkInDate: format(hotelAvailabilityRequest.checkInDate, 'yyyyMMdd'),
         checkOutDate: format(hotelAvailabilityRequest.checkOutDate, 'yyyyMMdd'),
-        languageCode:'FRE',
-        countryCode:'FR',
+        languageCode: 'FRE',
+        countryCode: 'FR',
         occupancy: 1,
-        roomCount: 1
-
+        roomCount: 1,
       }),
       {
         headers: {
