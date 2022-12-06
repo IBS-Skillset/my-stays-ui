@@ -12,18 +12,33 @@
   width: 270px;
 }
 .search-container .location-container .location-input-container .location-label,
-.search-container .travelers-container .travelers-input-container .travelers-label {
+.search-container
+  .travelers-container
+  .travelers-input-container
+  .travelers-label {
   @apply block font-medium h-12 text-black mt-1;
   font-size: 11px;
 }
-.search-container .location-container .location-input-container .location-label .location-input,
-.search-container .travelers-container .travelers-input-container .travelers-label .travelers-input {
+.search-container
+  .location-container
+  .location-input-container
+  .location-label
+  .location-input,
+.search-container
+  .travelers-container
+  .travelers-input-container
+  .travelers-label
+  .travelers-input {
   @apply bg-transparent text-base w-full;
   font-family: 'Lato', sans-serif;
   outline: none;
 }
-.search-container .location-container .location-input-container .location-label .location-display-container {
-  @apply absolute z-50 p-6 max-w-sm grid bg-white rounded-sm border border-gray-200 shadow-md dark:bg-slate-50 dark:border-gray-400
+.search-container
+  .location-container
+  .location-input-container
+  .location-label
+  .location-display-container {
+  @apply absolute z-50 p-6 max-w-sm grid bg-white rounded-sm border border-gray-200 shadow-md dark:bg-slate-50 dark:border-gray-400;
 }
 .search-container .date-container,
 .search-container .travelers-container {
@@ -38,7 +53,10 @@
 }
 .search-container .location-container .location-image-container .location-image,
 .search-container .date-container .date-image-container .date-image,
-.search-container .travelers-container .travelers-image-container .travelers-image {
+.search-container
+  .travelers-container
+  .travelers-image-container
+  .travelers-image {
   @apply mt-4 w-5;
 }
 .search-container .date-container .date-input-container,
@@ -52,11 +70,19 @@
 .search-container .date-container .date-input-container .date-input {
   font-family: 'Lato', sans-serif;
 }
-.search-container .date-container .date-input-container .date-input .date-picker {
+.search-container
+  .date-container
+  .date-input-container
+  .date-input
+  .date-picker {
   @apply h-5 w-32;
   outline: none;
 }
-.search-container .date-container .date-input-container .date-input .date-picker::placeholder {
+.search-container
+  .date-container
+  .date-input-container
+  .date-input
+  .date-picker::placeholder {
   @apply h-5 w-32;
 }
 .button {

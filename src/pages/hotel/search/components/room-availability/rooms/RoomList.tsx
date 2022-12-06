@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { IoIosCheckmark } from 'react-icons/io'
 import { useDispatch } from 'react-redux'
 import { rateAction } from '../../../../../../store/actions/hotelSearchAction'
+import { Link } from 'react-router-dom'
 
 export type Props = {
   roomAvailabilityResponse: React.SetStateAction<RoomAvailabilityResponse>
@@ -106,9 +107,11 @@ function RoomList({ roomAvailabilityResponse }: Props) {
         </table>
         <div className="reserve">
           <div className="button-head"></div>
-          <button className="reserve-button" onClick={getRepriceResponse}>
-            Reserve
-          </button>
+          <Link to={`/bookingConfirmation`}>
+            <button className="reserve-button" onClick={getRepriceResponse}>
+              Reserve
+            </button>
+          </Link>
         </div>
       </div>
     </>
