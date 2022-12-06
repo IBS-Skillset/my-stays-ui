@@ -4,7 +4,7 @@ export interface HotelRepriceResponse {
   ratePlanId: string
   currencyCode: string
   amount: number
-  cancellationPolicyDeadline: string
+  cancelPolicyDeadLine: string
   penaltyDescriptionText: string
 }
 interface ResponseStatus {

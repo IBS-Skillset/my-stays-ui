@@ -5,11 +5,11 @@ import React, { useEffect, useState } from 'react'
 import { IoIosCheckmark } from 'react-icons/io'
 import { useDispatch } from 'react-redux'
 import { rateAction } from '../../../../../../store/actions/hotelSearchAction'
-import { Link } from 'react-router-dom'
 import HotelRepriceService from '../../../../../../services/hotel/HotelRepriceService'
 import { HotelAvailabilityRequest } from '../../../../../../models/hotel/search-models/hotelAvailabilityRequest'
 import { AxiosResponse } from 'axios'
 import { HotelRepriceResponse } from '../../../../../../models/hotel/reprice-models/hotelRepriceResponse'
+import { useNavigate } from 'react-router-dom'
 
 export type Props = {
   roomAvailabilityResponse: React.SetStateAction<RoomAvailabilityResponse>
@@ -26,6 +26,7 @@ function RoomList({
       rateList: [],
     })
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   useEffect(() => {
     setRoomAvailability(roomAvailabilityResponse)
   }, [roomAvailabilityResponse])
@@ -42,6 +43,7 @@ function RoomList({
       .then((response: AxiosResponse<HotelRepriceResponse>) => {
         console.log('reprice response : ', response.data)
         dispatch(rateAction(response.data))
+        navigate('/bookingConfirmation')
       })
       .catch((error) => {
         console.log(error)
@@ -117,7 +119,7 @@ function RoomList({
 
                     <div className="flex ">
                       <IoIosCheckmark className="text-lg text-green-600 ml-2 mt-2"></IoIosCheckmark>
-                      {room.isCancellable ? (
+                      {room.iscancellable ? (
                         <h1 className="refund ml-2 mt-2">Refundable</h1>
                       ) : (
                         <h1 className="refund ml-2 mt-2">Non Refundable</h1>
@@ -139,11 +141,9 @@ function RoomList({
         </table>
         <div className="reserve">
           <div className="button-head"></div>
-          <Link to={`/bookingConfirmation`}>
-            <button className="reserve-button" onClick={getRepriceResponse}>
-              Reserve
-            </button>
-          </Link>
+          <button className="reserve-button" onClick={getRepriceResponse}>
+            Reserve
+          </button>
         </div>
       </div>
     </>

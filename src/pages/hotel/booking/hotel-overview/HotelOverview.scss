@@ -1,36 +1,35 @@
 .main-content-hotel {
   margin-top: 15px;
-  width: 100%;
+  width: 705px;
   margin-left: 3px;
   padding: 2px;
 }
 .hotel-content {
-  border: 1px solid rgb(220 220 220);
+  border: 1px solid rgba(220, 220, 220, 1);
   padding: 1px;
   height: 14rem;
-  margin: 5px 5px 5px 5px;
-}
-.image-content-book {
-  margin: 20px 0px 0px 20px;
+  margin-top: 5px;
 }
 .book-image {
-  height: 90%;
+  height: 95%;
   width: 80%;
+  margin-left: 5px;
+  margin-top: 5px;
 }
 .location-book {
   display: flex;
-  flex-direction: row;
+  gap: 5px;
 }
 .hotel-name-book {
-  white-space: nowrap;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-top: 10px;
-  font-weight: 700;
+  font-weight: bold;
 }
 .hotel-details-book {
-  margin: 20px 20px 0px -35px;
+  width: 500px;
+  margin-left: -40px;
 }
 .hotel-address-book {
   font-size: 1rem;
-  margin-bottom: 3px;
+  margin-top: 10px;
 }

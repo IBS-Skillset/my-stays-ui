@@ -7,7 +7,7 @@ const rateSelected: HotelRepriceResponse = {
   ratePlanId: '',
   currencyCode: '',
   amount: 0,
-  cancellationPolicyDeadline: '',
+  cancelPolicyDeadLine: '',
   penaltyDescriptionText: '',
 }
 const initialState = {

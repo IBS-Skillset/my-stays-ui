@@ -34,11 +34,13 @@ function Overview({ hotel }: Props) {
       <div className="address-avail">
         <h1 className="hotelName">{hotel.hotelItem.hotelName}</h1>
         <div className="address-field">
-          <h1 className="adress">{hotel.hotelItem.address.countryName}</h1>,
-          <h1 className="adress">{hotel.hotelItem.address.streetAddress}</h1>,
-          <h1 className="adress">{hotel.hotelItem.address.zipCode}</h1>
+          <h1 className="adress">{hotel.hotelItem.address.streetAddress}</h1>
+          &nbsp;
+          <h1 className="adress">{hotel.hotelItem.address.zipCode}</h1>&nbsp;
+          <h1 className="adress">{hotel.hotelItem.address.cityName}</h1>&nbsp;
+          <h1 className="adress">{hotel.hotelItem.address.countryName}</h1>
         </div>
-        <h1 className="facilities">Facilities</h1>
+        <h2 className="facilities">Facilities</h2>
         <div className="grid-view">{service}</div>
       </div>
       <img src={map} alt="" className="map" />

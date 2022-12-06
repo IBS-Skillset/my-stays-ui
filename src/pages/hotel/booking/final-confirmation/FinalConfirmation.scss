@@ -1,54 +1,56 @@
 .final-booking-info-outline {
-  box-shadow: 0 0 1px 1px #ccc9c9;
   margin-left: 8rem;
   margin-top: 4rem;
-  border-width: 0px;
-  height: 40px;
+  height: 50px;
   width: 1060px;
   padding-top: 7px;
   padding-left: 10px;
   padding-right: 10px;
   display: flex;
+  border: 1px solid #ccc9c9;
 }
 
 .final-booking-info-image-container {
   width: 0.75rem;
   display: flex;
   height: 1.6rem;
+  margin-top: 5px;
 }
 
 .final-booking-info-content {
   margin-left: 5px;
+  margin-top: 5px;
 }
 
 .final-booking-content {
-  box-shadow: 0 0 1px 1px #f3efef;
+  border: 1px solid rgba(220, 220, 220, 1);
   width: 1060px;
-  height: 380px;
   margin-left: 8rem;
-  margin-top: 2rem;
-  border-style: solid;
-  border-width: 2px;
+  margin-top: 10px;
 }
 
 .final-booking-details {
   height: 150px;
-  border-bottom-width: 2px;
+  border-bottom: 1px solid rgba(220, 220, 220, 1);
   display: flex;
 }
 
+.check-out-date {
+  margin-left: 108px;
+}
+
 .final-booking-hotel-details-container {
-  height: 300px;
+  height: 150px;
   width: 1060px;
 }
 
 .final-booking-content {
   width: 1060px;
-  border-width: 2px;
+  border-width: 1px;
 }
 
 .final-booking-hotel-name {
-  margin-left: 96px;
+  margin-left: 55px;
   margin-top: 60px;
   width: 400px;
   height: 2rem;
@@ -60,21 +62,27 @@
 }
 
 .btn-viewbooking {
-  @apply h-12 ml-44 mt-1 pl-4 text-white text-lg font-bold w-64;
-  border-radius: 10px;
+  @apply h-12 ml-44 mt-1 pl-4 text-white text-lg font-bold w-60;
+  border-radius: 5px;
   background-color: var(--btn-bg-primary);
+  text-align: center;
 }
 
 .final-booking-id {
-  @apply text-gray-500;
-  display: list-item;
+  display: flex;
   margin-left: 35px;
+  color: black;
+}
+
+.confirmation-number {
+  font-size: large;
+  font-weight: bold;
 }
 
 .final-booking-hotel-room-image {
   margin-top: 9px;
   margin-left: 5px;
-  height: 1rem;
+  height: 1.5rem;
   width: 1.5rem;
 }
 
@@ -85,7 +93,7 @@
   background-color: white;
   margin-top: 60px;
   margin-left: -20px;
-  border-width: medium;
+  border-width: 1px;
 }
 .booking-confirm-after-book {
   color: var(--btn-bg-primary);
