@@ -1,0 +1,51 @@
+.user-details {
+  width: 700px;
+  height: 270px;
+  background-color: rgba(191, 219, 254, 0.45);
+  margin-top: 5px;
+  margin-left: 6px;
+}
+.border-color {
+  border: 1px solid rgba(220, 220, 220, 1);
+}
+.font-weight {
+  font-weight: bold;
+}
+.enter-details {
+  margin-left: 5px;
+  width: 600px;
+  height: 150px;
+}
+.details {
+  display: flex;
+  gap: 10px;
+}
+.name {
+  width: 250px;
+  height: 30px;
+  overflow: hidden;
+}
+.values {
+  padding: 3px;
+}
+.user-info {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.headings {
+  font-size: 13px;
+}
+.mandatory {
+  color: red;
+}
+.email {
+  width: 300px;
+  height: 30px;
+}
+.email-message {
+  color: rgba(0, 0, 0, 0.34);
+}
+.mobile-field {
+  margin-top: 10px;
+  margin-left: 15px;
+}

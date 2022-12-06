@@ -20,6 +20,10 @@
 }
 .adress {
   font-size: 12px;
+  display: inline;
+}
+h1:not(:last-of-type)::after {
+  content: ',';
 }
 .map {
   width: 250px;

@@ -1,0 +1,98 @@
+.payment-details {
+  width: 700px;
+  margin-left: 5px;
+  margin-top: 10px;
+  min-height: 510px;
+  overflow: hidden;
+  background-color: rgba(191, 219, 254, 0.45);
+}
+.payment {
+  margin-left: 20px;
+  width: 300px;
+}
+.card-details {
+  width: 300px;
+  height: 30px;
+  outline: none;
+}
+.other-card-details {
+  margin-left: 20px;
+  width: 300px;
+  display: flex;
+  gap: 10px;
+}
+.expiry {
+  outline: none;
+  width: 145px;
+  height: 30px;
+  border-radius: 2px;
+}
+.card-number-image {
+  width: 18px;
+  height: 18px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.card-number {
+  outline: none;
+  width: 270px;
+  height: 28px;
+}
+.cvc-details {
+  width: 145px;
+  height: 30px;
+}
+.cvv-input {
+  outline: none;
+  height: 26px;
+  width: 115px;
+}
+.payment-types {
+  margin-top: 30px;
+  width: 400px;
+  height: 70px;
+  margin-left: 20px;
+}
+.debit-card-image {
+  height: 68px;
+  width: 120px;
+  border-radius: 5px;
+  border: 2px solid var(--btn-bg-primary);
+  box-shadow: var(--btn-bg-primary);
+}
+.disabled-payment-type {
+  height: 68px;
+  width: 120px;
+  border-radius: 5px;
+  filter: grayscale(100%);
+}
+.debit-card {
+  font-size: 11px;
+  margin-top: 5px;
+  margin-left: 12px;
+}
+.other-payment-type {
+  font-size: 11px;
+  margin-top: 5px;
+  margin-left: 35px;
+  color: rgba(0, 0, 0, 0.34);
+}
+.cards-block {
+  margin-top: 20px;
+  width: 300px;
+  height: 30px;
+  margin-left: 20px;
+}
+.cards-image {
+  width: 35px;
+  height: 25px;
+}
+.cards {
+  margin-top: 50px;
+  margin-left: 20px;
+  font-size: 13px;
+}
+.error-message {
+  font-size: 11px;
+  color: red;
+}

@@ -10,7 +10,7 @@ function BookHeader() {
       <div className="book-items display-content">
         <div className="items">
           <div className="book-indicator progress-divider">1</div>
-          <div className="title">Customer Information</div>
+          <div className="title display-content">Customer Information</div>
         </div>
         <div className="progress-divider border-divider"></div>
         <div className="items">

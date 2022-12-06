@@ -5,6 +5,7 @@ import { nightCountReducer } from './availability/nightCountReducer'
 import { locationReducer } from './availability/locationReducer'
 import { hotelDescriptionResponseReducer } from './description/hotelDescriptionResponseReducer'
 import { rateReducer } from './roomavailability/rateReducer'
+import { bookResponseReducer } from './book/bookResponseReducer'
 
 export const hotelRootReducer = combineReducers({
   availabilityRequest: hotelAvailabilityRequestReducer,
@@ -13,4 +14,5 @@ export const hotelRootReducer = combineReducers({
   location: locationReducer,
   descriptionResponse: hotelDescriptionResponseReducer,
   rate: rateReducer,
+  bookResponse: bookResponseReducer,
 })

@@ -135,9 +135,9 @@ function SearchResults() {
                 ))}
               </div>
               <div className="address">
-                <h1 className="w-48">{hotel.address.countryName}</h1>
                 <h1 className="w-48">{hotel.address.streetAddress}</h1>
                 <h1 className="w-48">{hotel.address.zipCode}</h1>
+                <h1 className="w-48">{hotel.address.countryName}</h1>
               </div>
             </div>
             <div className="">
