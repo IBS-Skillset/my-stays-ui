@@ -1,0 +1,104 @@
+.side-content {
+  padding: 2px;
+  float: left;
+  margin-top: 20px;
+}
+.booking-details {
+  padding: 4px;
+}
+.booking-content {
+  margin: 10px 10px 0px 10px;
+}
+.book-heading {
+  margin-top: -10px;
+}
+.dates {
+  padding: 3px;
+  justify-content: space-between;
+  margin: 2px 0px 7px 0px;
+  width: 100%;
+}
+.input-dates {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.book-date {
+  font-weight: 700;
+}
+.stay {
+  color: rgb(0 0 0);
+  font-weight: 500;
+  margin-top: 10px;
+}
+.divider {
+  background: rgb(220 220 220);
+  padding: 0.2px;
+}
+.mid-layer {
+  margin-bottom: 20px;
+}
+.bottom-layer {
+  margin-top: 20px;
+}
+.rate {
+  margin-top: 10px;
+  padding: 10px;
+}
+.rate-content {
+  margin: 10px 10px 10px 10px;
+}
+.rate-heading {
+  margin: -10px 0px 0px;
+}
+.room {
+  margin-right: 80px;
+}
+.room-heading {
+  margin-right: 90px;
+}
+.rate-final {
+  margin-left: 80px;
+}
+.room-rate {
+  margin-left: 30px;
+}
+.cancel-content {
+  margin: 0px 10px 40px 10px;
+}
+.cancel-heading {
+  margin: -5px 0px 0px 0px;
+}
+.cancellation {
+  color: green;
+  margin-top: 10px;
+}
+.rate-cancel {
+  margin-right: 30px;
+}
+.cancel-date {
+  margin-top: -10px;
+}
+.policy {
+  display: flex;
+  flex-direction: row;
+}
+.final-rate {
+  font-size: 1.1rem;
+}
+.confirmation-heading {
+  font-size: 1.25rem;
+  color: rgb(0 0 0);
+  white-space: nowrap;
+}
+.border {
+  width: 350px;
+  border: 1px solid rgb(220 220 220);
+}
+.room-font {
+  font-size: 1.25rem;
+}
+.room-price {
+  margin-top: 3px;
+}

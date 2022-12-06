@@ -63,15 +63,23 @@
   @apply block font-medium text-black;
   font-size: 11px;
 }
-.main-form .location-container .location-input-container .location-label .location-input,
+.main-form
+  .location-container
+  .location-input-container
+  .location-label
+  .location-input,
 .main-form .date-container .date-input-container .date-input,
 .main-form .travelers-container .travelers-input {
   @apply bg-transparent text-base w-full;
   font-family: 'Lato', sans-serif;
   outline: none;
 }
-.main-form .location-container .location-input-container .location-label .location-display-container {
-  @apply absolute z-50 p-6 max-w-sm grid bg-white rounded-sm border border-gray-200 shadow-md dark:bg-slate-50 dark:border-gray-400
+.main-form
+  .location-container
+  .location-input-container
+  .location-label
+  .location-display-container {
+  @apply absolute z-50 p-6 max-w-sm grid bg-white rounded-sm border border-gray-200 shadow-md dark:bg-slate-50 dark:border-gray-400;
 }
 .main-form .check-in {
   @extend .input-wrap;
@@ -86,7 +94,11 @@
   width: 128px;
   height: 24px;
 }
-.main-form .date-container .date-input-container .date-input .date-picker::placeholder {
+.main-form
+  .date-container
+  .date-input-container
+  .date-input
+  .date-picker::placeholder {
   width: 120px;
   height: 50px;
 }

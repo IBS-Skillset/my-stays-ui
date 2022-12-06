@@ -1,0 +1,94 @@
+.final-info-outline {
+  box-shadow: 0 0 1px 1px #ccc9c9;
+  margin-left: 8rem;
+  margin-top: 4rem;
+  border-width: 0px;
+  height: 40px;
+  width: 1060px;
+  padding-top: 7px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+}
+
+.final-info-image-container {
+  width: 0.75rem;
+  display: flex;
+  height: 1.6rem;
+}
+
+.final-info-content {
+  margin-left: 5px;
+}
+
+.final-booking-content {
+  box-shadow: 0 0 1px 1px #f3efef;
+  width: 1060px;
+  height: 380px;
+  margin-left: 8rem;
+  margin-top: 2rem;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.final-booking-details {
+  height: 150px;
+  border-bottom-width: 2px;
+  display: flex;
+}
+
+.final-hotel-details-container {
+  height: 300px;
+  width: 1060px;
+}
+
+.final-booking-content {
+  width: 1060px;
+  border-width: 2px;
+}
+
+.final-booking-hotel-name {
+  margin-left: 96px;
+  margin-top: 60px;
+  width: 400px;
+  height: 2rem;
+}
+
+.view-booking {
+  margin-top: 50px;
+  margin-left: 70px;
+}
+
+.btn-viewbooking {
+  @apply h-12 ml-44 mt-1 pl-4 text-white text-lg font-bold w-64;
+  border-radius: 10px;
+  background-color: var(--btn-bg-primary);
+}
+
+.final-booking-id {
+  @apply text-gray-500;
+  display: list-item;
+  margin-left: 35px;
+}
+
+.final-check-out-time {
+  @apply text-gray-500;
+  margin-left: 5.7rem;
+}
+
+.final-hotel-room-image {
+  margin-top: 9px;
+  margin-left: 5px;
+  height: 1rem;
+  width: 1.5rem;
+}
+
+#final-content {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 20px;
+  background-color: white;
+  margin-top: 60px;
+  margin-left: -20px;
+  border-width: medium;
+}

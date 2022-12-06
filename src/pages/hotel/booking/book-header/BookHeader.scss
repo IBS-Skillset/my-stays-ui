@@ -1,0 +1,70 @@
+.book-header-container {
+  padding: 1px;
+  margin: 0rem 10rem 0rem 8.5rem;
+}
+.book-items {
+  position: relative;
+  flex: 1;
+  background: white;
+  margin: 20px 0px -10px 0px;
+}
+.book-indicator {
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  margin-bottom: 8px;
+}
+.book-indicator-icon {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  color: black;
+  border-color: grey;
+  line-height: 1;
+  margin: 3px 0px 6px 0px;
+}
+.progress-divider {
+  background: var(--btn-bg-primary);
+}
+.progress-divider-final {
+  background: grey;
+}
+.title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--btn-bg-primary);
+  position: relative;
+  white-space: nowrap;
+  width: 21px;
+  height: 45px;
+}
+.title-nonactive {
+  font-size: 1rem;
+  font-weight: 500;
+  color: grey;
+  position: relative;
+  white-space: nowrap;
+  width: 20px;
+  height: 45px;
+}
+.display-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.border-divider {
+  width: 40%;
+  padding: 2px;
+  margin-top: -50px;
+}
+.initial-content {
+  margin-left: -60px;
+  margin-top: 15px;
+}
+
+.initial-indicator {
+  margin-top: 10px;
+}

@@ -9,6 +9,9 @@ import Search from '../../pages/home/Search'
 import HotelSearch from '../../pages/hotel/search/components/search-results/HotelSearch'
 import SearchLayout from '../../pages/dashboard/components/layout/SearchLayout'
 import HotelDescription from '../../pages/hotel/search/components/room-availability/HotelDescription'
+import BookConfirmation from '../../pages/hotel/booking/BookConfirmation'
+import BookLayout from '../../pages/dashboard/components/layout/BookLayout'
+import FinalConfirmation from '../../pages/hotel/booking/final-confirmation/FinalConfirmation'
 
 function routes() {
   return (
@@ -26,6 +29,10 @@ function routes() {
       </Route>
       <Route path="/authorized" element={<AuthorizeUser />} />
       <Route path="/logout" element={<LogoutUser />} />
+      <Route path="" element={<BookLayout />}>
+        <Route path="/bookingConfirmation" element={<BookConfirmation />} />
+        <Route path="/finalConfirmation" element={<FinalConfirmation />} />
+      </Route>
     </Routes>
   )
 }
