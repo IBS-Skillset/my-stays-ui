@@ -6,11 +6,19 @@ import { IoIosCheckmark } from 'react-icons/io'
 import { useDispatch } from 'react-redux'
 import { rateAction } from '../../../../../../store/actions/hotelSearchAction'
 import { Link } from 'react-router-dom'
+import HotelRepriceService from '../../../../../../services/hotel/HotelRepriceService'
+import { HotelAvailabilityRequest } from '../../../../../../models/hotel/search-models/hotelAvailabilityRequest'
+import { AxiosResponse } from 'axios'
+import { HotelRepriceResponse } from '../../../../../../models/hotel/reprice-models/hotelRepriceResponse'
 
 export type Props = {
   roomAvailabilityResponse: React.SetStateAction<RoomAvailabilityResponse>
+  hotelAvailabilityRequest: HotelAvailabilityRequest
 }
-function RoomList({ roomAvailabilityResponse }: Props) {
+function RoomList({
+  roomAvailabilityResponse,
+  hotelAvailabilityRequest,
+}: Props) {
   const [roomAvailability, setRoomAvailability] =
     useState<RoomAvailabilityResponse>({
       responseStatus: { status: -1 },
@@ -26,8 +34,32 @@ function RoomList({ roomAvailabilityResponse }: Props) {
 
   const getRepriceResponse = () => {
     //this needs to be done after getting successful reprice response
-    dispatch(rateAction(roomAvailability.rateList[select]))
+    HotelRepriceService.getHotelRepriceInfo(
+      roomAvailability.hotelCode,
+      hotelAvailabilityRequest,
+      roomAvailability.rateList[select].bookingCode,
+    )
+      .then((response: AxiosResponse<HotelRepriceResponse>) => {
+        console.log('reprice response : ', response.data)
+        dispatch(rateAction(response.data))
+      })
+      .catch((error) => {
+        console.log(error)
+        // dispatch(rateAction(fetchResponse(roomAvailability)))
+      })
   }
+  // function fetchResponse(response : RoomAvailabilityResponse){
+  //   const repriceResponse : HotelRepriceResponse = {
+  //     responseStatus : {status : 0},
+  //     hotelCode : response.hotelCode,
+  //     ratePlanId : response.rateList[select].bookingCode,
+  //     currencyCode : response.rateList[select].currency,
+  //     amount : response.rateList[select].amount,
+  //     cancellationPolicyDeadline : response.rateList[select].,
+  //     penaltyDescriptionText: string
+  //   }
+  //   return repriceResponse;
+  // }
 
   return (
     <>

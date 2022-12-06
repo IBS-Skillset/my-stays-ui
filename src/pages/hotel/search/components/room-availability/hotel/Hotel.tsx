@@ -4,12 +4,18 @@ import SearchForm from '../../search-form/SearchForm'
 import { HotelDescriptionResponse } from '../../../../../../models/hotel/description-models/hotelDescriptionResponse'
 import RoomList from '../rooms/RoomList'
 import Overview from '../overview/Overview'
+import { HotelAvailabilityRequest } from '../../../../../../models/hotel/search-models/hotelAvailabilityRequest'
 
 export type Props = {
   hotel: HotelDescriptionResponse
   roomAvailabilityResponse: any
+  hotelAvailabilityRequest: HotelAvailabilityRequest
 }
-function Hotel({ hotel, roomAvailabilityResponse }: Props) {
+function Hotel({
+  hotel,
+  roomAvailabilityResponse,
+  hotelAvailabilityRequest,
+}: Props) {
   const [show, setShow] = useState(false)
   const types = ['Overview', 'Rooms']
   const [active, setActive] = useState('Overview')
@@ -101,7 +107,10 @@ function Hotel({ hotel, roomAvailabilityResponse }: Props) {
         </div>
         <hr className="seperator"></hr>
         <div ref={roomsSection}>
-          <RoomList roomAvailabilityResponse={roomAvailabilityResponse} />
+          <RoomList
+            roomAvailabilityResponse={roomAvailabilityResponse}
+            hotelAvailabilityRequest={hotelAvailabilityRequest}
+          />
         </div>
       </div>
     </div>

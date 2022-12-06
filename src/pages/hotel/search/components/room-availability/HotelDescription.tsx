@@ -63,6 +63,7 @@ const HotelDescription = () => {
         <Hotel
           hotel={hotel}
           roomAvailabilityResponse={roomAvailabilityResponse}
+          hotelAvailabilityRequest={hotelAvailabilityRequest}
         />
       ) : (
         ''
