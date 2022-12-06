@@ -1,21 +1,14 @@
-import { Rate } from '../../../../models/hotel/roomavailability-models/roomAvailabilityResponse'
+import { HotelRepriceResponse } from '../../../../models/hotel/reprice-models/hotelRepriceResponse'
 import { ActionRate } from '../../../actionModels/search'
 
-const rateSelected: Rate = {
-  bookingCode: '',
-  rateCategory: '',
-  available: '',
-  amount: 0,
-  totalAmount: 0,
-  currency: '',
-  ratePlan: '',
-  rateType: '',
-  isCancellable: false,
-  isBreakfastIncluded: false,
-  isCVVRequired: false,
+const rateSelected: HotelRepriceResponse = {
+  responseStatus: { status: 0 },
   hotelCode: '',
-  roomDescriptionList: [{ description: '' }],
-  breakFastDetails: [{ breakfast: '' }],
+  ratePlanId: '',
+  currencyCode: '',
+  amount: 0,
+  cancellationPolicyDeadline: '',
+  penaltyDescriptionText: '',
 }
 const initialState = {
   rate: rateSelected,

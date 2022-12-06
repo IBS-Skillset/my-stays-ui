@@ -9,7 +9,7 @@ import {
 } from '../actionModels/search'
 import { HotelAvailabilityRequest } from '../../models/hotel/search-models/hotelAvailabilityRequest'
 import { HotelDescriptionResponse } from '../../models/hotel/description-models/hotelDescriptionResponse'
-import { Rate } from '../../models/hotel/roomavailability-models/roomAvailabilityResponse'
+import { HotelRepriceResponse } from '../../models/hotel/reprice-models/hotelRepriceResponse'
 
 export function hotelSearchAvailabilityRequestAction(
   hotelAvailabilityRequest: HotelAvailabilityRequest,
@@ -53,7 +53,7 @@ export function hotelSearchDescriptionResponseAction(
   }
 }
 
-export function rateAction(rate: Rate): ActionRate {
+export function rateAction(rate: HotelRepriceResponse): ActionRate {
   return {
     type: 'SELECT_RATE',
     payload: rate,
