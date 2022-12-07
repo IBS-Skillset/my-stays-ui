@@ -1,0 +1,30 @@
+.trips-content {
+  margin-left: 8rem;
+  width: 1060px;
+  padding-top: 1rem;
+}
+.trips-tabs {
+  display: flex;
+  justify-content: space-between;
+}
+.trips-navigation {
+  display: flex;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+}
+.active-trips {
+  width: 100px;
+  height: 35px;
+  border-bottom: 2px solid #2970f9b8;
+}
+.trips {
+  width: 100px;
+  height: 35px;
+  border-bottom: 2px solid rgba(84, 84, 84, 0.34);
+  color: #2970f9b8;
+}
+.not-allowed-tab {
+  cursor: not-allowed;
+}

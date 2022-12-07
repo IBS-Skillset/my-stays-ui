@@ -1,0 +1,43 @@
+.booking-info-container {
+  background-color: #f4f6f9;
+  position: relative;
+  margin-top: 30px;
+  border: 2px solid rgba(161, 158, 158, 0.34);
+  border-radius: 10px 10px 0px 0px;
+  box-shadow: -2.5px 3px 10px 0px #cfcfcf;
+  border-bottom: none;
+}
+.hotels-img {
+  position: absolute;
+  top: 30px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  border: 2px solid rgba(159, 158, 158, 0.34);
+  background-color: #ffffff;
+  box-shadow: -2.5px 3px 10px 1px #cfcfcf;
+}
+.booking-info {
+  margin-top: 40px;
+  padding: 0px 40px 2px 60px;
+}
+.booking-details-container {
+  background-color: #f4f6f9;
+  position: relative;
+  border: 2px solid rgba(161, 158, 158, 0.34);
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: -2.5px 3px 10px 0px #cfcfcf;
+}
+.booking-details {
+  margin-top: 20px;
+  padding: 0px 40px 2px 60px;
+}
+.trips-table {
+  text-align: left;
+}
+.trips-table th,
+td {
+  width: 250px;
+}
+.trips-table-header {
+  @apply font-medium text-gray-500;
+}

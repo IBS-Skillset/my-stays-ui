@@ -1,0 +1,30 @@
+.sort-content {
+  display: flex;
+  border-style: solid;
+  border-color: rgb(155 155 153);
+  border-width: 1px;
+  font-weight: bold;
+}
+.trips-sort {
+  width: 100px;
+}
+.trips-sort,
+.trip-sort,
+.active-trip-sort {
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+.trip-sort,
+.active-trip-sort {
+  width: 150px;
+}
+
+.trip-sort {
+  color: #2970f9b8;
+}
+.active-trip-sort {
+  background-color: #e1dcdc;
+}

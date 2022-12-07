@@ -12,6 +12,7 @@ import HotelDescription from '../../pages/hotel/search/components/room-availabil
 import BookConfirmation from '../../pages/hotel/booking/BookConfirmation'
 import BookLayout from '../../pages/dashboard/components/layout/BookLayout'
 import FinalConfirmation from '../../pages/hotel/booking/final-confirmation/FinalConfirmation'
+import MyTrips from '../../pages/trips/MyTrips'
 
 function routes() {
   return (
@@ -26,6 +27,7 @@ function routes() {
       <Route path="" element={<SearchLayout />}>
         <Route path="/search" element={<HotelSearch />} />
         <Route path="/hotel/:hotelCode" element={<HotelDescription />} />
+        <Route path="/mytrips" element={<MyTrips />} />
       </Route>
       <Route path="/authorized" element={<AuthorizeUser />} />
       <Route path="/logout" element={<LogoutUser />} />

@@ -40,7 +40,7 @@ export const ProfileDropDown = (token: any) => {
               </Link>
             </li>
             <li>
-              <Link className="dropdown-link" to="/">
+              <Link className="dropdown-link" to="/mytrips">
                 My Trips
               </Link>
             </li>
