@@ -29,9 +29,11 @@
 .progress-divider {
   background: var(--btn-bg-primary);
 }
-.progress-divider-final {
+.progress-divider-final,
+.book-indicator-icon {
   background: grey;
 }
+
 .title {
   font-size: 1rem;
   font-weight: 500;
