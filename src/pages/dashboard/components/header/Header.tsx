@@ -8,6 +8,7 @@ import { getSelectedLang } from '../../../../util/web/webStorageUtil'
 /*import { NavBar } from '../navbar/NavBar'*/
 import './Header.scss'
 import { ProfileDropDown } from './profile-dropdown/ProfileDropDown'
+import { Link } from 'react-router-dom'
 //import 'bootstrap/dist/css/bootstrap.css';
 
 function Header() {
@@ -61,7 +62,9 @@ function Header() {
             <div className="app-bar"></div>
           </div>
           <div className="box-container flex justify-between items-center">
-            <div className="brand-banner">HappyStays</div>
+            <div className="brand-banner">
+              <Link to="/home">HappyStays</Link>
+            </div>
             <div className="flex flex-row gap-3 justify-between items-center mr-7 ">
               <div className="language-container">
                 <img className="flex shrink" src={languageSVG} alt="" />
