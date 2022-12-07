@@ -5,6 +5,7 @@ import { HotelDescriptionResponse } from '../../../../../../models/hotel/descrip
 import RoomList from '../rooms/RoomList'
 import Overview from '../overview/Overview'
 import { HotelAvailabilityRequest } from '../../../../../../models/hotel/search-models/hotelAvailabilityRequest'
+import { FaCamera } from 'react-icons/fa'
 
 export type Props = {
   hotel: HotelDescriptionResponse
@@ -87,6 +88,7 @@ function Hotel({
           onClick={() => setShow(true)}
           role="presentation"
         >
+          <FaCamera className="m-1.5 h-3" />
           See more
         </div>
       </div>
