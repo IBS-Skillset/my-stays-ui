@@ -4,6 +4,8 @@ import useComponentVisible from './useComponentVisible'
 import './ProfileDropDown.scss'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { IRootState } from '../../../../../store/reducers/rootReducer'
 
 export const ProfileDropDown = (token: any) => {
   const { ref, isComponentVisible, setIsComponentVisible } =
@@ -19,7 +21,7 @@ export const ProfileDropDown = (token: any) => {
   const showProfile = () => {
     setIsComponentVisible(!isComponentVisible)
   }
-
+  const emailid = useSelector((state: IRootState) => state.email.email)
   return (
     <div className="profile">
       <button className="dropdown-menu" type="button" onClick={showProfile}>
@@ -31,7 +33,7 @@ export const ProfileDropDown = (token: any) => {
         <div ref={ref} className="dropdown-profile">
           <div className="dropdown-user">
             <div className="font-medium ">{userName}</div>
-            <div className="truncate">test@gmail.com</div>
+            <div className="truncate">{emailid}</div>
           </div>
           <ul className="dropdown-nav">
             <li>

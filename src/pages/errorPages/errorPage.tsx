@@ -1,5 +1,21 @@
-function errorPage() {
-  return <h1>404</h1>
-}
+import React from 'react'
+import { useNavigate } from 'react-router'
+import './ErrorPage.scss'
 
-export default errorPage
+function ErrorPage() {
+  const navigate = useNavigate()
+  return (
+    <>
+      <div className="main">
+        <div className="error-title">404 ERROR</div>
+        <div>
+          Oops! Looks like you took a wrong turn
+        </div>
+        <button onClick={() => navigate('/')} className="error-btn">
+          Go back
+        </button>
+      </div>
+    </>
+  )
+}
+export default ErrorPage

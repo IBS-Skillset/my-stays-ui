@@ -8,6 +8,8 @@ import { logoutReducer } from './logoutReducer'
 import { sessionOutReducer } from './sessionOutReducer'
 import { hotelRootReducer } from './hotel/hotelRootReducer'
 import { withReduxStateSync } from 'redux-state-sync'
+import { userDetailsReducer } from './userDetailsReducer'
+import { emailReducer } from './emailReducer'
 
 const allReducer = combineReducers({
   loader: loaderReducer,
@@ -18,6 +20,8 @@ const allReducer = combineReducers({
   logout: logoutReducer,
   sessionOut: sessionOutReducer,
   hotel: hotelRootReducer,
+  userDetails: userDetailsReducer,
+  email: emailReducer,
 })
 
 const rootReducer = (state: IRootState | undefined, action: AnyAction) => {

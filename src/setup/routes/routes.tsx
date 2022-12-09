@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom'
-import ErrorPage from '../../pages/errorPages/errorPage'
 import SignIn from '../../pages/sign-in/SignIn'
 import SignUp from '../../pages/sign-up/SignUp'
 import AuthorizeUser from '../oauth2/components/AuthorizeUser'
@@ -13,6 +12,7 @@ import BookConfirmation from '../../pages/hotel/booking/BookConfirmation'
 import BookLayout from '../../pages/dashboard/components/layout/BookLayout'
 import FinalConfirmation from '../../pages/hotel/booking/final-confirmation/FinalConfirmation'
 import MyTrips from '../../pages/trips/MyTrips'
+import ErrorPage from '../../pages/errorpages/errorPage'
 
 function routes() {
   return (
@@ -38,5 +38,4 @@ function routes() {
     </Routes>
   )
 }
-
 export default routes

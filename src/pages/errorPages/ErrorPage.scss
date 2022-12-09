@@ -1,0 +1,24 @@
+.main {
+    @apply flex-col h-screen flex justify-center items-center text-white;
+}
+.error-title {
+    font-size: 4rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7));
+    padding: 3rem;
+    letter-spacing: 1rem;
+    color: rgb(226, 226, 226);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+}
+.error-btn {
+    color: white;
+    margin-top: 1rem;
+    padding: 5px 10px;
+    outline: auto;
+    transition: 0.5s;
+    font-weight: bold;
+}
+.error-btn:hover {
+    letter-spacing: 2px;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition-timing-function: ease-in-out;
+}

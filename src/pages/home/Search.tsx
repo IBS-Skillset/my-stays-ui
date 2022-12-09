@@ -1,5 +1,5 @@
 import './Search.scss'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
@@ -22,6 +22,8 @@ import { SearchHeader } from './search-header/SearchHeader'
 import Location from '../common/components/location/Location'
 import DateRange from '../common/components/date-range/DateRange'
 import Travelers from '../common/components/travelers/Travelers'
+import { fetchUserDetails } from '../../store/actions/userDetailsAction'
+import UserDetailsService from '../../services/user/UserDetailsService'
 
 interface IFormInputs {
   location: string
@@ -54,7 +56,22 @@ function Search() {
   const isAuthorized = useSelector(
     (state: IRootState) => state.authorize.isAuthorized,
   )
+  const isemail = useSelector((state: IRootState) => state.email.email)
 
+  useEffect(() => {
+    UserDetailsService.getUserDetails(isemail)
+      .then((response) => {
+        if (response.data.email === isemail) {
+          dispatch(fetchUserDetails(response.data))
+        } else {
+          alert('user not found')
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+        navigate('/signin')
+      })
+  }, [accessToken, isemail])
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
