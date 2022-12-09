@@ -16,6 +16,7 @@ export const saveState = (state: {
   authorize: { isAuthorized: boolean }
   logout: { isLoggedOut: boolean }
   sessionOut: { isSessionOut: boolean }
+  email: { email: string }
 }) => {
   try {
     const serializedState = JSON.stringify(state)

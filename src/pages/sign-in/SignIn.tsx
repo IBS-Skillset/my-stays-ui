@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-
 import './Signin.scss'
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
@@ -8,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { userSessionOutAction } from '../../store/actions/sessionOutAction'
 import { IRootState } from '../../store/reducers/rootReducer'
 import { userLogOutAction } from '../../store/actions/logoutAction'
+import { emailAction } from '../../store/actions/emailAction'
 
 function SignIn() {
   const [open, setOpen] = useState<boolean>(false)
@@ -24,6 +24,7 @@ function SignIn() {
   const navigate = useNavigate()
   useEffect(() => {
     setEmail(autoFillEmail)
+    dispatch(emailAction(autoFillEmail))
   }, [autoFillEmail])
 
   useEffect(() => {
@@ -87,9 +88,10 @@ function SignIn() {
                   required
                   id="username"
                   name="username"
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setEmail(e.target.value)
-                  }
+                    dispatch(emailAction(e.target.value))
+                  }}
                   value={email}
                   className="input-box"
                   placeholder="Email"

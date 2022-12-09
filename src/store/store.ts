@@ -26,6 +26,7 @@ store.subscribe(() => {
     authorize: store.getState().authorize,
     logout: store.getState().logout,
     sessionOut: store.getState().sessionOut,
+    email: store.getState().email,
   })
 })
 

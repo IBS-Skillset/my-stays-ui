@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { IFormInputs } from '../../pages/sign-up/SignUp'
 
-const CREATE_ACCOUNT_URL = 'http://localhost:9192/account/api'
+const CREATE_ACCOUNT_URL = 'http://localhost:9192/account/api/signup'
 
 class CreateAccountService {
   getCreateAccount(data: IFormInputs) {
