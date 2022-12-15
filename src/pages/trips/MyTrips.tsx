@@ -15,7 +15,7 @@ const MyTrips = () => {
   useEffect(() => {
     MyTripsService.getMyTrips()
       .then((response) => {
-        updateTrips(response)
+        updateTrips(response.data)
       })
       .catch((error) => {
         console.log(error)
