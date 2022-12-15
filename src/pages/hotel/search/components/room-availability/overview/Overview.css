@@ -22,7 +22,7 @@
   font-size: 12px;
   display: inline;
 }
-h1:not(:last-of-type)::after {
+.overview .address-avail .address-field h1:not(:last-of-type)::after {
   content: ',';
 }
 .map {

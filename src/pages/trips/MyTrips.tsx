@@ -1,16 +1,22 @@
 import './MyTrips.scss'
 import TabNavigation from './components/tabs/navigation/TabNavigation'
 import TripSort from './components/sorts/TripSort'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TabContent from './components/tabs/content/TabContent'
-import TripDetails from './components/trip-details/TripDetails'
 import { MyTripsResponse, Trip } from '../../models/trips/myTripsResponse'
 import MyTripsService from '../../services/trips/MyTripsService'
+import { useSelector } from 'react-redux'
+import { IRootState } from '../../store/reducers/rootReducer'
+import DispatchPkceData from '../../setup/oauth2/pkce/DispatchPkceData'
+import AuthorizeUser from '../../setup/oauth2/components/AuthorizeUser'
+import TripsContent from './components/trips-content/TripsContent'
+import loader from '../../assets/images/loader.gif'
 
 const MyTrips = () => {
   const [activeTab, setActiveTab] = useState('upcoming')
   const [upcomingTrips, setUpcomingTrips] = useState<Trip[]>([])
   const [completedTrips, setCompletedTrips] = useState<Trip[]>([])
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     MyTripsService.getMyTrips()
@@ -21,6 +27,20 @@ const MyTrips = () => {
         console.log(error)
       })
   }, [])
+
+  const accessToken = useSelector(
+    (state: IRootState) => state.token.accessToken,
+  )
+  const isAuthorized = useSelector(
+    (state: IRootState) => state.authorize.isAuthorized,
+  )
+
+  if (accessToken == '') {
+    if (!isAuthorized) {
+      DispatchPkceData()
+    }
+    return <AuthorizeUser />
+  }
 
   const updateTrips = (response: MyTripsResponse) => {
     const upcomingTrip: Trip[] = []
@@ -35,6 +55,22 @@ const MyTrips = () => {
     })
     setUpcomingTrips(upcomingTrip)
     setCompletedTrips(completedTrip)
+    setIsLoaded(true)
+  }
+
+  const getTrips = (trips: Trip[], isCompleted: boolean) => {
+    return isLoaded ? (
+      trips.length > 0 ? (
+        <TripsContent trips={trips} isCompleted={isCompleted} />
+      ) : (
+        <p>
+          You have currently no
+          {isCompleted ? ' completed ' : ' upcoming '}trips!
+        </p>
+      )
+    ) : (
+      <img src={loader} alt="loading..." />
+    )
   }
 
   return (
@@ -64,22 +100,10 @@ const MyTrips = () => {
         <div className="tab-contents">
           <div className="tab-content">
             <TabContent id="upcoming" activeTab={activeTab}>
-              {upcomingTrips.length > 0 ? (
-                upcomingTrips.map((trip, i) => (
-                  <TripDetails trip={trip} isCompleted={false} key={i} />
-                ))
-              ) : (
-                <p>You have currently No upcoming trips!</p>
-              )}
+              {getTrips(upcomingTrips, false)}
             </TabContent>
             <TabContent id="completed" activeTab={activeTab}>
-              {completedTrips.length > 0 ? (
-                completedTrips.map((trip, i) => (
-                  <TripDetails trip={trip} isCompleted={true} key={i} />
-                ))
-              ) : (
-                <p>You have currently No completed trips!</p>
-              )}
+              {getTrips(completedTrips, true)}
             </TabContent>
             <TabContent id="cancelled" activeTab={activeTab}>
               <p>Cancelled trips!</p>
