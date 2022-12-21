@@ -21,13 +21,17 @@ const schema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('*Email is required'),
   firstName: Yup.string()
     .max(15, 'Too Long!')
-    .matches(/^[aA-zZ\s]+$/, 'Please enter valid name')
+    .matches(/^[aA-zZ\s]+$/, 'Please enter first name')
     .required('*Firstname is required'),
   lastName: Yup.string()
     .max(15, 'Too Long!')
-    .matches(/^[aA-zZ\s]+$/, 'Please enter valid name')
+    .matches(/^[aA-zZ\s]+$/, 'Please enter last name')
     .required('*Lastname is required'),
   password: Yup.string().required('*Password is required'),
+  phoneNumber: Yup.number()
+    .typeError('Phone number is required')
+    .min(100000000000, 'Phone number must be 12 digits with country code')
+    .required('Phone number is required'),
 })
 const SignUp = () => {
   const dispatch = useDispatch()
@@ -40,18 +44,7 @@ const SignUp = () => {
     mode: 'onSubmit',
   })
   const formSubmitHandler: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
-    if (data.phoneNumber.length < 12) {
-      window.alert('Please enter contact number with country code')
-    }
-    if (
-      !(data.phoneNumber.length < 12) &&
-      !(
-        data.email === '' ||
-        data.firstName === '' ||
-        data.lastName === '' ||
-        data.password === ''
-      )
-    ) {
+    {
       console.log(data)
       CreateAccountService.getCreateAccount(data)
         .then((response) => {
@@ -130,7 +123,7 @@ const SignUp = () => {
               className="inputField"
               id="phoneNumber"
               type="number"
-              placeholder="PhoneNumber"
+              placeholder="Phone Number"
               {...register('phoneNumber')}
             />
           </label>

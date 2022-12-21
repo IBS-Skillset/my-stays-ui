@@ -25,3 +25,7 @@
   @apply text-3xl lg:text-4xl text-start select-none p-5 text-white;
   font-family: 'Lato', sans-serif;
 }
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
