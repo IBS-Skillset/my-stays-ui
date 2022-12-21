@@ -13,11 +13,12 @@ export interface ResponseStatus {
 interface Media {
   mediaUrl: string[]
 }
-export interface Address {
+interface Address {
   streetAddress: string
   cityName: string
   zipCode: string
   countryName: string
+  phoneNumber: string
 }
 
 interface AvailableHotelItem {

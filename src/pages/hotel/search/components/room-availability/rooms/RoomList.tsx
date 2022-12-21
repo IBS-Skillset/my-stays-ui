@@ -34,7 +34,6 @@ function RoomList({
   const [select, setSelect] = useState(-1)
 
   const getRepriceResponse = () => {
-    //this needs to be done after getting successful reprice response
     HotelRepriceService.getHotelRepriceInfo(
       roomAvailability.hotelCode,
       hotelAvailabilityRequest,
@@ -46,27 +45,15 @@ function RoomList({
           rateAction(
             response.data,
             roomAvailability.rateList[select].totalAmount,
+            roomAvailability.rateList[select].amount,
           ),
         )
         navigate('/bookingConfirmation')
       })
       .catch((error) => {
         console.log(error)
-        // dispatch(rateAction(fetchResponse(roomAvailability)))
       })
   }
-  // function fetchResponse(response : RoomAvailabilityResponse){
-  //   const repriceResponse : HotelRepriceResponse = {
-  //     responseStatus : {status : 0},
-  //     hotelCode : response.hotelCode,
-  //     ratePlanId : response.rateList[select].bookingCode,
-  //     currencyCode : response.rateList[select].currency,
-  //     amount : response.rateList[select].amount,
-  //     cancellationPolicyDeadline : response.rateList[select].,
-  //     penaltyDescriptionText: string
-  //   }
-  //   return repriceResponse;
-  // }
 
   return (
     <>

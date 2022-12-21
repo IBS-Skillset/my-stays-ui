@@ -9,10 +9,13 @@ const rateSelected: HotelRepriceResponse = {
   amount: 0,
   cancelPolicyDeadLine: '',
   penaltyDescriptionText: '',
+  isCancellable: false,
+  isBreakfastIncluded: false,
 }
 const initialState = {
   rate: rateSelected,
   initialRoomPrice: 0,
+  nightlyPrice: 0,
 }
 export const rateReducer = (state = initialState, action: ActionRate) => {
   switch (action.type) {
@@ -21,6 +24,7 @@ export const rateReducer = (state = initialState, action: ActionRate) => {
         ...state,
         rate: action.payload,
         initialRoomPrice: action.initialRate,
+        nightlyPrice: action.nightlyPrice,
       }
     default:
       return { ...state }

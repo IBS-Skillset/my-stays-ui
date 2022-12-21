@@ -5,7 +5,7 @@ import { HotelRepriceResponse } from '../../models/hotel/reprice-models/hotelRep
 import { HotelAvailabilityRequest } from '../../models/hotel/search-models/hotelAvailabilityRequest'
 import { UserDetails } from '../../models/user-model/userDetails'
 
-const BOOK_BASE_URL = `http://${process.env.DOMAIN}:${process.env.HOTEL_SERVICE_PORT}/hotel-book-service/api/book`
+const BOOK_BASE_URL = `http://${process.env.DOMAIN}:${process.env.HOTEL_SERVICE_PORT}/hotel-book/api/book`
 
 class BookService {
   async getBookResponse(
@@ -13,6 +13,8 @@ class BookService {
     userDetails: UserDetails,
     repriceResponse: HotelRepriceResponse,
     hotelAvailabilityRequest: HotelAvailabilityRequest,
+    hotelPhoneNumber: string,
+    nightlyPrice: number,
   ) {
     return await axios.post(
       BOOK_BASE_URL,
@@ -46,6 +48,14 @@ class BookService {
             countryCode: 'FR',
             countryName: userDetails.address.country,
           },
+        },
+        breakfastIncluded: repriceResponse.isBreakfastIncluded,
+        nightlyPrice: nightlyPrice,
+        hotelPhone: hotelPhoneNumber,
+        cancellationInfo: {
+          cancellable: repriceResponse.isCancellable,
+          cancellationDate: repriceResponse.cancelPolicyDeadLine,
+          cancellationPolicy: repriceResponse.penaltyDescriptionText,
         },
       }),
       {

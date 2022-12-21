@@ -6,6 +6,8 @@ export interface HotelRepriceResponse {
   amount: number
   cancelPolicyDeadLine: string
   penaltyDescriptionText: string
+  isCancellable: boolean
+  isBreakfastIncluded: boolean
 }
 interface ResponseStatus {
   status: number

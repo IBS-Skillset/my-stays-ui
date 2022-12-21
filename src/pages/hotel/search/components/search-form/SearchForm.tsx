@@ -33,14 +33,25 @@ function SearchForm() {
       checkOutDate: new Date(),
     })
   const [startDate, setStartDate] = useState(new Date())
-  const [endDate, setEndDate] = useState(new Date(startDate.getFullYear(), startDate.getMonth(), (startDate.getDate() + 1)))
+  const [endDate, setEndDate] = useState(
+    new Date(
+      startDate.getFullYear(),
+      startDate.getMonth(),
+      startDate.getDate() + 1,
+    ),
+  )
   const dispatch = useDispatch()
 
   const formSchema = Yup.object().shape({
     location: Yup.string().required('*Location is required'),
   })
 
-  const { register, handleSubmit, formState:{errors}, setError } = useForm<IFormInputs>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+  } = useForm<IFormInputs>({
     resolver: yupResolver(formSchema),
     mode: 'onSubmit',
   })
@@ -72,7 +83,7 @@ function SearchForm() {
       })
       return
     }
-    if (startDate == endDate || startDate > endDate ) {
+    if (startDate == endDate || startDate > endDate) {
       setError('location', {
         type: 'manual',
         message: 'Incorrect Date Range',
@@ -83,10 +94,11 @@ function SearchForm() {
       .then((response: AxiosResponse<HotelAvailabilityResponse>) => {
         dispatch(hotelSearchAvailabilityRequestAction(hotelAvailabilityRequest))
         dispatch(hotelSearchAvailabilityResponseAction(response.data))
-        if (response.data.responseStatus.errorMessage == "No Availability") {
+        if (response.data.responseStatus.errorMessage == 'No Availability') {
           setError('location', {
             type: 'manual',
-            message: 'No available hotels matching your request were found. Please amend your search criteria.',
+            message:
+              'No available hotels matching your request were found. Please amend your search criteria.',
           })
         } else {
           const days = intervalToDuration({
@@ -108,7 +120,11 @@ function SearchForm() {
         console.log(error)
         dispatch(
           hotelSearchAvailabilityResponseAction({
-            responseStatus: { status: -1 , errorMessage: "Internal server error", errorCode: "999"},
+            responseStatus: {
+              status: -1,
+              errorMessage: 'Internal server error',
+              errorCode: '999',
+            },
             hotelItem: [],
           }),
         )
