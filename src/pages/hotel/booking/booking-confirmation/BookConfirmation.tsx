@@ -34,10 +34,20 @@ const BookConfirmation = () => {
     (state: IRootState) => state.hotel.rate.initialRoomPrice,
   )
 
+  const nightlyPrice: number = useSelector(
+    (state: IRootState) => state.hotel.rate.nightlyPrice,
+  )
+
   const hotelAvailabilityRequest: HotelAvailabilityRequest = useSelector(
     (state: IRootState) =>
       state.hotel.availabilityRequest.hotelAvailabilityRequest,
   )
+
+  const hotelPhoneNumber: string = useSelector((state: IRootState) => {
+    return state.hotel.descriptionResponse.hotelDescriptionResponsesPerCode[
+      repriceResponse.hotelCode
+    ].hotelItem.address.phoneNumber
+  })
 
   const schema = Yup.object().shape({
     cvv: Yup.string()
@@ -81,6 +91,8 @@ const BookConfirmation = () => {
       userDetails,
       repriceResponse,
       hotelAvailabilityRequest,
+      hotelPhoneNumber,
+      nightlyPrice,
     )
       .then((response: AxiosResponse<BookResponse>) => {
         console.log('book response : ', response.data)

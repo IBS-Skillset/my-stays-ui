@@ -17,7 +17,6 @@ function HotelSearch() {
   const isAuthorized = useSelector(
     (state: IRootState) => state.authorize.isAuthorized,
   )
-
   if (accessToken == '') {
     if (!isAuthorized) {
       DispatchPkceData()

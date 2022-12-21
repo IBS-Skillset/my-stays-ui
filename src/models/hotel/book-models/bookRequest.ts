@@ -9,6 +9,10 @@ export interface BookRequest {
   endDate: string
   paymentInfo: PaymentInfo
   userInfo: UserInfo
+  breakfastIncluded: boolean
+  hotelPhone: string
+  cancellationInfo: CancellationInfo
+  nightlyPrice: number
 }
 export interface PaymentInfo {
   paymentType: string
@@ -26,10 +30,15 @@ interface UserInfo {
   email: string
   address: Address
 }
-export interface Address {
+interface Address {
   addressLine: string
   cityName: string
   postalCode: string
   countryCode: string
   countryName: string
+}
+interface CancellationInfo {
+  cancellable: boolean
+  cancellationDate: string
+  cancellationPolicy: string
 }
