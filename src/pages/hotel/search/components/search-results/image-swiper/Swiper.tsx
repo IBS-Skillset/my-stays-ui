@@ -13,12 +13,11 @@ export type Props = {
   hotelCode: string
 }
 
-const MAX_IMAGES_DISPLAY = 6
-
 function Swiper({ hotelCode }: Props) {
   const containerRef = useRef<HTMLUListElement>(null)
   const [offsetX, setOffsetX] = useStateRef(0)
   const [currentIdx, setCurrentIdx] = useState(0)
+  const [maxImages, setMaxImages] = useState(6)
   const [items, setItems] = useState<Array<SwiperItemType>>([])
   const hotel = useSelector(
     (state: IRootState) =>
@@ -30,7 +29,7 @@ function Swiper({ hotelCode }: Props) {
     const items: Array<SwiperItemType> = []
     if (hotel) {
       const itemsMedia = hotel.media.mediaUrl
-      itemsMedia.slice(0, MAX_IMAGES_DISPLAY).map((item: string) => {
+      itemsMedia.slice(0, maxImages).map((item: string) => {
         const image: SwiperItemType = {
           imageSrc: item,
         }
@@ -42,7 +41,10 @@ function Swiper({ hotelCode }: Props) {
   }, [hotel])
 
   const indicatorOnClick = (idx: number) => {
-    if (idx >= 0 && idx < MAX_IMAGES_DISPLAY) {
+    if (items.length < 6) {
+      setMaxImages(items.length)
+    }
+    if (idx >= 0 && idx < maxImages) {
       const containerEl = getRefValue(containerRef)
       const containerWidth = containerEl.offsetWidth
 
@@ -70,23 +72,27 @@ function Swiper({ hotelCode }: Props) {
 
   return (
     <div className="swiper-container" role="presentation">
-      <div
-        className="previous indicator"
-        onClick={() => indicatorOnClick(currentIdx - 1)}
-        onKeyDown={() => indicatorOnClick(currentIdx - 1)}
-        role="presentation"
-      >
-        &#8249;
-      </div>
+      {currentIdx !== 0 && (
+        <div
+          className="previous indicator"
+          onClick={() => indicatorOnClick(currentIdx - 1)}
+          onKeyDown={() => indicatorOnClick(currentIdx - 1)}
+          role="presentation"
+        >
+          &#8249;
+        </div>
+      )}
       {swiperIndicator}
-      <div
-        className="next indicator"
-        onClick={() => indicatorOnClick(currentIdx + 1)}
-        onKeyUp={() => indicatorOnClick(currentIdx + 1)}
-        role="presentation"
-      >
-        &#8250;
-      </div>
+      {currentIdx !== maxImages - 1 && (
+        <div
+          className="next indicator"
+          onClick={() => indicatorOnClick(currentIdx + 1)}
+          onKeyUp={() => indicatorOnClick(currentIdx + 1)}
+          role="presentation"
+        >
+          &#8250;
+        </div>
+      )}
     </div>
   )
 }
