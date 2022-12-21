@@ -1,7 +1,13 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { IRootState } from '../../../../../store/reducers/rootReducer'
+
 import './UserDetails.css'
 
 function UserDetails() {
+  const userDetails = useSelector(
+    (state: IRootState) => state.userDetails.userDetails,
+  )
   return (
     <div className="user-details border-color">
       <div className="ml-1">
@@ -14,7 +20,7 @@ function UserDetails() {
               First name <span className="mandatory">*</span>
             </h1>
             <div className="rounded-sm bg-white name border-color">
-              <h1 className="values headings">JEAN</h1>
+              <h1 className="values headings">{userDetails.firstName}</h1>
             </div>
           </div>
           <div className="user-info">
@@ -22,7 +28,7 @@ function UserDetails() {
               Last name <span className="mandatory">*</span>
             </h1>
             <div className="rounded-sm bg-white name border-color">
-              <h1 className="values headings">JOSE</h1>
+              <h1 className="values headings">{userDetails.lastName}</h1>
             </div>
           </div>
         </div>
@@ -31,7 +37,7 @@ function UserDetails() {
             Email address <span className="mandatory">*</span>
           </h2>
           <div className="rounded-sm bg-white email border-color">
-            <h1 className="values headings">jeajose@expediagroup.com</h1>
+            <h1 className="values headings">{userDetails.email}</h1>
           </div>
           <h1 className="email-message headings">
             Confirmation email goes to this address
@@ -43,7 +49,7 @@ function UserDetails() {
           Mobile Phone <span className="mandatory">*</span>
         </h1>
         <div className="rounded-sm bg-white email border-color">
-          <h1 className="values headings">0033123456789</h1>
+          <h1 className="values headings">{userDetails.phone}</h1>
         </div>
       </div>
     </div>

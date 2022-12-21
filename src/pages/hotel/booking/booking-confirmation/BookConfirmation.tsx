@@ -71,9 +71,17 @@ const BookConfirmation = () => {
     resolver: yupResolver(schema),
     mode: 'onSubmit',
   })
+  const userDetails = useSelector(
+    (state: IRootState) => state.userDetails.userDetails,
+  )
 
   const formSubmitHandler: SubmitHandler<PaymentInfo> = (data: PaymentInfo) => {
-    BookService.getBookResponse(data, repriceResponse, hotelAvailabilityRequest)
+    BookService.getBookResponse(
+      data,
+      userDetails,
+      repriceResponse,
+      hotelAvailabilityRequest,
+    )
       .then((response: AxiosResponse<BookResponse>) => {
         console.log('book response : ', response.data)
         dispatch(bookResponseAction(response.data))

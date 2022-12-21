@@ -6,7 +6,7 @@ function ErrorPage() {
   const navigate = useNavigate()
   return (
     <>
-      <div className="main">
+      <div className="main-box">
         <div className="error-title">404 ERROR</div>
         <div>
           Oops! Looks like you took a wrong turn
