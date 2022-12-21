@@ -3,12 +3,14 @@ import { PaymentInfo } from '../../models/hotel/book-models/bookRequest'
 import { format } from 'date-fns'
 import { HotelRepriceResponse } from '../../models/hotel/reprice-models/hotelRepriceResponse'
 import { HotelAvailabilityRequest } from '../../models/hotel/search-models/hotelAvailabilityRequest'
+import { UserDetails } from '../../models/user-model/userDetails'
 
 const BOOK_BASE_URL = `http://${process.env.DOMAIN}:${process.env.HOTEL_SERVICE_PORT}/hotel-book-service/api/book`
 
 class BookService {
   async getBookResponse(
     data: PaymentInfo,
+    userDetails: UserDetails,
     repriceResponse: HotelRepriceResponse,
     hotelAvailabilityRequest: HotelAvailabilityRequest,
   ) {
@@ -33,16 +35,16 @@ class BookService {
         },
         userInfo: {
           prefix: 'Mr',
-          email: 'test@gmail.com',
-          givenName: 'test',
-          surName: 'user',
-          phoneNumber: '0033123456789',
+          email: userDetails.email,
+          givenName: userDetails.firstName,
+          surName: userDetails.lastName,
+          phoneNumber: userDetails.phone,
           address: {
-            addressLine: 'LEVALLOIS',
-            cityName: 'LEVALLOIS PERRET',
-            postalCode: '92300',
+            addressLine: userDetails.address.address,
+            cityName: userDetails.address.city,
+            postalCode: userDetails.address.zipcode,
             countryCode: 'FR',
-            countryName: 'FRANCE',
+            countryName: userDetails.address.country,
           },
         },
       }),
