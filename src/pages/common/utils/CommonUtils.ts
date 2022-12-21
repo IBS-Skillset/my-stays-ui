@@ -41,3 +41,11 @@ function convertDate(date: string) {
     date.slice(0, 10).split('-'),
   )
 }
+
+export function getRateTolerance(initialRate: number, finalRate: number) {
+  if (finalRate > initialRate) {
+    const rateDifference = finalRate - initialRate
+    return (rateDifference * 100) / initialRate
+  }
+  return 0
+}

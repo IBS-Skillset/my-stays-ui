@@ -31,4 +31,5 @@ export interface HotelDescriptionResponseAction {
 export interface ActionRate {
   type: string
   payload: HotelRepriceResponse
+  initialRate: number
 }
