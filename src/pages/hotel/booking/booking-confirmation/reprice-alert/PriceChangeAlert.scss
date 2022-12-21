@@ -1,0 +1,21 @@
+.price-change-alert-outline {
+  height: 50px;
+  width: 1060px;
+  padding-top: 7px;
+  padding-left: 10px;
+  display: flex;
+  border: 1px solid #ccc9c9;
+}
+
+.price-change-alert-image-container {
+  width: 0.75rem;
+  display: flex;
+  height: 1.6rem;
+  margin-top: 5px;
+}
+
+.price-change-alert {
+  margin-left: 5px;
+  margin-top: 5px;
+  color: rgba(220, 38, 38, 1);
+}

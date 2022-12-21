@@ -42,7 +42,12 @@ function RoomList({
     )
       .then((response: AxiosResponse<HotelRepriceResponse>) => {
         console.log('reprice response : ', response.data)
-        dispatch(rateAction(response.data))
+        dispatch(
+          rateAction(
+            response.data,
+            roomAvailability.rateList[select].totalAmount,
+          ),
+        )
         navigate('/bookingConfirmation')
       })
       .catch((error) => {

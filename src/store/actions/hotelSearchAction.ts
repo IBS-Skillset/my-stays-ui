@@ -53,9 +53,13 @@ export function hotelSearchDescriptionResponseAction(
   }
 }
 
-export function rateAction(rate: HotelRepriceResponse): ActionRate {
+export function rateAction(
+  rate: HotelRepriceResponse,
+  initialRoomPrice: number,
+): ActionRate {
   return {
     type: 'SELECT_RATE',
     payload: rate,
+    initialRate: initialRoomPrice,
   }
 }
