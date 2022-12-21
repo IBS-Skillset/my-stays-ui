@@ -121,8 +121,8 @@ function SignIn() {
               </div>
             </form>
             <p className=" p-4 text-center select-none text-white">
-              Don&apos;t have an account?
-              <Link to="/signup" className="text-white">
+              Don&apos;t have an account? <></>
+              <Link to="/signup" className="text-white hover:underline">
                 Create one
               </Link>
             </p>
