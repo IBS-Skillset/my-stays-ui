@@ -85,7 +85,7 @@ function Header() {
               {parsedAccessToken != undefined &&
               parsedAccessToken.sub != undefined ? (
                 <>
-                  <ProfileDropDown token={parsedAccessToken} />
+                  <ProfileDropDown />
                 </>
               ) : (
                 ''

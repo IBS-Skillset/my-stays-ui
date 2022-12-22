@@ -2,37 +2,38 @@ import profileSVG from '../../../../../assets/svg/profile.svg'
 import dropDownSVG from '../../../../../assets/svg/dropdown.svg'
 import useComponentVisible from './useComponentVisible'
 import './ProfileDropDown.scss'
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { IRootState } from '../../../../../store/reducers/rootReducer'
 
-export const ProfileDropDown = (token: any) => {
+export const ProfileDropDown = () => {
   const { ref, isComponentVisible, setIsComponentVisible } =
     useComponentVisible(false)
-  const [userName, setUserName] = useState('')
-
-  useEffect(() => {
-    if (token.token.sub) {
-      setUserName(token.token.sub)
-    }
-  }, [token])
-
   const showProfile = () => {
     setIsComponentVisible(!isComponentVisible)
   }
   const emailid = useSelector((state: IRootState) => state.email.email)
+  const firstName = useSelector(
+    (state: IRootState) => state.userDetails.userDetails.firstName,
+  )
+  const lastName = useSelector(
+    (state: IRootState) => state.userDetails.userDetails.lastName,
+  )
   return (
     <div className="profile">
       <button className="dropdown-menu" type="button" onClick={showProfile}>
         <img className="flex shrink pr-1" src={profileSVG} alt="" />
-        <p className="text-white profile-text">{userName}</p>
+        <p className="text-white profile-text">
+          {firstName}&nbsp;{lastName}
+        </p>
         <img className="flex shrink" src={dropDownSVG} alt="" />
       </button>
       {isComponentVisible && (
         <div ref={ref} className="dropdown-profile">
           <div className="dropdown-user">
-            <div className="font-medium ">{userName}</div>
+            <div className="font-medium ">
+              {firstName}&nbsp;{lastName}
+            </div>
             <div className="truncate">{emailid}</div>
           </div>
           <ul className="dropdown-nav">
