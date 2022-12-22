@@ -8,14 +8,10 @@ const Travelers = () => {
         <img src={personSVG} alt="" className="travelers-image" />
       </div>
       <div className="travelers-input-container">
-        <label className="travelers-label">
+        <div className="travelers-label">
           TRAVELERS
-          <input
-            className="travelers-input"
-            type="text"
-            placeholder="1 adult"
-          />
-        </label>
+          <h1 className="travelers-input">1 adult</h1>
+        </div>
       </div>
     </div>
   )
