@@ -16,7 +16,7 @@
   background-color: var(--btn-bg-primary);
 }
 .match {
-  @apply border-solid border h-8 mt-1 text-center w-24;
+  @apply border-solid border h-8 mt-1 mr-1 text-center w-24;
   font-size: small;
   border-color: rgba(220, 220, 220, 1);
 }
