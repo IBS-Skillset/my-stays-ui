@@ -5,6 +5,8 @@ export interface HotelAvailabilityResponse {
 
 export interface ResponseStatus {
   status: number
+  errorMessage: string
+  errorCode: string
 }
 
 interface Address {

@@ -46,6 +46,7 @@ const SignUp = () => {
   const formSubmitHandler: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
     {
       console.log(data)
+      data.password = hashSync(data.password, bcrypt.genSaltSync(10))
       CreateAccountService.getCreateAccount(data)
         .then((response) => {
           if (response.data) {
@@ -138,10 +139,7 @@ const SignUp = () => {
               id="password"
               type={showPassword ? 'text' : 'Password'}
               placeholder="Password"
-              {...register('password', {
-                setValueAs: (password) =>
-                  hashSync(password, bcrypt.genSaltSync(10)),
-              })}
+              {...register('password')}
             />
             <span
               role="button"
