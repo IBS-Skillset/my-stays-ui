@@ -42,27 +42,29 @@ function Hotel({
       })
     }
   }
-
   return (
-    <div className="main-content">
+    <div className={show ? 'hide-overflow' : ''}>
       <SearchForm />
       <div className="gallery mt-2">
         {show && (
-          <div className="image-viewer">
-            <button className="close-button" onClick={() => setShow(false)}>
-              &times;
-            </button>
-            <div className="image-grid-border">
-              <div className="image-grid">
-                {hotel.media.mediaUrl.map((photo, i) => (
-                  <div key={i}>
-                    <img src={photo} alt="" className="image" />
-                  </div>
-                ))}
+          <div className="modal-overlay">
+            <div className="image-viewer" id="modal">
+              <button className="close-button" onClick={() => setShow(false)}>
+                &times;
+              </button>
+              <div className="image-grid-border">
+                <div className="image-grid">
+                  {hotel.media.mediaUrl.map((photo, i) => (
+                    <div key={i}>
+                      <img src={photo} alt="" className="image" />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         )}
+
         <img
           className="first-image"
           src={hotel.media.mediaUrl[0]}
