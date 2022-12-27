@@ -67,7 +67,7 @@ function RoomList({
                 Room Type
               </th>
               <th className="w-28 p-3 text-white text-sm font-semibold tracking-wide border-white border-solid border-r">
-                Todays Price
+                Today&apos;s Price
               </th>
               <th className="w-32 p-3 text-white modal-thead text-sm font-semibold tracking-wide border-solid border-r">
                 <div className="flex justify-center">

@@ -1,3 +1,7 @@
+.hide-overflow {
+  overflow: hidden;
+  height: 100px;
+}
 .gallery {
   height: 350px;
   width: 1060px;
@@ -124,4 +128,12 @@
 .seperator {
   margin-top: 15px;
   border-color: rgba(0, 0, 0, 0.45);
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(49, 49, 49, 0.8);
 }
