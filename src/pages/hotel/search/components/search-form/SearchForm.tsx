@@ -32,15 +32,15 @@ function SearchForm() {
       checkInDate: new Date(),
       checkOutDate: new Date(),
     })
-  const [startDate, setStartDate] = useState<Date | null | undefined>(null)
-  const [endDate, setEndDate] = useState<Date | null | undefined>(null)
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date(startDate.getFullYear(), startDate.getMonth(), (startDate.getDate() + 1)))
   const dispatch = useDispatch()
 
   const formSchema = Yup.object().shape({
     location: Yup.string().required('*Location is required'),
   })
 
-  const { register, handleSubmit, setError } = useForm<IFormInputs>({
+  const { register, handleSubmit, formState:{errors}, setError } = useForm<IFormInputs>({
     resolver: yupResolver(formSchema),
     mode: 'onSubmit',
   })
@@ -72,10 +72,7 @@ function SearchForm() {
       })
       return
     }
-    if (
-      hotelAvailabilityRequest.checkInDate ===
-      hotelAvailabilityRequest.checkOutDate
-    ) {
+    if (startDate == endDate || startDate > endDate ) {
       setError('location', {
         type: 'manual',
         message: 'Incorrect Date Range',
@@ -86,17 +83,24 @@ function SearchForm() {
       .then((response: AxiosResponse<HotelAvailabilityResponse>) => {
         dispatch(hotelSearchAvailabilityRequestAction(hotelAvailabilityRequest))
         dispatch(hotelSearchAvailabilityResponseAction(response.data))
-        const days = intervalToDuration({
-          start: hotelAvailabilityRequest.checkInDate,
-          end: hotelAvailabilityRequest.checkOutDate,
-        }).days
-        typeof days != 'undefined' && dispatch(nightCountAction(days))
+        if (response.data.responseStatus.errorMessage == "No Availability") {
+          setError('location', {
+            type: 'manual',
+            message: 'No available hotels matching your request were found. Please amend your search criteria.',
+          })
+        } else {
+          const days = intervalToDuration({
+            start: hotelAvailabilityRequest.checkInDate,
+            end: hotelAvailabilityRequest.checkOutDate,
+          }).days
+          typeof days != 'undefined' && dispatch(nightCountAction(days))
+        }
       })
       .catch((error) => {
         console.log(error)
         dispatch(
           hotelSearchAvailabilityResponseAction({
-            responseStatus: { status: -1 },
+            responseStatus: { status: -1 , errorMessage: "Internal server error", errorCode: "999"},
             hotelItem: [],
           }),
         )
@@ -109,6 +113,7 @@ function SearchForm() {
         className="search-container"
         onSubmit={handleSubmit(getHotelAvailability)}
       >
+        {errors.location && <p>{errors.location.message}</p>}
         <Location
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
