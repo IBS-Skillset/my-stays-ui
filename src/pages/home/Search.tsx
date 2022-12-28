@@ -116,8 +116,16 @@ function Search() {
           })
         } else {
           const days = intervalToDuration({
-            start: hotelAvailabilityRequest.checkInDate,
-            end: hotelAvailabilityRequest.checkOutDate,
+            start: new Date(
+              startDate.getFullYear(),
+              startDate.getMonth(),
+              startDate.getDay(),
+            ),
+            end: new Date(
+              endDate.getFullYear(),
+              endDate.getMonth(),
+              endDate.getDay(),
+            ),
           }).days
           typeof days != 'undefined' && dispatch(nightCountAction(days))
           console.log(response)
@@ -149,7 +157,7 @@ function Search() {
         <div className="heading">Search Hotels</div>
         <SearchHeader travelWrapStyle={travelWrapStyle} />
         <div className="main-form">
-        {errors.location && <p>{errors.location.message}</p>}
+          {errors.location && <p>{errors.location.message}</p>}
           <Location
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}

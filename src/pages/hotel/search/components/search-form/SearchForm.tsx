@@ -90,8 +90,16 @@ function SearchForm() {
           })
         } else {
           const days = intervalToDuration({
-            start: hotelAvailabilityRequest.checkInDate,
-            end: hotelAvailabilityRequest.checkOutDate,
+            start: new Date(
+              startDate.getFullYear(),
+              startDate.getMonth(),
+              startDate.getDay(),
+            ),
+            end: new Date(
+              endDate.getFullYear(),
+              endDate.getMonth(),
+              endDate.getDay(),
+            ),
           }).days
           typeof days != 'undefined' && dispatch(nightCountAction(days))
         }
