@@ -25,6 +25,7 @@ function RoomList({
       hotelCode: '',
       rateList: [],
     })
+  console.log('room avilability final', roomAvailability)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   useEffect(() => {
@@ -98,20 +99,19 @@ function RoomList({
                   </td>
                   <td className="p-3 text-sm flex-col text-gray-700">
                     <div className="flex">
-                      {room.isBreakfastIncluded &&
-                        room.breakFastDetails[0].breakfast !== 'ROOM ONLY' && (
-                          <>
-                            <IoCafe className="text-lg text-green-600 ml-2"></IoCafe>
-                            <h1 className="text-green-600 ml-2">
-                              Breakfast included
-                            </h1>
-                          </>
-                        )}
+                      {room.isBreakfastIncluded && (
+                        <>
+                          <IoCafe className="text-lg text-green-600 ml-2"></IoCafe>
+                          <h1 className="text-green-600 ml-2">
+                            Breakfast included
+                          </h1>
+                        </>
+                      )}
                     </div>
 
                     <div className="flex ">
                       <IoIosCheckmark className="text-lg text-green-600 ml-2 mt-2"></IoIosCheckmark>
-                      {room.iscancellable ? (
+                      {room.isCancellable ? (
                         <h1 className="refund ml-2 mt-2">Refundable</h1>
                       ) : (
                         <h1 className="refund ml-2 mt-2">Non Refundable</h1>
