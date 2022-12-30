@@ -13,7 +13,7 @@ export interface Rate {
   currency: string
   ratePlan: string
   rateType: string
-  iscancellable: boolean
+  isCancellable: boolean
   isCVVRequired: boolean
   isBreakfastIncluded: boolean
   hotelCode: string
