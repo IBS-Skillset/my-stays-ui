@@ -2,7 +2,7 @@ import { BookResponse } from '../../../../models/hotel/book-models/bookResponse'
 import { BookResponseAction } from '../../../actionModels/book'
 
 const book: BookResponse = {
-  responseStatus: { status: -1 },
+  responseStatus: { status: -1, errorMessage: '', errorCode: '' },
   startDate: '',
   endDate: '',
   hotelCode: '',
@@ -14,7 +14,7 @@ const book: BookResponse = {
     cityName: '',
     countryName: '',
   },
-  roomRate: { totalAmount: 0, currencyCode: '' },
+  roomRate: { totalAmount: 0, currencyCode: '', rateDescription: '' },
   pnrInfo: {
     bookingCode: '',
     bookingDescription: '',
