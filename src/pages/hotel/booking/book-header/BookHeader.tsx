@@ -2,9 +2,21 @@ import React from 'react'
 import { ImCheckmark } from 'react-icons/im'
 import { useLocation } from 'react-router'
 import './BookHeader.scss'
+import { BookResponse } from '../../../../models/hotel/book-models/bookResponse'
+import { useSelector } from 'react-redux'
+import { IRootState } from '../../../../store/reducers/rootReducer'
 
 function BookHeader() {
-  const finalConfirmationMatch = useLocation().pathname == '/finalConfirmation'
+  const bookResponse: BookResponse = useSelector(
+    (state: IRootState) => state.hotel.bookResponse.bookResponse,
+  )
+
+  const isSuccessBook =
+    useLocation().pathname == '/finalConfirmation' &&
+    bookResponse.responseStatus.status == 1
+      ? 'booking-confirm-after-book'
+      : ''
+
   return (
     <div className="book-header-container">
       <div className="book-items display-content">
@@ -18,26 +30,15 @@ function BookHeader() {
           <div className="title display-content">Payment Information</div>
         </div>
         <div
-          className={
-            'progress-divider-final border-divider ' +
-            (finalConfirmationMatch ? 'progress-divider-after-book' : '')
-          }
+          className={'progress-divider-final border-divider ' + isSuccessBook}
         ></div>
         <div className="items-icon">
           <div
-            className={
-              'book-indicator-icon display-content ' +
-              (finalConfirmationMatch ? 'items-icon-after-book' : '')
-            }
+            className={'book-indicator-icon display-content ' + isSuccessBook}
           >
             <ImCheckmark />
           </div>
-          <div
-            className={
-              'title-nonactive display-content ' +
-              (finalConfirmationMatch ? 'booking-confirm-after-book' : '')
-            }
-          >
+          <div className={'title-nonactive display-content ' + isSuccessBook}>
             Booking is confirmed
           </div>
         </div>

@@ -8,6 +8,8 @@ export interface HotelDescriptionResponse {
 }
 export interface ResponseStatus {
   status: number
+  errorMessage: string
+  errorCode: string
 }
 
 interface Media {
