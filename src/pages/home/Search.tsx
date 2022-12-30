@@ -157,7 +157,9 @@ function Search() {
         <div className="heading">Search Hotels</div>
         <SearchHeader travelWrapStyle={travelWrapStyle} />
         <div className="main-form">
-          {errors.location && <p>{errors.location.message}</p>}
+          {errors.location && (
+            <div className="error-text">{errors.location.message}</div>
+          )}
           <Location
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
