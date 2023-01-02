@@ -70,3 +70,6 @@
   position: sticky;
   top: 0px;
 }
+.error-message {
+  @apply text-red-600  my-2 text-center border-2 rounded-md border-red-400 bg-red-50 p-2 shadow-md shadow-gray-500;
+}

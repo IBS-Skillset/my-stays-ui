@@ -1,7 +1,7 @@
-import { IoCafe } from 'react-icons/io5'
+import { IoCafe, IoInformationCircleSharp } from 'react-icons/io5'
 import { RoomAvailabilityResponse } from '../../../../../../models/hotel/roomavailability-models/roomAvailabilityResponse'
 import './RoomList.scss'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { IoIosCheckmark } from 'react-icons/io'
 import { useDispatch } from 'react-redux'
 import { rateAction } from '../../../../../../store/actions/hotelSearchAction'
@@ -33,6 +33,15 @@ function RoomList({
   }, [roomAvailabilityResponse])
 
   const [select, setSelect] = useState(-1)
+  const [error, setError] = useState(false)
+  const errorSection = useRef<HTMLDivElement>(null)
+  const scrollTo = () => {
+    const topSection = errorSection.current!.offsetTop
+    window.scrollTo({
+      top: topSection,
+      behavior: 'smooth',
+    })
+  }
 
   const getRepriceResponse = () => {
     HotelRepriceService.getHotelRepriceInfo(
@@ -41,23 +50,39 @@ function RoomList({
       roomAvailability.rateList[select].bookingCode,
     )
       .then((response: AxiosResponse<HotelRepriceResponse>) => {
-        console.log('reprice response : ', response.data)
-        dispatch(
-          rateAction(
-            response.data,
-            roomAvailability.rateList[select].totalAmount,
-            roomAvailability.rateList[select].amount,
-          ),
-        )
-        navigate('/bookingConfirmation')
+        if (response.status === 200) {
+          console.log('reprice response : ', response.data)
+          dispatch(
+            rateAction(
+              response.data,
+              roomAvailability.rateList[select].totalAmount,
+              roomAvailability.rateList[select].amount,
+            ),
+          )
+          navigate('/bookingConfirmation')
+        } else {
+          setError(true)
+          setTimeout(() => scrollTo(), 10)
+        }
       })
       .catch((error) => {
+        setError(true)
+        setTimeout(() => scrollTo(), 10)
         console.log(error)
       })
   }
 
   return (
     <>
+      {error && (
+        <div ref={errorSection} className="pr-52">
+          <div className="flex items-center border-1 border-gray-500 text-gray-700 p-4 shadow-md my-3 rounded-sm shadow-gray-500 ">
+            <IoInformationCircleSharp className="text-xl text-red-400 mx-1"></IoInformationCircleSharp>
+            An error has occurred while selecting this room . Please select
+            another room or try after some time
+          </div>
+        </div>
+      )}
       <h1 className="heading-select-room">Select your room</h1>
       <div className="room-list">
         <table className="modal-table bg-white">
