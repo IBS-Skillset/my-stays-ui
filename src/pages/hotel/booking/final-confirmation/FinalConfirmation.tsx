@@ -5,6 +5,7 @@ import './FinalConfirmation.scss'
 import { useSelector } from 'react-redux'
 import { IRootState } from '../../../../store/reducers/rootReducer'
 import { BookResponse } from '../../../../models/hotel/book-models/bookResponse'
+import { Link } from 'react-router-dom'
 
 const FinalConfirmation = () => {
   useEffect(() => {
@@ -66,7 +67,9 @@ const FinalConfirmation = () => {
                   </div>
                 </div>
                 <div className="view-booking">
-                  <button className="btn-viewbooking">VIEW BOOKING</button>
+                  <Link to={'/mytrips'}>
+                    <button className="btn-viewbooking">VIEW BOOKING</button>
+                  </Link>
                 </div>
               </div>
             </div>
