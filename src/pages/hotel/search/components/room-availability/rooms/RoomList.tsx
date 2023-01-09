@@ -132,7 +132,6 @@ function RoomList({
           </tbody>
         </table>
         <div className="reserve">
-          <div className="button-head"></div>
           <button className="reserve-button" onClick={getRepriceResponse}>
             Reserve
           </button>

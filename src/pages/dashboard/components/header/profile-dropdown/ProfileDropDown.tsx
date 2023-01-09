@@ -47,11 +47,6 @@ export const ProfileDropDown = () => {
                 My Trips
               </Link>
             </li>
-            <li>
-              <Link className="dropdown-link" to="/home">
-                Stays
-              </Link>
-            </li>
           </ul>
           <div className="py-1">
             <Link className="dropdown-logout" to="/logout">
