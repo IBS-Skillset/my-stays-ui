@@ -1,4 +1,5 @@
 import infoSVG from '../../../../../src/assets/svg/info.svg'
+import errorInfo from '../../../../../src/assets/images/failureInfo.jpg'
 import { FaHotel } from 'react-icons/fa'
 import React, { useEffect } from 'react'
 import './FinalConfirmation.scss'
@@ -42,7 +43,12 @@ const FinalConfirmation = () => {
       <div className="final-confirmation">
         <div className="final-booking-info-outline">
           <div className="final-booking-info-image-container">
-            <img src={infoSVG} alt="" className="info-image" />
+            {bookResponse.responseStatus.status == 1 && (
+              <img src={infoSVG} alt="" />
+            )}
+            {bookResponse.responseStatus.status == 0 && (
+              <img src={errorInfo} alt="" className="error-info" />
+            )}
           </div>
           <h1 className="final-booking-info-content">{displayMessage()}</h1>
         </div>

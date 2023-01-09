@@ -48,25 +48,21 @@
   margin-top: 10px;
 }
 .reserve-button {
-  height: 45px;
-  width: 200px;
+  height: 40px;
+  width: 180px;
   background-color: var(--btn-bg-primary);
   color: white;
   text-align: center;
   font-weight: bold;
   font-size: 15px;
-  margin-top: 25px;
+  margin-top: 60px;
+  margin-left: 20px;
 }
 .selected {
   cursor: pointer;
 }
 :hover.selected {
   border: 1px solid #bfdbfe;
-}
-.button-head {
-  height: 45px;
-  width: 200px;
-  background-color: #186399;
 }
 .reserve {
   width: 250px;
