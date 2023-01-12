@@ -53,7 +53,8 @@ const BookConfirmation = () => {
     cvv: Yup.string()
       .required('CVC is required')
       .min(3, 'CVC must be at least 3 characters')
-      .max(4, 'CVC must be at most 4 characters'),
+      .max(4, 'CVC must be at most 4 characters')
+      .matches(/[0-9]/, 'Invalid CVC'),
     cardNumber: Yup.string()
       .required('Card number is required')
       .test(
