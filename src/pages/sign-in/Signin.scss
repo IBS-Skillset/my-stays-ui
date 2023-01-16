@@ -1,5 +1,5 @@
 .outer-box {
-  @apply h-full flex justify-center items-center pt-20 pb-6 text-gray-800;
+  @apply h-screen flex justify-center items-center py-20 text-gray-800;
 }
 .message {
   @apply flex justify-center pt-2;
@@ -36,4 +36,13 @@
 
 ::-ms-reveal {
   display: none;
+}
+
+@media (max-width: 368px) {
+  .outer-box {
+    @apply px-5;
+  }
+  .signin-heading {
+    @apply text-2xl  tracking-[.2rem];
+  }
 }
