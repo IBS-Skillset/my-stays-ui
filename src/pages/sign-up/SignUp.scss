@@ -1,5 +1,5 @@
 .content {
-  @apply h-full flex justify-center items-center pb-4 pt-16;
+  @apply h-screen flex justify-center items-center;
 }
 .label {
   @apply block text-black text-sm font-medium mb-2 h-12;
@@ -19,7 +19,6 @@
 }
 .box {
   @apply rounded bg-black p-10;
-  width: 450px;
 }
 .sigup-heading {
   @apply text-3xl lg:text-4xl text-start select-none p-5 text-white;
@@ -31,4 +30,12 @@ input::-webkit-inner-spin-button {
 }
 ::-ms-reveal {
   display: none;
+}
+@media (max-width: 400px) {
+  .content {
+    @apply p-5;
+  }
+  .sigup-heading {
+    @apply text-2xl;
+  }
 }
