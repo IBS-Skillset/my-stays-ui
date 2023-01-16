@@ -4,8 +4,7 @@ import { format } from 'date-fns'
 import { HotelRepriceResponse } from '../../models/hotel/reprice-models/hotelRepriceResponse'
 import { HotelAvailabilityRequest } from '../../models/hotel/search-models/hotelAvailabilityRequest'
 import { UserDetails } from '../../models/user-model/userDetails'
-
-const BOOK_BASE_URL = `http://${process.env.DOMAIN}:${process.env.HOTEL_SERVICE_PORT}/hotel-book/api/book`
+import APIConstants from '../constants/APIConstants'
 
 class BookService {
   async getBookResponse(
@@ -17,7 +16,7 @@ class BookService {
     nightlyPrice: number,
   ) {
     return await axios.post(
-      BOOK_BASE_URL,
+      APIConstants.HOTEL_BOOK_URL,
       JSON.stringify({
         languageCode: 'ENG',
         hotelCode: repriceResponse.hotelCode,

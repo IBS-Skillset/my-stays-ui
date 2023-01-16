@@ -1,8 +1,7 @@
 import axios from 'axios'
 import { format } from 'date-fns'
 import { HotelAvailabilityRequest } from '../../models/hotel/search-models/hotelAvailabilityRequest'
-
-const HOTEL_REPRICE_URL = `http://${process.env.DOMAIN}:${process.env.HOTEL_SERVICE_PORT}/hotel-book-service/api/raterule`
+import APIConstants from '../constants/APIConstants'
 
 class HotelRepriceService {
   getHotelRepriceInfo(
@@ -11,7 +10,7 @@ class HotelRepriceService {
     ratePlanId: string,
   ) {
     return axios.post(
-      HOTEL_REPRICE_URL,
+      APIConstants.HOTEL_REPRICE_URL,
       JSON.stringify({
         languageCode: 'ENG',
         hotelCode: hotelCode,
