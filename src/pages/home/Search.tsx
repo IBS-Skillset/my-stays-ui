@@ -8,7 +8,6 @@ import { HotelAvailabilityRequest } from '../../models/hotel/search-models/hotel
 import HotelSearchService from '../../services/hotel/HotelSearchService'
 import { HotelAvailabilityResponse } from '../../models/hotel/search-models/hotelAvailabilityResponse'
 import { intervalToDuration } from 'date-fns'
-import { IRootState } from '../../store/reducers/rootReducer'
 import { useDispatch, useSelector } from 'react-redux'
 import DispatchPkceData from '../../setup/oauth2/pkce/DispatchPkceData'
 import AuthorizeUser from '../../setup/oauth2/components/AuthorizeUser'
@@ -24,6 +23,11 @@ import DateRange from '../common/components/date-range/DateRange'
 import Travelers from '../common/components/travelers/Travelers'
 import { fetchUserDetails } from '../../store/actions/userDetailsAction'
 import UserDetailsService from '../../services/user/UserDetailsService'
+import {
+  getAccessToken,
+  getEmail,
+  getIsAuthorized,
+} from '../common/selectors/Selectors'
 
 interface IFormInputs {
   location: string
@@ -32,7 +36,11 @@ interface IFormInputs {
 function Search() {
   const [searchTerm, setSearchTerm] = useState('')
   const [startDate, setStartDate] = useState(new Date())
-  const date = new Date(startDate.getFullYear(), startDate.getMonth(), (startDate.getDate() + 1))
+  const date = new Date(
+    startDate.getFullYear(),
+    startDate.getMonth(),
+    startDate.getDate() + 1,
+  )
   const [endDate, setEndDate] = useState(date)
   const [hotelAvailabilityRequest, setHotelAvailabilityRequest] =
     useState<HotelAvailabilityRequest>({
@@ -46,18 +54,19 @@ function Search() {
     location: Yup.string().required('*Location is required'),
   })
 
-  const { register, handleSubmit, formState:{errors}, setError } = useForm<IFormInputs>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+  } = useForm<IFormInputs>({
     resolver: yupResolver(formSchema),
     mode: 'onSubmit',
   })
 
-  const accessToken = useSelector(
-    (state: IRootState) => state.token.accessToken,
-  )
-  const isAuthorized = useSelector(
-    (state: IRootState) => state.authorize.isAuthorized,
-  )
-  const isemail = useSelector((state: IRootState) => state.email.email)
+  const accessToken = useSelector(getAccessToken)
+  const isAuthorized = useSelector(getIsAuthorized)
+  const isemail = useSelector(getEmail)
 
   useEffect(() => {
     UserDetailsService.getUserDetails(isemail)
@@ -109,10 +118,11 @@ function Search() {
       .then((response: AxiosResponse<HotelAvailabilityResponse>) => {
         dispatch(hotelSearchAvailabilityRequestAction(hotelAvailabilityRequest))
         dispatch(hotelSearchAvailabilityResponseAction(response.data))
-        if (response.data.responseStatus.errorMessage == "No Availability") {
+        if (response.data.responseStatus.errorMessage == 'No Availability') {
           setError('location', {
             type: 'manual',
-            message: 'No available hotels matching your request were found. Please amend your search criteria.',
+            message:
+              'No available hotels matching your request were found. Please amend your search criteria.',
           })
         } else {
           const days = intervalToDuration({
@@ -136,7 +146,11 @@ function Search() {
         console.log(error)
         dispatch(
           hotelSearchAvailabilityResponseAction({
-            responseStatus: { status: -1, errorMessage: "Internal server error", errorCode: "999"},
+            responseStatus: {
+              status: -1,
+              errorMessage: 'Internal server error',
+              errorCode: '999',
+            },
             hotelItem: [],
           }),
         )

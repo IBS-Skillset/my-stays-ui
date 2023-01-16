@@ -2,7 +2,7 @@ import { HotelAvailabilityResponseAction } from '../../../actionModels/search'
 import { HotelAvailabilityResponse } from '../../../../models/hotel/search-models/hotelAvailabilityResponse'
 
 const hotelAvailability: HotelAvailabilityResponse = {
-  responseStatus: { status: 0 },
+  responseStatus: { status: 0, errorMessage: '', errorCode: '' },
   hotelItem: [
     {
       hotelCode: '',

@@ -1,13 +1,14 @@
 import axios from 'axios'
-
-const GEO_LOCATION_BASE_URL = `http://${process.env.DOMAIN}:${process.env.GEO_SERVICE_PORT}/googleApi/`
+import APIConstants from '../constants/APIConstants'
 
 class GeoLocation {
   getGeolocationPlaceIds(place: string) {
-    return axios.get(GEO_LOCATION_BASE_URL + 'autoComplete?input=' + place)
+    return axios.get(
+      APIConstants.GOOGLE_API_URL + 'autoComplete?input=' + place,
+    )
   }
   getGeolocationLatitudeAndLongitude(placeId: string) {
-    return axios.get(GEO_LOCATION_BASE_URL + 'placeId?placeId=' + placeId)
+    return axios.get(APIConstants.GOOGLE_API_URL + 'placeId?placeId=' + placeId)
   }
 }
 

@@ -1,8 +1,7 @@
 import axios from 'axios'
 import { format } from 'date-fns'
 import { HotelAvailabilityRequest } from '../../models/hotel/search-models/hotelAvailabilityRequest'
-
-const ROOM_SEARCH_BASE_URL = `http://${process.env.DOMAIN}:${process.env.HOTEL_SERVICE_PORT}/hotel-search-service/api/roomAvailability`
+import APIConstants from '../constants/APIConstants'
 
 class RoomAvailabilityService {
   async getRoomAvailabilitySearch(
@@ -11,7 +10,7 @@ class RoomAvailabilityService {
     days: number,
   ) {
     return await axios.post(
-      ROOM_SEARCH_BASE_URL,
+      APIConstants.HOTEL_ROOM_AVAILABILITY_URL,
       JSON.stringify({
         hotelCode: code,
         checkInDate: format(hotelAvailabilityRequest.checkInDate, 'yyyy-MM-dd'),

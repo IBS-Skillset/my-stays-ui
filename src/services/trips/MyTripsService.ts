@@ -1,10 +1,9 @@
 import axios from 'axios'
-
-const MY_TRIPS_BASE_URL = `http://${process.env.DOMAIN}:${process.env.HOTEL_SERVICE_PORT}/book-query/api/myTrips`
+import APIConstants from '../constants/APIConstants'
 
 class MyTripsService {
   getMyTrips() {
-    return axios.get(MY_TRIPS_BASE_URL)
+    return axios.get(APIConstants.MY_TRIPS_URL)
   }
 }
 
