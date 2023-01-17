@@ -3,7 +3,7 @@ import FinalConfirmation from '../../../../../pages/hotel/booking/final-confirma
 import {
   getBookResponse,
   getDays,
-} from '../../../../../pages/common/selectors/Selectors'
+} from '../../../../../store/selectors/Selectors'
 import bookResponse from '../../../../../mocks/responses/bookResponse'
 
 import { BookResponse } from '../../../../../models/hotel/book-models/bookResponse'
@@ -21,7 +21,7 @@ jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: jest.fn(),
 }))
-jest.mock('../../../../../pages/common/selectors/Selectors', () => ({
+jest.mock('../../../../../store/selectors/Selectors', () => ({
   getBookResponse: jest.fn(),
   getDays: jest.fn(),
 }))

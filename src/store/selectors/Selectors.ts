@@ -1,4 +1,4 @@
-import { IRootState } from '../../../store/reducers/rootReducer'
+import { IRootState } from '../reducers/rootReducer'
 
 export const getAccessToken = (state: IRootState) => state.token.accessToken
 export const getIsAuthorized = (state: IRootState) =>

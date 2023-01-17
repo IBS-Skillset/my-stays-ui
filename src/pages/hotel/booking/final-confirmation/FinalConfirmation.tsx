@@ -6,7 +6,7 @@ import './FinalConfirmation.scss'
 import { useSelector } from 'react-redux'
 import { BookResponse } from '../../../../models/hotel/book-models/bookResponse'
 import { useNavigate } from 'react-router-dom'
-import { getBookResponse, getDays } from '../../../common/selectors/Selectors'
+import { getBookResponse, getDays } from '../../../../store/selectors/Selectors'
 
 const FinalConfirmation = () => {
   const navigate = useNavigate()

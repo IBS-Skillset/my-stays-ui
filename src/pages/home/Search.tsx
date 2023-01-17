@@ -27,7 +27,7 @@ import {
   getAccessToken,
   getEmail,
   getIsAuthorized,
-} from '../common/selectors/Selectors'
+} from '../../store/selectors/Selectors'
 
 interface IFormInputs {
   location: string
