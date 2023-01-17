@@ -31,30 +31,33 @@ const TripDetails = ({ trip, isCompleted }: Props) => {
       </div>
       <div className="booking-details-container">
         <div className="booking-details">
-          <table className="trips-table">
+          <table className="trips-table mytrips-table">
             <thead>
-              <tr>
+              <tr className="mytrips-head">
                 <th className="trips-table-header">CHECK-IN</th>
                 <th className="trips-table-header">CHECK-OUT</th>
                 <th></th>
-                <th className="trips-table-header">Total Price</th>
+                <th className="trips-table-header mytrips-total-price">
+                  Total Price
+                </th>
               </tr>
             </thead>
             <tbody>
-              <tr className="font-bold">
+              <tr className="mytrips-body font-bold">
                 <td>{getDateConversion(trip.checkInDate).toDateString()}</td>
                 <td>{getDateConversion(trip.checkOutDate).toDateString()}</td>
-                <td className="text-blue-500 flex">
-                  <img src={room} alt="" /> 1 Room(s),{' '}
-                  {getDays(trip.checkInDate, trip.checkOutDate)} Night(s)
+                <td className="mytrips-hotel-room text-blue-500 flex">
+                  <img className="mytrips-room-img" src={room} alt="" /> 1
+                  Room(s), {getDays(trip.checkInDate, trip.checkOutDate)}{' '}
+                  Night(s)
                 </td>
-                <td>
+                <td className="mytrips-currency">
                   {getCurrencySymbol(trip.currencyCode) + ' ' + trip.totalPrice}
                 </td>
               </tr>
             </tbody>
           </table>
-          <div className="pt-6 pb-2 flex justify-between">
+          <div className="pt-6 pb-2 flex justify-between mytrips-cancellation-details">
             <h1 className="text-green-600 text-sm">
               {trip.freeCancellationUntil &&
                 'Free Cancellation until 23:59 on ' +

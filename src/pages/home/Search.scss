@@ -15,6 +15,7 @@
   width: 800px;
   bottom: 80px;
 }
+
 .btn-search {
   @apply rounded-sm border-0 cursor-pointer font-black h-10 text-base relative text-white;
   min-width: 100px;
@@ -22,47 +23,57 @@
   transition: all 0.2s ease-out, color 0.2s ease-out;
   right: 38px;
 }
+
 .input-wrap {
   @apply bg-white rounded-sm h-16 relative w-56;
 }
+
 .hover {
   background-color: blue;
   border: none;
 }
+
 .text {
   @apply text-xs font-semibold content-start;
   font-family: 'Lato', sans-serif;
 }
+
 .heading {
   @apply text-4xl text-white p-3;
   font-weight: bold;
   font-family: 'Poppins', sans-serif;
 }
+
 .main-form .location-container {
   @apply bg-white rounded-sm h-16 mb-2 relative;
 }
+
 .main-form .location-container .location-image-container,
 .main-form .date-container .date-image-container,
 .main-form .travelers-container .travelers-image-container {
   @apply flex justify-center absolute inset-y-0 left-0 w-12;
 }
+
 .main-form .location-container .location-image-container .location-image,
 .main-form .date-container .date-image-container .date-image,
 .main-form .travelers-container .travelers-image {
   @apply h-5 mt-5 p-1 w-5;
   color: rgba(51, 51, 51, 1);
 }
+
 .main-form .location-container .location-input-container,
 .main-form .date-container .date-input-container,
 .main-form .travelers-container .travelers-input-container {
   @apply h-16 mx-10 p-2;
 }
+
 .main-form .location-container .location-input-container .location-label,
 .main-form .date-container .date-input-container .date-label,
 .main-form .travelers-container .travelers-label {
   @apply block font-medium text-black;
   font-size: 11px;
 }
+
 .main-form
   .location-container
   .location-input-container
@@ -74,6 +85,7 @@
   font-family: 'Lato', sans-serif;
   outline: none;
 }
+
 .main-form
   .location-container
   .location-input-container
@@ -81,19 +93,23 @@
   .location-display-container {
   @apply absolute z-50 p-6 max-w-sm grid bg-white rounded-sm border border-gray-200 shadow-md dark:bg-slate-50 dark:border-gray-400;
 }
+
 .main-form .check-in {
   @extend .input-wrap;
   right: 18px;
 }
+
 .main-form .check-out {
   @extend .input-wrap;
   left: 6px;
 }
+
 .main-form .date-container .date-input-container .date-input .date-picker {
   outline: none;
   width: 128px;
   height: 24px;
 }
+
 .main-form
   .date-container
   .date-input-container
@@ -102,10 +118,345 @@
   width: 120px;
   height: 50px;
 }
+
 .main-form .travelers-container {
   @apply bg-white rounded-sm h-16 relative w-56;
   left: 25px;
 }
+
 .error-text {
   color: rgb(226, 226, 226);
+}
+
+.date-range-travel-block {
+  @apply box-border flex h-16 mb-2 p-5;
+}
+
+.btn-style {
+  @apply h-12 p-10;
+}
+
+@media (max-width: 1280px) and (min-width: 975px) {
+  .main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 6rem;
+    padding-top: 0;
+    height: auto;
+  }
+
+  .inner-form {
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    @apply pl-0 pt-8;
+    width: auto;
+  }
+
+  .main-form {
+    @apply bg-black rounded-sm p-10 static;
+    width: 800px;
+    box-shadow: 0 8px 20px 0 rgb(0 0 0 / 15%);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .btn-search {
+    @apply rounded-sm border-0 cursor-pointer font-black h-10 text-base relative text-white;
+    min-width: 100px;
+    background-color: orange;
+    transition: all 0.2s ease-out, color 0.2s ease-out;
+  }
+
+  .inner-form .travel-type-wrap {
+    margin-left: 0 !important;
+  }
+
+  .inner-form .travelWrapStyle {
+    margin-bottom: 20px !important;
+  }
+}
+
+@media (max-width: 974px) and (min-width: 765px) {
+  .main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 9rem;
+    padding-top: 2rem;
+    height: auto;
+  }
+
+  .inner-form {
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    @apply pl-0 pt-0;
+    width: auto;
+  }
+
+  .btn-style {
+    display: flex;
+    align-self: flex-start;
+  }
+
+  .main-form {
+    position: static;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: auto;
+  }
+
+  .main-form .location-container {
+    margin-bottom: 0;
+    width: 100%;
+  }
+
+  .inner-form .travel-type-wrap {
+    margin-left: 0 !important;
+  }
+
+  .inner-form .travelWrapStyle {
+    margin-bottom: 20px !important;
+  }
+}
+
+@media (max-width: 764px) and (min-width: 641px) {
+  .main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    padding-bottom: 6rem;
+    padding-top: 0rem;
+    height: auto;
+  }
+
+  .inner-form {
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    width: auto;
+    gap: 1rem;
+  }
+
+  .date-range-travel-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: auto;
+    padding: 0;
+  }
+
+  .btn-style {
+    @apply text-center p-2;
+  }
+
+  .heading {
+    @apply text-2xl text-center p-2;
+  }
+
+  .main-form
+    .location-container
+    .location-input-container
+    .location-label
+    .location-input,
+  .main-form .date-container .date-input-container .date-input,
+  .main-form .travelers-container .travelers-input {
+    font-size: 0.9rem;
+  }
+
+  .main-form .location-container {
+    width: 18rem;
+    margin-bottom: 0;
+  }
+
+  .main-form .travelers-container {
+    left: 0;
+    width: 18rem;
+  }
+
+  .main-form {
+    position: static;
+    gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: auto;
+    flex-direction: column;
+  }
+
+  .inner-form .travelWrapStyle {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+    width: auto;
+    margin-top: 0;
+    grid-row-gap: 0.25rem;
+    grid-column-gap: 0.1rem;
+    margin-bottom: 10px !important;
+    margin-left: 0 !important;
+  }
+
+  .main-form .check-in {
+    right: 0;
+  }
+
+  .main-form .check-out {
+    left: 0;
+  }
+
+  .btn-search {
+    right: 0;
+  }
+
+  .input-wrap,
+  .main-form .check-out,
+  .main-form .check-in {
+    position: relative;
+    height: 4rem;
+    width: auto;
+    max-width: 12rem;
+  }
+
+  .main-form .travelers-container {
+    max-width: 12rem;
+  }
+
+  .main-form .location-container {
+    width: 100%;
+    margin-bottom: 0;
+    height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    padding-bottom: 3rem;
+    padding-top: 0rem;
+    height: auto;
+  }
+
+  .inner-form {
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    width: auto;
+  }
+
+  .date-range-travel-block {
+    display: grid;
+    grid-gap: 0.5rem;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: auto;
+    padding: 0;
+  }
+
+  .btn-style {
+    @apply text-center p-2;
+  }
+
+  .heading {
+    @apply text-2xl text-center p-2;
+  }
+
+  .main-form
+    .location-container
+    .location-input-container
+    .location-label
+    .location-input,
+  .main-form .date-container .date-input-container .date-input,
+  .main-form .travelers-container .travelers-input {
+    font-size: 0.9rem;
+  }
+
+  .main-form .location-container {
+    width: 18rem;
+    margin-bottom: 0;
+  }
+
+  .main-form .travelers-container {
+    left: 0;
+    width: 18rem;
+  }
+
+  .main-form {
+    position: static;
+    gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: auto;
+    flex-direction: column;
+  }
+
+  .inner-form .travelWrapStyle {
+    margin-bottom: 10px !important;
+  }
+
+  .main-form .check-in {
+    right: 0;
+  }
+
+  .main-form .check-out {
+    left: 0;
+  }
+
+  .main-form .travelers-container {
+    width: auto;
+  }
+
+  .btn-search {
+    right: 0;
+  }
+
+  .inner-form .travelWrapStyle {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+    width: auto;
+    margin-top: 0;
+    grid-row-gap: 0.25rem;
+    grid-column-gap: 0.1rem;
+    margin-bottom: 10px !important;
+  }
+
+  .main-form .location-container {
+    width: 14rem;
+    margin-bottom: 0;
+  }
 }
