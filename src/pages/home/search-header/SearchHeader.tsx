@@ -9,7 +9,7 @@ export type Props = {
 
 export const SearchHeader = ({ travelWrapStyle }: Props) => {
   return (
-    <div className="travel-type-wrap" style={travelWrapStyle}>
+    <div className="travel-type-wrap travelWrapStyle" style={travelWrapStyle}>
       <div className="item active">
         <div className="group-icon">
           <FaBuilding className="icon" />

@@ -8,7 +8,6 @@ import { BookResponse } from '../../../../models/hotel/book-models/bookResponse'
 import { useNavigate } from 'react-router-dom'
 import { getBookResponse, getDays } from '../../../../store/selectors/Selectors'
 import CommonConstants from '../../../../constants/CommonConstants'
-
 const FinalConfirmation = () => {
   const navigate = useNavigate()
   useEffect(() => {
@@ -17,11 +16,13 @@ const FinalConfirmation = () => {
       window.history.forward()
     })
   }, [])
-
+  const [width, setWidth] = React.useState(window.innerWidth)
+  React.useEffect(() => {
+    const handleWindowResize = () => setWidth(window.innerWidth)
+    window.addEventListener('resize', handleWindowResize)
+  }, [])
   const days: number = useSelector(getDays)
-
   const bookResponse: BookResponse = useSelector(getBookResponse)
-
   function displayMessage() {
     let message = ''
     if (bookResponse.responseStatus.status == 0) {
@@ -33,7 +34,6 @@ const FinalConfirmation = () => {
     }
     return message
   }
-
   return (
     <>
       <div className="final-confirmation">
@@ -78,31 +78,55 @@ const FinalConfirmation = () => {
                 </div>
               </div>
             </div>
-            <div className="final-booking-hotel-details-container">
-              <div className="mt-10 space-x-40 flex text-gray-500 text-sm ml-20">
-                <h1>CHECK-IN</h1>
-                <h2>CHECK-OUT</h2>
+            {width > 1280 ? (
+              <div className="final-booking-hotel-details-container">
+                <div className="mt-10 space-x-40 flex text-gray-500 text-sm ml-20">
+                  <h1>CHECK-IN</h1>
+                  <h2>CHECK-OUT</h2>
+                </div>
+                <div className="flex font-bold text-base">
+                  <div className="ml-20">
+                    {new Date(bookResponse.startDate).toDateString()}
+                  </div>
+                  <div className="check-out-date">
+                    {new Date(bookResponse.endDate).toDateString()}
+                  </div>
+                  <div className="ml-28">
+                    <FaHotel className="icon" />
+                  </div>
+                  <div className="ml-2 text-sky-500 font-medium text-lg">
+                    1 Room(s), {days} Night(s)
+                  </div>
+                </div>
               </div>
-              <div className="flex font-bold text-base">
-                <div className="ml-20">
-                  {new Date(bookResponse.startDate).toDateString()}
+            ) : (
+              <div className="final-booking-hotel-details-container">
+                <div className=" check-in-data  ">
+                  <h1 className="text-gray-500 text-sm">CHECK-IN</h1>
+                  <div className="text-sm font-bold sm:text-base">
+                    {new Date(bookResponse.endDate).toDateString()}
+                  </div>
                 </div>
-                <div className="check-out-date">
-                  {new Date(bookResponse.endDate).toDateString()}
+                <div className="check-out-data ">
+                  <h2 className="text-gray-500 text-sm">CHECK-OUT</h2>
+                  <div className="text-sm font-bold sm:text-base">
+                    {new Date(bookResponse.startDate).toDateString()}
+                  </div>
                 </div>
-                <div className="ml-28">
-                  <FaHotel className="icon" />
-                </div>
-                <div className="ml-2 text-sky-500 font-medium text-lg">
-                  1 Room(s), {days} Night(s)
+                <div className="hotel-room-data">
+                  <div className="">
+                    <FaHotel className="icon" />
+                  </div>
+                  <div className="text-sm font-bold text-sky-500 sm:font-medium sm:text-lg">
+                    1 Room(s), {days} Night(s)
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         )}
       </div>
     </>
   )
 }
-
 export default FinalConfirmation

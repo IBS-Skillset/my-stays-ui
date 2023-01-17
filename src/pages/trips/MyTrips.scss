@@ -3,10 +3,12 @@
   width: 1060px;
   padding-top: 1rem;
 }
+
 .trips-tabs {
   display: flex;
   justify-content: space-between;
 }
+
 .trips-navigation {
   display: flex;
   font-size: 15px;
@@ -14,17 +16,118 @@
   font-weight: bold;
   text-align: center;
 }
+
 .active-trips {
   width: 100px;
   height: 35px;
   border-bottom: 2px solid #2970f9b8;
 }
+
 .trips {
   width: 100px;
   height: 35px;
   border-bottom: 2px solid rgba(84, 84, 84, 0.34);
   color: #2970f9b8;
 }
+
 .not-allowed-tab {
   cursor: not-allowed;
+}
+
+@media (max-width: 1210px) and (min-width: 799px) {
+  .trips-content {
+    margin-left: 0;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem 3rem;
+  }
+}
+
+@media (max-width: 798px) and (min-width: 599px) {
+  .trips-content {
+    margin-left: 0;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem 3rem;
+  }
+
+  .trips-tabs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 598px) {
+  .trips-content {
+    margin-left: 0;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem 3rem;
+  }
+
+  .trips-tabs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .trips-content {
+    .trips-table th,
+    td {
+      width: auto;
+    }
+
+    .mytrips-table {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .mytrips-head {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .mytrips-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .mytrips-hotel-room {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-left: -5rem;
+      margin-bottom: 1rem;
+    }
+
+    .mytrips-total-price {
+      margin-top: 2.5rem;
+    }
+
+    .trip-sort,
+    .active-trip-sort {
+      width: auto;
+    }
+
+    .mytrips-cancellation-details {
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }

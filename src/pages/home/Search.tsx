@@ -180,7 +180,7 @@ function Search() {
             setHotelAvailabilityRequest={setHotelAvailabilityRequest}
             register={register}
           />
-          <div className="box-border flex h-16 mb-2 p-5">
+          <div className="date-range-travel-block">
             <DateRange
               startDate={startDate}
               endDate={endDate}
@@ -191,7 +191,7 @@ function Search() {
             />
             <Travelers />
           </div>
-          <div className="h-12 p-10">
+          <div className="btn-style">
             <button className="btn-search">Search</button>
           </div>
         </div>
