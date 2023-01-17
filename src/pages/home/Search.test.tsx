@@ -1,7 +1,7 @@
 import { act, render, screen } from '@testing-library/react'
 import Search from './Search'
 import { sleep } from '../../util/testUtils/TestUtils'
-import { getAccessToken, getEmail } from '../common/selectors/Selectors'
+import { getAccessToken, getEmail } from '../../store/selectors/Selectors'
 import { useDispatch } from 'react-redux'
 
 jest.mock('react-redux', () => ({
@@ -14,7 +14,7 @@ jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: jest.fn(),
 }))
-jest.mock('../common/selectors/Selectors')
+jest.mock('../../store/selectors/Selectors')
 
 const getAccessTokenMock = getAccessToken as jest.MockedFunction<
   typeof getAccessToken
