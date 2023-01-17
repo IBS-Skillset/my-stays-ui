@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyTrips Page Page : <MyTrips /> page renders correctly 1`] = `
+<div
+  className="main-content"
+>
+  <div
+    className="trips-content"
+  >
+    <div
+      className="trips-tabs"
+    >
+      <ul
+        className="trips-navigation"
+      >
+        <li
+          className="active-trips"
+        >
+          <button
+            onClick={[Function]}
+          >
+            Upcoming
+          </button>
+        </li>
+        <li
+          className="trips"
+        >
+          <button
+            onClick={[Function]}
+          >
+            Completed
+          </button>
+        </li>
+        <li
+          className="trips not-allowed-tab"
+        >
+          <button
+            className="not-allowed-tab"
+          >
+            Cancelled
+          </button>
+        </li>
+      </ul>
+      <div
+        className="trips-sorting"
+      >
+        <ul
+          className="sort-content"
+        >
+          <li
+            className="trips-sort"
+          >
+            Sort by
+          </li>
+          <li
+            className="trip-sort"
+          >
+            <button>
+              Booking date
+            </button>
+          </li>
+          <li
+            className="active-trip-sort"
+          >
+            <button>
+              Check-in date
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      className="tab-contents"
+    >
+      <div
+        className="tab-content"
+      >
+        <div
+          className="tab-content"
+        >
+          <img
+            alt="loading..."
+            src="test-file-stub"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,516 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Booking Confirmation Page : <BookConfirmation /> page renders correctly 1`] = `
+<form
+  className="form-book"
+  onSubmit={[Function]}
+>
+  <div
+    className="content-book"
+  >
+    <div
+      className="side-content"
+    >
+      <div
+        className="booking-details details-border"
+      >
+        <div
+          className="booking-content"
+        >
+          <h2
+            className="confirmation-heading book-date"
+          >
+            Your booking details
+          </h2>
+          <div
+            className="dates policy"
+          >
+            <div
+              className="input-dates final-rate"
+            >
+              Check-in
+              <p
+                className="book-date"
+              >
+                Sat Feb 11 2023
+              </p>
+            </div>
+            <div
+              className="divider"
+            />
+            <div
+              className="input-dates final-rate"
+            >
+              Check-out
+              <p
+                className="book-date"
+              >
+                Sun Feb 12 2023
+              </p>
+            </div>
+          </div>
+          <div
+            className="mid-layer"
+          >
+            <h3
+              className="stay room-font"
+            >
+              Total length of stay :
+            </h3>
+            <p
+              className="nights-count final-rate book-date"
+            >
+               
+              2
+               Nights
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        className="rate details-border"
+      >
+        <div
+          className="rate-content"
+        >
+          <h2
+            className="rate-heading confirmation-heading book-date"
+          >
+            Your price summary
+          </h2>
+          <div
+            className="room-price policy"
+          >
+            <h2
+              className="room-heading stay room-font"
+            >
+              Price
+            </h2>
+            <h2
+              className="rate-final stay room-font"
+            >
+              €
+              21
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div
+        className="details-border rate"
+      >
+        <div
+          className="cancel-content"
+        >
+          <h2
+            className="cancel-heading confirmation-heading book-date"
+          >
+             
+            How much it will cost to cancel?
+          </h2>
+          <div
+            className="cancel-date"
+          >
+            <p
+              className="cancellation final-rate"
+            >
+              Until Monday, December 19, 2022 23:59 : no 
+               fee
+            </p>
+            <div
+              className="policy"
+            >
+              <p
+                className="rate-cancel final-rate"
+              >
+                From Tuesday, December 20, 2022 00:00 : 20.00  €
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="other-book-details"
+    >
+      <div
+        className="main-content-hotel"
+      >
+        <div
+          className="hotel-content location-book"
+        >
+          <div
+            className="location-book"
+          >
+            <img
+              alt=""
+              className="book-image"
+              role="presentation"
+              src="https://pictures.djocatravel.com/IMG/03NTc0PxgIEQaDcJ0xJ4gAEcDj/o2e/KuQ-rrsHoKwK.cscka/rVwKw/.awvBo/hkKBz/awrpmm/uG88mpuG.jpg?k=9b95f0b6ebf5a4cefde17b2940f74d6d779202c123a6feaebb1840ada57f65c7&o="
+            />
+          </div>
+          <div
+            className="hotel-details-book"
+          >
+            <h2
+              className="hotel-name-book"
+            >
+              IBIS
+            </h2>
+            <div
+              className="hotel-address-book"
+            >
+              <h1
+                className="city"
+              >
+                 181 rue de Vaugirard 75015 Paris
+              </h1>
+              <h1
+                className="city"
+              >
+                75015
+              </h1>
+              <h1
+                className="city"
+              >
+                France
+              </h1>
+              <h1
+                className="city"
+              >
+                Paris
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="user-details border-color"
+      >
+        <div
+          className="ml-1"
+        >
+          <h1
+            className="text-lg mt-1 ml-2 font-weight"
+          >
+            Enter your details
+          </h1>
+        </div>
+        <div
+          className="enter-details"
+        >
+          <div
+            className="details"
+          >
+            <div
+              className="user-info"
+            >
+              <h1
+                className="headings font-weight"
+              >
+                First name 
+                <span
+                  className="mandatory"
+                >
+                  *
+                </span>
+              </h1>
+              <div
+                className="rounded-sm bg-white name border-color"
+              >
+                <h1
+                  className="values headings"
+                >
+                  TestFirstName
+                </h1>
+              </div>
+            </div>
+            <div
+              className="user-info"
+            >
+              <h1
+                className="headings font-weight"
+              >
+                Last name 
+                <span
+                  className="mandatory"
+                >
+                  *
+                </span>
+              </h1>
+              <div
+                className="rounded-sm bg-white name border-color"
+              >
+                <h1
+                  className="values headings"
+                >
+                  TestLastName
+                </h1>
+              </div>
+            </div>
+          </div>
+          <div
+            className="user-info"
+          >
+            <h2
+              className="headings font-weight"
+            >
+              Email address 
+              <span
+                className="mandatory"
+              >
+                *
+              </span>
+            </h2>
+            <div
+              className="rounded-sm bg-white email border-color"
+            >
+              <h1
+                className="values headings"
+              >
+                test@gmail.com
+              </h1>
+            </div>
+            <h1
+              className="email-message headings"
+            >
+              Confirmation email goes to this address
+            </h1>
+          </div>
+        </div>
+        <div
+          className="mobile-field"
+        >
+          <h1
+            className="headings font-weight"
+          >
+            Mobile Phone 
+            <span
+              className="mandatory"
+            >
+              *
+            </span>
+          </h1>
+          <div
+            className="rounded-sm bg-white email border-color"
+          >
+            <h1
+              className="values headings"
+            >
+              911234567891
+            </h1>
+          </div>
+        </div>
+      </div>
+      <div
+        className="payment-details border-color"
+      >
+        <h2
+          className="text-lg mt-1 ml-2 font-weight"
+        >
+          How would you like to pay?
+        </h2>
+        <div
+          className="payment-types details"
+        >
+          <div>
+            <img
+              alt=""
+              className="debit-card-image"
+              src="test-file-stub"
+            />
+            <h1
+              className="debit-card"
+            >
+              Debit/Credit card
+            </h1>
+          </div>
+          <div>
+            <img
+              alt=""
+              className="disabled-payment-type"
+              src="test-file-stub"
+            />
+            <h1
+              className="other-payment-type"
+            >
+              Paypal
+            </h1>
+          </div>
+          <div>
+            <img
+              alt=""
+              className="disabled-payment-type"
+              src="test-file-stub"
+            />
+            <h1
+              className="other-payment-type"
+            >
+              GooglePay
+            </h1>
+          </div>
+        </div>
+        <h1
+          className="cards font-weight"
+        >
+          New card
+        </h1>
+        <div
+          className="cards-block details"
+        >
+          <img
+            alt=""
+            className="cards-image"
+            src="test-file-stub"
+          />
+          <img
+            alt=""
+            className="cards-image"
+            src="test-file-stub"
+          />
+          <img
+            alt=""
+            className="cards-image"
+            src="test-file-stub"
+          />
+          <img
+            alt=""
+            className="cards-image"
+            src="test-file-stub"
+          />
+          <img
+            alt=""
+            className="cards-image"
+            src="test-file-stub"
+          />
+          <img
+            alt=""
+            className="cards-image"
+            src="test-file-stub"
+          />
+        </div>
+        <div
+          className="payment"
+        >
+          <h1
+            className="headings mt-4 font-weight"
+          >
+            Cardholder name 
+            <span
+              className="mandatory"
+            >
+              *
+            </span>
+          </h1>
+          <input
+            className="rounded-sm bg-white card-details details border-color"
+            id="cardHolderName"
+            name="cardHolderName"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="text"
+          />
+        </div>
+        <div
+          className="payment"
+        >
+          <h2
+            className="headings mt-4 font-weight"
+          >
+            Card number 
+            <span
+              className="mandatory"
+            >
+              *
+            </span>
+          </h2>
+          <div
+            className="rounded-sm bg-white card-details details border-color"
+          >
+            <img
+              alt=""
+              className="card-number-image"
+              src="test-file-stub"
+            />
+            <input
+              className="card-number"
+              id="cardNumber"
+              name="cardNumber"
+              onBlur={[Function]}
+              onChange={[Function]}
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          className="other-card-details"
+        >
+          <div>
+            <h2
+              className="headings mt-4 font-weight"
+            >
+              Expiry date 
+              <span
+                className="mandatory"
+              >
+                *
+              </span>
+            </h2>
+            <input
+              className="expiry border-color bg-white"
+              id="expiryDate"
+              name="expiryDate"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="MM/YY"
+              type="text"
+            />
+          </div>
+          <div>
+            <h2
+              className="headings mt-4 font-weight"
+            >
+              CVC 
+              <span
+                className="mandatory"
+              >
+                *
+              </span>
+            </h2>
+            <div
+              className="cvc-details details border-color bg-white rounded-sm"
+            >
+              <img
+                alt=""
+                className="card-number-image"
+                src="test-file-stub"
+              />
+              <input
+                className="cvv-input"
+                id="cvv"
+                name="cvv"
+                onBlur={[Function]}
+                onChange={[Function]}
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    className="book-now-button"
+  >
+    <img
+      alt=""
+      className="lock-icon"
+      src="test-file-stub"
+    />
+    <h1
+      className="book"
+    >
+      BOOK NOW!
+    </h1>
+  </button>
+</form>
+`;
