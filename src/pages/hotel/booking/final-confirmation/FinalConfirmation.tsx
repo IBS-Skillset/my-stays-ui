@@ -4,11 +4,12 @@ import { FaHotel } from 'react-icons/fa'
 import React, { useEffect } from 'react'
 import './FinalConfirmation.scss'
 import { useSelector } from 'react-redux'
-import { IRootState } from '../../../../store/reducers/rootReducer'
 import { BookResponse } from '../../../../models/hotel/book-models/bookResponse'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { getBookResponse, getDays } from '../../../common/selectors/Selectors'
 
 const FinalConfirmation = () => {
+  const navigate = useNavigate()
   useEffect(() => {
     window.history.pushState(null, '', window.location.href)
     window.addEventListener('popstate', () => {
@@ -16,13 +17,9 @@ const FinalConfirmation = () => {
     })
   }, [])
 
-  const days: number = useSelector(
-    (state: IRootState) => state.hotel.nightCount.days,
-  )
+  const days: number = useSelector(getDays)
 
-  const bookResponse: BookResponse = useSelector(
-    (state: IRootState) => state.hotel.bookResponse.bookResponse,
-  )
+  const bookResponse: BookResponse = useSelector(getBookResponse)
 
   function displayMessage() {
     let message = ''
@@ -73,9 +70,12 @@ const FinalConfirmation = () => {
                   </div>
                 </div>
                 <div className="view-booking">
-                  <Link to={'/mytrips'}>
-                    <button className="btn-viewbooking">VIEW BOOKING</button>
-                  </Link>
+                  <button
+                    className="btn-viewbooking"
+                    onClick={() => navigate('/mytrips')}
+                  >
+                    VIEW BOOKING
+                  </button>
                 </div>
               </div>
             </div>
