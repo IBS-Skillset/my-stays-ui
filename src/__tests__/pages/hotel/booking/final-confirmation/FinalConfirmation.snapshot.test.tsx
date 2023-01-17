@@ -5,6 +5,7 @@ import {
   getDays,
 } from '../../../../../store/selectors/Selectors'
 import bookResponse from '../../../../../mocks/responses/bookResponse'
+import bookResponseError from '../../../../../mocks/responses/errorBookResponse'
 
 import { BookResponse } from '../../../../../models/hotel/book-models/bookResponse'
 
@@ -31,19 +32,36 @@ const getBookResponseMock = getBookResponse as jest.MockedFunction<
 >
 const getDaysMock = getDays as jest.MockedFunction<typeof getDays>
 const mockBookRes: BookResponse = bookResponse.bookResponse
-
-beforeEach(() => {
-  getBookResponseMock.mockImplementation(() => {
-    return mockBookRes
-  })
-  getDaysMock.mockReturnValue(1)
-})
-afterEach(() => {
-  jest.clearAllMocks()
-})
+const mockBookErrRes: BookResponse = bookResponseError.bookResponseError
 
 describe('Final Confirmation Page : <FinalConfirmation /> page', () => {
+  beforeEach(() => {
+    getBookResponseMock.mockImplementation(() => {
+      return mockBookRes
+    })
+    getDaysMock.mockReturnValue(1)
+  })
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
   test('renders correctly', () => {
+    const component = renderer.create(<FinalConfirmation />)
+    const tree = component.toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+})
+
+describe('Final Confirmation Page with book failure : <FinalConfirmation /> page', () => {
+  beforeEach(() => {
+    getBookResponseMock.mockImplementation(() => {
+      return mockBookErrRes
+    })
+    getDaysMock.mockReturnValue(1)
+  })
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+  test('booking failure', () => {
     const component = renderer.create(<FinalConfirmation />)
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()

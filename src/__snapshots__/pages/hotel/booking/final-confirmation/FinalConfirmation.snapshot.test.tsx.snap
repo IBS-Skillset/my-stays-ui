@@ -155,3 +155,28 @@ exports[`Final Confirmation Page : <FinalConfirmation /> page renders correctly 
   </div>
 </div>
 `;
+
+exports[`Final Confirmation Page with book failure : <FinalConfirmation /> page booking failure 1`] = `
+<div
+  className="final-confirmation"
+>
+  <div
+    className="final-booking-info-outline"
+  >
+    <div
+      className="final-booking-info-image-container"
+    >
+      <img
+        alt=""
+        className="error-info"
+        src="test-file-stub"
+      />
+    </div>
+    <h1
+      className="final-booking-info-content"
+    >
+      Your booking has failed. Please try again. error
+    </h1>
+  </div>
+</div>
+`;

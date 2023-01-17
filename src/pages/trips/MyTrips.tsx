@@ -6,11 +6,14 @@ import TabContent from './components/tabs/content/TabContent'
 import { MyTripsResponse, Trip } from '../../models/trips/myTripsResponse'
 import MyTripsService from '../../services/trips/MyTripsService'
 import { useSelector } from 'react-redux'
-import { IRootState } from '../../store/reducers/rootReducer'
 import DispatchPkceData from '../../setup/oauth2/pkce/DispatchPkceData'
 import AuthorizeUser from '../../setup/oauth2/components/AuthorizeUser'
 import TripsContent from './components/trips-content/TripsContent'
 import loader from '../../assets/images/loader.gif'
+import {
+  getAccessToken,
+  getIsAuthorized,
+} from '../../store/selectors/Selectors'
 
 const MyTrips = () => {
   const [activeTab, setActiveTab] = useState('upcoming')
@@ -28,12 +31,8 @@ const MyTrips = () => {
       })
   }, [])
 
-  const accessToken = useSelector(
-    (state: IRootState) => state.token.accessToken,
-  )
-  const isAuthorized = useSelector(
-    (state: IRootState) => state.authorize.isAuthorized,
-  )
+  const accessToken: string = useSelector(getAccessToken)
+  const isAuthorized: boolean = useSelector(getIsAuthorized)
 
   if (accessToken == '') {
     if (!isAuthorized) {

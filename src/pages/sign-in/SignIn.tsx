@@ -5,9 +5,13 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import AuthConstants from '../../setup/oauth2/constants/AuthConstants'
 import { useDispatch, useSelector } from 'react-redux'
 import { userSessionOutAction } from '../../store/actions/sessionOutAction'
-import { IRootState } from '../../store/reducers/rootReducer'
 import { userLogOutAction } from '../../store/actions/logoutAction'
 import { emailAction } from '../../store/actions/emailAction'
+import {
+  getAccessToken,
+  getAutoFillEmail,
+  getIsLoggedOut,
+} from '../../store/selectors/Selectors'
 
 function SignIn() {
   const [open, setOpen] = useState<boolean>(false)
@@ -15,12 +19,8 @@ function SignIn() {
   const [password, setPassword] = useState<string>('')
   const [searchParams] = useSearchParams()
   const dispatch = useDispatch()
-  const autoFillEmail = useSelector(
-    (state: IRootState) => state.signup.autoFillEmail,
-  )
-  const accessToken = useSelector(
-    (state: IRootState) => state.token.accessToken,
-  )
+  const autoFillEmail = useSelector(getAutoFillEmail)
+  const accessToken = useSelector(getAccessToken)
   const navigate = useNavigate()
   useEffect(() => {
     setEmail(autoFillEmail)
@@ -35,13 +35,9 @@ function SignIn() {
   const toggle = () => {
     setOpen(!open)
   }
-  const isLoggedOut = useSelector(
-    (state: IRootState) => state.logout.isLoggedOut,
-  )
+  const isLoggedOut = useSelector(getIsLoggedOut)
 
-  const isSessionOut = useSelector(
-    (state: IRootState) => state.sessionOut.isSessionOut,
-  )
+  const isSessionOut = useSelector(getIsLoggedOut)
 
   if (isLoggedOut) {
     setTimeout(() => {

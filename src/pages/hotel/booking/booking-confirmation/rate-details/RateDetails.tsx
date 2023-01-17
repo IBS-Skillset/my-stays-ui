@@ -1,9 +1,9 @@
 import React from 'react'
 import './RateDetails.scss'
 import { useSelector } from 'react-redux'
-import { IRootState } from '../../../../../store/reducers/rootReducer'
 import { HotelRepriceResponse } from '../../../../../models/hotel/reprice-models/hotelRepriceResponse'
 import { HotelAvailabilityRequest } from '../../../../../models/hotel/search-models/hotelAvailabilityRequest'
+import { getDays } from '../../../../../store/selectors/Selectors'
 
 type Props = {
   hotelRepriceResponse: HotelRepriceResponse
@@ -14,9 +14,7 @@ const RateDetails = ({
   hotelRepriceResponse,
   hotelAvailabilityRequest,
 }: Props) => {
-  const days: number = useSelector(
-    (state: IRootState) => state.hotel.nightCount.days,
-  )
+  const days: number = useSelector(getDays)
 
   const text = hotelRepriceResponse.penaltyDescriptionText.replaceAll(
     ' (local time)',

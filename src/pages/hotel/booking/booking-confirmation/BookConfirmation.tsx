@@ -1,6 +1,5 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { IRootState } from '../../../../store/reducers/rootReducer'
 import HotelOverview from './hotel-overview/HotelOverview'
 import RateDetails from './rate-details/RateDetails'
 import './BookConfirmation.scss'
@@ -8,8 +7,8 @@ import UserDetails from './user-details/UserDetails'
 import { HotelRepriceResponse } from '../../../../models/hotel/reprice-models/hotelRepriceResponse'
 import lockIcon from '../../../../assets/images/lockIcon.jpg'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup'
 import * as Yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 import valid from 'card-validator'
 import PaymentDetails from './payment-details/PaymentDetails'
 import { HotelAvailabilityRequest } from '../../../../models/hotel/search-models/hotelAvailabilityRequest'
@@ -21,33 +20,37 @@ import { bookResponseAction } from '../../../../store/actions/bookAction'
 import { useNavigate } from 'react-router-dom'
 import PriceChangeAlert from './reprice-alert/PriceChangeAlert'
 import { getRateTolerance } from '../../../common/utils/CommonUtils'
+import {
+  getHotelAvailabilityRequest,
+  getHotelDescriptionResponses,
+  getInitialRoomPrice,
+  getNightlyPrice,
+  getRepriceResponse,
+  getUserDetails,
+} from '../../../../store/selectors/Selectors'
+import { HotelDescriptionResponse } from '../../../../models/hotel/description-models/hotelDescriptionResponse'
 
 const BookConfirmation = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const repriceResponse: HotelRepriceResponse = useSelector(
-    (state: IRootState) => state.hotel.rate.rate,
-  )
+  const repriceResponse: HotelRepriceResponse = useSelector(getRepriceResponse)
 
-  const initialRoomPrice: number = useSelector(
-    (state: IRootState) => state.hotel.rate.initialRoomPrice,
-  )
+  const initialRoomPrice: number = useSelector(getInitialRoomPrice)
 
-  const nightlyPrice: number = useSelector(
-    (state: IRootState) => state.hotel.rate.nightlyPrice,
-  )
+  const nightlyPrice: number = useSelector(getNightlyPrice)
 
   const hotelAvailabilityRequest: HotelAvailabilityRequest = useSelector(
-    (state: IRootState) =>
-      state.hotel.availabilityRequest.hotelAvailabilityRequest,
+    getHotelAvailabilityRequest,
   )
 
-  const hotelPhoneNumber: string = useSelector((state: IRootState) => {
-    return state.hotel.descriptionResponse.hotelDescriptionResponsesPerCode[
-      repriceResponse.hotelCode
-    ].hotelItem.address.phoneNumber
-  })
+  const hotel: HotelDescriptionResponse = useSelector(
+    getHotelDescriptionResponses,
+  )[repriceResponse.hotelCode]
+
+  const hotelPhoneNumber: string = hotel.hotelItem.address.phoneNumber
+
+  const userDetails = useSelector(getUserDetails)
 
   const schema = Yup.object().shape({
     cvv: Yup.string()
@@ -68,12 +71,6 @@ const BookConfirmation = () => {
     cardHolderName: Yup.string().required('Card holder name is required'),
   })
 
-  const hotel = useSelector((state: IRootState) => {
-    return state.hotel.descriptionResponse.hotelDescriptionResponsesPerCode[
-      repriceResponse.hotelCode
-    ]
-  })
-
   const {
     register,
     handleSubmit,
@@ -82,9 +79,6 @@ const BookConfirmation = () => {
     resolver: yupResolver(schema),
     mode: 'onSubmit',
   })
-  const userDetails = useSelector(
-    (state: IRootState) => state.userDetails.userDetails,
-  )
 
   const formSubmitHandler: SubmitHandler<PaymentInfo> = (data: PaymentInfo) => {
     BookService.getBookResponse(

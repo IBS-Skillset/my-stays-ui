@@ -2,6 +2,8 @@ export default {
   hotelDescription: {
     responseStatus: {
       status: 1,
+      errorMessage: '',
+      errorCode: '',
     },
     media: {
       mediaUrl: [
@@ -39,11 +41,11 @@ export default {
         cityName: 'Paris',
         zipCode: '75015',
         countryName: 'France',
-        countryCode: 'FR',
         phoneNumber: '+33 1 43 06 43 80',
       },
-      latitude: 48.84305,
-      longitude: 2.31323,
+      latitude: 48,
+      longitude: 2,
+      hotelName: 'IBIS',
     },
     descriptions: {
       decription: [
@@ -65,6 +67,8 @@ export default {
         '24-hour front desk',
       ],
     },
-    safetyInfo: {},
+    safetyInfo: {
+      safetyInfo: ['SAFE'],
+    },
   },
 }

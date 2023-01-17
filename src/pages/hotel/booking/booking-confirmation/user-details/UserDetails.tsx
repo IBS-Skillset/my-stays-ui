@@ -1,13 +1,12 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { IRootState } from '../../../../../store/reducers/rootReducer'
 
 import './UserDetails.css'
+import { getUserDetails } from '../../../../../store/selectors/Selectors'
 
 function UserDetails() {
-  const userDetails = useSelector(
-    (state: IRootState) => state.userDetails.userDetails,
-  )
+  const userDetails = useSelector(getUserDetails)
+
   return (
     <div className="user-details border-color">
       <div className="ml-1">
