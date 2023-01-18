@@ -7,14 +7,17 @@ import {
 } from '../../../../../../models/hotel/search-models/hotelAvailabilityResponse'
 import Swiper from '../image-swiper/Swiper'
 
-import './SearchResults.scss'
-import { useDispatch, useSelector } from 'react-redux'
-import { IRootState } from '../../../../../../store/reducers/rootReducer'
-import { Link } from 'react-router-dom'
-import { hotelSearchDescriptionResponseAction } from '../../../../../../store/actions/hotelSearchAction'
 import { useEffect, useState } from 'react'
-import HotelDescriptionService from '../../../../../../services/hotel/HotelDescriptionService'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { HotelDescriptionResponse } from '../../../../../../models/hotel/description-models/hotelDescriptionResponse'
+import HotelDescriptionService from '../../../../../../services/hotel/HotelDescriptionService'
+import { hotelSearchDescriptionResponseAction } from '../../../../../../store/actions/hotelSearchAction'
+import {
+  getDays,
+  getHotelAvailabilityResponse,
+} from '../../../../../../store/selectors/Selectors'
+import './SearchResults.scss'
 
 function SearchResults() {
   const { t } = useTranslation()
@@ -22,13 +25,10 @@ function SearchResults() {
   const [hotelItems, setHotelItems] = useState<Hotel[]>([])
   const [hotelBackupItems, setHotelBackupItems] = useState<Hotel[]>([])
 
-  const days: number = useSelector(
-    (state: IRootState) => state.hotel.nightCount.days,
-  )
+  const days: number = useSelector(getDays)
 
   const hotelAvailabilityResponse: HotelAvailabilityResponse = useSelector(
-    (state: IRootState) =>
-      state.hotel.availabilityResponse.hotelAvailabilityResponse,
+    getHotelAvailabilityResponse,
   )
 
   const updateBackupHotelItem = () => {

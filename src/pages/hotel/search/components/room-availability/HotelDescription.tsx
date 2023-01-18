@@ -1,12 +1,16 @@
-import { RoomAvailabilityResponse } from '../../../../../models/hotel/roomavailability-models/roomAvailabilityResponse'
-import React, { useEffect, useState } from 'react'
+import { AxiosResponse } from 'axios'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { HotelDescriptionResponse } from '../../../../../models/hotel/description-models/hotelDescriptionResponse'
-import { useSelector } from 'react-redux'
-import { IRootState } from '../../../../../store/reducers/rootReducer'
+import { RoomAvailabilityResponse } from '../../../../../models/hotel/roomavailability-models/roomAvailabilityResponse'
 import { HotelAvailabilityRequest } from '../../../../../models/hotel/search-models/hotelAvailabilityRequest'
 import RoomAvailabilityService from '../../../../../services/hotel/RoomAvailabilityService'
-import { AxiosResponse } from 'axios'
+import {
+  getDays,
+  getHotelAvailabilityRequest,
+  getHotelDescriptionResponses,
+} from '../../../../../store/selectors/Selectors'
 import Hotel from './hotel/Hotel'
 
 const HotelDescription = () => {
@@ -18,22 +22,16 @@ const HotelDescription = () => {
       rateList: [],
     })
   const { hotelCode } = useParams()
-  const hotel: HotelDescriptionResponse | undefined = useSelector(
-    (state: IRootState) => {
-      if (hotelCode) {
-        return state.hotel.descriptionResponse.hotelDescriptionResponsesPerCode[
-          hotelCode
-        ]
-      }
-    },
-  )
+  const hotelDescriptionResponses = useSelector(getHotelDescriptionResponses)
+  let hotel: HotelDescriptionResponse | undefined
+  if (hotelCode) {
+    hotel = hotelDescriptionResponses[hotelCode]
+  }
+
   const hotelAvailabilityRequest: HotelAvailabilityRequest = useSelector(
-    (state: IRootState) =>
-      state.hotel.availabilityRequest.hotelAvailabilityRequest,
+    getHotelAvailabilityRequest,
   )
-  const days: number = useSelector(
-    (state: IRootState) => state.hotel.nightCount.days,
-  )
+  const days: number = useSelector(getDays)
   const getRoomAvailResponse = async (code: string) => {
     await RoomAvailabilityService.getRoomAvailabilitySearch(
       code,

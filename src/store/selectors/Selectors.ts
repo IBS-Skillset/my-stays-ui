@@ -23,3 +23,10 @@ export const getAutoFillEmail = (state: IRootState) =>
 export const getIsLoggedOut = (state: IRootState) => state.logout.isLoggedOut
 export const getIsSessionOut = (state: IRootState) =>
   state.sessionOut.isSessionOut
+export const getHotelAvailabilityResponse = (state: IRootState) =>
+  state.hotel.availabilityResponse.hotelAvailabilityResponse
+export const getAuthState = (state: IRootState) => state.pkce.authState
+export const getVerifier = (state: IRootState) => state.pkce.codeVerifier
+export const getCodeChallenge = (state: IRootState) => state.pkce.codeChallenge
+export const getLocationState = (state: IRootState) =>
+  state.hotel.location.location

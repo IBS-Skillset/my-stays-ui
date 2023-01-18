@@ -2,6 +2,8 @@ export default {
   hotelAvailability: {
     responseStatus: {
       status: 1,
+      errorCode: '',
+      errorMessage: '',
     },
     hotelItem: [
       {

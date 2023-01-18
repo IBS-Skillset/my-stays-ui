@@ -1,0 +1,315 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchResults Page : <HotelSearch /> Screen renders correctly 1`] = `
+<div
+  className="main-content"
+>
+  <div
+    className="mt-2"
+  >
+    <form
+      className="search-container"
+      onSubmit={[Function]}
+    >
+      <div
+        className="location-container"
+      >
+        <div
+          className="location-image-container"
+        >
+          <img
+            alt=""
+            className="location-image"
+            src="test-file-stub"
+          />
+        </div>
+        <div
+          className="location-input-container"
+        >
+          <label
+            className="location-label"
+          >
+            GOING TO
+            <input
+              autoComplete="off"
+              className="location-input"
+              name="location"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="Destination, hotel name"
+              type="text"
+              value=""
+            />
+            <div
+              className="location-display-container"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            />
+          </label>
+        </div>
+      </div>
+      <div
+        className="date-container check-in"
+      >
+        <div
+          className="date-image-container"
+        >
+          <img
+            alt=""
+            className="date-image"
+            src="test-file-stub"
+          />
+        </div>
+        <div
+          className="date-input-container"
+        >
+          <div
+            className="date-label"
+          >
+            CHECK IN
+          </div>
+          <div
+            className="date-input"
+          >
+            <div
+              className="react-datepicker-wrapper"
+            >
+              <div
+                className="react-datepicker__input-container"
+              >
+                <input
+                  className="date-picker"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  placeholder="mm/dd/yyyy"
+                  readOnly={false}
+                  type="text"
+                  value="01/18/2023"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="date-container check-out"
+      >
+        <div
+          className="date-image-container"
+        >
+          <img
+            alt=""
+            className="date-image"
+            src="test-file-stub"
+          />
+        </div>
+        <div
+          className="date-input-container"
+        >
+          <div
+            className="date-label"
+          >
+            CHECK OUT
+          </div>
+          <div
+            className="date-input"
+          >
+            <div
+              className="react-datepicker-wrapper"
+            >
+              <div
+                className="react-datepicker__input-container"
+              >
+                <input
+                  className="date-picker"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  placeholder="mm/dd/yyyy"
+                  readOnly={false}
+                  type="text"
+                  value="01/19/2023"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="travelers-container"
+      >
+        <div
+          className="travelers-image-container"
+        >
+          <img
+            alt=""
+            className="travelers-image"
+            src="test-file-stub"
+          />
+        </div>
+        <div
+          className="travelers-input-container"
+        >
+          <div
+            className="travelers-label"
+          >
+            TRAVELERS
+            <h1
+              className="travelers-input"
+            >
+              1 adult
+            </h1>
+          </div>
+        </div>
+      </div>
+      <button
+        className="button"
+      >
+        Search
+      </button>
+    </form>
+  </div>
+  <div
+    className="mt-2"
+  >
+    <div
+      className="sorting-container"
+    >
+      <div
+        className="sort"
+      >
+        Sort
+      </div>
+      <div
+        className="best-match"
+      >
+        Best match
+      </div>
+      <div
+        className="match"
+      >
+        Top Viewed
+      </div>
+      <div
+        className="lowest-price"
+      >
+        Lowest price first
+      </div>
+      <div
+        className="match"
+      >
+        Distance
+      </div>
+    </div>
+    <div
+      className="flex mt-5 ml-24"
+    >
+      <div
+        className="ml-8 w-64"
+      >
+        <div
+          className="h-40 w-64"
+        >
+          <img
+            alt=""
+            className="h-40 w-64"
+            src="test-file-stub"
+          />
+        </div>
+        <div
+          className="border-black border-solid border-t mt-6 w-64"
+        >
+          <h1
+            className="search-heading"
+          >
+            Search by property name
+          </h1>
+          <div
+            className="border-black rounded border-solid border flex h-10 mt-5 text-left w-64"
+          >
+            <img
+              alt=""
+              className="h-6 mt-2 ml-2 w-6"
+              src="test-file-stub"
+            />
+            <h1
+              className="mt-2 ml-2"
+            >
+              eg: Marriot
+            </h1>
+          </div>
+          <div
+            className="border-black border-solid border-t mt-5"
+          >
+            <h1
+              className="hotel-chains-heading"
+            >
+              Hotel Chains
+            </h1>
+            <div
+              className="mt-2 w-64"
+            >
+              <input
+                className="mr-2"
+                type="checkbox"
+              />
+              Accor
+            </div>
+            <div
+              className="mt-2 w-64"
+            >
+              <input
+                className="mr-2"
+                type="checkbox"
+              />
+              Bloom Hotels
+            </div>
+            <div
+              className="mt-2 w-64"
+            >
+              <input
+                className="mr-2"
+                type="checkbox"
+              />
+              Clark Inn
+            </div>
+            <div
+              className="mt-2 w-64"
+            >
+              <input
+                className="mr-2"
+                type="checkbox"
+              />
+              Hyatt
+            </div>
+            <div
+              className="mt-2 w-64"
+            >
+              <input
+                className="mr-2"
+                type="checkbox"
+              />
+              Crown Plaza
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="search-result"
+      >
+        <div />
+      </div>
+    </div>
+  </div>
+</div>
+`;

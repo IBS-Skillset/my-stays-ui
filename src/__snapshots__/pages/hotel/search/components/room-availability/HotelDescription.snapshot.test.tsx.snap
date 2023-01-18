@@ -1,0 +1,588 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RoomAvailability Page : <HotelDescription /> Screen renders correctly 1`] = `
+<div
+  className=""
+>
+  <div
+    className="mt-2"
+  >
+    <form
+      className="search-container"
+      onSubmit={[Function]}
+    >
+      <div
+        className="location-container"
+      >
+        <div
+          className="location-image-container"
+        >
+          <img
+            alt=""
+            className="location-image"
+            src="test-file-stub"
+          />
+        </div>
+        <div
+          className="location-input-container"
+        >
+          <label
+            className="location-label"
+          >
+            GOING TO
+            <input
+              autoComplete="off"
+              className="location-input"
+              name="location"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="Destination, hotel name"
+              type="text"
+              value=""
+            />
+            <div
+              className="location-display-container"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            />
+          </label>
+        </div>
+      </div>
+      <div
+        className="date-container check-in"
+      >
+        <div
+          className="date-image-container"
+        >
+          <img
+            alt=""
+            className="date-image"
+            src="test-file-stub"
+          />
+        </div>
+        <div
+          className="date-input-container"
+        >
+          <div
+            className="date-label"
+          >
+            CHECK IN
+          </div>
+          <div
+            className="date-input"
+          >
+            <div
+              className="react-datepicker-wrapper"
+            >
+              <div
+                className="react-datepicker__input-container"
+              >
+                <input
+                  className="date-picker"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  placeholder="mm/dd/yyyy"
+                  readOnly={false}
+                  type="text"
+                  value="01/18/2023"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="date-container check-out"
+      >
+        <div
+          className="date-image-container"
+        >
+          <img
+            alt=""
+            className="date-image"
+            src="test-file-stub"
+          />
+        </div>
+        <div
+          className="date-input-container"
+        >
+          <div
+            className="date-label"
+          >
+            CHECK OUT
+          </div>
+          <div
+            className="date-input"
+          >
+            <div
+              className="react-datepicker-wrapper"
+            >
+              <div
+                className="react-datepicker__input-container"
+              >
+                <input
+                  className="date-picker"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  placeholder="mm/dd/yyyy"
+                  readOnly={false}
+                  type="text"
+                  value="01/19/2023"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="travelers-container"
+      >
+        <div
+          className="travelers-image-container"
+        >
+          <img
+            alt=""
+            className="travelers-image"
+            src="test-file-stub"
+          />
+        </div>
+        <div
+          className="travelers-input-container"
+        >
+          <div
+            className="travelers-label"
+          >
+            TRAVELERS
+            <h1
+              className="travelers-input"
+            >
+              1 adult
+            </h1>
+          </div>
+        </div>
+      </div>
+      <button
+        className="button"
+      >
+        Search
+      </button>
+    </form>
+  </div>
+  <div
+    className="gallery mt-2"
+  >
+    <img
+      alt=""
+      className="first-image"
+      onClick={[Function]}
+      role="presentation"
+      src="https://pictures.djocatravel.com/IMG/03NTc0PxgIEQaDcJ0xJ4gAEcDj/o2e/KuQ-rrsHoKwK.cscka/rVwKw/.awvBo/hkKBz/awrpmm/uG88mpuG.jpg?k=9b95f0b6ebf5a4cefde17b2940f74d6d779202c123a6feaebb1840ada57f65c7&o="
+    />
+    <div
+      className="image-display"
+    >
+      <div>
+        <img
+          alt=""
+          className="hotelImg"
+          onClick={[Function]}
+          role="presentation"
+          src="https://pictures.djocatravel.com/IMG/03NTc0PxgIEQaDcJ0xJ4gAEcDj/o2e/KuQ-rrsHoKwK.cscka/rVwKw/.awvBo/hkKBz/awrpmm/P8WGyqqm.jpg?k=81eedb6f32d42d7a1689c58363e5fe34ec7ffc14473b0f844ed27b607514b19a&o="
+        />
+      </div>
+      <div>
+        <img
+          alt=""
+          className="hotelImg"
+          onClick={[Function]}
+          role="presentation"
+          src="https://pictures.djocatravel.com/IMG/03NTc0PxgIEQaDcJ0xJ4gAEcDj/o2e/KuQ-rrsHoKwK.cscka/rVwKw/.awvBo/hkKBz/awrpmm/uG88mPpp.jpg?k=847df79a0ec21f378575218d33825557ad5f317d78a6eadf3d6919be53e57640&o="
+        />
+      </div>
+      <div>
+        <img
+          alt=""
+          className="hotelImg"
+          onClick={[Function]}
+          role="presentation"
+          src="https://pictures.djocatravel.com/IMG/03NTc0PxgIEQaDcJ0xJ4gAEcDj/o2e/KuQ-rrsHoKwK.cscka/rVwKw/.awvBo/hkKBz/awrpmm/uG88mCmu.jpg?k=b7eb05bc0ce0f35d7db438b81e8eebfa0e76300b671efb79debdd1d9055088c1&o="
+        />
+      </div>
+      <div>
+        <img
+          alt=""
+          className="hotelImg"
+          onClick={[Function]}
+          role="presentation"
+          src="https://pictures.djocatravel.com/IMG/03NTc0PxgIEQaDcJ0xJ4gAEcDj/o2e/KuQ-rrsHoKwK.cscka/rVwKw/.awvBo/hkKBz/awrpmm/uG88mCum.jpg?k=4257b636926078f646086d5d597bbcbeac9d69c55a1de40f700efa9fb5e3b042&o="
+        />
+      </div>
+      <div>
+        <img
+          alt=""
+          className="hotelImg"
+          onClick={[Function]}
+          role="presentation"
+          src="https://pictures.djocatravel.com/IMG/03NTc0PxgIEQaDcJ0xJ4gAEcDj/o2e/KuQ-rrsHoKwK.cscka/rVwKw/.awvBo/hkKBz/awrpmm/uG88WGyp.jpg?k=2ec1e71e7f5fe12526e8662621dbbaeb0a12b8a0dc3a6f5daedc6fe61bdde81e&o="
+        />
+      </div>
+      <div>
+        <img
+          alt=""
+          className="hotelImg"
+          onClick={[Function]}
+          role="presentation"
+          src="https://pictures.djocatravel.com/IMG/03NTc0PxgIEQaDcJ0xJ4gAEcDj/o2e/KuQ-rrsHoKwK.cscka/rVwKw/.awvBo/hkKBz/awrpmm/uG88um8P.jpg?k=ec4ed3a29d513fb088e37380fb9c499994b542b5e2a2215b0abf726c99cf1a6e&o="
+        />
+      </div>
+    </div>
+    <div
+      className="more-photos"
+      onClick={[Function]}
+      role="presentation"
+    >
+      <svg
+        className="m-1.5 h-3"
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 512 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z"
+        />
+      </svg>
+      See more
+    </div>
+  </div>
+  <div
+    className="content-avail"
+  >
+    <div
+      className="button-group"
+    >
+      <button
+        className="active-tab"
+        onClick={[Function]}
+      >
+        Overview
+      </button>
+      <button
+        className="tab"
+        onClick={[Function]}
+      >
+        Rooms
+      </button>
+    </div>
+    <div>
+      <div
+        className="overview"
+      >
+        <div
+          className="address-avail"
+        >
+          <h1
+            className="hotelName"
+          >
+            IBIS
+          </h1>
+          <div
+            className="address-field"
+          >
+            <h1
+              className="adress"
+            >
+               181 rue de Vaugirard 75015 Paris
+            </h1>
+             
+            <h1
+              className="adress"
+            >
+              75015
+            </h1>
+             
+            <h1
+              className="adress"
+            >
+              Paris
+            </h1>
+             
+            <h1
+              className="adress"
+            >
+              France
+            </h1>
+          </div>
+          <h2
+            className="facilities"
+          >
+            Facilities
+          </h2>
+          <div
+            className="grid-view"
+          >
+            <div
+              className="grid-item"
+            >
+               
+              <svg
+                className="iso-mark"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M362.6 192.9L345 174.8c-.7-.8-1.8-1.2-2.8-1.2-1.1 0-2.1.4-2.8 1.2l-122 122.9-44.4-44.4c-.8-.8-1.8-1.2-2.8-1.2-1 0-2 .4-2.8 1.2l-17.8 17.8c-1.6 1.6-1.6 4.1 0 5.7l56 56c3.6 3.6 8 5.7 11.7 5.7 5.3 0 9.9-3.9 11.6-5.5h.1l133.7-134.4c1.4-1.7 1.4-4.2-.1-5.7z"
+                />
+              </svg>
+              <h1
+                className="room-type"
+              >
+                Free WiFi
+              </h1>
+            </div>
+            <div
+              className="grid-item"
+            >
+               
+              <svg
+                className="iso-mark"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M362.6 192.9L345 174.8c-.7-.8-1.8-1.2-2.8-1.2-1.1 0-2.1.4-2.8 1.2l-122 122.9-44.4-44.4c-.8-.8-1.8-1.2-2.8-1.2-1 0-2 .4-2.8 1.2l-17.8 17.8c-1.6 1.6-1.6 4.1 0 5.7l56 56c3.6 3.6 8 5.7 11.7 5.7 5.3 0 9.9-3.9 11.6-5.5h.1l133.7-134.4c1.4-1.7 1.4-4.2-.1-5.7z"
+                />
+              </svg>
+              <h1
+                className="room-type"
+              >
+                Elevator
+              </h1>
+            </div>
+            <div
+              className="grid-item"
+            >
+               
+              <svg
+                className="iso-mark"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M362.6 192.9L345 174.8c-.7-.8-1.8-1.2-2.8-1.2-1.1 0-2.1.4-2.8 1.2l-122 122.9-44.4-44.4c-.8-.8-1.8-1.2-2.8-1.2-1 0-2 .4-2.8 1.2l-17.8 17.8c-1.6 1.6-1.6 4.1 0 5.7l56 56c3.6 3.6 8 5.7 11.7 5.7 5.3 0 9.9-3.9 11.6-5.5h.1l133.7-134.4c1.4-1.7 1.4-4.2-.1-5.7z"
+                />
+              </svg>
+              <h1
+                className="room-type"
+              >
+                Breakfast available (surcharge)
+              </h1>
+            </div>
+            <div
+              className="grid-item"
+            >
+               
+              <svg
+                className="iso-mark"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M362.6 192.9L345 174.8c-.7-.8-1.8-1.2-2.8-1.2-1.1 0-2.1.4-2.8 1.2l-122 122.9-44.4-44.4c-.8-.8-1.8-1.2-2.8-1.2-1 0-2 .4-2.8 1.2l-17.8 17.8c-1.6 1.6-1.6 4.1 0 5.7l56 56c3.6 3.6 8 5.7 11.7 5.7 5.3 0 9.9-3.9 11.6-5.5h.1l133.7-134.4c1.4-1.7 1.4-4.2-.1-5.7z"
+                />
+              </svg>
+              <h1
+                className="room-type"
+              >
+                Smoke-free property
+              </h1>
+            </div>
+            <div
+              className="grid-item"
+            >
+               
+              <svg
+                className="iso-mark"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M362.6 192.9L345 174.8c-.7-.8-1.8-1.2-2.8-1.2-1.1 0-2.1.4-2.8 1.2l-122 122.9-44.4-44.4c-.8-.8-1.8-1.2-2.8-1.2-1 0-2 .4-2.8 1.2l-17.8 17.8c-1.6 1.6-1.6 4.1 0 5.7l56 56c3.6 3.6 8 5.7 11.7 5.7 5.3 0 9.9-3.9 11.6-5.5h.1l133.7-134.4c1.4-1.7 1.4-4.2-.1-5.7z"
+                />
+              </svg>
+              <h1
+                className="room-type"
+              >
+                Multilingual staff
+              </h1>
+            </div>
+            <div
+              className="grid-item"
+            >
+               
+              <svg
+                className="iso-mark"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M362.6 192.9L345 174.8c-.7-.8-1.8-1.2-2.8-1.2-1.1 0-2.1.4-2.8 1.2l-122 122.9-44.4-44.4c-.8-.8-1.8-1.2-2.8-1.2-1 0-2 .4-2.8 1.2l-17.8 17.8c-1.6 1.6-1.6 4.1 0 5.7l56 56c3.6 3.6 8 5.7 11.7 5.7 5.3 0 9.9-3.9 11.6-5.5h.1l133.7-134.4c1.4-1.7 1.4-4.2-.1-5.7z"
+                />
+              </svg>
+              <h1
+                className="room-type"
+              >
+                24-hour front desk
+              </h1>
+            </div>
+          </div>
+        </div>
+        <img
+          alt=""
+          className="map"
+          src="test-file-stub"
+        />
+      </div>
+    </div>
+    <hr
+      className="seperator"
+    />
+    <div>
+      <h1
+        className="heading-select-room"
+      >
+        Select your room
+      </h1>
+      <div
+        className="room-list"
+      >
+        <table
+          className="modal-table bg-white"
+        >
+          <thead
+            className="table-header"
+          >
+            <tr
+              className=""
+            >
+              <th
+                className="w-40 text-white text-sm font-semibold tracking-wide border-white border-solid border-r heading-room"
+              >
+                Room Type
+              </th>
+              <th
+                className="w-28 p-3 text-white text-sm font-semibold tracking-wide border-white border-solid border-r"
+              >
+                Today's Price
+              </th>
+              <th
+                className="w-32 p-3 text-white modal-thead text-sm font-semibold tracking-wide border-solid border-r"
+              >
+                <div
+                  className="flex justify-center"
+                >
+                  <span>
+                    Your choice
+                  </span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            className=""
+          />
+        </table>
+        <div
+          className="reserve"
+        >
+          <button
+            className="reserve-button"
+            onClick={[Function]}
+          >
+            Reserve
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

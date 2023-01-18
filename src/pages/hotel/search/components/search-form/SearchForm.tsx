@@ -1,23 +1,26 @@
-import React, { useEffect, useState } from 'react'
-import { HotelAvailabilityResponse } from '../../../../../models/hotel/search-models/hotelAvailabilityResponse'
-import { HotelAvailabilityRequest } from '../../../../../models/hotel/search-models/hotelAvailabilityRequest'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { AxiosResponse } from 'axios'
+import { intervalToDuration } from 'date-fns'
+import { useEffect, useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import * as Yup from 'yup'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
+import { HotelAvailabilityRequest } from '../../../../../models/hotel/search-models/hotelAvailabilityRequest'
+import { HotelAvailabilityResponse } from '../../../../../models/hotel/search-models/hotelAvailabilityResponse'
 import HotelSearchService from '../../../../../services/hotel/HotelSearchService'
-import { AxiosResponse } from 'axios'
 import {
   hotelSearchAvailabilityRequestAction,
   hotelSearchAvailabilityResponseAction,
   nightCountAction,
 } from '../../../../../store/actions/hotelSearchAction'
-import { intervalToDuration } from 'date-fns'
-import './SearchForm.css'
-import { IRootState } from '../../../../../store/reducers/rootReducer'
-import Location from '../../../../common/components/location/Location'
+import {
+  getHotelAvailabilityRequest,
+  getLocationState,
+} from '../../../../../store/selectors/Selectors'
 import DateRange from '../../../../common/components/date-range/DateRange'
+import Location from '../../../../common/components/location/Location'
 import Travelers from '../../../../common/components/travelers/Travelers'
+import './SearchForm.css'
 
 interface IFormInputs {
   location: string
@@ -56,13 +59,10 @@ function SearchForm() {
     mode: 'onSubmit',
   })
 
-  const locationState: string = useSelector(
-    (state: IRootState) => state.hotel.location.location,
-  )
+  const locationState: string = useSelector(getLocationState)
 
   const hotelAvailabilityRequestState: HotelAvailabilityRequest = useSelector(
-    (state: IRootState) =>
-      state.hotel.availabilityRequest.hotelAvailabilityRequest,
+    getHotelAvailabilityRequest,
   )
 
   useEffect(() => {
