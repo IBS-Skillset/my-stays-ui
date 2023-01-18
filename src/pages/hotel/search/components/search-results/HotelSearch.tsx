@@ -1,22 +1,20 @@
-import React from 'react'
+import 'react-datepicker/dist/react-datepicker.css'
+import { useSelector } from 'react-redux'
 import map from '../../../../../assets/images/map.jpg'
 import searchIcon from '../../../../../assets/images/search-icon.png'
-import './HotelSearch.scss'
-import { IRootState } from '../../../../../store/reducers/rootReducer'
 import AuthorizeUser from '../../../../../setup/oauth2/components/AuthorizeUser'
 import DispatchPkceData from '../../../../../setup/oauth2/pkce/DispatchPkceData'
-import 'react-datepicker/dist/react-datepicker.css'
+import {
+  getAccessToken,
+  getIsAuthorized,
+} from '../../../../../store/selectors/Selectors'
 import SearchForm from './../search-form/SearchForm'
-import { useSelector } from 'react-redux'
+import './HotelSearch.scss'
 import SearchResults from './result/SearchResults'
 
 function HotelSearch() {
-  const accessToken = useSelector(
-    (state: IRootState) => state.token.accessToken,
-  )
-  const isAuthorized = useSelector(
-    (state: IRootState) => state.authorize.isAuthorized,
-  )
+  const accessToken = useSelector(getAccessToken)
+  const isAuthorized = useSelector(getIsAuthorized)
   if (accessToken == '') {
     if (!isAuthorized) {
       DispatchPkceData()

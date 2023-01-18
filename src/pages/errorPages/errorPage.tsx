@@ -8,9 +8,7 @@ function ErrorPage() {
     <>
       <div className="main-box">
         <div className="error-title">404 ERROR</div>
-        <div>
-          Oops! Looks like you took a wrong turn
-        </div>
+        <div>Oops! Looks like you took a wrong turn</div>
         <button onClick={() => navigate('/')} className="error-btn">
           Go back
         </button>

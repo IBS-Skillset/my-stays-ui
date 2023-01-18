@@ -1,25 +1,25 @@
-import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import { tokenAction } from '../../../store/actions/tokenAction'
+import {
+  getAuthState,
+  getCodeChallenge,
+  getIsAuthorized,
+  getVerifier,
+} from '../../../store/selectors/Selectors'
 import { Authorize } from '../api/Authorize'
 import { Token } from '../api/Token'
-import { useDispatch, useSelector } from 'react-redux'
-import { IRootState } from '../../../store/reducers/rootReducer'
-import { tokenAction } from '../../../store/actions/tokenAction'
 
 const AuthorizeUser = () => {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const authState = useSelector((state: IRootState) => state.pkce.authState)
-  const verifier = useSelector((state: IRootState) => state.pkce.codeVerifier)
-  const isAuthorized = useSelector(
-    (state: IRootState) => state.authorize.isAuthorized,
-  )
-
-  const codeChallenge = useSelector(
-    (state: IRootState) => state.pkce.codeChallenge,
-  )
+  const authState = useSelector(getAuthState)
+  const verifier = useSelector(getVerifier)
+  const isAuthorized = useSelector(getIsAuthorized)
+  const codeChallenge = useSelector(getCodeChallenge)
 
   useEffect(() => {
     if (
