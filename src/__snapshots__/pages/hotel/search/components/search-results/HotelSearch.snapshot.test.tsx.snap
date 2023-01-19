@@ -90,6 +90,7 @@ exports[`SearchResults Page : <HotelSearch /> Screen renders correctly 1`] = `
                   onKeyDown={[Function]}
                   placeholder="mm/dd/yyyy"
                   readOnly={false}
+                  title="CHECK IN"
                   type="text"
                   value="01/11/2023"
                 />
@@ -137,6 +138,7 @@ exports[`SearchResults Page : <HotelSearch /> Screen renders correctly 1`] = `
                   onKeyDown={[Function]}
                   placeholder="mm/dd/yyyy"
                   readOnly={false}
+                  title="CHECK OUT"
                   type="text"
                   value="01/12/2023"
                 />
