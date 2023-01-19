@@ -1,15 +1,13 @@
-import React from 'react'
 import { ImCheckmark } from 'react-icons/im'
-import { useLocation } from 'react-router'
-import './BookHeader.scss'
 import { useSelector } from 'react-redux'
-import { IRootState } from '../../../../store/reducers/rootReducer'
+import { useLocation } from 'react-router'
 import { BookResponse } from '../../../../models/hotel/book-models/bookResponse'
+import { getBookResponse } from '../../../../store/selectors/Selectors'
+import './BookHeader.scss'
 
 function BookHeader() {
-  const bookResponse: BookResponse = useSelector(
-    (state: IRootState) => state.hotel.bookResponse.bookResponse,
-  )
+  const bookResponse: BookResponse = useSelector(getBookResponse)
+
   const finalConfirmationMatch =
     useLocation().pathname == '/finalConfirmation' &&
     bookResponse.responseStatus.status == 1

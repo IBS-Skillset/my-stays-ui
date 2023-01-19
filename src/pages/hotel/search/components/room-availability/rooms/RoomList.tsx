@@ -1,15 +1,15 @@
-import { IoCafe, IoInformationCircleSharp } from 'react-icons/io5'
-import { RoomAvailabilityResponse } from '../../../../../../models/hotel/roomavailability-models/roomAvailabilityResponse'
-import './RoomList.scss'
+import { AxiosResponse } from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
 import { IoIosCheckmark } from 'react-icons/io'
+import { IoCafe, IoInformationCircleSharp } from 'react-icons/io5'
 import { useDispatch } from 'react-redux'
-import { rateAction } from '../../../../../../store/actions/hotelSearchAction'
-import HotelRepriceService from '../../../../../../services/hotel/HotelRepriceService'
-import { HotelAvailabilityRequest } from '../../../../../../models/hotel/search-models/hotelAvailabilityRequest'
-import { AxiosResponse } from 'axios'
-import { HotelRepriceResponse } from '../../../../../../models/hotel/reprice-models/hotelRepriceResponse'
 import { useNavigate } from 'react-router-dom'
+import { HotelRepriceResponse } from '../../../../../../models/hotel/reprice-models/hotelRepriceResponse'
+import { RoomAvailabilityResponse } from '../../../../../../models/hotel/roomavailability-models/roomAvailabilityResponse'
+import { HotelAvailabilityRequest } from '../../../../../../models/hotel/search-models/hotelAvailabilityRequest'
+import HotelRepriceService from '../../../../../../services/hotel/HotelRepriceService'
+import { rateAction } from '../../../../../../store/actions/hotelSearchAction'
+import './RoomList.scss'
 
 export type Props = {
   roomAvailabilityResponse: React.SetStateAction<RoomAvailabilityResponse>
@@ -25,7 +25,7 @@ function RoomList({
       hotelCode: '',
       rateList: [],
     })
-  console.log('room avilability final', roomAvailability)
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
   useEffect(() => {

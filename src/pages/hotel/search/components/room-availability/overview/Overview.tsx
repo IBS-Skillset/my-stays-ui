@@ -1,8 +1,7 @@
-import React from 'react'
+import { IoIosCheckmark } from 'react-icons/io'
 import map from '../../../../../../assets/images/map.jpg'
 import { HotelDescriptionResponse } from '../../../../../../models/hotel/description-models/hotelDescriptionResponse'
 import './Overview.css'
-import { IoIosCheckmark } from 'react-icons/io'
 
 export type Props = {
   hotel: HotelDescriptionResponse
@@ -27,7 +26,6 @@ function Overview({ hotel }: Props) {
         : ''}
     </>
   )
-  console.log('service', service)
 
   return (
     <div className="overview">

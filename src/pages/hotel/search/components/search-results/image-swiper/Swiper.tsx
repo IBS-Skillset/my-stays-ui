@@ -1,13 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import SwiperItem from './swiperitem/SwiperItem'
 
+import { useSelector } from 'react-redux'
+import loader from '../../../../../../assets/images/loader.gif'
+import { HotelDescriptionResponse } from '../../../../../../models/hotel/description-models/hotelDescriptionResponse'
+import { getHotelDescriptionResponses } from '../../../../../../store/selectors/Selectors'
+import { getRefValue, useStateRef } from './hooks'
 import './Swiper.css'
 import { SwiperItemType } from './swiperitem/types'
-import { getRefValue, useStateRef } from './hooks'
-import { useSelector } from 'react-redux'
-import { IRootState } from '../../../../../../store/reducers/rootReducer'
-import loader from '../../../../../../assets/images/loader.gif'
 
 export type Props = {
   hotelCode: string
@@ -19,12 +20,9 @@ function Swiper({ hotelCode }: Props) {
   const [currentIdx, setCurrentIdx] = useState(0)
   const [maxImages, setMaxImages] = useState(6)
   const [items, setItems] = useState<Array<SwiperItemType>>([])
-  const hotel = useSelector(
-    (state: IRootState) =>
-      state.hotel.descriptionResponse.hotelDescriptionResponsesPerCode[
-        hotelCode
-      ],
-  )
+  const hotel: HotelDescriptionResponse = useSelector(
+    getHotelDescriptionResponses,
+  )[hotelCode]
   useEffect(() => {
     const items: Array<SwiperItemType> = []
     if (hotel) {

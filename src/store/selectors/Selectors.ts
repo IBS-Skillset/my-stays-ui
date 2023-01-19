@@ -1,6 +1,7 @@
 import { IRootState } from '../reducers/rootReducer'
 
 export const getAccessToken = (state: IRootState) => state.token.accessToken
+export const getRefreshToken = (state: IRootState) => state.token.refreshToken
 export const getIsAuthorized = (state: IRootState) =>
   state.authorize.isAuthorized
 export const getEmail = (state: IRootState) => state.email.email
@@ -30,3 +31,8 @@ export const getVerifier = (state: IRootState) => state.pkce.codeVerifier
 export const getCodeChallenge = (state: IRootState) => state.pkce.codeChallenge
 export const getLocationState = (state: IRootState) =>
   state.hotel.location.location
+export const getIsLoading = (state: IRootState) => state.loader.showLoading
+export const getFirstName = (state: IRootState) =>
+  state.userDetails.userDetails.firstName
+export const getLastName = (state: IRootState) =>
+  state.userDetails.userDetails.lastName

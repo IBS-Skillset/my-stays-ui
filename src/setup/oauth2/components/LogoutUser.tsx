@@ -1,24 +1,23 @@
 import { useEffect, useRef } from 'react'
+import { useIdleTimer } from 'react-idle-timer'
 import { useDispatch, useSelector } from 'react-redux'
-import { IRootState } from '../../../store/reducers/rootReducer'
-import { Revoke } from '../api/Revoke'
-import { clearState } from '../../../store/stateStorage'
 import {
   logOutAction,
   userLogOutAction,
 } from '../../../store/actions/logoutAction'
-import AuthConstants from '../constants/AuthConstants'
-import { useIdleTimer } from 'react-idle-timer'
 import { userSessionOutAction } from '../../../store/actions/sessionOutAction'
+import {
+  getAccessToken,
+  getRefreshToken,
+} from '../../../store/selectors/Selectors'
+import { clearState } from '../../../store/stateStorage'
+import { Revoke } from '../api/Revoke'
+import AuthConstants from '../constants/AuthConstants'
 
 const LogoutUser = () => {
   const dispatch = useDispatch()
-  const accessToken = useSelector(
-    (state: IRootState) => state.token.accessToken,
-  )
-  const refreshToken = useSelector(
-    (state: IRootState) => state.token.refreshToken,
-  )
+  const accessToken = useSelector(getAccessToken)
+  const refreshToken = useSelector(getRefreshToken)
   const logoutFormRef = useRef<HTMLFormElement>(null)
 
   const dispatchSignout = () => {

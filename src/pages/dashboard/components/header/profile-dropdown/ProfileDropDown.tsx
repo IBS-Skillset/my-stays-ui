@@ -1,10 +1,14 @@
-import profileSVG from '../../../../../assets/svg/profile.svg'
-import dropDownSVG from '../../../../../assets/svg/dropdown.svg'
-import useComponentVisible from './useComponentVisible'
-import './ProfileDropDown.scss'
-import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { IRootState } from '../../../../../store/reducers/rootReducer'
+import { Link } from 'react-router-dom'
+import dropDownSVG from '../../../../../assets/svg/dropdown.svg'
+import profileSVG from '../../../../../assets/svg/profile.svg'
+import {
+  getEmail,
+  getFirstName,
+  getLastName,
+} from '../../../../../store/selectors/Selectors'
+import './ProfileDropDown.scss'
+import useComponentVisible from './useComponentVisible'
 
 export const ProfileDropDown = () => {
   const { ref, isComponentVisible, setIsComponentVisible } =
@@ -12,13 +16,10 @@ export const ProfileDropDown = () => {
   const showProfile = () => {
     setIsComponentVisible(!isComponentVisible)
   }
-  const emailid = useSelector((state: IRootState) => state.email.email)
-  const firstName = useSelector(
-    (state: IRootState) => state.userDetails.userDetails.firstName,
-  )
-  const lastName = useSelector(
-    (state: IRootState) => state.userDetails.userDetails.lastName,
-  )
+  const emailid = useSelector(getEmail)
+  const firstName = useSelector(getFirstName)
+  const lastName = useSelector(getLastName)
+
   return (
     <div className="profile">
       <button className="dropdown-menu" type="button" onClick={showProfile}>

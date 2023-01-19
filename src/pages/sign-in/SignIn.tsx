@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import './Signin.scss'
-import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import AuthConstants from '../../setup/oauth2/constants/AuthConstants'
-import { useDispatch, useSelector } from 'react-redux'
-import { userSessionOutAction } from '../../store/actions/sessionOutAction'
-import { userLogOutAction } from '../../store/actions/logoutAction'
 import { emailAction } from '../../store/actions/emailAction'
+import { userLogOutAction } from '../../store/actions/logoutAction'
+import { userSessionOutAction } from '../../store/actions/sessionOutAction'
 import {
   getAccessToken,
   getAutoFillEmail,
   getIsLoggedOut,
+  getIsSessionOut,
 } from '../../store/selectors/Selectors'
+import './Signin.scss'
 
 function SignIn() {
   const [open, setOpen] = useState<boolean>(false)
@@ -37,7 +38,7 @@ function SignIn() {
   }
   const isLoggedOut = useSelector(getIsLoggedOut)
 
-  const isSessionOut = useSelector(getIsLoggedOut)
+  const isSessionOut = useSelector(getIsSessionOut)
 
   if (isLoggedOut) {
     setTimeout(() => {
