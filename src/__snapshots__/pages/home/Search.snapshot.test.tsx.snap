@@ -5,7 +5,9 @@ exports[`Home Page : <Search /> Screen renders correctly 1`] = `
   className="main"
 >
   <form
+    aria-label="Search Hotels"
     className="inner-form"
+    name="SearchForm"
     onSubmit={[Function]}
   >
     <div
@@ -312,6 +314,7 @@ exports[`Home Page : <Search /> Screen renders correctly 1`] = `
                     onKeyDown={[Function]}
                     placeholder="mm/dd/yyyy"
                     readOnly={false}
+                    title="CHECK IN"
                     type="text"
                     value="01/11/2023"
                   />
@@ -359,6 +362,7 @@ exports[`Home Page : <Search /> Screen renders correctly 1`] = `
                     onKeyDown={[Function]}
                     placeholder="mm/dd/yyyy"
                     readOnly={false}
+                    title="CHECK OUT"
                     type="text"
                     value="01/12/2023"
                   />

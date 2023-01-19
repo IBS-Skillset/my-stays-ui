@@ -166,6 +166,8 @@ function Search() {
     <div className="main">
       <form
         className="inner-form"
+        aria-label="Search Hotels"
+        name="SearchForm"
         onSubmit={handleSubmit(getHotelAvailability)}
       >
         <div className="heading">Search Hotels</div>
