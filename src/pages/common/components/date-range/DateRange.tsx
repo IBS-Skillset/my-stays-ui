@@ -53,6 +53,7 @@ const DateRange = ({
           <div className="date-input">
             <DatePicker
               className="date-picker"
+              title="CHECK IN"
               placeholderText="mm/dd/yyyy"
               selected={startDate}
               selectsStart
@@ -70,6 +71,7 @@ const DateRange = ({
           <div className="date-input">
             <DatePicker
               className="date-picker"
+              title="CHECK OUT"
               placeholderText="mm/dd/yyyy"
               selected={endDate}
               selectsEnd

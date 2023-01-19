@@ -1,9 +1,14 @@
 export default {
   autocomplete: {
     place: [
+      { description: 'Paris, France', placeId: 'ChIJD7fiBh9u5kcRYJSMaMOCCwQ' },
       {
-        description: 'Paris, Frankrijk',
-        placeId: 'ChIJD7fiBh9u5kcRYJSMaMOCCwQ',
+        description: 'Parque Delta, Avenida Cuauhtémoc',
+        placeId: 'ChIJh80WKBr_0YUROy_5zNKjA50',
+      },
+      {
+        description: 'Parque Arauco - Avenida Presidente Kennedy, Las Condes',
+        placeId: 'ChIJRwJopCjPYpYRFLSKf8FBgSc',
       },
       {
         description: 'Pari Chowk, NRI City',
@@ -11,17 +16,8 @@ export default {
           'EjtQYXJpIENob3drLCBOUkkgQ2l0eSwgT21lZ2EgSUksIE5vaWRhLCBVdHRhciBQcmFkZXNoLCBJbmRpYSIuKiwKFAoSCSvbxs7VwQw5EaQKqM6g9V1WEhQKEgnPC8bw08EMORFiiyvvNAwEXg',
       },
       {
-        description:
-          'Paris Expo Porte de Versailles, Place de la Porte de Versailles',
-        placeId: 'ChIJBzXcJ3Jw5kcRIaKWeyEWXrk',
-      },
-      {
-        description: 'Paris, Texas',
-        placeId: 'ChIJmysnFgZYSoYRSfPTL2YJuck',
-      },
-      {
-        description: 'Paris Las Vegas, South Las Vegas Boulevard',
-        placeId: 'ChIJAQAAAGzDyIARAVwe_ga0REU',
+        description: 'Parma, Province of Parma',
+        placeId: 'ChIJL8PUVOFqgEcRmjaQXHM3oQM',
       },
     ],
   },
