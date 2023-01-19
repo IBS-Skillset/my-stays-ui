@@ -52,10 +52,13 @@ beforeEach(() => {
     return mockHotelAvailRes
   })
   getDaysMock.mockReturnValue(1)
+  jest.useFakeTimers()
+  jest.setSystemTime(new Date(2023, 0, 11))
 })
 
 afterEach(() => {
   jest.clearAllMocks()
+  jest.useRealTimers()
 })
 describe('SearchResults Page : <HotelSearch /> Screen', () => {
   test('renders correctly', () => {

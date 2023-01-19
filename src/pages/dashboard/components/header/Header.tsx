@@ -3,12 +3,12 @@ import { FormEvent, useState } from 'react'
 import { useSelector } from 'react-redux'
 import languageSVG from '../../../../assets/svg/language.svg'
 import { LOCAL_STORAGE_KEYS } from '../../../../constants/appConstants'
-import { IRootState } from '../../../../store/reducers/rootReducer'
 import { getSelectedLang } from '../../../../util/web/webStorageUtil'
 /*import { NavBar } from '../navbar/NavBar'*/
+import { Link } from 'react-router-dom'
+import { getAccessToken } from '../../../../store/selectors/Selectors'
 import './Header.scss'
 import { ProfileDropDown } from './profile-dropdown/ProfileDropDown'
-import { Link } from 'react-router-dom'
 //import 'bootstrap/dist/css/bootstrap.css';
 
 function Header() {
@@ -22,9 +22,7 @@ function Header() {
     getSelectedLang(),
   )
 
-  const accessToken = useSelector(
-    (state: IRootState) => state.token.accessToken,
-  )
+  const accessToken = useSelector(getAccessToken)
 
   const parsedAccessToken = parseJwt(accessToken)
   console.log(parsedAccessToken)

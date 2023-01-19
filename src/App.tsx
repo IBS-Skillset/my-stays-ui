@@ -1,16 +1,16 @@
-import Routes from './setup/routes/routes'
 import Loader from './pages/common/loader/Loader'
+import Routes from './setup/routes/routes'
 
-import { useSelector } from 'react-redux'
-import { IRootState } from './store/reducers/rootReducer'
-import { useCommonInterseptor } from './interceptor/commonInterseptor'
 import { useIdleTimer } from 'react-idle-timer'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import useAuthInterceptor from './interceptor/useAuthInterceptor'
 import './App.scss'
+import { useCommonInterseptor } from './interceptor/commonInterseptor'
+import useAuthInterceptor from './interceptor/useAuthInterceptor'
+import { getIsLoading } from './store/selectors/Selectors'
 
 function App() {
-  const isloading = useSelector((state: IRootState) => state.loader.showLoading)
+  const isloading = useSelector(getIsLoading)
   useCommonInterseptor()
   useAuthInterceptor()
 

@@ -49,10 +49,13 @@ beforeEach(() => {
     return mockHotelDescriptionRes
   })
   getDaysMock.mockReturnValue(1)
+  jest.useFakeTimers()
+  jest.setSystemTime(new Date(2023, 0, 11))
 })
 
 afterEach(() => {
   jest.clearAllMocks()
+  jest.useRealTimers()
 })
 describe('RoomAvailability Page : <HotelDescription /> Screen', () => {
   test('renders correctly', () => {
