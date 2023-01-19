@@ -1,16 +1,15 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import { useDispatch } from 'react-redux'
 import { loadingToggleAction } from '../store/actions/loaderAction'
+import APIConstants from '../services/constants/APIConstants'
 
 export function useCommonInterseptor() {
   const dispatch = useDispatch()
 
   const falseLoadingUrls = (config: AxiosRequestConfig<any>): boolean => {
-    const HOTEL_DESCRIPTION_URL = `http://${process.env.DOMAIN}:${process.env.HOTEL_SERVICE_PORT}/hotel-search-service/api/description`
-    const ROOM_SEARCH_BASE_URL = `http://${process.env.DOMAIN}:${process.env.HOTEL_SERVICE_PORT}/hotel-search-service/api/roomAvailability`
     return (
-      (config.url === HOTEL_DESCRIPTION_URL ||
-        config.url === ROOM_SEARCH_BASE_URL) &&
+      (config.url === APIConstants.HOTEL_DESCRIPTION_URL ||
+        config.url === APIConstants.HOTEL_ROOM_AVAILABILITY_URL) &&
       config.method == 'post'
     )
   }
