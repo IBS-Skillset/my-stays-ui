@@ -75,7 +75,7 @@ const SignUp = () => {
         </div>
         <div className="form">
           <label className="label" htmlFor="email">
-            {errors.email && errors.email?.message && (
+            {errors.email && errors.email.message && (
               <span className="errorMsg">{errors.email.message}</span>
             )}
             <input
@@ -89,7 +89,7 @@ const SignUp = () => {
         </div>
         <div className="form">
           <label className="label" htmlFor="fname">
-            {errors.firstName && errors.firstName?.message && (
+            {errors.firstName && errors.firstName.message && (
               <span className="errorMsg">{errors.firstName.message}</span>
             )}
             <input
@@ -103,7 +103,7 @@ const SignUp = () => {
         </div>
         <div className="form">
           <label className="label" htmlFor="lname">
-            {errors.lastName && errors.lastName?.message && (
+            {errors.lastName && errors.lastName.message && (
               <span className="errorMsg">{errors.lastName.message}</span>
             )}
             <input
@@ -117,7 +117,7 @@ const SignUp = () => {
         </div>
         <div className="form">
           <label className="label" htmlFor="phoneNumber">
-            {errors.phoneNumber && errors.phoneNumber?.message && (
+            {errors.phoneNumber && errors.phoneNumber.message && (
               <span className="errorMsg">{errors.phoneNumber.message}</span>
             )}
             <input
@@ -131,7 +131,7 @@ const SignUp = () => {
         </div>
         <div className="form">
           <label className="label" htmlFor="password">
-            {errors.password && errors.password?.message && (
+            {errors.password && errors.password.message && (
               <span className="errorMsg">{errors.password.message}</span>
             )}
             <input

@@ -4,6 +4,7 @@ import APIConstants from '../services/constants/APIConstants'
 import autocompleteResponse from './responses/autocompleteResponse'
 import placeIdResponse from './responses/placeIdResponse'
 import hotelAvailabilityResponse from './responses/hotelAvailabilityResponse'
+import createAccountResponse from './responses/createAccountResponse'
 
 export const handlers = [
   rest.get(APIConstants.USER_DETAILS_URL + ':email', (req, res, ctx) => {
@@ -73,6 +74,11 @@ export const handlers = [
     } else {
       response = hotelAvailabilityResponse.hotelAvailability
     }
+    return res(ctx.status(status), ctx.json(response))
+  }),
+  rest.post(APIConstants.CREATE_ACCOUNT_URL, async (req, res, ctx) => {
+    const status = 200
+    const response = createAccountResponse.signUpResponse
     return res(ctx.status(status), ctx.json(response))
   }),
 ]
