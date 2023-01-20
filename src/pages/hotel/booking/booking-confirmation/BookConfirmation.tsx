@@ -101,7 +101,11 @@ const BookConfirmation = () => {
 
   return (
     <>
-      <form className="form-book" onSubmit={handleSubmit(formSubmitHandler)}>
+      <form
+        aria-label="book-confirm"
+        className="form-book"
+        onSubmit={handleSubmit(formSubmitHandler)}
+      >
         {getRateTolerance(initialRoomPrice, repriceResponse.amount) >= 5 && (
           <PriceChangeAlert />
         )}

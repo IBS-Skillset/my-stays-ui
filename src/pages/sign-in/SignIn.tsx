@@ -15,9 +15,9 @@ import {
 import './Signin.scss'
 
 function SignIn() {
-  const [open, setOpen] = useState<boolean>(false)
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
+  const [open, setOpen] = useState(false)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [searchParams] = useSearchParams()
   const dispatch = useDispatch()
   const autoFillEmail = useSelector(getAutoFillEmail)
@@ -51,20 +51,19 @@ function SignIn() {
     }, 3000)
   }
 
-  const msg = (
-    <div className="message">
-      <h5>User successfully created. Enter the password to proceed</h5>
-    </div>
-  )
   return (
     <>
-      {autoFillEmail ? msg : <></>}
+      {autoFillEmail && (
+        <div className="message">
+          <h5>User successfully created. Enter the password to proceed</h5>
+        </div>
+      )}
       <div className="outer-box">
         <div className="inner-box">
-          {searchParams?.get('error') && (
+          {searchParams.get('error') && (
             <span className="errorMsg">{AuthConstants.ERROR_SIGN_IN}</span>
           )}
-          {isLoggedOut && !searchParams?.get('error') && !autoFillEmail && (
+          {isLoggedOut && !searchParams.get('error') && !autoFillEmail && (
             <span className="errorMsg">{AuthConstants.LOGOUT_MESSAGE}</span>
           )}
           {isSessionOut && (
@@ -78,6 +77,7 @@ function SignIn() {
               action={`${AuthConstants.LOGIN_URL}`}
               method="post"
               className=" relative"
+              aria-label="sign-in"
             >
               <div className="bg-white rounded-sm h-12 mb-6 relative">
                 <input
@@ -96,7 +96,7 @@ function SignIn() {
               </div>
               <div className="bg-white rounded-sm h-12 mb-6 relative">
                 <input
-                  type={open === false ? 'password' : 'text'}
+                  type={!open ? 'password' : 'text'}
                   required
                   autoComplete="off"
                   name="password"
@@ -107,10 +107,10 @@ function SignIn() {
                 />
               </div>
               <div className="eye-icon">
-                {open === false ? (
-                  <AiFillEyeInvisible onClick={toggle} />
+                {!open ? (
+                  <AiFillEyeInvisible aria-label="eye-icon" onClick={toggle} />
                 ) : (
-                  <AiFillEye onClick={toggle} />
+                  <AiFillEye aria-label="eye-icon-open" onClick={toggle} />
                 )}
               </div>
               <div className="flex items-center justify-between mb-2">

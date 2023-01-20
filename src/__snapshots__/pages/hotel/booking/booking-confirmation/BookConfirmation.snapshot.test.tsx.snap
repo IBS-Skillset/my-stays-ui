@@ -2,6 +2,7 @@
 
 exports[`Booking Confirmation Page : <BookConfirmation /> page renders correctly 1`] = `
 <form
+  aria-label="book-confirm"
   className="form-book"
   onSubmit={[Function]}
 >
@@ -90,7 +91,7 @@ exports[`Booking Confirmation Page : <BookConfirmation /> page renders correctly
               className="rate-final stay room-font"
             >
               €
-              21
+              50
             </h2>
           </div>
         </div>
@@ -402,6 +403,7 @@ exports[`Booking Confirmation Page : <BookConfirmation /> page renders correctly
             </span>
           </h1>
           <input
+            aria-label="name"
             className="rounded-sm bg-white card-details details border-color"
             id="cardHolderName"
             name="cardHolderName"
@@ -432,6 +434,7 @@ exports[`Booking Confirmation Page : <BookConfirmation /> page renders correctly
               src="test-file-stub"
             />
             <input
+              aria-label="number"
               className="card-number"
               id="cardNumber"
               name="cardNumber"
@@ -456,6 +459,7 @@ exports[`Booking Confirmation Page : <BookConfirmation /> page renders correctly
               </span>
             </h2>
             <input
+              aria-label="date"
               className="expiry border-color bg-white"
               id="expiryDate"
               name="expiryDate"
@@ -485,6 +489,7 @@ exports[`Booking Confirmation Page : <BookConfirmation /> page renders correctly
                 src="test-file-stub"
               />
               <input
+                aria-label="cvv"
                 className="cvv-input"
                 id="cvv"
                 name="cvv"

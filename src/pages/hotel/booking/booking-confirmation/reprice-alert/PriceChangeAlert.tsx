@@ -7,7 +7,7 @@ const PriceChangeAlert = () => {
       <div className="price-change-alert-image-container">
         <img src={infoSVG} alt="" className="info-image" />
       </div>
-      <h1 className="price-change-alert">
+      <h1 className="price-change-alert" aria-label="price-change">
         A price change is noticed from the selected price. Please confirm to
         book using the new price.
       </h1>

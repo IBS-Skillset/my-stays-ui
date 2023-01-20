@@ -53,9 +53,10 @@ const PaymentDetails = ({ register, errors }: Props) => {
           className="rounded-sm bg-white card-details details border-color"
           type="text"
           id="cardHolderName"
+          aria-label="name"
           {...register('cardHolderName')}
         />
-        {errors.cardHolderName && errors.cardHolderName?.message && (
+        {errors.cardHolderName && errors.cardHolderName.message && (
           <h1 className="error-message">{errors.cardHolderName.message}</h1>
         )}
       </div>
@@ -69,10 +70,11 @@ const PaymentDetails = ({ register, errors }: Props) => {
             className="card-number"
             type="text"
             id="cardNumber"
+            aria-label="number"
             {...register('cardNumber')}
           />
         </div>
-        {errors.cardNumber && errors.cardNumber?.message && (
+        {errors.cardNumber && errors.cardNumber.message && (
           <h1 className="error-message">{errors.cardNumber.message}</h1>
         )}
       </div>
@@ -86,9 +88,10 @@ const PaymentDetails = ({ register, errors }: Props) => {
             placeholder="MM/YY"
             type="text"
             id="expiryDate"
+            aria-label="date"
             {...register('expiryDate')}
           />
-          {errors.expiryDate && errors.expiryDate?.message && (
+          {errors.expiryDate && errors.expiryDate.message && (
             <h1 className="error-message">{errors.expiryDate.message}</h1>
           )}
         </div>
@@ -102,10 +105,11 @@ const PaymentDetails = ({ register, errors }: Props) => {
               className="cvv-input"
               type="text"
               id="cvv"
+              aria-label="cvv"
               {...register('cvv')}
             />
           </div>
-          {errors.cvv && errors.cvv?.message && (
+          {errors.cvv && errors.cvv.message && (
             <h1 className="error-message">{errors.cvv.message}</h1>
           )}
         </div>
