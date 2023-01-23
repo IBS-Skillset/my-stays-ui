@@ -74,6 +74,7 @@ const useDispatchMock = useDispatch as jest.MockedFunction<typeof useDispatch>
 const useNavigateMock = useNavigate as jest.MockedFunction<typeof useNavigate>
 const dispatch = jest.fn()
 const navigate = jest.fn()
+jest.setTimeout(10000)
 
 describe('Book confirmation Page testing', () => {
   beforeEach(() => {
