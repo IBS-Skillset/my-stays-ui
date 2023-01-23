@@ -58,6 +58,10 @@ const DateRange = ({
               selected={startDate}
               selectsStart
               onChange={handleStartdate}
+              minDate={startDate}
+              onChangeRaw={(e) => {
+                e.preventDefault()
+              }}
             />
           </div>
         </div>
@@ -76,7 +80,10 @@ const DateRange = ({
               selected={endDate}
               selectsEnd
               onChange={handleEnddate}
-              minDate={startDate}
+              minDate={endDate}
+              onChangeRaw={(e) => {
+                e.preventDefault()
+              }}
             />
           </div>
         </div>

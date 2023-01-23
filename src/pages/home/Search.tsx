@@ -93,9 +93,6 @@ function Search() {
   }
 
   const getHotelAvailability: SubmitHandler<IFormInputs> = () => {
-    if (typeof startDate === 'undefined' || typeof endDate === 'undefined') {
-      return
-    }
     if (
       hotelAvailabilityRequest.latitude === '' ||
       hotelAvailabilityRequest.longitude === ''
@@ -104,13 +101,6 @@ function Search() {
       setError('location', {
         type: 'manual',
         message: 'Search a Location',
-      })
-      return
-    }
-    if (startDate == endDate || startDate > endDate) {
-      setError('location', {
-        type: 'manual',
-        message: 'Incorrect Date Range',
       })
       return
     }

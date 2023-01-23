@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { format } from 'date-fns'
 import userEvent from '@testing-library/user-event'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 jest.mock('react-redux', () => ({
   ...jest.requireActual('react-redux'),
@@ -18,6 +19,15 @@ jest.mock('react-router-dom', () => ({
   useNavigate: jest.fn(),
 }))
 jest.mock('../../store/selectors/Selectors')
+jest.mock('../../setup/oauth2/components/AuthorizeUser', () => {
+  return function DummyAuthorizeUser() {
+    const navigate = useNavigate()
+    useEffect(() => {
+      navigate('/signin')
+    })
+    return <></>
+  }
+})
 
 const getAccessTokenMock = getAccessToken as jest.MockedFunction<
   typeof getAccessToken
@@ -150,6 +160,7 @@ describe('Home Page testing', () => {
     )
     expect(dispatch).toHaveBeenCalledTimes(5)
     expect(navigate).toHaveBeenCalledTimes(1)
+    expect(navigate).toHaveBeenCalledWith('/search')
   })
   test('should perform location validation correctly', async () => {
     render(<Search />)
@@ -266,5 +277,31 @@ describe('Home Page testing Failure : User Details', () => {
     await act(() => sleep(3000))
     expect(dispatch).not.toHaveBeenCalled()
     expect(navigate).toHaveBeenCalledTimes(1)
+    expect(navigate).toHaveBeenCalledWith('/signin')
+  })
+  test('should handle incorrect user details data from backend', async () => {
+    getEmailMock.mockReturnValue('test@test.com')
+    const alertMock = jest.spyOn(window, 'alert').mockImplementation()
+    render(<Search />)
+    await act(() => sleep(3000))
+    expect(dispatch).not.toHaveBeenCalled()
+    expect(alertMock).toHaveBeenCalledTimes(1)
+  })
+})
+describe('Home Page testing Authorization', () => {
+  beforeEach(() => {
+    getAccessTokenMock.mockReturnValue('')
+    useDispatchMock.mockReturnValue(dispatch)
+    useNavigateMock.mockReturnValue(navigate)
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+  test('should navigate to sign in page for new login', async () => {
+    render(<Search />)
+    expect(dispatch).toHaveBeenCalledTimes(4)
+    expect(navigate).toHaveBeenCalledTimes(1)
+    expect(navigate).toHaveBeenCalledWith('/signin')
   })
 })

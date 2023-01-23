@@ -9,14 +9,16 @@ import createAccountResponse from './responses/createAccountResponse'
 export const handlers = [
   rest.get(APIConstants.USER_DETAILS_URL + ':email', (req, res, ctx) => {
     const { email } = req.params
-    let status = 200
     let response
     if (email === 'test@gmail.com') {
       response = userDetailsResponse.userDetails
-    } else if (email == '') {
-      status = 400
+    } else if (email == 'test@test.com') {
+      response = { email: '' }
     }
-    return res(ctx.status(status), ctx.json(response))
+    return res(ctx.status(200), ctx.json(response))
+  }),
+  rest.get(APIConstants.USER_DETAILS_URL, (req, res, ctx) => {
+    return res(ctx.status(400), ctx.json(null))
   }),
   rest.get(APIConstants.GOOGLE_API_URL + 'autoComplete', (req, res, ctx) => {
     const location = req.url.searchParams.get('input')
