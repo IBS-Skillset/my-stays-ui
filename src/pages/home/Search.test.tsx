@@ -19,7 +19,7 @@ jest.mock('react-router-dom', () => ({
   useNavigate: jest.fn(),
 }))
 jest.mock('../../store/selectors/Selectors')
-jest.mock('../../setup/oauth2/components/AuthorizeUser', () => {
+jest.mock('../../setup/oauth2/components/authorize/AuthorizeUser', () => {
   return function DummyAuthorizeUser() {
     const navigate = useNavigate()
     useEffect(() => {

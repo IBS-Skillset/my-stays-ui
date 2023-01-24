@@ -2,7 +2,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { useSelector } from 'react-redux'
 import map from '../../../../../assets/images/map.jpg'
 import searchIcon from '../../../../../assets/images/search-icon.png'
-import AuthorizeUser from '../../../../../setup/oauth2/components/AuthorizeUser'
+import AuthorizeUser from '../../../../../setup/oauth2/components/authorize/AuthorizeUser'
 import DispatchPkceData from '../../../../../setup/oauth2/pkce/DispatchPkceData'
 import {
   getAccessToken,
