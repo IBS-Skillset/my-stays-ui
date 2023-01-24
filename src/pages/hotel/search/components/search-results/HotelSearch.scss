@@ -50,3 +50,13 @@
   @apply ml-10;
   width: 770px;
 }
+.filters {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  float: left;
+  top: 50px;
+  position: sticky;
+  margin-right: 70px;
+  margin-left: 40px;
+}
