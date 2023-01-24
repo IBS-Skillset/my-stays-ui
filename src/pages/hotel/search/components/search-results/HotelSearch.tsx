@@ -35,7 +35,7 @@ function HotelSearch() {
             <div className="match">Distance</div>
           </div>
           <div className="flex mt-5 ml-24">
-            <div className="ml-8 w-64">
+            <div className="filters">
               <div className="h-40 w-64">
                 <img src={map} alt="" className="h-40 w-64" />
               </div>
