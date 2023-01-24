@@ -4,15 +4,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   logOutAction,
   userLogOutAction,
-} from '../../../store/actions/logoutAction'
-import { userSessionOutAction } from '../../../store/actions/sessionOutAction'
+} from '../../../../store/actions/logoutAction'
+import { userSessionOutAction } from '../../../../store/actions/sessionOutAction'
 import {
   getAccessToken,
   getRefreshToken,
-} from '../../../store/selectors/Selectors'
-import { clearState } from '../../../store/stateStorage'
-import { Revoke } from '../api/Revoke'
-import AuthConstants from '../constants/AuthConstants'
+} from '../../../../store/selectors/Selectors'
+import { clearState } from '../../../../store/stateStorage'
+import { Revoke } from '../../api/Revoke'
+import AuthConstants from '../../constants/AuthConstants'
 
 const LogoutUser = () => {
   const dispatch = useDispatch()

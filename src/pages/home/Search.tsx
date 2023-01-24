@@ -10,7 +10,7 @@ import { HotelAvailabilityResponse } from '../../models/hotel/search-models/hote
 import { intervalToDuration } from 'date-fns'
 import { useDispatch, useSelector } from 'react-redux'
 import DispatchPkceData from '../../setup/oauth2/pkce/DispatchPkceData'
-import AuthorizeUser from '../../setup/oauth2/components/AuthorizeUser'
+import AuthorizeUser from '../../setup/oauth2/components/authorize/AuthorizeUser'
 import {
   hotelSearchAvailabilityRequestAction,
   hotelSearchAvailabilityResponseAction,

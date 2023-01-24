@@ -1,15 +1,15 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { tokenAction } from '../../../store/actions/tokenAction'
+import { tokenAction } from '../../../../store/actions/tokenAction'
 import {
   getAuthState,
   getCodeChallenge,
   getIsAuthorized,
   getVerifier,
-} from '../../../store/selectors/Selectors'
-import { Authorize } from '../api/Authorize'
-import { Token } from '../api/Token'
+} from '../../../../store/selectors/Selectors'
+import { Authorize } from '../../api/Authorize'
+import { Token } from '../../api/Token'
 
 const AuthorizeUser = () => {
   const [searchParams] = useSearchParams()
@@ -22,17 +22,12 @@ const AuthorizeUser = () => {
   const codeChallenge = useSelector(getCodeChallenge)
 
   useEffect(() => {
-    if (
-      searchParams?.get('code') &&
-      searchParams?.get('state') == authState &&
-      isAuthorized
-    ) {
-      const code = searchParams?.get('code') || ''
-      console.log('.....................token execution')
+    const code = searchParams.get('code')
+    if (code && searchParams.get('state') == authState && isAuthorized) {
       Token(code, verifier)
         .then(async (response) => {
           const token = await response.json()
-          if (token?.id_token) {
+          if (token.id_token) {
             dispatch(
               tokenAction(
                 token.access_token,
@@ -45,13 +40,13 @@ const AuthorizeUser = () => {
         })
         .catch((err) => {
           console.log(err)
+          navigate('/signin')
         })
     }
   }, [])
   useEffect(() => {
-    if (!searchParams?.get('code')) {
-      const link = Authorize(authState, codeChallenge)
-      window.location.href = link
+    if (!searchParams.get('code')) {
+      window.location.href = Authorize(authState, codeChallenge)
     }
   }, [])
   return <></>

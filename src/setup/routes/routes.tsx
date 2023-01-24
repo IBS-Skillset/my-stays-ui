@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom'
 import SignIn from '../../pages/sign-in/SignIn'
 import SignUp from '../../pages/sign-up/SignUp'
-import AuthorizeUser from '../oauth2/components/AuthorizeUser'
-import LogoutUser from '../oauth2/components/LogoutUser'
+import AuthorizeUser from '../oauth2/components/authorize/AuthorizeUser'
+import LogoutUser from '../oauth2/components/logout/LogoutUser'
 import HomeLayout from '../../pages/dashboard/components/layout/HomeLayout'
 import Search from '../../pages/home/Search'
 import HotelSearch from '../../pages/hotel/search/components/search-results/HotelSearch'
@@ -12,7 +12,7 @@ import BookConfirmation from '../../pages/hotel/booking/booking-confirmation/Boo
 import BookLayout from '../../pages/dashboard/components/layout/BookLayout'
 import FinalConfirmation from '../../pages/hotel/booking/final-confirmation/FinalConfirmation'
 import MyTrips from '../../pages/trips/MyTrips'
-import ErrorPage from '../../pages/errorpages/errorPage'
+import ErrorPage from '../../pages/errorPages/ErrorPage'
 
 function routes() {
   return (

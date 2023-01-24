@@ -6,6 +6,8 @@ import placeIdResponse from './responses/placeIdResponse'
 import hotelAvailabilityResponse from './responses/hotelAvailabilityResponse'
 import createAccountResponse from './responses/createAccountResponse'
 import bookResponse from './responses/bookResponse'
+import AuthConstants from '../setup/oauth2/constants/AuthConstants'
+import tokenResponse from './responses/tokenResponse'
 
 export const handlers = [
   rest.get(APIConstants.USER_DETAILS_URL + ':email', (req, res, ctx) => {
@@ -86,5 +88,17 @@ export const handlers = [
   }),
   rest.post(APIConstants.HOTEL_BOOK_URL, async (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(bookResponse.bookResponse))
+  }),
+  rest.post(AuthConstants.TOKEN_URL.slice(0, -1), (req, res, ctx) => {
+    const code = req.url.searchParams.get('code')
+    const codeVerifier = req.url.searchParams.get('code_verifier')
+    let status = 200
+    let response
+    if (code === 'code' && codeVerifier === 'verifier') {
+      response = tokenResponse.token
+    } else {
+      status = 400
+    }
+    return res(ctx.status(status), ctx.json(response))
   }),
 ]

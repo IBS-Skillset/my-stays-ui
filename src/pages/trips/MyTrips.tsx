@@ -7,7 +7,7 @@ import { MyTripsResponse, Trip } from '../../models/trips/myTripsResponse'
 import MyTripsService from '../../services/trips/MyTripsService'
 import { useSelector } from 'react-redux'
 import DispatchPkceData from '../../setup/oauth2/pkce/DispatchPkceData'
-import AuthorizeUser from '../../setup/oauth2/components/AuthorizeUser'
+import AuthorizeUser from '../../setup/oauth2/components/authorize/AuthorizeUser'
 import TripsContent from './components/trips-content/TripsContent'
 import loader from '../../assets/images/loader.gif'
 import {
