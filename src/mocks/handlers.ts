@@ -8,6 +8,7 @@ import createAccountResponse from './responses/createAccountResponse'
 import bookResponse from './responses/bookResponse'
 import AuthConstants from '../setup/oauth2/constants/AuthConstants'
 import tokenResponse from './responses/tokenResponse'
+import myTripsResponse from './responses/myTripsResponse'
 
 export const handlers = [
   rest.get(APIConstants.USER_DETAILS_URL + ':email', (req, res, ctx) => {
@@ -99,6 +100,11 @@ export const handlers = [
     } else {
       status = 400
     }
+    return res(ctx.status(status), ctx.json(response))
+  }),
+  rest.get(APIConstants.MY_TRIPS_URL, async (req, res, ctx) => {
+    const status = 200
+    const response = myTripsResponse.trips
     return res(ctx.status(status), ctx.json(response))
   }),
 ]
