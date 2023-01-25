@@ -21,11 +21,11 @@ const DateRange = ({
   setHotelAvailabilityRequest,
 }: Props) => {
   const handleStartdate = (date: Date) => {
-    const nextDate = date!=null?new Date(
+    const nextDate = new Date(
       date.getFullYear(),
       date.getMonth(),
       date.getDate() + 1,
-    ):new Date()
+    )
     setStartDate(date)
     setEndDate(nextDate)
     setHotelAvailabilityRequest({
