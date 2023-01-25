@@ -13,17 +13,16 @@ function Overview({ hotel }: Props) {
     : []
   const service = (
     <>
-      {limit
-        ? limit.map((service, index) => {
-            return (
-              <div key={index} className="grid-item">
-                {' '}
-                <IoIosCheckmark className="iso-mark"></IoIosCheckmark>
-                <h1 className="room-type">{service}</h1>
-              </div>
-            )
-          })
-        : ''}
+      {limit &&
+        limit.map((service, index) => {
+          return (
+            <div key={index} className="grid-item">
+              {' '}
+              <IoIosCheckmark className="iso-mark"></IoIosCheckmark>
+              <h1 className="room-type">{service}</h1>
+            </div>
+          )
+        })}
     </>
   )
 

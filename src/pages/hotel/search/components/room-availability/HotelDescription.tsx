@@ -40,7 +40,7 @@ const HotelDescription = () => {
     )
       .then((response: AxiosResponse<RoomAvailabilityResponse>) => {
         setRoomAvailabilityResponse(response.data)
-        console.log(roomAvailabilityResponse)
+        console.log('Room Availability Response', response.data)
       })
       .catch((error) => {
         console.log(error)
@@ -57,14 +57,12 @@ const HotelDescription = () => {
 
   return (
     <>
-      {hotel ? (
+      {hotel && (
         <Hotel
           hotel={hotel}
           roomAvailabilityResponse={roomAvailabilityResponse}
           hotelAvailabilityRequest={hotelAvailabilityRequest}
         />
-      ) : (
-        ''
       )}
     </>
   )

@@ -49,7 +49,11 @@ function Hotel({
         {show && (
           <div className="modal-overlay">
             <div className="image-viewer" id="modal">
-              <button className="close-button" onClick={() => setShow(false)}>
+              <button
+                className="close-button"
+                onClick={() => setShow(false)}
+                aria-label="close"
+              >
                 &times;
               </button>
               <div className="image-grid-border">
@@ -71,6 +75,7 @@ function Hotel({
           onClick={() => setShow(true)}
           role="presentation"
           alt=""
+          aria-label="first-image"
         />
         <div className="image-display">
           {displayImages.map((photo, i) => (
@@ -81,6 +86,7 @@ function Hotel({
                 onClick={() => setShow(true)}
                 alt=""
                 role="presentation"
+                aria-label="image"
               />
             </div>
           ))}
@@ -89,6 +95,7 @@ function Hotel({
           className="more-photos"
           onClick={() => setShow(true)}
           role="presentation"
+          aria-label="more-photos"
         >
           <FaCamera className="m-1.5 h-3" />
           See more
