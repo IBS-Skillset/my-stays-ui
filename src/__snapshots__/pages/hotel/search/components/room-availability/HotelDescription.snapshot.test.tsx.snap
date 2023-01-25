@@ -8,6 +8,7 @@ exports[`RoomAvailability Page : <HotelDescription /> Screen renders correctly 1
     className="mt-2"
   >
     <form
+      aria-label="search-form"
       className="search-container"
       onSubmit={[Function]}
     >
@@ -186,6 +187,7 @@ exports[`RoomAvailability Page : <HotelDescription /> Screen renders correctly 1
   >
     <img
       alt=""
+      aria-label="first-image"
       className="first-image"
       onClick={[Function]}
       role="presentation"
@@ -197,6 +199,7 @@ exports[`RoomAvailability Page : <HotelDescription /> Screen renders correctly 1
       <div>
         <img
           alt=""
+          aria-label="image"
           className="hotelImg"
           onClick={[Function]}
           role="presentation"
@@ -206,6 +209,7 @@ exports[`RoomAvailability Page : <HotelDescription /> Screen renders correctly 1
       <div>
         <img
           alt=""
+          aria-label="image"
           className="hotelImg"
           onClick={[Function]}
           role="presentation"
@@ -215,6 +219,7 @@ exports[`RoomAvailability Page : <HotelDescription /> Screen renders correctly 1
       <div>
         <img
           alt=""
+          aria-label="image"
           className="hotelImg"
           onClick={[Function]}
           role="presentation"
@@ -224,6 +229,7 @@ exports[`RoomAvailability Page : <HotelDescription /> Screen renders correctly 1
       <div>
         <img
           alt=""
+          aria-label="image"
           className="hotelImg"
           onClick={[Function]}
           role="presentation"
@@ -233,6 +239,7 @@ exports[`RoomAvailability Page : <HotelDescription /> Screen renders correctly 1
       <div>
         <img
           alt=""
+          aria-label="image"
           className="hotelImg"
           onClick={[Function]}
           role="presentation"
@@ -242,6 +249,7 @@ exports[`RoomAvailability Page : <HotelDescription /> Screen renders correctly 1
       <div>
         <img
           alt=""
+          aria-label="image"
           className="hotelImg"
           onClick={[Function]}
           role="presentation"
@@ -250,6 +258,7 @@ exports[`RoomAvailability Page : <HotelDescription /> Screen renders correctly 1
       </div>
     </div>
     <div
+      aria-label="more-photos"
       className="more-photos"
       onClick={[Function]}
       role="presentation"

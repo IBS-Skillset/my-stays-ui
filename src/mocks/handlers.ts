@@ -6,9 +6,11 @@ import placeIdResponse from './responses/placeIdResponse'
 import hotelAvailabilityResponse from './responses/hotelAvailabilityResponse'
 import createAccountResponse from './responses/createAccountResponse'
 import bookResponse from './responses/bookResponse'
+import roomAvailResponse from './responses/roomAvailabilityResponse'
 import AuthConstants from '../setup/oauth2/constants/AuthConstants'
 import tokenResponse from './responses/tokenResponse'
 import myTripsResponse from './responses/myTripsResponse'
+import rateRuleResponse from './responses/rateRuleResponse'
 
 export const handlers = [
   rest.get(APIConstants.USER_DETAILS_URL + ':email', (req, res, ctx) => {
@@ -90,6 +92,9 @@ export const handlers = [
   rest.post(APIConstants.HOTEL_BOOK_URL, async (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(bookResponse.bookResponse))
   }),
+  rest.post(APIConstants.HOTEL_ROOM_AVAILABILITY_URL, async (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(roomAvailResponse.roomAvailResponse))
+  }),
   rest.post(AuthConstants.TOKEN_URL.slice(0, -1), (req, res, ctx) => {
     const code = req.url.searchParams.get('code')
     const codeVerifier = req.url.searchParams.get('code_verifier')
@@ -105,6 +110,17 @@ export const handlers = [
   rest.get(APIConstants.MY_TRIPS_URL, async (req, res, ctx) => {
     const status = 200
     const response = myTripsResponse.trips
+    return res(ctx.status(status), ctx.json(response))
+  }),
+  rest.post(APIConstants.HOTEL_REPRICE_URL, async (req, res, ctx) => {
+    let status = 200
+    let response
+    const { ratePlanId } = await req.json()
+    if (ratePlanId === 'error') {
+      status = 400
+    } else {
+      response = rateRuleResponse.rateRule
+    }
     return res(ctx.status(status), ctx.json(response))
   }),
 ]

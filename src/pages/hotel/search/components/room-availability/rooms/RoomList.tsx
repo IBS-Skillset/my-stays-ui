@@ -50,20 +50,15 @@ function RoomList({
       roomAvailability.rateList[select].bookingCode,
     )
       .then((response: AxiosResponse<HotelRepriceResponse>) => {
-        if (response.status === 200) {
-          console.log('reprice response : ', response.data)
-          dispatch(
-            rateAction(
-              response.data,
-              roomAvailability.rateList[select].totalAmount,
-              roomAvailability.rateList[select].amount,
-            ),
-          )
-          navigate('/bookingConfirmation')
-        } else {
-          setError(true)
-          setTimeout(() => scrollTo(), 10)
-        }
+        console.log('reprice response : ', response.data)
+        dispatch(
+          rateAction(
+            response.data,
+            roomAvailability.rateList[select].totalAmount,
+            roomAvailability.rateList[select].amount,
+          ),
+        )
+        navigate('/bookingConfirmation')
       })
       .catch((error) => {
         setError(true)

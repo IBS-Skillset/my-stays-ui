@@ -134,6 +134,7 @@ function SearchForm() {
   return (
     <div className="mt-2">
       <form
+        aria-label="search-form"
         className="search-container"
         onSubmit={handleSubmit(getHotelAvailability)}
       >

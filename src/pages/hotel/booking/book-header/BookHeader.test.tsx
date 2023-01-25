@@ -28,6 +28,10 @@ describe('Book Header testing for final confirmation', () => {
     })
     useLocation.mockReturnValue({ pathname: '/finalConfirmation' } as any)
   })
+  afterEach(() => {
+    jest.clearAllMocks()
+    jest.useRealTimers()
+  })
   test('should load correctly for final confirmation', async () => {
     render(<BookHeader />)
     expect(screen.getByText('Customer Information')).toBeInTheDocument()
@@ -42,6 +46,10 @@ describe('Book Header testing for book confirmation', () => {
       return mockBookResponse
     })
     useLocation.mockReturnValue({ pathname: '/bookConfirmation' } as any)
+  })
+  afterEach(() => {
+    jest.clearAllMocks()
+    jest.useRealTimers()
   })
   test('should load correctly for book confirmation', async () => {
     render(<BookHeader />)

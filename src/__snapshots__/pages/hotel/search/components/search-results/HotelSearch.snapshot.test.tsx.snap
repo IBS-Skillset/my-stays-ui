@@ -8,6 +8,7 @@ exports[`SearchResults Page : <HotelSearch /> Screen renders correctly 1`] = `
     className="mt-2"
   >
     <form
+      aria-label="search-form"
       className="search-container"
       onSubmit={[Function]}
     >
@@ -217,7 +218,7 @@ exports[`SearchResults Page : <HotelSearch /> Screen renders correctly 1`] = `
       className="flex mt-5 ml-24"
     >
       <div
-        className="ml-8 w-64"
+        className="filters"
       >
         <div
           className="h-40 w-64"
