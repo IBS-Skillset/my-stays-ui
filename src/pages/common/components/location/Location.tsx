@@ -30,7 +30,7 @@ const Location = ({
       if (searchTerm.length > 2) {
         searchGeoPlaces(searchTerm)
       }
-    }, 3000)
+    }, 800)
 
     return () => clearTimeout(delayDebounceFn)
   }, [searchTermChange])

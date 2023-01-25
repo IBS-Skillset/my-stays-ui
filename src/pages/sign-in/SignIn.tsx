@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Signin.scss'
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
-import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams,useLocation } from 'react-router-dom'
 import AuthConstants from '../../setup/oauth2/constants/AuthConstants'
 import { useDispatch, useSelector } from 'react-redux'
 import { userSessionOutAction } from '../../store/actions/sessionOutAction'
@@ -22,16 +22,18 @@ function SignIn() {
   const autoFillEmail = useSelector(getAutoFillEmail)
   const accessToken = useSelector(getAccessToken)
   const navigate = useNavigate()
+  const location = useLocation();
   useEffect(() => {
     setEmail(autoFillEmail)
     dispatch(emailAction(autoFillEmail))
   }, [autoFillEmail])
 
   useEffect(() => {
-    if (accessToken) {
+    if (accessToken && location.state && location.state.fetchUserdetails) {
       navigate('/')
     }
   })
+
   const toggle = () => {
     setOpen(!open)
   }
@@ -55,9 +57,21 @@ function SignIn() {
       <h5>User successfully created. Enter the password to proceed</h5>
     </div>
   )
+  const msg2 = (
+      <div className="message">
+        <h5>Account already exists</h5>
+      </div>
+  )
+  const msg3 = (
+      <div className="message">
+        <h5>Service is down !Please try again later</h5>
+      </div>
+  )
   return (
     <>
       {autoFillEmail ? msg : <></>}
+      {location.state && location.state.errorPresent ? msg2 : <></>}
+      {location.state && !location.state.fetchUserdetails ? msg3 : <></>}
       <div className="outer-box">
         <div className="inner-box">
           {searchParams?.get('error') && (
@@ -118,7 +132,7 @@ function SignIn() {
             </form>
             <p className=" p-4 text-center select-none text-white">
               Don&apos;t have an account? <></>
-              <Link to="/signup" className="text-white hover:underline">
+              <Link to={"/signup"} className={"text-white hover:underline"} >
                 Create one
               </Link>
             </p>

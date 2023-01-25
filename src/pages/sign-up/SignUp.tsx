@@ -45,6 +45,7 @@ const SignUp = () => {
   })
   const formSubmitHandler: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
     {
+      let errorPresent=false
       console.log(data)
       data.password = hashSync(data.password, bcrypt.genSaltSync(10))
       CreateAccountService.getCreateAccount(data)
@@ -54,12 +55,15 @@ const SignUp = () => {
           }
           //TODO
           console.log(response)
+          navigate('/signin')
         })
         .catch((error) => {
           //TODO
+          errorPresent=true;
           console.log(error)
+          navigate('/signin',{state:{errorPresent:errorPresent}})
         })
-      navigate('/signin')
+
     }
   }
   const [showPassword, hidePasword] = useState(false)

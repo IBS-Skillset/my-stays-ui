@@ -69,8 +69,10 @@ function Search() {
   const isemail = useSelector(getEmail)
 
   useEffect(() => {
+    let fetchUserdetails=true
     UserDetailsService.getUserDetails(isemail)
       .then((response) => {
+
         if (response.data.email === isemail) {
           dispatch(fetchUserDetails(response.data))
         } else {
@@ -78,8 +80,9 @@ function Search() {
         }
       })
       .catch((error) => {
+        fetchUserdetails=false;
+        navigate('/signin',{state:{fetchUserdetails:fetchUserdetails}})
         console.log(error)
-        navigate('/signin')
       })
   }, [accessToken, isemail])
   const dispatch = useDispatch()
@@ -154,6 +157,11 @@ function Search() {
             hotelItem: [],
           }),
         )
+        setError('location', {
+          type: 'manual',
+          message:
+              'Hotel Search is down! Please contact the administrator.',
+        })
       })
   }
 
