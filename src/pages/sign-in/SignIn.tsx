@@ -59,21 +59,21 @@ function SignIn() {
   )
   const msg2 = (
       <div className="message">
-        <h5>Account already exists</h5>
+        <h5>Account already exists! Please sign in</h5>
       </div>
   )
   const msg3 = (
       <div className="message">
-        <h5>Service is down !Please try again later</h5>
+        <h5>Unable to fetch details! Please try again later</h5>
       </div>
   )
   return (
     <>
       {autoFillEmail ? msg : <></>}
-      {location.state && location.state.errorPresent ? msg2 : <></>}
-      {location.state && !location.state.fetchUserdetails ? msg3 : <></>}
       <div className="outer-box">
         <div className="inner-box">
+          {location.state && location.state.accountSvcError ? msg2 : <></>}
+          {location.state && location.state.fetchUserError ? msg3 : <></>}
           {searchParams?.get('error') && (
             <span className="errorMsg">{AuthConstants.ERROR_SIGN_IN}</span>
           )}

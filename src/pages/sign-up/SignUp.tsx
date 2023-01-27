@@ -45,23 +45,25 @@ const SignUp = () => {
   })
   const formSubmitHandler: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
     {
-      let errorPresent=false
+      let accountSvcError=false
       console.log(data)
       data.password = hashSync(data.password, bcrypt.genSaltSync(10))
       CreateAccountService.getCreateAccount(data)
         .then((response) => {
           if (response.data) {
             dispatch(autoPopulateEmailAction(data.email))
+            console.log(response)
+            navigate('/signin')
           }
-          //TODO
-          console.log(response)
-          navigate('/signin')
+          else{
+            navigate('/signin',{state:{accountSvcError:accountSvcError}})
+          }
         })
         .catch((error) => {
           //TODO
-          errorPresent=true;
+          accountSvcError=true;
           console.log(error)
-          navigate('/signin',{state:{errorPresent:errorPresent}})
+          navigate('/signin',{state:{accountSvcError:accountSvcError}})
         })
 
     }

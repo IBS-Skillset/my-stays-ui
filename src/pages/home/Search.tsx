@@ -69,7 +69,7 @@ function Search() {
   const isemail = useSelector(getEmail)
 
   useEffect(() => {
-    let fetchUserdetails=true
+    let fetchUserError=false
     UserDetailsService.getUserDetails(isemail)
       .then((response) => {
 
@@ -80,8 +80,8 @@ function Search() {
         }
       })
       .catch((error) => {
-        fetchUserdetails=false;
-        navigate('/signin',{state:{fetchUserdetails:fetchUserdetails}})
+        fetchUserError=true;
+        navigate('/signin',{state:{fetchUserError:fetchUserError}})
         console.log(error)
       })
   }, [accessToken, isemail])
@@ -160,7 +160,7 @@ function Search() {
         setError('location', {
           type: 'manual',
           message:
-              'Hotel Search is down! Please contact the administrator.',
+              'Currently Experiencing some issues! Please try again later',
         })
       })
   }
