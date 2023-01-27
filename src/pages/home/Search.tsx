@@ -69,18 +69,21 @@ function Search() {
   const isemail = useSelector(getEmail)
 
   useEffect(() => {
+    let fetchUserError=false
     UserDetailsService.getUserDetails(isemail)
-      .then((response) => {
-        if (response.data.email === isemail) {
-          dispatch(fetchUserDetails(response.data))
-        } else {
-          alert('user not found')
-        }
-      })
-      .catch((error) => {
-        console.log(error)
-        navigate('/signin')
-      })
+        .then((response) => {
+
+          if (response.data.email === isemail) {
+            dispatch(fetchUserDetails(response.data))
+          } else {
+            alert('user not found')
+          }
+        })
+        .catch((error) => {
+          fetchUserError=true;
+          navigate('/signin',{state:{fetchUserError:fetchUserError}})
+          console.log(error)
+        })
   }, [accessToken, isemail])
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -144,6 +147,11 @@ function Search() {
             hotelItem: [],
           }),
         )
+        setError('location', {
+          type: 'manual',
+          message:
+              'Currently Experiencing some issues! Please try again later',
+        })
       })
   }
 

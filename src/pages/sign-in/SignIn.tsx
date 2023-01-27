@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams,useLocation } from 'react-router-dom'
 import AuthConstants from '../../setup/oauth2/constants/AuthConstants'
 import { emailAction } from '../../store/actions/emailAction'
 import { userLogOutAction } from '../../store/actions/logoutAction'
@@ -23,13 +23,14 @@ function SignIn() {
   const autoFillEmail = useSelector(getAutoFillEmail)
   const accessToken = useSelector(getAccessToken)
   const navigate = useNavigate()
+  const location = useLocation()
   useEffect(() => {
     setEmail(autoFillEmail)
     dispatch(emailAction(autoFillEmail))
   }, [autoFillEmail])
 
   useEffect(() => {
-    if (accessToken) {
+    if (accessToken && location.state && !location.state.fetchUserError) {
       navigate('/')
     }
   })
@@ -39,6 +40,17 @@ function SignIn() {
   const isLoggedOut = useSelector(getIsLoggedOut)
 
   const isSessionOut = useSelector(getIsSessionOut)
+
+  const msg2 = (
+      <div className="message">
+        <h5>Account already exists! Please sign in</h5>
+      </div>
+  )
+  const msg3 = (
+      <div className="message">
+        <h5>Unable to fetch details! Please try again later</h5>
+      </div>
+  )
 
   if (isLoggedOut) {
     setTimeout(() => {
@@ -60,6 +72,8 @@ function SignIn() {
       )}
       <div className="outer-box">
         <div className="inner-box">
+          {location.state && location.state.accountSvcError ? msg2 : <></>}
+          {location.state && location.state.fetchUserError ? msg3 : <></>}
           {searchParams.get('error') && (
             <span className="errorMsg">{AuthConstants.ERROR_SIGN_IN}</span>
           )}
