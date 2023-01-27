@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate, useSearchParams,useLocation } from 'react-router-dom'
+import {
+  Link,
+  useNavigate,
+  useSearchParams,
+  useLocation,
+} from 'react-router-dom'
 import AuthConstants from '../../setup/oauth2/constants/AuthConstants'
 import { emailAction } from '../../store/actions/emailAction'
 import { userLogOutAction } from '../../store/actions/logoutAction'
@@ -38,18 +43,19 @@ function SignIn() {
     setOpen(!open)
   }
   const isLoggedOut = useSelector(getIsLoggedOut)
+  jjj
 
   const isSessionOut = useSelector(getIsSessionOut)
 
   const msg2 = (
-      <div className="message">
-        <h5>Account already exists! Please sign in</h5>
-      </div>
+    <div className="message">
+      <h5>Account already exists! Please sign in</h5>
+    </div>
   )
   const msg3 = (
-      <div className="message">
-        <h5>Unable to fetch details! Please try again later</h5>
-      </div>
+    <div className="message">
+      <h5>Unable to fetch details! Please try again later</h5>
+    </div>
   )
 
   if (isLoggedOut) {
