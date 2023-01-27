@@ -4,6 +4,9 @@
   margin-left: 3px;
   padding: 2px;
 }
+.book-image-parent {
+  min-width: 250px;
+}
 .hotel-content {
   border: 1px solid rgba(220, 220, 220, 1);
   padding: 1px;
@@ -11,7 +14,7 @@
   margin-top: 5px;
 }
 .book-image {
-  height: 95%;
+  height: 100%;
   width: 80%;
   margin-left: 5px;
   margin-top: 5px;

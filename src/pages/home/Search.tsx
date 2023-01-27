@@ -79,7 +79,7 @@ function Search() {
       })
       .catch((error) => {
         console.log(error)
-        navigate('/signin')
+        navigate('/signin', { state: { fetchUserError: true } })
       })
   }, [accessToken, isemail])
   const dispatch = useDispatch()
@@ -144,6 +144,10 @@ function Search() {
             hotelItem: [],
           }),
         )
+        setError('location', {
+          type: 'manual',
+          message: 'Currently Experiencing some issues! Please try again later',
+        })
       })
   }
 

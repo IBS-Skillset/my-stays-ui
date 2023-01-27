@@ -13,12 +13,14 @@ function HotelOverview({ hotel }: Props) {
     <div className="main-content-hotel">
       <div className="hotel-content location-book">
         <div className="location-book">
-          <img
-            className="book-image"
-            src={imageSrc}
-            role="presentation"
-            alt=""
-          />
+          <div className="book-image-parent">
+            <img
+              className="book-image"
+              src={imageSrc}
+              role="presentation"
+              alt=""
+            />
+          </div>
         </div>
         <div className="hotel-details-book">
           <h2 className="hotel-name-book">{hotel.hotelItem.hotelName}</h2>

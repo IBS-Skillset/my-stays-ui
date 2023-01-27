@@ -51,15 +51,16 @@ const SignUp = () => {
         .then((response) => {
           if (response.data) {
             dispatch(autoPopulateEmailAction(data.email))
+            console.log(response)
+            navigate('/signin', { state: { accountSvcError: false } })
+          } else {
+            navigate('/signin', { state: { accountSvcError: true } })
           }
-          //TODO
-          console.log(response)
         })
         .catch((error) => {
-          //TODO
           console.log(error)
+          navigate('/signin', { state: { GeneralError: true } })
         })
-      navigate('/signin')
     }
   }
   const [showPassword, hidePasword] = useState(false)
