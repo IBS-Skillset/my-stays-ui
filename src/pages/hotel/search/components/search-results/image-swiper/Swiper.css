@@ -53,3 +53,11 @@
 .swiper-container .next {
   right: 0;
 }
+@media only screen and (max-width: 600px) {
+  .swiper-container {
+    height: 90%;
+  }
+  .swiper-container div {
+    top: 50%;
+  }
+}

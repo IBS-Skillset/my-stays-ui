@@ -53,137 +53,145 @@ exports[`SearchResults Page : <HotelSearch /> Screen renders correctly 1`] = `
         </div>
       </div>
       <div
-        className="date-container check-in"
+        className="search-inputs-container"
       >
         <div
-          className="date-image-container"
-        >
-          <img
-            alt=""
-            className="date-image"
-            src="test-file-stub"
-          />
-        </div>
-        <div
-          className="date-input-container"
+          className="date-container check-in"
         >
           <div
-            className="date-label"
+            className="date-image-container"
           >
-            CHECK IN
+            <img
+              alt=""
+              className="date-image"
+              src="test-file-stub"
+            />
           </div>
           <div
-            className="date-input"
+            className="date-input-container"
           >
             <div
-              className="react-datepicker-wrapper"
+              className="date-label"
+            >
+              CHECK IN
+            </div>
+            <div
+              className="date-input"
             >
               <div
-                className="react-datepicker__input-container"
+                className="react-datepicker-wrapper"
               >
-                <input
-                  className="date-picker"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  placeholder="mm/dd/yyyy"
-                  readOnly={false}
-                  title="CHECK IN"
-                  type="text"
-                  value="01/11/2023"
-                />
+                <div
+                  className="react-datepicker__input-container"
+                >
+                  <input
+                    className="date-picker"
+                    disabled={false}
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    placeholder="mm/dd/yyyy"
+                    readOnly={false}
+                    title="CHECK IN"
+                    type="text"
+                    value="01/11/2023"
+                  />
+                </div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="date-container check-out"
+        >
+          <div
+            className="date-image-container"
+          >
+            <img
+              alt=""
+              className="date-image"
+              src="test-file-stub"
+            />
+          </div>
+          <div
+            className="date-input-container"
+          >
+            <div
+              className="date-label"
+            >
+              CHECK OUT
+            </div>
+            <div
+              className="date-input"
+            >
+              <div
+                className="react-datepicker-wrapper"
+              >
+                <div
+                  className="react-datepicker__input-container"
+                >
+                  <input
+                    className="date-picker"
+                    disabled={false}
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    placeholder="mm/dd/yyyy"
+                    readOnly={false}
+                    title="CHECK OUT"
+                    type="text"
+                    value="01/12/2023"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="travelers-container"
+        >
+          <div
+            className="travelers-image-container"
+          >
+            <img
+              alt=""
+              className="travelers-image"
+              src="test-file-stub"
+            />
+          </div>
+          <div
+            className="travelers-input-container"
+          >
+            <div
+              className="travelers-label"
+            >
+              TRAVELERS
+              <h1
+                className="travelers-input"
+              >
+                1 adult
+              </h1>
             </div>
           </div>
         </div>
       </div>
       <div
-        className="date-container check-out"
+        className="hotel-search-button"
       >
-        <div
-          className="date-image-container"
+        <button
+          className="button"
         >
-          <img
-            alt=""
-            className="date-image"
-            src="test-file-stub"
-          />
-        </div>
-        <div
-          className="date-input-container"
-        >
-          <div
-            className="date-label"
-          >
-            CHECK OUT
-          </div>
-          <div
-            className="date-input"
-          >
-            <div
-              className="react-datepicker-wrapper"
-            >
-              <div
-                className="react-datepicker__input-container"
-              >
-                <input
-                  className="date-picker"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  placeholder="mm/dd/yyyy"
-                  readOnly={false}
-                  title="CHECK OUT"
-                  type="text"
-                  value="01/12/2023"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+          Search
+        </button>
       </div>
-      <div
-        className="travelers-container"
-      >
-        <div
-          className="travelers-image-container"
-        >
-          <img
-            alt=""
-            className="travelers-image"
-            src="test-file-stub"
-          />
-        </div>
-        <div
-          className="travelers-input-container"
-        >
-          <div
-            className="travelers-label"
-          >
-            TRAVELERS
-            <h1
-              className="travelers-input"
-            >
-              1 adult
-            </h1>
-          </div>
-        </div>
-      </div>
-      <button
-        className="button"
-      >
-        Search
-      </button>
     </form>
   </div>
   <div
-    className="mt-2"
+    className="hotel-search"
   >
     <div
       className="sorting-container"
@@ -199,7 +207,7 @@ exports[`SearchResults Page : <HotelSearch /> Screen renders correctly 1`] = `
         Best match
       </div>
       <div
-        className="match"
+        className="viewed"
       >
         Top Viewed
       </div>
@@ -215,7 +223,7 @@ exports[`SearchResults Page : <HotelSearch /> Screen renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="flex mt-5 ml-24"
+      className="hotel-search-results"
     >
       <div
         className="filters"

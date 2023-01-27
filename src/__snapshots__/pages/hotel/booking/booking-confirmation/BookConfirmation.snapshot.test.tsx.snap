@@ -142,12 +142,16 @@ exports[`Booking Confirmation Page : <BookConfirmation /> page renders correctly
           <div
             className="location-book"
           >
-            <img
-              alt=""
-              className="book-image"
-              role="presentation"
-              src="https://pictures.djocatravel.com/IMG/03NTc0PxgIEQaDcJ0xJ4gAEcDj/o2e/KuQ-rrsHoKwK.cscka/rVwKw/.awvBo/hkKBz/awrpmm/uG88mpuG.jpg?k=9b95f0b6ebf5a4cefde17b2940f74d6d779202c123a6feaebb1840ada57f65c7&o="
-            />
+            <div
+              className="book-image-parent"
+            >
+              <img
+                alt=""
+                className="book-image"
+                role="presentation"
+                src="https://pictures.djocatravel.com/IMG/03NTc0PxgIEQaDcJ0xJ4gAEcDj/o2e/KuQ-rrsHoKwK.cscka/rVwKw/.awvBo/hkKBz/awrpmm/uG88mpuG.jpg?k=9b95f0b6ebf5a4cefde17b2940f74d6d779202c123a6feaebb1840ada57f65c7&o="
+              />
+            </div>
           </div>
           <div
             className="hotel-details-book"

@@ -26,15 +26,15 @@ function HotelSearch() {
     <>
       <div className="main-content">
         <SearchForm />
-        <div className="mt-2">
+        <div className="hotel-search">
           <div className="sorting-container">
             <div className="sort">Sort</div>
             <div className="best-match">Best match</div>
-            <div className="match">Top Viewed</div>
+            <div className="viewed">Top Viewed</div>
             <div className="lowest-price">Lowest price first</div>
             <div className="match">Distance</div>
           </div>
-          <div className="flex mt-5 ml-24">
+          <div className="hotel-search-results">
             <div className="filters">
               <div className="h-40 w-64">
                 <img src={map} alt="" className="h-40 w-64" />

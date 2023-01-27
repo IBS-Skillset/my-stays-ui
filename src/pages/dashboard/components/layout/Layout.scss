@@ -4,3 +4,21 @@
   background-position: center;
   background-attachment: fixed;
 }
+@media only screen and (min-width: 640px) and (max-width: 1279px) {
+  .home-outline .travel-type-wrap {
+    margin-left: 2rem !important;
+  }
+}
+@media only screen and (max-width: 639px) {
+  .home-outline .travel-type-wrap {
+    margin-left: 0.5rem !important;
+    height: auto;
+    width: auto;
+    flex-wrap: wrap;
+  }
+  .home-outline .travel-type-wrap .item {
+    margin-bottom: 0.25rem;
+    flex-grow: 1;
+    flex-basis: 35%;
+  }
+}

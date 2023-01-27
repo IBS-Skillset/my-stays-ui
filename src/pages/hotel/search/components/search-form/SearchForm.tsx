@@ -146,16 +146,20 @@ function SearchForm() {
           setHotelAvailabilityRequest={setHotelAvailabilityRequest}
           register={register}
         />
-        <DateRange
-          startDate={startDate}
-          endDate={endDate}
-          setStartDate={setStartDate}
-          setEndDate={setEndDate}
-          hotelAvailabilityRequest={hotelAvailabilityRequest}
-          setHotelAvailabilityRequest={setHotelAvailabilityRequest}
-        />
-        <Travelers />
-        <button className="button">Search</button>
+        <div className="search-inputs-container">
+          <DateRange
+            startDate={startDate}
+            endDate={endDate}
+            setStartDate={setStartDate}
+            setEndDate={setEndDate}
+            hotelAvailabilityRequest={hotelAvailabilityRequest}
+            setHotelAvailabilityRequest={setHotelAvailabilityRequest}
+          />
+          <Travelers />
+        </div>
+        <div className="hotel-search-button">
+          <button className="button">Search</button>
+        </div>
       </form>
     </div>
   )
