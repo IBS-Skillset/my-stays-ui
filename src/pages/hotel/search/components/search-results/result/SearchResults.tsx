@@ -116,7 +116,7 @@ function SearchResults() {
 
       {hotelBackupItems.map((hotel, i) => {
         return (
-          <div className="hotel-container grid grid-cols-2 md:flex" key={i}>
+          <div className="hotel-container grid grid-cols-2" key={i}>
             <div className="md:flex-none">
               <picture>
                 <div className="hotel-image">
@@ -125,36 +125,40 @@ function SearchResults() {
               </picture>
             </div>
             <div className="hotel-details">
-              <h1 className="hotel-name">{hotel.hotelName}</h1>
-              <h1 className="w-48">{hotel.address.cityName}</h1>
-              <div className="grid pl-1 w-28 grid-cols-5">
-                {[...Array(hotel.hotelCategory)].map((category, number) => (
-                  <span className="mt-2" key={number}>
-                    <img className="w-4" src={starSVG} alt="♦" />
-                  </span>
-                ))}
+              <div className="hotel-result-content">
+                <h1 className="hotel-name">{hotel.hotelName}</h1>
+                <h1>{hotel.address.cityName}</h1>
+                <div className="grid pl-1 w-28 grid-cols-5">
+                  {[...Array(hotel.hotelCategory)].map((category, number) => (
+                    <span className="mt-2" key={number}>
+                      <img className="w-4" src={starSVG} alt="♦" />
+                    </span>
+                  ))}
+                </div>
+                <div className="address">
+                  <h1>{hotel.address.streetAddress}</h1>
+                  <h1>{hotel.address.zipCode}</h1>
+                  <h1>{hotel.address.countryName}</h1>
+                </div>
               </div>
-              <div className="address">
-                <h1 className="w-48">{hotel.address.streetAddress}</h1>
-                <h1 className="w-48">{hotel.address.zipCode}</h1>
-                <h1 className="w-48">{hotel.address.countryName}</h1>
-              </div>
-            </div>
-            <div className="">
-              <div className="text-sm font-normal text-right">{days} night</div>
-              <div className="col-span-1 text-xl font-bold text-gray-900 text-right">
-                €{hotel.minPrice}
-              </div>
-              <div className="col-span-1 pt-2 text-left md:text-right">
-                <Link
-                  to={`/hotel/${hotel.hotelCode}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button className="btn-availability">
-                    {t('HOTEL_SEARCH.BUTTON.AVAILABILITY')} &#62;
-                  </button>
-                </Link>
+              <div className="">
+                <div className="text-sm font-normal text-right">
+                  {days} night
+                </div>
+                <div className="col-span-1 text-xl font-bold text-gray-900 text-right">
+                  €{hotel.minPrice}
+                </div>
+                <div className="col-span-1 pt-2 text-right">
+                  <Link
+                    to={`/hotel/${hotel.hotelCode}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="btn-availability">
+                      {t('HOTEL_SEARCH.BUTTON.AVAILABILITY')} &#62;
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

@@ -1,10 +1,8 @@
 .search-container {
-  @apply border-black border-solid border flex h-16 ml-32 gap-1;
-  width: 1060px;
+  @apply border-black border-solid border gap-1;
 }
 .search-container .location-container {
   @apply border-black border-solid border flex h-12 mt-1 ml-1;
-  width: 400px;
   border-radius: 10px;
 }
 .search-container .location-container .location-input-container {
@@ -44,7 +42,6 @@
 .search-container .travelers-container {
   @apply border-black border-solid border flex h-12 mt-1 ml-1;
   border-radius: 10px;
-  width: 165px;
 }
 .search-container .location-container .location-image-container,
 .search-container .date-container .date-image-container,
@@ -61,7 +58,7 @@
 }
 .search-container .date-container .date-input-container,
 .search-container .travelers-container .travelers-input-container {
-  @apply h-10 ml-1 w-32;
+  @apply h-10 ml-1;
 }
 .search-container .date-container .date-input-container .date-label {
   @apply block font-medium text-black h-4 mt-1 ml-px;
@@ -75,7 +72,7 @@
   .date-input-container
   .date-input
   .date-picker {
-  @apply h-5 w-32;
+  @apply h-5;
   outline: none;
 }
 .search-container
@@ -86,8 +83,86 @@
   @apply h-5 w-32;
 }
 .button {
-  @apply h-12 mx-1 mt-1 text-white w-32;
+  @apply h-12 mr-1 text-white w-32;
   border-radius: 10px;
   font-weight: bold;
   background-color: var(--btn-bg-primary);
+}
+.search-container .check-in {
+  margin-left: 0 !important;
+}
+.search-container .search-inputs-container {
+  @apply flex;
+}
+@media only screen and (min-width: 1280px) {
+  .search-container {
+    width: 1060px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .search-container {
+    @apply flex h-[3.6rem];
+    margin-left: 8rem;
+  }
+  .search-container .location-container {
+    width: 430px;
+    margin-right: 0;
+  }
+  .search-container .date-container,
+  .search-container .travelers-container {
+    width: 165px;
+  }
+  .hotel-search-button {
+    margin-top: 0.25rem;
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .search-container .search-inputs-container {
+    @apply ml-1 mb-1 flex-wrap;
+  }
+  .search-container .location-container {
+    margin-right: 0.25rem;
+  }
+  .search-container .travelers-container {
+    @apply grow;
+    margin-right: 0.25rem;
+  }
+  .hotel-search-button {
+    margin-bottom: 0.25rem;
+    margin-left: 0.25rem;
+  }
+}
+@media only screen and (min-width: 640px) and (max-width: 1279px) {
+  .search-container {
+    margin-left: 2rem;
+  }
+  .search-container .date-container {
+    width: 40%;
+  }
+}
+@media only screen and (max-width: 639px) {
+  .search-container {
+    margin: 0.5rem;
+  }
+}
+@media only screen and (min-width: 480px) {
+  .search-container .date-container .date-input-container {
+    @apply w-32;
+  }
+  .search-container
+    .date-container
+    .date-input-container
+    .date-input
+    .date-picker {
+    @apply w-32;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .search-container
+    .date-container
+    .date-input-container
+    .date-input
+    .date-picker {
+    @apply w-20;
+  }
 }

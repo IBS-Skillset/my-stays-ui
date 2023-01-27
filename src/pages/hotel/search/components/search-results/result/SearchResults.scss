@@ -1,17 +1,12 @@
 .btn-availability {
   background-color: var(--btn-bg-primary);
-  @apply rounded-sm h-12 text-sm mt-24 text-center text-white w-32;
-}
-.hotel-image {
-  @apply object-cover overflow-hidden;
-  max-height: 200px;
-  width: 300px;
+  @apply rounded-sm h-12 text-sm text-center text-white w-32;
 }
 
 .hotel-container {
   filter: opacity(1);
   transition: var(--transition-speed);
-  @apply my-2 p-3 border border-stone-200 rounded-sm h-64 mt-0;
+  @apply my-2 p-3 border border-stone-200 rounded-sm mt-0;
   border-color: rgba(220, 220, 220, 1);
 }
 
@@ -21,7 +16,7 @@
 }
 .hotel-details {
   @apply text-sm ml-2;
-  width: 300px;
+  justify-content: space-between;
 }
 .hotel-name {
   @apply text-lg;
@@ -39,4 +34,48 @@
 
 .load-more {
   @apply flex justify-center;
+}
+@media only screen and (min-width: 1280px) {
+  .hotel-image {
+    @apply object-cover overflow-hidden;
+    max-height: 200px;
+    width: 300px;
+  }
+  .hotel-details {
+    @apply grid grid-cols-2;
+    width: 500px;
+  }
+  .hotel-result-content {
+    width: max-content;
+    min-width: 250px;
+  }
+  .hotel-container {
+    display: flex !important;
+  }
+}
+@media only screen and (min-width: 640px) {
+  .hotel-image {
+    @apply object-cover overflow-hidden;
+    max-height: 200px;
+  }
+  .btn-availability {
+    @apply mt-24;
+  }
+  .hotel-details {
+    @apply grid grid-cols-2;
+  }
+}
+@media only screen and (max-width: 639px) {
+  .hotel-image {
+    block-size: 100%;
+    inline-size: 100%;
+  }
+  .hotel-details {
+    @apply grid grid-cols-1;
+  }
+}
+@media only screen and (min-width: 640px) and (max-width: 767px) {
+  .btn-availability {
+    width: auto;
+  }
 }

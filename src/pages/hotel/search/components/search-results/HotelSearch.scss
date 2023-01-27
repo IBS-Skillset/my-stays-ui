@@ -2,33 +2,34 @@
   min-height: 100vh;
 }
 .sorting-container {
-  @apply border-black border-solid border flex h-10 ml-32;
-  width: 510px;
+  @apply border-black border-solid border flex;
 }
-.sort {
-  @apply border-solid border h-8 mt-1 ml-1 text-center w-16;
+.sort,
+.best-match,
+.match,
+.lowest-price,
+.viewed {
+  @apply border-solid border mb-1 mt-1 p-1 text-center;
   font-size: small;
   border-color: rgba(220, 220, 220, 1);
 }
+.sort,
+.best-match,
+.match,
+.viewed {
+  width: 18%;
+}
+.sort {
+  @apply ml-1;
+}
 .best-match {
-  @apply border-solid border h-8 mt-1 text-center w-24;
-  font-size: small;
   background-color: var(--btn-bg-primary);
 }
 .match {
-  @apply border-solid border h-8 mt-1 mr-1 text-center w-24;
-  font-size: small;
-  border-color: rgba(220, 220, 220, 1);
+  @apply mr-1;
 }
 .lowest-price {
-  @apply border-solid border h-8 mt-1 text-center w-40;
-  font-size: small;
-  border-color: rgba(220, 220, 220, 1);
-}
-.viewed {
-  @apply border-solid border h-8 mt-1 text-center w-24;
-  font-size: small;
-  border-color: rgba(220, 220, 220, 1);
+  width: 28%;
 }
 .location-items {
   @apply text-sm;
@@ -46,17 +47,60 @@
   @apply mt-5;
   font-weight: bold;
 }
-.search-result {
-  @apply ml-10;
-  width: 770px;
+.hotel-search-results {
+  @apply mt-5;
 }
-.filters {
-  width: 200px;
-  height: 200px;
-  display: inline-block;
-  float: left;
-  top: 50px;
-  position: sticky;
-  margin-right: 70px;
-  margin-left: 40px;
+@media only screen and (min-width: 1280px) {
+  .hotel-search-results {
+    @apply flex ml-24;
+  }
+  .search-result {
+    @apply ml-4;
+    width: 770px;
+  }
+  .sorting-container {
+    margin-left: 8rem !important;
+  }
+}
+@media only screen and (min-width: 640px) {
+  .sorting-container {
+    margin-left: 2rem;
+    width: 510px;
+  }
+  .hotel-search {
+    @apply mt-2;
+  }
+  .filters {
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    float: left;
+    top: 50px;
+    position: sticky;
+    margin-right: 70px;
+    margin-left: 35px;
+  }
+  .hotel-search-results {
+    @apply flex;
+  }
+}
+@media only screen and (max-width: 639px) {
+  .hotel-search {
+    @apply m-2;
+  }
+  .filters {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+  .search-result {
+    margin-top: 1.25rem;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .filters {
+    margin-left: auto;
+    margin-right: auto;
+    width: 65%;
+  }
 }

@@ -8,3 +8,9 @@
   height: auto;
   user-select: none;
 }
+
+@media only screen and (max-width: 767px) {
+  .swiper-img {
+    aspect-ratio: 0.5;
+  }
+}
