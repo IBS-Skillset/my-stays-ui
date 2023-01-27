@@ -35,7 +35,7 @@ function SignIn() {
   }, [autoFillEmail])
 
   useEffect(() => {
-    if (accessToken && location.state && !location.state.fetchUserError) {
+    if (accessToken && location.state && location.state.fetchUserError) {
       navigate('/')
     }
   })
@@ -43,7 +43,6 @@ function SignIn() {
     setOpen(!open)
   }
   const isLoggedOut = useSelector(getIsLoggedOut)
-  jjj
 
   const isSessionOut = useSelector(getIsSessionOut)
 

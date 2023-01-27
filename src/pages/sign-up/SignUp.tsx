@@ -45,7 +45,7 @@ const SignUp = () => {
   })
   const formSubmitHandler: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
     {
-      let accountSvcError=false
+      let accountSvcError = false
       console.log(data)
       data.password = hashSync(data.password, bcrypt.genSaltSync(10))
       CreateAccountService.getCreateAccount(data)
@@ -54,17 +54,16 @@ const SignUp = () => {
             dispatch(autoPopulateEmailAction(data.email))
             console.log(response)
             navigate('/signin')
-          }
-          else{
-            navigate('/signin',{state:{accountSvcError:accountSvcError}})
+          } else {
+            navigate('/signin', { state: { accountSvcError: accountSvcError } })
           }
           console.log(response)
         })
         .catch((error) => {
           console.log(error)
-          accountSvcError=true;
+          accountSvcError = true
           console.log(error)
-          navigate('/signin',{state:{accountSvcError:accountSvcError}})
+          navigate('/signin', { state: { accountSvcError: accountSvcError } })
         })
       navigate('/signin')
     }
