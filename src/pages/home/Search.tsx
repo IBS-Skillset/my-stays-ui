@@ -69,7 +69,6 @@ function Search() {
   const isemail = useSelector(getEmail)
 
   useEffect(() => {
-    let fetchUserError = false
     UserDetailsService.getUserDetails(isemail)
       .then((response) => {
         if (response.data.email === isemail) {
@@ -79,9 +78,8 @@ function Search() {
         }
       })
       .catch((error) => {
-        fetchUserError = true
-        navigate('/signin', { state: { fetchUserError: fetchUserError } })
         console.log(error)
+        navigate('/signin', { state: { fetchUserError: true } })
       })
   }, [accessToken, isemail])
   const dispatch = useDispatch()

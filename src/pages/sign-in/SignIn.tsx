@@ -35,7 +35,7 @@ function SignIn() {
   }, [autoFillEmail])
 
   useEffect(() => {
-    if (accessToken && location.state && location.state.fetchUserError) {
+    if (accessToken && location.state && !location.state.fetchUserError) {
       navigate('/')
     }
   })

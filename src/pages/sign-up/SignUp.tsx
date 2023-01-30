@@ -45,7 +45,6 @@ const SignUp = () => {
   })
   const formSubmitHandler: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
     {
-      let accountSvcError = false
       console.log(data)
       data.password = hashSync(data.password, bcrypt.genSaltSync(10))
       CreateAccountService.getCreateAccount(data)
@@ -55,17 +54,13 @@ const SignUp = () => {
             console.log(response)
             navigate('/signin')
           } else {
-            navigate('/signin', { state: { accountSvcError: accountSvcError } })
+            navigate('/signin', { state: { accountSvcError: true } })
           }
-          console.log(response)
         })
         .catch((error) => {
           console.log(error)
-          accountSvcError = true
-          console.log(error)
-          navigate('/signin', { state: { accountSvcError: accountSvcError } })
+          navigate('/signin')
         })
-      navigate('/signin')
     }
   }
   const [showPassword, hidePasword] = useState(false)
