@@ -32,7 +32,6 @@ const LogoutUser = () => {
         dispatch(userLogOutAction(true))
         break
       case 'SESSIONOUT_USER':
-        console.log('enter session out')
         dispatch(userSessionOutAction(true))
         break
       default:
@@ -54,7 +53,6 @@ const LogoutUser = () => {
         })
       })
     } else {
-      console.log('No token available')
       dispatchSignout().then(() => {
         message({ action: 'SESSIONOUT_USER' }, true)
         logoutFormRef?.current?.submit()
