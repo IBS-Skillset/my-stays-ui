@@ -59,7 +59,7 @@ const SignUp = () => {
         })
         .catch((error) => {
           console.log(error)
-          navigate('/signin')
+          navigate('/signin', { state: { GeneralError: true } })
         })
     }
   }

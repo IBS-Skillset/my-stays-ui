@@ -57,6 +57,12 @@ function SignIn() {
     </div>
   )
 
+  const msg4 = (
+    <div className="message">
+      <h5>Unable to create account! Please try again later</h5>
+    </div>
+  )
+
   if (isLoggedOut) {
     setTimeout(() => {
       dispatch(userLogOutAction(false))
@@ -79,6 +85,7 @@ function SignIn() {
         <div className="inner-box">
           {location.state && location.state.accountSvcError ? msg2 : <></>}
           {location.state && location.state.fetchUserError ? msg3 : <></>}
+          {location.state && location.state.GeneralError ? msg4 : <></>}
           {searchParams.get('error') && (
             <span className="errorMsg">{AuthConstants.ERROR_SIGN_IN}</span>
           )}
