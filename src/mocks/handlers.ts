@@ -123,4 +123,12 @@ export const handlers = [
     }
     return res(ctx.status(status), ctx.json(response))
   }),
+  rest.post(AuthConstants.REVOKE_URL.slice(0, -1), async (req, res, ctx) => {
+    const status = 200
+    return res(ctx.status(status))
+  }),
+  rest.post(AuthConstants.LOGOUT_URL.slice(0, -1), async (req, res, ctx) => {
+    const status = 200
+    return res(ctx.status(status))
+  }),
 ]
