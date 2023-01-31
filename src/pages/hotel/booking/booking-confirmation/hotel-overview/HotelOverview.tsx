@@ -13,7 +13,7 @@ function HotelOverview({ hotel }: Props) {
     <div className="main-content-hotel">
       <div className="hotel-content location-book">
         <div className="location-book">
-          <div className="parent">
+          <div className="book-image-parent">
             <img
               className="book-image"
               src={imageSrc}

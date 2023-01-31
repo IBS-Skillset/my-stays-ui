@@ -52,7 +52,7 @@ const SignUp = () => {
           if (response.data) {
             dispatch(autoPopulateEmailAction(data.email))
             console.log(response)
-            navigate('/signin')
+            navigate('/signin', { state: { accountSvcError: false } })
           } else {
             navigate('/signin', { state: { accountSvcError: true } })
           }

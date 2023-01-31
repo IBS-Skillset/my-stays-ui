@@ -76,11 +76,14 @@ function SignIn() {
 
   return (
     <>
-      {autoFillEmail && (
-        <div className="message">
-          <h5>User successfully created. Enter the password to proceed</h5>
-        </div>
-      )}
+      {autoFillEmail &&
+        location.state &&
+        !location.state.accountSvcError &&
+        !location.state.GeneralError && (
+          <div className="message">
+            <h5>User successfully created. Enter the password to proceed</h5>
+          </div>
+        )}
       <div className="outer-box">
         <div className="inner-box">
           {location.state && location.state.accountSvcError ? msg2 : <></>}
