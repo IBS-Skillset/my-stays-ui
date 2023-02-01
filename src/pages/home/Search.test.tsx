@@ -277,7 +277,7 @@ describe('Home Page testing Failure : User Details', () => {
     await act(() => sleep(3000))
     expect(dispatch).not.toHaveBeenCalled()
     expect(navigate).toHaveBeenCalledTimes(1)
-    expect(navigate).toHaveBeenCalledWith('/signin')
+    expect(navigate).toHaveBeenCalledWith('/signin?svcError=3')
   })
   test('should handle incorrect user details data from backend', async () => {
     getEmailMock.mockReturnValue('test@test.com')

@@ -79,7 +79,7 @@ function Search() {
       })
       .catch((error) => {
         console.log(error)
-        navigate('/signin', { state: { fetchUserError: true } })
+        navigate('/signin?svcError=3')
       })
   }, [accessToken, isemail])
   const dispatch = useDispatch()
