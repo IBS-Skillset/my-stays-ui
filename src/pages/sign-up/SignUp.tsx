@@ -52,14 +52,14 @@ const SignUp = () => {
           if (response.data) {
             dispatch(autoPopulateEmailAction(data.email))
             console.log(response)
-            navigate('/signin', { state: { accountSvcError: false } })
+            navigate('/signin')
           } else {
-            navigate('/signin', { state: { accountSvcError: true } })
+            navigate('/signin?svcError=1')
           }
         })
         .catch((error) => {
           console.log(error)
-          navigate('/signin', { state: { GeneralError: true } })
+          navigate('/signin?svcError=2')
         })
     }
   }
