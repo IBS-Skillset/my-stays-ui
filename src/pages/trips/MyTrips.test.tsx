@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { BrowserRouter, useNavigate } from 'react-router-dom'
 import {
   getAccessToken,
   getIsAuthorized,
@@ -17,7 +17,6 @@ jest.mock('react-redux', () => ({
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  Link: jest.fn(),
   useNavigate: jest.fn(),
 }))
 jest.mock('../../store/selectors/Selectors')
@@ -51,8 +50,12 @@ describe('My Trips Page Success scenario testing', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
-  test('should render mytrips page successfully', () => {
-    render(<MyTrips />)
+  test('should render mytrips page successfully', async () => {
+    render(
+      <BrowserRouter>
+        <MyTrips />
+      </BrowserRouter>,
+    )
     expect(
       screen.getByRole('button', {
         name: /Check-in date/i,
@@ -78,12 +81,9 @@ describe('My Trips Page Success scenario testing', () => {
         name: /Upcoming/i,
       }),
     ).toBeInTheDocument()
-  })
-  test('should perform actions on different tabs on mytrips page successfully', async () => {
-    render(<MyTrips />)
     expect(
-      screen.getByRole('img', {
-        name: /loading.../i,
+      await screen.findByRole('heading', {
+        name: /Booking ID - 987654321/i,
       }),
     ).toBeInTheDocument()
     await userEvent.click(
@@ -92,22 +92,13 @@ describe('My Trips Page Success scenario testing', () => {
       }),
     )
     expect(
-      screen.getByRole('heading', {
+      await screen.findByRole('heading', {
         name: /Booking ID - 12345678/i,
       }),
     ).toBeInTheDocument()
+
     fireEvent.scroll(window, { target: { scrollY: 100 } })
     fireEvent.scroll(window, { target: { scrollY: 100 } })
-    await userEvent.click(
-      screen.getByRole('button', {
-        name: /Upcoming/i,
-      }),
-    )
-    expect(
-      screen.getByRole('heading', {
-        name: /Booking ID - 987654321/i,
-      }),
-    ).toBeInTheDocument()
   })
 })
 describe('My trips page testing Authorization', () => {

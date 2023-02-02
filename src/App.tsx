@@ -8,6 +8,7 @@ import './App.scss'
 import { useCommonInterseptor } from './interceptor/commonInterseptor'
 import useAuthInterceptor from './interceptor/useAuthInterceptor'
 import { getIsLoading } from './store/selectors/Selectors'
+import CommonConstants from './constants/CommonConstants'
 
 function App() {
   const isloading = useSelector(getIsLoading)
@@ -16,22 +17,22 @@ function App() {
 
   const navigate = useNavigate()
   const onPrompt = () => {
-    window.alert('You will be logged out automatically in 1 minute')
+    window.alert(CommonConstants.LOGGED_OUT)
   }
 
   const handleOnIdle = () => {
-    console.log('user is idle')
-    console.log('last active', getLastActiveTime())
+    console.log(CommonConstants.USER_IDLE)
+    console.log(CommonConstants.LAST_ACTIVE, getLastActiveTime())
     navigate('/logout')
   }
 
   const handleOnActive = (event: any) => {
-    console.log('user is active', event)
-    console.log('time remaining', getRemainingTime())
+    console.log(CommonConstants.USER_ACTIVE, event)
+    console.log(CommonConstants.TIME_REMAINING, getRemainingTime())
   }
 
   const handleOnAction = (event: any) => {
-    console.log('user did something', event)
+    console.log(CommonConstants.DID_SOMETHING, event)
   }
 
   const { getRemainingTime, getLastActiveTime } = useIdleTimer({

@@ -11,6 +11,7 @@ import AuthConstants from '../setup/oauth2/constants/AuthConstants'
 import tokenResponse from './responses/tokenResponse'
 import myTripsResponse from './responses/myTripsResponse'
 import rateRuleResponse from './responses/rateRuleResponse'
+import CommonConstants from '../constants/CommonConstants'
 
 export const handlers = [
   rest.get(APIConstants.USER_DETAILS_URL + ':email', (req, res, ctx) => {
@@ -72,7 +73,7 @@ export const handlers = [
       response = {
         responseStatus: {
           status: -1,
-          errorMessage: 'No Availability',
+          errorMessage: CommonConstants.NO_AVAILABILITY,
           errorCode: '999',
         },
         hotelItem: [],

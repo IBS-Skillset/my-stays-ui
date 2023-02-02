@@ -29,6 +29,7 @@ import {
   getUserDetails,
 } from '../../../../store/selectors/Selectors'
 import { HotelDescriptionResponse } from '../../../../models/hotel/description-models/hotelDescriptionResponse'
+import CommonConstants from '../../../../constants/CommonConstants'
 
 const BookConfirmation = () => {
   const dispatch = useDispatch()
@@ -54,21 +55,21 @@ const BookConfirmation = () => {
 
   const schema = Yup.object().shape({
     cvv: Yup.string()
-      .required('CVC is required')
-      .min(3, 'CVC must be at least 3 characters')
-      .max(4, 'CVC must be at most 4 characters')
-      .matches(/[0-9]/, 'Invalid CVC'),
+      .required(CommonConstants.CVC_REQUIRED)
+      .min(3, CommonConstants.CVC_LEAST)
+      .max(4, CommonConstants.CVC_MOST)
+      .matches(/[0-9]/, CommonConstants.INVALID_CVC),
     cardNumber: Yup.string()
-      .required('Card number is required')
+      .required(CommonConstants.CARD_NUMBER_REQUIRED)
       .test(
-        'test-number',
-        'Invalid card number',
+        CommonConstants.TEST_NUMBER,
+        CommonConstants.INVALID_CARD_NUMBER,
         (value) => valid.number(value).isValid,
       ),
     expiryDate: Yup.string()
-      .required('Expiry date is required')
-      .matches(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/, 'Invalid expiry date'),
-    cardHolderName: Yup.string().required('Card holder name is required'),
+      .required(CommonConstants.EXPIRY_DATE_REQUIRED)
+      .matches(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/, CommonConstants.INVALID_EXPIRY_DATE),
+    cardHolderName: Yup.string().required(CommonConstants.CARDHOLDER_NAME_REQUIRED),
   })
 
   const {
