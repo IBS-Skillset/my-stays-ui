@@ -28,6 +28,7 @@ import {
   getEmail,
   getIsAuthorized,
 } from '../../store/selectors/Selectors'
+import CommonConstants from '../../constants/CommonConstants'
 
 interface IFormInputs {
   location: string
@@ -51,7 +52,7 @@ function Search() {
     })
 
   const formSchema = Yup.object().shape({
-    location: Yup.string().required('*Location is required'),
+    location: Yup.string().required(CommonConstants.LOCATION_REQUIRED),
   })
 
   const {
@@ -74,7 +75,7 @@ function Search() {
         if (response.data.email === isemail) {
           dispatch(fetchUserDetails(response.data))
         } else {
-          alert('user not found')
+          alert(CommonConstants.USER_NOT_FOUND)
         }
       })
       .catch((error) => {
@@ -100,7 +101,7 @@ function Search() {
       setSearchTerm('')
       setError('location', {
         type: 'manual',
-        message: 'Search a Location',
+        message: CommonConstants.SEARCH_LOCATION,
       })
       return
     }
@@ -108,11 +109,10 @@ function Search() {
       .then((response: AxiosResponse<HotelAvailabilityResponse>) => {
         dispatch(hotelSearchAvailabilityRequestAction(hotelAvailabilityRequest))
         dispatch(hotelSearchAvailabilityResponseAction(response.data))
-        if (response.data.responseStatus.errorMessage == 'No Availability') {
+        if (response.data.responseStatus.errorMessage == CommonConstants.NO_AVAILABILITY) {
           setError('location', {
             type: 'manual',
-            message:
-              'No available hotels matching your request were found. Please amend your search criteria.',
+            message: CommonConstants.NO_AVAILABLE_HOTELS,
           })
         } else {
           const days = intervalToDuration({
@@ -138,7 +138,7 @@ function Search() {
           hotelSearchAvailabilityResponseAction({
             responseStatus: {
               status: -1,
-              errorMessage: 'Internal server error',
+              errorMessage: CommonConstants.INTERNAL_SERVER,
               errorCode: '999',
             },
             hotelItem: [],
@@ -146,7 +146,7 @@ function Search() {
         )
         setError('location', {
           type: 'manual',
-          message: 'Currently Experiencing some issues! Please try again later',
+          message: CommonConstants.EXPERIENCING_ISSUES,
         })
       })
   }

@@ -2,6 +2,7 @@ import { AxiosResponse } from 'axios'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
+import CommonConstants from '../../../../../constants/CommonConstants'
 import { HotelDescriptionResponse } from '../../../../../models/hotel/description-models/hotelDescriptionResponse'
 import { RoomAvailabilityResponse } from '../../../../../models/hotel/roomavailability-models/roomAvailabilityResponse'
 import { HotelAvailabilityRequest } from '../../../../../models/hotel/search-models/hotelAvailabilityRequest'
@@ -40,7 +41,7 @@ const HotelDescription = () => {
     )
       .then((response: AxiosResponse<RoomAvailabilityResponse>) => {
         setRoomAvailabilityResponse(response.data)
-        console.log('Room Availability Response', response.data)
+        console.log(CommonConstants.ROOM_AVAIL_RESPONSE, response.data)
       })
       .catch((error) => {
         console.log(error)

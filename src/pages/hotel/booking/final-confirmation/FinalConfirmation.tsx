@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 import { BookResponse } from '../../../../models/hotel/book-models/bookResponse'
 import { useNavigate } from 'react-router-dom'
 import { getBookResponse, getDays } from '../../../../store/selectors/Selectors'
+import CommonConstants from '../../../../constants/CommonConstants'
 
 const FinalConfirmation = () => {
   const navigate = useNavigate()
@@ -25,12 +26,10 @@ const FinalConfirmation = () => {
     let message = ''
     if (bookResponse.responseStatus.status == 0) {
       message =
-        'Your booking has failed. Please try again. ' +
+        CommonConstants.BOOKING_FAILED +
         bookResponse.responseStatus.errorMessage
     } else if (bookResponse.responseStatus.status == 1) {
-      message =
-        'Your trip has been successfully booked . Thank you for your\n' +
-        '            reservation.'
+      message = CommonConstants.BOOKING_SUCCESS
     }
     return message
   }
