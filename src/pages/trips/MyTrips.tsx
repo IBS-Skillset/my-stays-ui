@@ -14,6 +14,7 @@ import {
   getAccessToken,
   getIsAuthorized,
 } from '../../store/selectors/Selectors'
+import CommonConstants from '../../constants/CommonConstants'
 
 const MyTrips = () => {
   const [activeTab, setActiveTab] = useState('upcoming')
@@ -63,8 +64,7 @@ const MyTrips = () => {
         <TripsContent trips={trips} isCompleted={isCompleted} />
       ) : (
         <p>
-          You have currently no
-          {isCompleted ? ' completed ' : ' upcoming '}trips!
+          {isCompleted ? CommonConstants.COMPLETED : CommonConstants.UPCOMING}
         </p>
       )
     ) : (

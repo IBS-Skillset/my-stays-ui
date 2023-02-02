@@ -21,6 +21,7 @@ import DateRange from '../../../../common/components/date-range/DateRange'
 import Location from '../../../../common/components/location/Location'
 import Travelers from '../../../../common/components/travelers/Travelers'
 import './SearchForm.css'
+import CommonConstants from '../../../../../constants/CommonConstants'
 
 interface IFormInputs {
   location: string
@@ -46,7 +47,7 @@ function SearchForm() {
   const dispatch = useDispatch()
 
   const formSchema = Yup.object().shape({
-    location: Yup.string().required('*Location is required'),
+    location: Yup.string().required(CommonConstants.LOCATION_REQUIRED),
   })
 
   const {
@@ -79,14 +80,14 @@ function SearchForm() {
       setSearchTerm('')
       setError('location', {
         type: 'manual',
-        message: 'Search a Location',
+        message: CommonConstants.SEARCH_LOCATION,
       })
       return
     }
     if (startDate == endDate || startDate > endDate) {
       setError('location', {
         type: 'manual',
-        message: 'Incorrect Date Range',
+        message: CommonConstants.INCORRECT_DATE_RANGE,
       })
       return
     }
@@ -94,11 +95,10 @@ function SearchForm() {
       .then((response: AxiosResponse<HotelAvailabilityResponse>) => {
         dispatch(hotelSearchAvailabilityRequestAction(hotelAvailabilityRequest))
         dispatch(hotelSearchAvailabilityResponseAction(response.data))
-        if (response.data.responseStatus.errorMessage == 'No Availability') {
+        if (response.data.responseStatus.errorMessage == CommonConstants.NO_AVAILABILITY) {
           setError('location', {
             type: 'manual',
-            message:
-              'No available hotels matching your request were found. Please amend your search criteria.',
+            message: CommonConstants.NO_AVAILABLE_HOTELS,
           })
         } else {
           const days = intervalToDuration({
@@ -122,7 +122,7 @@ function SearchForm() {
           hotelSearchAvailabilityResponseAction({
             responseStatus: {
               status: -1,
-              errorMessage: 'Internal server error',
+              errorMessage: CommonConstants.INTERNAL_SERVER,
               errorCode: '999',
             },
             hotelItem: [],

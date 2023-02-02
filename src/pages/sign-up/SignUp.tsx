@@ -9,6 +9,7 @@ import CreateAccountService from '../../services/signup/CreateAccountService'
 import bcrypt, { hashSync } from 'bcryptjs'
 import { useDispatch } from 'react-redux'
 import { autoPopulateEmailAction } from '../../store/actions/signUpAction'
+import CommonConstants from '../../constants/CommonConstants'
 
 export interface IFormInputs {
   email: string
@@ -18,20 +19,20 @@ export interface IFormInputs {
   password: string
 }
 const schema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('*Email is required'),
+  email: Yup.string().email(CommonConstants.INVALID_EMAIL).required(CommonConstants.EMAIL_REQUIRED),
   firstName: Yup.string()
     .max(15, 'Too Long!')
-    .matches(/^[aA-zZ\s]+$/, 'Please enter first name')
-    .required('*Firstname is required'),
+    .matches(/^[aA-zZ\s]+$/, CommonConstants.ENTER_FIRSTNAME)
+    .required(CommonConstants.FIRSTNAME_REQUIRED),
   lastName: Yup.string()
-    .max(15, 'Too Long!')
-    .matches(/^[aA-zZ\s]+$/, 'Please enter last name')
-    .required('*Lastname is required'),
-  password: Yup.string().required('*Password is required'),
+    .max(15, CommonConstants.TOO_LONG)
+    .matches(/^[aA-zZ\s]+$/, CommonConstants.ENTER_LASTNAME)
+    .required(CommonConstants.LASTNAME_REQUIRED),
+  password: Yup.string().required(CommonConstants.PASSWORD_REQUIRED),
   phoneNumber: Yup.number()
-    .typeError('Phone number is required')
-    .min(100000000000, 'Phone number must be 12 digits with country code')
-    .required('Phone number is required'),
+    .typeError(CommonConstants.PHONE_NUMBER_REQUIRED)
+    .min(100000000000, CommonConstants.PHONE_NUMBER_12_DIGITS)
+    .required(CommonConstants.PHONE_NUMBER_REQUIRED),
 })
 const SignUp = () => {
   const dispatch = useDispatch()

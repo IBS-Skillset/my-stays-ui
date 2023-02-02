@@ -7,6 +7,7 @@ import { locationAction } from '../../../../store/actions/hotelSearchAction'
 import { useDispatch } from 'react-redux'
 import { GeoLocation } from '../../../../models/locations/geoLocation'
 import { HotelAvailabilityRequest } from '../../../../models/hotel/search-models/hotelAvailabilityRequest'
+import CommonConstants from '../../../../constants/CommonConstants'
 
 type Props = {
   searchTerm: string
@@ -47,7 +48,7 @@ const Location = ({
       })
       .catch((error) => {
         console.log(
-          'An error occurred while calling GeoLocation Places' + error,
+          CommonConstants.GEOLOCATION_ERROR + error,
         )
       })
   }
@@ -68,7 +69,7 @@ const Location = ({
       })
       .catch((error) => {
         console.log(
-          'An error occurred while calling GeoLocation Details' + error,
+          CommonConstants.GEOLOCATION_ERROR + error,
         )
       })
   }
