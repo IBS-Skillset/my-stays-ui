@@ -22,25 +22,8 @@ const MyTrips = () => {
   const [completedTrips, setCompletedTrips] = useState<Trip[]>([])
   const [isLoaded, setIsLoaded] = useState(false)
 
-  useEffect(() => {
-    MyTripsService.getMyTrips()
-      .then((response) => {
-        updateTrips(response.data)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }, [])
-
   const accessToken: string = useSelector(getAccessToken)
   const isAuthorized: boolean = useSelector(getIsAuthorized)
-
-  if (accessToken == '') {
-    if (!isAuthorized) {
-      DispatchPkceData()
-    }
-    return <AuthorizeUser />
-  }
 
   const updateTrips = (response: MyTripsResponse) => {
     const upcomingTrip: Trip[] = []
@@ -56,6 +39,23 @@ const MyTrips = () => {
     setUpcomingTrips(upcomingTrip)
     setCompletedTrips(completedTrip)
     setIsLoaded(true)
+  }
+
+  useEffect(() => {
+    MyTripsService.getMyTrips()
+      .then((response) => {
+        updateTrips(response.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }, [])
+
+  if (accessToken == '') {
+    if (!isAuthorized) {
+      DispatchPkceData()
+    }
+    return <AuthorizeUser />
   }
 
   const getTrips = (trips: Trip[], isCompleted: boolean) => {

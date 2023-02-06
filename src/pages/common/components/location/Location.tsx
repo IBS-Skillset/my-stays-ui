@@ -47,9 +47,7 @@ const Location = ({
         setGeoPlaces(response.data)
       })
       .catch((error) => {
-        console.log(
-          CommonConstants.GEOLOCATION_ERROR + error,
-        )
+        console.log(CommonConstants.GEOLOCATION_ERROR + error)
       })
   }
   const handlePlaceIdChange = (geoPlace: GeoPlace) => {
@@ -68,9 +66,7 @@ const Location = ({
         })
       })
       .catch((error) => {
-        console.log(
-          CommonConstants.GEOLOCATION_ERROR + error,
-        )
+        console.log(CommonConstants.GEOLOCATION_ERROR + error)
       })
   }
 

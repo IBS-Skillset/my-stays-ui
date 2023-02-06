@@ -45,7 +45,7 @@ describe('Final Confirmation Page Success scenario testing', () => {
     expect(screen.getAllByRole('img')).toHaveLength(1)
     expect(
       screen.getByRole('heading', {
-        name: /Your trip has been successfully booked . Thank you for your reservation./i,
+        name: /Your trip has been successfully booked. Thank you for your reservation./i,
       }),
     ).toBeInTheDocument()
     expect(
