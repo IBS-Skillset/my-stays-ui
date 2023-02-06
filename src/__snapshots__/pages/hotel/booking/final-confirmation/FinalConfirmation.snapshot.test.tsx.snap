@@ -18,8 +18,7 @@ exports[`Final Confirmation Page : <FinalConfirmation /> page renders correctly 
     <h1
       className="final-booking-info-content"
     >
-      Your trip has been successfully booked . Thank you for your
-            reservation.
+      Your trip has been successfully booked. Thank you for your reservation.
     </h1>
   </div>
   <div
@@ -175,7 +174,7 @@ exports[`Final Confirmation Page with book failure : <FinalConfirmation /> page 
     <h1
       className="final-booking-info-content"
     >
-      Your booking has failed. Please try again. error
+      Your booking has failed. Please try again.error
     </h1>
   </div>
 </div>

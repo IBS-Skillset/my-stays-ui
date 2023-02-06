@@ -95,7 +95,10 @@ function SearchForm() {
       .then((response: AxiosResponse<HotelAvailabilityResponse>) => {
         dispatch(hotelSearchAvailabilityRequestAction(hotelAvailabilityRequest))
         dispatch(hotelSearchAvailabilityResponseAction(response.data))
-        if (response.data.responseStatus.errorMessage == CommonConstants.NO_AVAILABILITY) {
+        if (
+          response.data.responseStatus.errorMessage ==
+          CommonConstants.NO_AVAILABILITY
+        ) {
           setError('location', {
             type: 'manual',
             message: CommonConstants.NO_AVAILABLE_HOTELS,

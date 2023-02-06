@@ -19,7 +19,9 @@ export interface IFormInputs {
   password: string
 }
 const schema = Yup.object().shape({
-  email: Yup.string().email(CommonConstants.INVALID_EMAIL).required(CommonConstants.EMAIL_REQUIRED),
+  email: Yup.string()
+    .email(CommonConstants.INVALID_EMAIL)
+    .required(CommonConstants.EMAIL_REQUIRED),
   firstName: Yup.string()
     .max(15, 'Too Long!')
     .matches(/^[aA-zZ\s]+$/, CommonConstants.ENTER_FIRSTNAME)

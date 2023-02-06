@@ -68,8 +68,13 @@ const BookConfirmation = () => {
       ),
     expiryDate: Yup.string()
       .required(CommonConstants.EXPIRY_DATE_REQUIRED)
-      .matches(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/, CommonConstants.INVALID_EXPIRY_DATE),
-    cardHolderName: Yup.string().required(CommonConstants.CARDHOLDER_NAME_REQUIRED),
+      .matches(
+        /^(0[1-9]|1[0-2])\/?([0-9]{2})$/,
+        CommonConstants.INVALID_EXPIRY_DATE,
+      ),
+    cardHolderName: Yup.string().required(
+      CommonConstants.CARDHOLDER_NAME_REQUIRED,
+    ),
   })
 
   const {
