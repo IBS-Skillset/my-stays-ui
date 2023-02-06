@@ -1,3 +1,4 @@
+import React from 'react'
 import { ImCheckmark } from 'react-icons/im'
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router'
@@ -12,17 +13,28 @@ function BookHeader() {
     useLocation().pathname == '/finalConfirmation' &&
     bookResponse.responseStatus.status == 1
 
+  const [width, setWidth] = React.useState(window.innerWidth)
+  React.useEffect(() => {
+    const handleWindowResize = () => setWidth(window.innerWidth)
+    window.addEventListener('resize', handleWindowResize)
+  }, [])
+
   return (
     <div className="book-header-container">
       <div className="book-items display-content">
         <div className="items">
           <div className="book-indicator progress-divider">1</div>
-          <div className="title display-content">Customer Information</div>
+          <div className="title display-content">
+            {' '}
+            {width <= 640 ? 'Customer Info' : 'Customer Information'}
+          </div>
         </div>
         <div className="progress-divider border-divider"></div>
         <div className="items">
           <div className="book-indicator progress-divider">2</div>
-          <div className="title display-content">Payment Information</div>
+          <div className="title display-content">
+            {width <= 640 ? 'Payment' : 'Payment Information'}
+          </div>
         </div>
         <div
           className={
@@ -45,7 +57,7 @@ function BookHeader() {
               (finalConfirmationMatch ? 'booking-confirm-after-book' : '')
             }
           >
-            Booking is confirmed
+            {width <= 640 ? 'confirmed' : 'Booking is confirmed'}
           </div>
         </div>
       </div>
