@@ -19,7 +19,7 @@ type Props = {
 const PaymentDetails = ({ register, errors }: Props) => {
   return (
     <div className="payment-details border-color">
-      <h2 className="text-lg mt-1 ml-2 font-weight">
+      <h2 className="ml-0 mb-2 text-sm sm:text-lg mt-1 sm:ml-2 font-weight">
         How would you like to pay?
       </h2>
       <div className="payment-types details">
@@ -37,7 +37,7 @@ const PaymentDetails = ({ register, errors }: Props) => {
         </div>
       </div>
       <h1 className="cards font-weight">New card</h1>
-      <div className="cards-block details">
+      <div className="cards-block pay-cards details">
         <img src={visa} className="cards-image" alt="" />
         <img src={masterCard} className="cards-image" alt="" />
         <img src={amex} className="cards-image" alt="" />
@@ -99,7 +99,7 @@ const PaymentDetails = ({ register, errors }: Props) => {
           <h2 className="headings mt-4 font-weight">
             CVC <span className="mandatory">*</span>
           </h2>
-          <div className="cvc-details details border-color bg-white rounded-sm">
+          <div className="cvc-details details pay-cards border-color bg-white rounded-sm">
             <img src={cvv} className="card-number-image" alt="" />
             <input
               className="cvv-input"

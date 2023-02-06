@@ -10,10 +10,12 @@ function UserDetails() {
   return (
     <div className="user-details border-color">
       <div className="ml-1">
-        <h1 className="text-lg mt-1 ml-2 font-weight">Enter your details</h1>
+        <h1 className="text-sm mb-2 ml-0 sm:text-lg mt-1 sm:ml-2 font-weight">
+          Enter your details
+        </h1>
       </div>
       <div className="enter-details">
-        <div className="details">
+        <div className="details firstname-lastname">
           <div className="user-info">
             <h1 className="headings font-weight">
               First name <span className="mandatory">*</span>

@@ -34,3 +34,600 @@
   margin-left: -30px;
   margin-top: 13px;
 }
+
+@media only screen and (max-width: 1270px) {
+  .form-book {
+    margin-left: 0px;
+    width: auto;
+    margin-top: 0px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .content-book {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .other-book-details {
+    overflow: hidden;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .book-now-button {
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 1rem;
+    align-self: end;
+  }
+  .lock-icon {
+    width: 80px;
+    height: 40px;
+    margin-left: -15px;
+    margin-top: 2px;
+  }
+  .book {
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    margin-left: -30px;
+    margin-top: 13px;
+  }
+  .other-book-details .main-content-hotel {
+    margin-top: 0px;
+    width: auto;
+    margin-left: 0px;
+    padding: 0px;
+  }
+  .other-book-details {
+    .hotel-content {
+      border: 1px solid rgba(220, 220, 220, 1);
+      padding: 0px;
+      height: auto;
+      margin-top: 0px;
+      display: grid;
+      grid-template-rows: 1fr;
+      grid-template-columns: 0.8fr 1fr;
+      grid-gap: 1rem;
+      padding: 0.5rem;
+    }
+    .book-image {
+      margin-left: 0;
+      margin-top: 0;
+    }
+    .book-image-parent {
+      min-width: 250px;
+      padding-bottom: 0rem;
+    }
+
+    .location-book {
+      gap: 0rem;
+    }
+
+    .hotel-name-book {
+      margin-top: 0px;
+      font-size: 1rem;
+    }
+    .hotel-details-book {
+      width: auto;
+      margin-left: 0px;
+      padding: 0.5rem;
+    }
+    .hotel-address-book {
+      margin-top: 0;
+    }
+
+    .payment-details {
+      width: auto;
+      margin-left: 0px;
+      margin-top: 0px;
+      min-height: auto;
+      margin-top: 0.25rem;
+      padding: 1rem;
+    }
+    .payment {
+      margin-left: 0px;
+      width: auto;
+    }
+    .card-details {
+      display: flex;
+      width: 18rem;
+    }
+    .other-card-details {
+      margin-left: 0px;
+      width: auto;
+      justify-content: flex-start;
+      gap: 0.5rem;
+    }
+    .expiry {
+      outline: none;
+      width: auto;
+      max-width: 8rem;
+    }
+
+    .card-number {
+      width: auto;
+      width: 100%;
+    }
+    .cvc-details {
+      width: auto;
+      height: auto;
+      display: flex;
+    }
+    .cvv-input {
+      width: auto;
+      max-width: 8rem;
+    }
+    .payment-types {
+      margin-top: 0px;
+      width: auto;
+      height: auto;
+      margin-left: 0;
+      display: flex;
+      flex-direction: row;
+      gap: 0.25rem;
+    }
+
+    .other-payment-type {
+      margin-top: 0px;
+      margin-left: 0px;
+    }
+    .cards-block {
+      margin-top: 0px;
+      width: auto;
+      height: auto;
+      margin-left: 0px;
+      align-items: center;
+      padding: 0 0.5rem;
+    }
+    .cards {
+      margin-top: 0px;
+      margin-left: 0px;
+      padding-left: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+  .content-book {
+    .side-content {
+      padding: 0px;
+      float: initial;
+      margin-top: 0px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .booking-details {
+      padding: 0.25rem;
+    }
+    .booking-content {
+      margin: 0px;
+    }
+    .dates {
+      margin: 0;
+    }
+    .input-dates {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      white-space: pre-wrap;
+    }
+
+    .stay {
+      margin-top: 0px;
+    }
+    .mid-layer {
+      margin-bottom: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 1rem;
+    }
+    .bottom-layer {
+      margin-top: 0px;
+    }
+    .rate {
+      margin-top: 0px;
+      padding: 0px;
+    }
+    .rate-content {
+      margin: 0;
+      padding: 1rem;
+    }
+    .room-heading {
+      margin-right: 0px;
+    }
+    .rate-final {
+      margin-left: 0px;
+    }
+    .cancel-content {
+      margin: 0px;
+      padding: 0.5rem;
+    }
+    .cancel-heading {
+      margin: 0px;
+    }
+    .rate-cancel {
+      margin-top: 0px;
+    }
+    .cancel-date {
+      margin-top: 0px;
+      width: auto;
+    }
+    .policy {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .final-rate {
+      text-align: center;
+    }
+    .confirmation-heading {
+      white-space: pre-wrap;
+      text-align: center;
+      padding: 0.3rem 0;
+    }
+    .details-border {
+      width: auto;
+    }
+    .room-font {
+      text-align: center;
+    }
+    .room-price {
+      margin-top: 0px;
+      display: flex;
+      padding: 0.25rem;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+  }
+  .other-book-details {
+    .user-details {
+      width: auto;
+      height: auto;
+      padding: 1rem;
+      margin-top: 0.25rem;
+    }
+    .enter-details {
+      margin-left: 0px;
+      width: auto;
+      height: auto;
+    }
+    .details {
+      display: flex;
+      gap: 1rem;
+    }
+    .name {
+      width: auto;
+      min-width: 8rem;
+    }
+    .user-info {
+      margin-left: 0px;
+      margin-top: 0px;
+      padding: 0.4rem;
+    }
+    .email {
+      width: auto;
+      height: 30px;
+      max-width: 17rem;
+    }
+    .mobile-field {
+      margin-top: 0px;
+      margin-left: 0;
+      padding: 0 0.25rem;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .form-book {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0px;
+    width: auto;
+    margin-top: 0px;
+    overflow: hidden;
+  }
+  .content-book {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .other-book-details {
+    overflow: hidden;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .book-now-button {
+    margin-left: 0px;
+    margin-top: 0px;
+    align-self: center;
+  }
+  .lock-icon {
+    width: 80px;
+    height: 40px;
+    margin-left: -15px;
+    margin-top: 2px;
+  }
+  .book {
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    margin-left: -30px;
+    margin-top: 13px;
+  }
+  .other-book-details .main-content-hotel {
+    margin-top: 0px;
+    width: auto;
+    margin-left: 0px;
+    padding: 0px;
+  }
+  .other-book-details {
+    .hotel-content {
+      border: 1px solid rgba(220, 220, 220, 1);
+      padding: 0px;
+      height: auto;
+      margin-top: 0px;
+      border-radius: 5px;
+    }
+    .book-image {
+      margin-left: 0;
+      margin-top: 0;
+      height: 100%;
+      width: 100%;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+
+    .location-book {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-direction: column;
+    }
+
+    .hotel-name-book {
+      margin-top: 0px;
+    }
+    .hotel-details-book {
+      width: auto;
+      margin-left: 0px;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    .hotel-address-book {
+      margin-top: 0;
+    }
+
+    .payment-details {
+      width: auto;
+      margin-left: 0px;
+      margin-top: 0px;
+      min-height: auto;
+      margin-top: 0.25rem;
+      padding: 1rem;
+    }
+    .payment {
+      margin-left: 0px;
+      width: auto;
+    }
+    .card-details {
+      display: flex;
+      width: 100%;
+    }
+    .other-card-details {
+      flex-direction: column;
+      margin-left: 0px;
+      width: auto;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .expiry {
+      outline: none;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .card-number {
+      width: auto;
+      width: 100%;
+    }
+    .cvc-details {
+      width: auto;
+      height: auto;
+      display: flex;
+    }
+    .cvv-input {
+      width: 100%;
+    }
+    .payment-types {
+      margin-top: 0px;
+      width: auto;
+      height: auto;
+      margin-left: 0;
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+    }
+
+    .other-payment-type {
+      margin-top: 0px;
+      margin-left: 0px;
+    }
+    .cards-block {
+      margin-top: 0px;
+      width: auto;
+      height: auto;
+      margin-left: 0px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 0.5rem;
+    }
+    .cards {
+      margin-top: 0px;
+      margin-left: 0px;
+      padding-left: 0;
+      margin-bottom: 0.5rem;
+    }
+  }
+  .content-book {
+    .side-content {
+      padding: 0px;
+      float: initial;
+      margin-top: 0px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .booking-details {
+      padding: 0.25rem;
+    }
+    .booking-content {
+      margin: 0px;
+    }
+    .dates {
+      margin: 0;
+    }
+    .input-dates {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      white-space: pre-wrap;
+    }
+
+    .stay {
+      margin-top: 0px;
+    }
+    .mid-layer {
+      margin-bottom: 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 1rem;
+    }
+    .bottom-layer {
+      margin-top: 0px;
+    }
+    .rate {
+      margin-top: 0px;
+      padding: 0px;
+    }
+    .rate-content {
+      margin: 0;
+      padding: 1rem;
+    }
+    .room-heading {
+      margin-right: 0px;
+    }
+    .rate-final {
+      margin-left: 0px;
+    }
+    .cancel-content {
+      margin: 0px;
+      padding: 0.5rem;
+    }
+    .cancel-heading {
+      margin: 0px;
+    }
+    .rate-cancel {
+      margin-top: 0px;
+    }
+    .cancel-date {
+      margin-top: 0px;
+      width: auto;
+    }
+    .policy {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .final-rate {
+      text-align: center;
+    }
+    .confirmation-heading {
+      white-space: pre-wrap;
+      text-align: center;
+      padding: 0.3rem 0;
+      font-size: 1rem;
+    }
+    .details-border {
+      width: auto;
+    }
+    .room-font {
+      text-align: center;
+    }
+    .room-price {
+      margin-top: 0px;
+      display: flex;
+      padding: 0.25rem;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+  }
+  .other-book-details {
+    .user-details {
+      width: auto;
+      height: auto;
+      padding: 0.5rem;
+      margin-top: 0.25rem;
+    }
+    .enter-details {
+      margin-left: 0px;
+      width: auto;
+      height: auto;
+    }
+
+    .firstname-lastname {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .name {
+      width: auto;
+      min-width: 8rem;
+    }
+    .user-info {
+      margin-left: 0px;
+      margin-top: 0px;
+      padding: 0.4rem;
+    }
+    .email {
+      width: auto;
+      height: 30px;
+      max-width: 100%;
+    }
+    .mobile-field {
+      margin-top: 0px;
+      margin-left: 0;
+      padding: 0 0.25rem;
+    }
+    .debit-card-image {
+      height: 40px;
+      width: 80px;
+    }
+    .disabled-payment-type {
+      height: 40px;
+      width: 80px;
+      margin-right: 1rem;
+    }
+    .pay-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    input#cardHolderName {
+      width: 100%;
+    }
+  }
+}
