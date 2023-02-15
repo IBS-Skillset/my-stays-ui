@@ -97,30 +97,38 @@ exports[`Final Confirmation Page : <FinalConfirmation /> page renders correctly 
       className="final-booking-hotel-details-container"
     >
       <div
-        className="mt-10 space-x-40 flex text-gray-500 text-sm ml-20"
+        className=" check-in-data  "
       >
-        <h1>
+        <h1
+          className="text-gray-500 text-sm"
+        >
           CHECK-IN
         </h1>
-        <h2>
-          CHECK-OUT
-        </h2>
-      </div>
-      <div
-        className="flex font-bold text-base"
-      >
         <div
-          className="ml-20"
-        >
-          Mon Sep 11 2023
-        </div>
-        <div
-          className="check-out-date"
+          className="text-sm font-bold sm:text-base"
         >
           Wed Oct 11 2023
         </div>
+      </div>
+      <div
+        className="check-out-data "
+      >
+        <h2
+          className="text-gray-500 text-sm"
+        >
+          CHECK-OUT
+        </h2>
         <div
-          className="ml-28"
+          className="text-sm font-bold sm:text-base"
+        >
+          Mon Sep 11 2023
+        </div>
+      </div>
+      <div
+        className="hotel-room-data"
+      >
+        <div
+          className=""
         >
           <svg
             className="icon"
@@ -143,7 +151,7 @@ exports[`Final Confirmation Page : <FinalConfirmation /> page renders correctly 
           </svg>
         </div>
         <div
-          className="ml-2 text-sky-500 font-medium text-lg"
+          className="text-sm font-bold text-sky-500 sm:font-medium sm:text-lg"
         >
           1 Room(s), 
           1

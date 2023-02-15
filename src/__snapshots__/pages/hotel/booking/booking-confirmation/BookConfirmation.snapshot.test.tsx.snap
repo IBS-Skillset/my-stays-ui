@@ -195,7 +195,7 @@ exports[`Booking Confirmation Page : <BookConfirmation /> page renders correctly
           className="ml-1"
         >
           <h1
-            className="text-lg mt-1 ml-2 font-weight"
+            className="text-sm mb-2 ml-0 sm:text-lg mt-1 sm:ml-2 font-weight"
           >
             Enter your details
           </h1>
@@ -204,7 +204,7 @@ exports[`Booking Confirmation Page : <BookConfirmation /> page renders correctly
           className="enter-details"
         >
           <div
-            className="details"
+            className="details firstname-lastname"
           >
             <div
               className="user-info"
@@ -310,7 +310,7 @@ exports[`Booking Confirmation Page : <BookConfirmation /> page renders correctly
         className="payment-details border-color"
       >
         <h2
-          className="text-lg mt-1 ml-2 font-weight"
+          className="ml-0 mb-2 text-sm sm:text-lg mt-1 sm:ml-2 font-weight"
         >
           How would you like to pay?
         </h2>
@@ -360,7 +360,7 @@ exports[`Booking Confirmation Page : <BookConfirmation /> page renders correctly
           New card
         </h1>
         <div
-          className="cards-block details"
+          className="cards-block pay-cards details"
         >
           <img
             alt=""
@@ -485,7 +485,7 @@ exports[`Booking Confirmation Page : <BookConfirmation /> page renders correctly
               </span>
             </h2>
             <div
-              className="cvc-details details border-color bg-white rounded-sm"
+              className="cvc-details details pay-cards border-color bg-white rounded-sm"
             >
               <img
                 alt=""

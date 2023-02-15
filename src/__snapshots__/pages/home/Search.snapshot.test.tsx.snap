@@ -16,7 +16,7 @@ exports[`Home Page : <Search /> Screen renders correctly 1`] = `
       Search Hotels
     </div>
     <div
-      className="travel-type-wrap"
+      className="travel-type-wrap travelWrapStyle"
       style={
         Object {
           "marginBottom": "100px",
@@ -273,7 +273,7 @@ exports[`Home Page : <Search /> Screen renders correctly 1`] = `
         </div>
       </div>
       <div
-        className="box-border flex h-16 mb-2 p-5"
+        className="date-range-travel-block"
       >
         <div
           className="date-container check-in"
@@ -400,7 +400,7 @@ exports[`Home Page : <Search /> Screen renders correctly 1`] = `
         </div>
       </div>
       <div
-        className="h-12 p-10"
+        className="btn-style"
       >
         <button
           className="btn-search"
