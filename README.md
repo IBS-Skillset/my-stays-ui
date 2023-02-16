@@ -22,7 +22,7 @@ Installs all dependencies
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
+Open [http://127.0.0.1:3000](http://127.0.0.1:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
@@ -50,5 +50,26 @@ Lists out Prettier format errors in the console and auto fixes the format, if po
 
 Get visualizations of what’s in your production webpack bundle.\
 Open [http://127.0.0.1:8888](http://127.0.0.1:8888) to view it in the browser.
+
+## Docker commands to run in local
+
+#### Build the Docker image
+
+`docker build -t my-stays-ui .`
+
+#### Run the Docker container
+
+`docker run -e AUTH_SERVER_URI=http://172.17.0.4:9000 -e API_GATEWAY_URI=http://172.17.0.5:9192 -d -p 3000:80 --name my-stays-ui-app my-stays-ui`
+
+NOTE : The ip in the url has to be replaced by the container ip of the respective containers. To get the container ip run the following command.
+
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container-name
+
+eg:- docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' auth-server
+
+if your backend apps still runs in localhost only, you can directly run this command
+
+`docker run --env-file ./.env -d -p 3000:80 --name my-stays-ui-app my-stays-ui`
+
 
 
