@@ -1,4 +1,7 @@
-const HOST = `http://${process.env.DOMAIN}:${process.env.AUTH_SERVER_PORT}/auth-server`
+let HOST = (window as any).AUTH_SERVER_URI + '/auth-server'
+if (process.env.NODE_ENV === 'development') {
+  HOST = `${process.env.AUTH_SERVER_URI}/auth-server`
+}
 export default {
   CLIENT_ID: 'client',
   SECRET_KEY: 'secret',

@@ -1,4 +1,7 @@
-const HOST = `http://${process.env.DOMAIN}:${process.env.API_GATEWAY_PORT}`
+let HOST = (window as any).API_GATEWAY_URI
+if (process.env.NODE_ENV === 'development') {
+  HOST = `${process.env.API_GATEWAY_URI}`
+}
 export default {
   CREATE_ACCOUNT_URL: `${HOST}/account/api/signup`,
   USER_DETAILS_URL: `${HOST}/account/api/userdetails/`,
