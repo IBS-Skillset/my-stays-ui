@@ -31,7 +31,7 @@ phases:
       - echo Writing image definitions file...
       - printf '[{"name":"my-stays-ui","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
       - cat imageDefinitions.json
-  artifacts:
-    files:
-      - imageDefinitions.json
+artifacts:
+  files:
+    - imageDefinitions.json
 
