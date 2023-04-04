@@ -1,0 +1,30 @@
+version: 0.2
+env:
+  parameter-store:
+    SECRET_TOKEN: "MY_SECRET_TOKEN"
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+    commands:
+      - yum update -y
+      - yum install yum-utils -y
+      - yum-config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo -y
+      - yum install gh -y
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Running tests
+      - mvn test; EXITCODE=$?
+      - echo $SECRET_TOKEN
+      - echo "$EXITCODE"
+      - echo "$CODEBUILD_WEBHOOK_TRIGGER"
+      - TAG=$(echo $CODEBUILD_WEBHOOK_TRIGGER | sed -r 's/^.{3}//')
+      - echo $TAG
+      - gh auth login --hostname github.com --with-token <<< $SECRET_TOKEN
+      - |
+        if [ "$EXITCODE" = "0" ]; then
+          gh pr merge $TAG --admin --merge
+        else
+          gh pr comment $TAG --body "The tests have failed. Please check the logs and fix the issues."
+        fi
