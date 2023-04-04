@@ -15,7 +15,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Running tests
-      - mvn test; EXITCODE=$?
+      - npm test; EXITCODE=$?
       - echo $SECRET_TOKEN
       - echo "$EXITCODE"
       - echo "$CODEBUILD_WEBHOOK_TRIGGER"
