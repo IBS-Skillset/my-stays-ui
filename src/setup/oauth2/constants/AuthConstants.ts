@@ -1,11 +1,12 @@
 let HOST = (window as any).AUTH_SERVER_URI + '/auth-server'
+let HOST_UI = (window as any).HOST_UI
 if (process.env.NODE_ENV === 'development') {
   HOST = `${process.env.AUTH_SERVER_URI}/auth-server`
 }
 export default {
   CLIENT_ID: 'client',
   SECRET_KEY: 'secret',
-  REDIRECT_URI: 'http://127.0.0.1:3000/authorized',
+  REDIRECT_URI: 'http://${HOST_UI}:80/authorized',
   AUTHORIZE_URL: `${HOST}/oauth2/authorize?`,
   TOKEN_URL: `${HOST}/oauth2/token?`,
   LOGIN_URL: `${HOST}/perform_login?`,

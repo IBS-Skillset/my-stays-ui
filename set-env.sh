@@ -10,4 +10,8 @@ if [ -n "$AUTH_SERVER_URI" ]; then
 sed -i -e "s|REACT_APP_AUTH_SERVER|$AUTH_SERVER_URI|g" /tmp/env.js
 fi
 
+if [ -n "$HOST_UI" ]; then
+sed -i -e "s|REACT_APP_HOST_UI|$HOST_UI|g" /tmp/env.js
+fi
+
 cat /tmp/env.js > /usr/share/nginx/html/env.js
