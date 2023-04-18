@@ -6,7 +6,7 @@ if (process.env.NODE_ENV === 'development') {
 export default {
   CLIENT_ID: 'client',
   SECRET_KEY: 'secret',
-  REDIRECT_URI: 'http://${HOST_UI}:80/authorized',
+  REDIRECT_URI: `http://${HOST_UI}:80/authorized`,
   AUTHORIZE_URL: `${HOST}/oauth2/authorize?`,
   TOKEN_URL: `${HOST}/oauth2/token?`,
   LOGIN_URL: `${HOST}/perform_login?`,
