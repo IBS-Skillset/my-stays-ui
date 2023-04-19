@@ -1,4 +1,5 @@
-let HOST = (window as any).API_GATEWAY_URI
+/**let HOST = (window as any).API_GATEWAY_URI*/
+let HOST = 'http://' + window.location.host + '/api-gateway'
 if (process.env.NODE_ENV === 'development') {
   HOST = `${process.env.API_GATEWAY_URI}`
 }
