@@ -8,6 +8,12 @@ metadata:
     app.kubernetes.io/name: mystaysui
 spec:
   replicas: 1
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: mystaysui
@@ -18,13 +24,11 @@ spec:
     spec:
       containers:
         - name: mystaysui-api
-          image: 306472407007.dkr.ecr.ap-south-1.amazonaws.com/ibs-skillset-happystays/my-stays-ui:2324e26
+          image: 306472407007.dkr.ecr.ap-south-1.amazonaws.com/ibs-skillset-happystays/my-stays-ui:53c295f
           imagePullPolicy: Always
           env:
-            - name: AUTH_SERVER_URI
-              value: authserver.beta-app:9000
-            - name: API_GATEWAY_URI
-              value: api-gateway.beta-app:9192
+            - name: HOST_UI
+              value: mystaysui
           ports:
             - name: web
               containerPort: 80
@@ -34,4 +38,3 @@ spec:
               cpu: "200m"
             limits:
               memory: "500Mi"
-              cpu: "500m"

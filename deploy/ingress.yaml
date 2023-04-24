@@ -21,3 +21,17 @@ spec:
                 name: mystaysui
                 port:
                   number: 80
+          - path: /auth-server
+            pathType: Prefix
+            backend:
+              service:
+                name: authorization-server
+                port:
+                  number: 9000
+          - path: /api-gateway
+            pathType: Prefix
+            backend:
+              service:
+                name: api-gateway
+                port:
+                  number: 9192
