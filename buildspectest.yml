@@ -18,6 +18,7 @@ phases:
       - echo Build started on `date`
       - echo Running tests
       - npm test; EXITCODE=$?
+      - echo "$EXITCODE"
       - echo "$CODEBUILD_WEBHOOK_TRIGGER"
       - TAG=$(echo $CODEBUILD_WEBHOOK_TRIGGER | sed -r 's/^.{3}//')
       - echo $TAG
