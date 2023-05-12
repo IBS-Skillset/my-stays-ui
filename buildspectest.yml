@@ -23,6 +23,17 @@ phases:
       - |
         if [ "$EXITCODE" = "0" ]; then
           gh pr merge $TAG --admin --merge
+          git init
+          git remote add neworigin https://${SECRET_USERNAME}:${SECRET_TOKEN}@github.com/IBS-Skillset/master-source-build.git
+          git config --global user.email $SECRET_EMAIL
+          git config --global user.name $SECRET_USERNAME
+          git checkout -B main
+          git fetch --all
+          git reset --hard neworigin/main
+          printf "\nmy-stays-ui" >> commitList.txt
+          git add commitList.txt
+          git commit -m "Adding my-stays-ui PR to commitlist ${CODEBUILD_WEBHOOK_TRIGGER}"
+          git push neworigin main
         else
           gh pr comment $TAG --body "The tests have failed. Please check the logs and fix the issues."
         fi
