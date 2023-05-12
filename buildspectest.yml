@@ -7,12 +7,16 @@ env:
 phases:
   install:
     runtime-versions:
-      nodejs: latest
+      nodejs: 18
     commands:
       - yum update -y
       - yum install yum-utils -y
       - yum-config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo -y
       - yum install gh -y
+  pre_build:
+    commands:
+      - npm install -g typescript
+      - npm install
   build:
     commands:
       - echo Build started on `date`
@@ -22,8 +26,8 @@ phases:
       - TAG=$(echo $CODEBUILD_WEBHOOK_TRIGGER | sed -r 's/^.{3}//')
       - echo $TAG
       - gh auth login --hostname github.com --with-token <<< $SECRET_TOKEN
-      - |
-        if [ "$EXITCODE" = "0" ]; then
+      -|
+       if [ "$EXITCODE" = "0" ]; then
           gh pr merge $TAG --admin --merge
           git init
           git remote add neworigin https://${SECRET_USERNAME}:${SECRET_TOKEN}@github.com/IBS-Skillset/master-source-build.git
