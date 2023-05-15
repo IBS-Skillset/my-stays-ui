@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: mystaysui-api
-          image: 306472407007.dkr.ecr.ap-south-1.amazonaws.com/ibs-skillset-happystays/my-stays-ui:53c295f
+          image: 306472407007.dkr.ecr.ap-south-1.amazonaws.com/ibs-skillset-happystays/my-stays-ui:656415f
           imagePullPolicy: Always
           env:
             - name: HOST_UI
