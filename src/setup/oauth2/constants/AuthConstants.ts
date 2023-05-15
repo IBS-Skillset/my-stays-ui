@@ -1,7 +1,8 @@
 let HOST_UI = 'http://' + window.location.host
 let HOST_AUTH = 'http://' + window.location.host + '/auth-server'
-if (process.env.NODE_ENV === 'development') {
-  HOST = `${process.env.AUTH_SERVER_URI}/auth-server`
+if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+  HOST_AUTH = `${process.env.AUTH_SERVER_URI}/auth-server`
+  HOST_UI = 'http://127.0.0.1:3000'
 }
 export default {
   CLIENT_ID: 'client',
