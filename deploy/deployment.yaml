@@ -2,10 +2,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mystaysui
+  name: my-stays-ui
   namespace: beta-app
   labels:
-    app.kubernetes.io/name: mystaysui
+    app.kubernetes.io/name: my-stays-ui
 spec:
   replicas: 1
   minReadySeconds: 5
