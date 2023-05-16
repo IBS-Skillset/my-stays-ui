@@ -2,15 +2,15 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: mystaysui
+  name: my-stays-ui
   namespace: beta-app
   labels:
-    app.kubernetes.io/name: mystaysui
+    app.kubernetes.io/name: my-stays-ui
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: mystaysui
+    name: my-stays-ui
   minReplicas: 1
   maxReplicas: 3
   metrics:

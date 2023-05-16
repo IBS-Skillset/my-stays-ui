@@ -5,7 +5,7 @@ metadata:
   namespace: beta-app
   name: ingress-mystays
   labels:
-    app.kubernetes.io/name: ingress-mystaysui
+    app.kubernetes.io/name: ingress-my-stays-ui
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
@@ -18,7 +18,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: mystaysui
+                name: my-stays-ui
                 port:
                   number: 80
           - path: /auth-server
