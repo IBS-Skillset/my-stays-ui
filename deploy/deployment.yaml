@@ -16,19 +16,19 @@ spec:
       maxUnavailable: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: mystaysui
+      app.kubernetes.io/name: my-stays-ui
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: mystaysui
+        app.kubernetes.io/name: my-stays-ui
     spec:
       containers:
-        - name: mystaysui-api
+        - name: my-stays-ui-api
           image: 306472407007.dkr.ecr.ap-south-1.amazonaws.com/ibs-skillset-happystays/my-stays-ui:656415f
           imagePullPolicy: Always
           env:
             - name: HOST_UI
-              value: mystaysui
+              value: my-stays-ui
           ports:
             - name: web
               containerPort: 80
