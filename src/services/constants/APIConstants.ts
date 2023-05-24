@@ -1,7 +1,7 @@
 /**let HOST = (window as any).API_GATEWAY_URI*/
 let HOST = 'http://' + window.location.host + '/api-gateway'
 if (process.env.NODE_ENV === 'development') {
-  HOST = `${process.env.API_GATEWAY_URI}`
+  HOST = `${process.env.API_GATEWAY_URI}` + '/api-gateway'
 }
 export default {
   CREATE_ACCOUNT_URL: `${HOST}/account/api/signup`,
