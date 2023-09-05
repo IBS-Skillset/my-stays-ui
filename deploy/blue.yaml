@@ -1,0 +1,59 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-stays-ui-blue
+  namespace: beta-app
+  labels:
+    app.kubernetes.io/name: my-stays-ui-blue
+spec:
+  replicas: 2
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: my-stays-ui-blue
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: my-stays-ui-blue
+    spec:
+      containers:
+        - name: my-stays-ui-api-blue
+          image: 306472407007.dkr.ecr.ap-south-1.amazonaws.com/ibs-skillset-happystays/my-stays-ui:blue
+          imagePullPolicy: Always
+          env:
+            - name: HOST_UI
+              value: my-stays-ui
+          ports:
+            - name: web
+              containerPort: 80
+          resources:
+            requests:
+              memory: "250Mi"
+              cpu: "200m"
+            limits:
+              memory: "500Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-stays-ui-blue
+  namespace: beta-app
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app.kubernetes.io/name: my-stays-ui-blue              
+              
+              
+              
+              
+
+              
